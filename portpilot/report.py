@@ -95,12 +95,17 @@ def fixes_applied(report):
     return seen
 
 
+def rounds_text(report):
+    n = len(report["rounds"])
+    return f"{n} round" + ("" if n == 1 else "s")
+
+
 def build_cell(report):
     if not report:
         return '<td class="muted">not run</td>'
     if report["result"] == "built":
-        return f'<td class="ok nowrap">built <span class="muted">· {len(report["rounds"])} rounds</span></td>'
-    return f'<td class="bad nowrap">needs patch <span class="muted">· {len(report["rounds"])} rounds</span></td>'
+        return f'<td class="ok nowrap">built <span class="muted">· {rounds_text(report)}</span></td>'
+    return f'<td class="bad nowrap">needs patch <span class="muted">· {rounds_text(report)}</span></td>'
 
 
 def test_cell(entry):
