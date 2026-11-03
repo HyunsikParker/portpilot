@@ -48,6 +48,9 @@ footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
 .patch summary { font-weight: 400; color: var(--muted); font-size: 13px; }
 .patch pre { max-height: 420px; }
 pre .add { color: var(--ok); } pre .del { color: var(--bad); } pre .hunk { color: var(--muted); }
+.tag { display: inline-block; padding: 1px 7px; margin: 1px 2px 1px 0; border: 1px solid var(--line); border-radius: 10px;
+       font-size: 12px; white-space: nowrap; }
+.tag.ai { border-color: var(--ok); color: var(--ok); }
 meter { width: 64px; height: 8px; vertical-align: middle; margin-right: 6px; }
 """
 
@@ -142,11 +145,43 @@ def round_html(i, rnd, libdir):
     return "\n".join(lines)
 
 
+SHORT = {"posix-extensions": "_QNX_SOURCE", "posix-types": "_QNX_SOURCE", "sockets": "-lsocket", "regex": "-lregex",
+         "libm": "-lm", "pic": "-fPIC", "signed-char": "-fsigned-char", "werror": "-Wno-error",
+         "doctest-std-headers": "doctest std headers"}
+
+
+def short(fix):
+    """A table-sized name for a catalogue rule or recorded change."""
+    if fix in SHORT:
+        return SHORT[fix]
+    for key, label in (("CMAKE_POLICY_VERSION_MINIMUM", "CMake policy 3.5"), ("linker launcher", "link launcher"),
+                       ("stub archives", "libc stubs"), ("endian", "endian header"), ("queue header", "queue header"),
+                       ("netinet", "<netinet/in.h>"), ("->", "header swap")):
+        if key in fix:
+            return label
+    return fix[:28]
+
+
+def ai_tag(reps):
+    kept = sum(1 for r in reps.values() for rnd in r["rounds"] for a in rnd.get("ai", []) if a.get("accepted"))
+    tri = sum(1 for r in reps.values() for t in r.get("triage", []) if t.get("accepted"))
+    tags = []
+    if kept:
+        tags.append(f'<span class="tag ai">AI build ×{kept}</span>')
+    if tri:
+        tags.append(f'<span class="tag ai">AI triage ×{tri}</span>')
+    return (" " + " ".join(tags)) if tags else ""
+
+
 def page(ports, tests, generated, runs):
     names = sorted(set(ports) | set(tests), key=str.lower)
     built = {cpu: sum(1 for n in names if ports.get(n, {}).get(cpu, {}).get("result") == "built") for cpu in CPUS}
     all_results = [r for n in names for r in tests.get(n, {}).get("results", [])]
     passed = sum(1 for r in all_results if r["verdict"] == "PASS")
+    ai_all = [a for n in names for r in ports.get(n, {}).values() for rnd in r["rounds"] for a in rnd.get("ai", [])]
+    ai_kept = sum(1 for a in ai_all if a.get("accepted"))
+    triage_all = [t for n in names for r in ports.get(n, {}).values() for t in r.get("triage", [])]
+    triage_gain = sum(t.get("passed_after", 0) - t.get("passed_before", 0) for t in triage_all if t.get("accepted"))
     rows, details = [], []
     for n in names:
         reps = ports.get(n, {})
@@ -155,7 +190,8 @@ def page(ports, tests, generated, runs):
         fx = fixes_applied(reps["x86_64"]) if reps.get("x86_64") else []
         rows.append(f'<tr><td><b>{esc(n)}</b> <span class="muted mono">{ref}</span></td>'
                     + "".join(build_cell(reps.get(c)) for c in CPUS) + test_cell(tests.get(n))
-                    + f'<td>{esc("; ".join(fx)) if fx else "<span class=muted>none</span>"}</td></tr>')
+                    + "<td>" + (" ".join(f'<span class="tag">{esc(short(f))}</span>' for f in fx)
+                                + ai_tag(reps) or "<span class=muted>none</span>") + "</td></tr>")
         body = []
         for cpu, rep in reps.items():
             body.append(f'<p class="muted">{esc(cpu)} · <a href="{esc(rep["url"])}">{esc(rep["url"])}</a></p>')
@@ -187,6 +223,8 @@ def page(ports, tests, generated, runs):
 <div><b>{built["x86_64"]}</b><span>built for x86_64</span></div>
 <div><b>{built["aarch64le"]}</b><span>built for aarch64le</span></div>
 <div><b>{passed}/{len(all_results)}</b><span>CTest entries passed on the target</span></div>
+<div><b>{ai_kept}/{len(ai_all)}</b><span>AI build patches kept</span></div>
+<div><b>+{triage_gain}</b><span>tests fixed by triage on QNX</span></div>
 </div>
 <h2>Libraries</h2>
 <div class="wrap"><table>
