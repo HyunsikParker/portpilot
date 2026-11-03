@@ -69,6 +69,34 @@ def apply_header_patches(patches):
         _worker("windows", ps)
 
 
+def make_stub_libs(cpu, libs):
+    """Empty static archives (just the ar magic) in pp/qnx_stubs/<cpu>; returns the directory with forward slashes."""
+    d = f"{REMOTE_ROOT}\\qnx_stubs\\{cpu}"
+    files = ",".join(f"'lib{n}.a'" for n in libs)
+    ps = (f"New-Item -ItemType Directory -Force '{d}' | Out-Null; foreach ($n in @({files})) "
+          f"{{ [IO.File]::WriteAllBytes((Join-Path '{d}' $n), [Text.Encoding]::ASCII.GetBytes(\"!<arch>`n\")) }}")
+    _worker("windows", ps)
+    return d.replace("\\", "/")
+
+
+def find_project_header(name, needle):
+    """First header in the upstream tree that contains `needle` (forward slashes), or None."""
+    ps = (f"Get-ChildItem -LiteralPath '{REMOTE_ROOT}\\{name}' -Recurse -Include *.h -File | "
+          f"Select-String -SimpleMatch -Pattern '{needle}' -List | Select-Object -First 1 -ExpandProperty Path")
+    _, out = _worker("windows", ps)
+    lines = [l.strip() for l in out.splitlines() if l.strip().lower().endswith(".h")]
+    return lines[0].replace("\\", "/") if lines else None
+
+
+def add_include(files, header):
+    """Insert #include <header> before the first #include of each file (once)."""
+    for f in files:
+        ps = (f"$f='{f}'; $t = Get-Content -LiteralPath $f -Raw; if ($t -notmatch '#include\\s*<{header.replace('.', '[.]')}>') "
+              f"{{ $i = $t.IndexOf('#include'); $t = $t.Insert($i, '#include <{header}>' + [char]10); "
+              f"Set-Content -LiteralPath $f -Value $t -NoNewline }}")
+        _worker("windows", ps)
+
+
 def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
     tmp = LOCAL / name
     tmp.mkdir(parents=True, exist_ok=True)
@@ -84,7 +112,8 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
         rules = fixes.match(log)
         new_c, new_l = fixes.apply(rules, cflags, ldflags)
         rec["matched_rules"] = [r.name for r in rules]
-        rec["errors"] = sum(1 for line in logs["build"].splitlines() if " error: " in line or "undefined reference" in line)
+        rec["errors"] = sum(1 for line in logs["build"].splitlines()
+                            if " error: " in line or "undefined reference" in line or "cannot find -l" in line)
         rounds.append(rec)
         print(f"[{name}] round {i + 1}: configure={rec['configure_exit']} build={rec['build_exit']} errors={rec['errors']} "
               f"rules={rec['matched_rules']} ({rec['seconds']} s)", flush=True)
@@ -94,6 +123,22 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
         if patches:
             rec["patches"] = [f"{Path(f).name}: <{a}> -> <{b}>" for f, a, b in patches]
             apply_header_patches(patches)
+        if fixes.needs_queue_compat(log):
+            hdr = find_project_header(name, "#define LIST_ENTRY")
+            if hdr and f"-include {hdr}" not in " ".join(new_c):
+                new_c = new_c + ["-include", hdr]
+                rec.setdefault("patches", []).append(f"force-include project queue header {Path(hdr).name}")
+        stubs = fixes.stub_libraries(log)
+        if stubs:
+            stub_dir = make_stub_libs(cpu, stubs)
+            if f"-L{stub_dir}" not in new_l:
+                new_l = new_l + [f"-L{stub_dir}"]
+            rec.setdefault("patches", []).append(f"empty stub archives for -l{', -l'.join(stubs)} (functions are in QNX libc)")
+        net = fixes.netinet_files(log)
+        if net:
+            add_include(net, "netinet/in.h")
+            rec.setdefault("patches", []).extend(f"{Path(f).name}: add <netinet/in.h>" for f in net)
+            patches = patches or net
         if (new_c, new_l) == (cflags, ldflags) and not patches:
             break  # nothing new to try from the catalogue: leave for the next stage (an AI proposal)
         cflags, ldflags = new_c, new_l

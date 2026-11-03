@@ -68,3 +68,36 @@ def header_patches(log):
         if new and item not in out:
             out.append(item)
     return out
+
+
+# BSD <sys/queue.h> list macros are absent on QNX. Many projects ship their own copy for other platforms; force-include it.
+QUEUE_MACROS = re.compile(r"(expected specifier-qualifier-list before|unknown type name) '(LIST_ENTRY|LIST_HEAD|TAILQ_ENTRY|"
+                          r"TAILQ_HEAD|SLIST_ENTRY|SLIST_HEAD|STAILQ_ENTRY|STAILQ_HEAD)'|implicit declaration of function "
+                          r"'(LIST_\w+|TAILQ_\w+|SLIST_\w+|STAILQ_\w+)'")
+# IPv4/IPv6 socket constants and structs used without <netinet/in.h>.
+NETINET = re.compile(r"^(?P<file>(?:[A-Za-z]:)?[^:\n]+?):\d+:\d+: error: (?:'(?:IPPROTO_\w+|INADDR_\w+|IP_\w+|IPV6_\w+)' "
+                     r"undeclared|invalid use of undefined type 'struct sockaddr_in6?'|storage size of '\w+' isn't known)", re.M)
+
+
+def needs_queue_compat(log):
+    return bool(QUEUE_MACROS.search(log))
+
+
+def netinet_files(log):
+    """Source files that use IPv4/IPv6 socket names without including <netinet/in.h>."""
+    out = []
+    for m in NETINET.finditer(log):
+        f = m.group("file").replace("\\\\", "/")
+        if f not in out:
+            out.append(f)
+    return out
+
+
+# QNX keeps pthread, rt, dl and util functions in libc, so there is no separate library to link; upstream build files
+# that add -lpthread / -lrt / -ldl / -lutil fail at link time. An empty archive of that name in a porting-layer directory
+# satisfies the linker without editing upstream build files.
+NO_SUCH_LIB = re.compile(r"cannot find -l(pthread|rt|dl|util|anl|resolv)\b")
+
+
+def stub_libraries(log):
+    return sorted(set(NO_SUCH_LIB.findall(log)))
