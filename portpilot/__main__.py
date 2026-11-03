@@ -5,12 +5,13 @@
     python -m portpilot triage <name> --run <tag> [--rounds 2]
     python -m portpilot vm build [--arch x86_64]
     python -m portpilot report [--out runs/report.html]
+    python -m portpilot export <name> [<name> ...]          # ports/<name>/: recipe.json, patch, README
 """
 import sys
 
-from . import remote, report, target, triage, vm
+from . import export, remote, report, target, triage, vm
 
-COMMANDS = {"port": remote.main, "report": report.main, "triage": triage.main, "vm": vm.main}
+COMMANDS = {"export": export.main, "port": remote.main, "report": report.main, "triage": triage.main, "vm": vm.main}
 
 
 def main():
