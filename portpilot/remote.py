@@ -6,6 +6,7 @@ usage: python -m portpilot.remote <name> <git-url> <ref> [--subdir build/cmake] 
 """
 import argparse
 import json
+import re
 import subprocess
 import time
 from pathlib import Path
@@ -128,6 +129,27 @@ def source_snippets(name, errors):
     return [p.rstrip("\n") for p in parts] + [""] * (len(errors) - len(parts))
 
 
+def symbol_context(name, symbols, limit=4):
+    """For undefined symbols: the project files that define them and the build-file lines that mention those files.
+
+    A symbol that is defined in the tree but missing at link time usually means the build skipped the defining file on
+    this platform, which only the build files show."""
+    if not symbols:
+        return ""
+    root = f"{REMOTE_ROOT}\\{name}"
+    alt = "|".join(re.escape(s) for s in symbols[:limit])
+    ps = (f"$r = '{root}'; $defs = Get-ChildItem -LiteralPath $r -Recurse -File -Include *.c,*.cc,*.cpp,*.cxx | "
+          f"Select-String -Pattern '^[A-Za-z_].*\\b({alt})\\s*\\([^;]*$' | Select-Object -First 6; "
+          f"foreach ($d in $defs) {{ 'DEF ' + $d.Path.Substring($r.Length + 1) + ':' + $d.LineNumber + ': ' + $d.Line.Trim() }}; "
+          f"$names = $defs | ForEach-Object {{ Split-Path $_.Path -Leaf }} | Sort-Object -Unique; "
+          f"foreach ($n in $names) {{ Get-ChildItem -LiteralPath $r -Recurse -File -Include CMakeLists.txt,*.cmake | "
+          f"Select-String -SimpleMatch -Pattern $n -Context 6,2 | Select-Object -First 3 | ForEach-Object {{ "
+          f"'BUILD ' + $_.Path.Substring($r.Length + 1) + ':' + $_.LineNumber; $_.Context.PreContext; '> ' + $_.Line; "
+          f"$_.Context.PostContext }} }}")
+    _, out = _worker("windows", ps)
+    return out.replace("\r", "").strip()[:6000]
+
+
 def apply_patch(name, patch, tag, reverse=False):
     _worker("push", str(patch), f"pp/{tag}.patch")
     flag = "-R " if reverse else ""
@@ -136,16 +158,22 @@ def apply_patch(name, patch, tag, reverse=False):
     return "apply_exit=0" in out, out.strip()[-400:]
 
 
+def progress(rec):
+    """How far a build got: configuring counts for more than any number of compile errors; then fewer errors is better."""
+    return (rec["configure_exit"] == "0", rec["build_exit"] == "0", -rec["errors"])
+
+
 def ai_stage(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp, rounds, log, ai_rounds):
     """Ask the model for patches until the build passes, a patch fails to help, or the round budget is spent."""
     applied = sorted({r for rec in rounds for r in rec["matched_rules"]} | {p for rec in rounds for p in rec.get("patches", [])})
-    best = rounds[-1]["errors"]
+    best = progress(rounds[-1])
     for k in range(1, ai_rounds + 1):
         errors = agent.collect_errors(log, f"{REMOTE_ROOT}\\{name}")
         symbols = agent.undefined_symbols(log)
         if not errors and not symbols:
             break
-        prompt = agent.build_prompt(name, ref, applied, errors, source_snippets(name, errors), symbols)
+        prompt = agent.build_prompt(name, ref, applied, errors, source_snippets(name, errors), symbols,
+                                    symbol_context(name, symbols))
         answer, model = agent.ask(prompt)
         diff = agent.extract_diff(answer)
         agent.save_round(tmp, k, prompt, answer, diff)
@@ -162,9 +190,9 @@ def ai_stage(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp, roun
                             if " error: " in line or "undefined reference" in line or "cannot find -l" in line)
         rec["matched_rules"], rec["cmake_args"] = [], list(cmake_args)
         passed = rec["build_exit"] == "0" and rec["configure_exit"] == "0"
-        info["accepted"] = passed or rec["errors"] < best
+        info["accepted"] = passed or progress(rec) > best
         if info["accepted"]:
-            best, log = rec["errors"], logs["configure"] + "\n" + logs["build"]
+            best, log = progress(rec), logs["configure"] + "\n" + logs["build"]
         else:
             apply_patch(name, tmp / f"ai_round{k}.patch", f"ai_{name}_{k}", reverse=True)
         rec["ai"] = [info]

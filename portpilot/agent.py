@@ -16,6 +16,7 @@ import urllib.request
 from pathlib import Path
 
 ERROR = re.compile(r"^(?P<file>(?:[A-Za-z]:)?[^:\n]+?):(?P<line>\d+):(?P<col>\d+): (?:fatal )?error: (?P<msg>.+)$", re.M)
+CMAKE_ERROR = re.compile(r"^CMake Error at (?P<file>[^\n]+?):(?P<line>\d+) \((?P<cmd>\w+)\):\n(?P<msg>(?: {2}.*\n?)+)", re.M)
 UNDEFINED = re.compile(r"undefined reference to `([^']+)'")
 SDP_MARKERS = ("qnx800", "/target/qnx/", "\\target\\qnx\\", "/host/win64/", "\\host\\win64\\")
 MAX_ERRORS = 8
@@ -30,8 +31,6 @@ PROMPT = """You are porting the open-source project {name} ({ref}) to QNX 8.0. T
 QNX fixes were applied: {applied}.
 
 {facts}
-
-Compiler errors (paths relative to the project root) with the source around each one:
 
 {errors}
 
@@ -49,6 +48,15 @@ def collect_errors(log, project_root):
     """[(relative file, line, message)] for distinct errors in the project's own files."""
     root = project_root.replace("\\", "/").rstrip("/") + "/"
     out, seen = [], set()
+    for m in CMAKE_ERROR.finditer(log):   # configure errors come first: nothing compiles until they are fixed
+        f = m["file"].replace("\\", "/")
+        if _from_sdp(f) or "/share/cmake" in f.lower():
+            continue
+        rel = f[len(root):] if f.lower().startswith(root.lower()) else f
+        msg = " ".join(m["msg"].split())
+        if (rel, msg) not in seen:
+            seen.add((rel, msg))
+            out.append((rel, int(m["line"]), f"CMake {m['cmd']}: {msg}"))
     for m in ERROR.finditer(log):
         f = m["file"].replace("\\", "/")
         if _from_sdp(f):
@@ -68,12 +76,15 @@ def undefined_symbols(log):
     return sorted(set(UNDEFINED.findall(log)))[:20]
 
 
-def build_prompt(name, ref, applied, errors, snippets, symbols):
-    parts = []
+def build_prompt(name, ref, applied, errors, snippets, symbols, symbol_notes=""):
+    parts = ["Build errors (paths relative to the project root) with the source around each one:"] if errors else []
     for (rel, line, msg), snip in zip(errors, snippets):
         parts.append(f"--- {rel}:{line}: error: {msg}\n{snip}")
     if symbols:
         parts.append("Undefined symbols at link time: " + ", ".join(symbols))
+    if symbol_notes:
+        parts.append("Where those symbols are defined, and the build-file lines that mention the defining files:\n"
+                     + symbol_notes)
     return PROMPT.format(name=name, ref=ref, applied=", ".join(applied) or "none", facts=QNX_FACTS,
                          errors="\n\n".join(parts))
 

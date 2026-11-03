@@ -19,6 +19,19 @@ def test_errors_are_relative_distinct_and_exclude_sdp_files():
     assert agent.undefined_symbols(LOG) == ["backtrace"]
 
 
+def test_cmake_configure_errors_are_collected_before_compiler_errors():
+    log = ("CMake Error at cmake/DetermineTargetArchitecture.cmake:37 (message):\n"
+           "  Failed to determine target architecture triplet: 1\n"
+           "Call Stack (most recent call first):\n"
+           "  CMakeLists.txt:48 (determine_target_architecture)\n\n"
+           "CMake Error at C:/Program Files/CMake/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):\n"
+           "  Could NOT find Perl\n\n" + LOG)
+    errors = agent.collect_errors(log, ROOT)
+    assert errors[0] == ("cmake/DetermineTargetArchitecture.cmake", 37,
+                         "CMake message: Failed to determine target architecture triplet: 1")
+    assert all("share/cmake" not in e[0] for e in errors)
+
+
 def test_prompt_never_quotes_sdp_paths():
     errors = agent.collect_errors(LOG, ROOT)
     prompt = agent.build_prompt("demo", "v1.0", ["sockets"], errors, ["   41> #include <sys/epoll.h>", ""], ["backtrace"])

@@ -22,9 +22,9 @@ RULES = [
          cflags=("-D_QNX_SOURCE",), why="QNX hides POSIX and BSD extensions unless _QNX_SOURCE is defined"),
     Rule("posix-types", r"unknown type name '(u_int\d+_t|u_char|u_short|u_long|caddr_t)'|'(timespec|timeval)' has no member",
          cflags=("-D_QNX_SOURCE",), why="BSD types are behind _QNX_SOURCE"),
-    Rule("sockets", r"undefined reference to `(socket|bind|connect|listen|accept|getaddrinfo|freeaddrinfo|gai_strerror|"
+    Rule("sockets", r"undefined reference to `_*(socket|bind|connect|listen|accept|getaddrinfo|freeaddrinfo|gai_strerror|"
          r"setsockopt|getsockopt|recvfrom|sendto|inet_\w+|gethostbyname|getnameinfo|socketpair)'",
-         ldflags=("-lsocket",), why="BSD socket calls live in libsocket on QNX"),
+         ldflags=("-lsocket",), why="BSD socket calls live in libsocket on QNX (some headers rename them to __name)"),
     Rule("regex", r"undefined reference to `(regcomp|regexec|regfree|regerror)'", ldflags=("-lregex",),
          why="POSIX regex is a separate library on QNX"),
     Rule("libm", r"undefined reference to `(sqrt|pow|exp|log|sin|cos|floor|ceil|fmod|lround|round)\w*'",
@@ -33,6 +33,9 @@ RULES = [
          cflags=("-fPIC",), why="shared objects need position-independent code"),
     Rule("signed-char", r"narrowing conversion of '-\d+' from 'int' to 'char'", cflags=("-fsigned-char",),
          why="char is unsigned on AArch64; code written for x86 assumes signed char"),
+    Rule("doctest-std-headers", r"doctest\.h:\d+:\d+: error: reference to '(ostream|istream|char_traits)' is ambiguous",
+         cflags=("-DDOCTEST_CONFIG_USE_STD_HEADERS",),
+         why="older doctest forward-declares std stream types, which clashes with libc++ (the QNX C++ library)"),
     Rule("werror", r"error: .* \[-Werror(=[\w-]+)?\]", cflags=("-Wno-error",),
          why="warnings promoted to errors by upstream flags; QNX headers trigger a few that are harmless"),
 ]
