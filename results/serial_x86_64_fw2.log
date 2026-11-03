@@ -1,0 +1,66 @@
+
+non UEFI or UEFI+CSM boot
+ACPI table not found (0x4746434d)
+System behaves poorly without PCID support.
+overriding mask for controller 2, vector_base 0
+---> Starting slogger2
+---> Starting PCI Services
+---> Starting fsevmgr
+# ---> Starting devb
+---> Mounting file systems
+Path=0 - Intel 82371SB
+ target=0 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+ target=1 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+---> Mounting file systems
+
+Path=1 - Intel 82371SB
+ target=0 lun=0            CD-ROM(5) - QEMU     QEMU DVD-ROM     Rev: 2.5+
+---> Starting Networking
+if_up: tries exhausted
+ifconfig: interface vtnet0 does not exist
+no valid interfaces found
+---> Starting sshd
+/usr/libexec/sshd-auth does not exist or is not executable
+
+---> Starting misc
+PPTEST-BEGIN QNX portpilot 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+PPINFO tmp: /dev/hd0t179                513M      105M      408M      21%  /data/          
+PPTEST-LIB uriparser 1
+PPTEST uriparser test PASS rc=0
+PPTEST-LIB msgpack-c 5
+PPTEST msgpack-c buffer_c PASS rc=0
+PPTEST msgpack-c fixint_c PASS rc=0
+PPTEST msgpack-c msgpack_c PASS rc=0
+PPTEST msgpack-c pack_unpack_c PASS rc=0
+PPTEST msgpack-c streaming_c PASS rc=0
+PPTEST-LIB libcbor 28
+PPTEST libcbor array_encoders_test PASS rc=0
+PPTEST libcbor array_test PASS rc=0
+PPTEST libcbor bad_inputs_test PASS rc=0
+PPTEST libcbor bytestring_encoders_test PASS rc=0
+PPTEST libcbor bytestring_test PASS rc=0
+PPTEST libcbor callbacks_test PASS rc=0
+PPTEST libcbor cbor_serialize_test PASS rc=0
+PPTEST libcbor cbor_stream_decode_test PASS rc=0
+PPTEST libcbor copy_test PASS rc=0
+PPTEST libcbor float_ctrl_encoders_test PASS rc=0
+PPTEST libcbor float_ctrl_test PASS rc=0
+PPTEST libcbor fuzz_test PASS rc=0
+PPTEST libcbor map_encoders_test PASS rc=0
+PPTEST libcbor map_get_test PASS rc=0
+PPTEST libcbor map_test PASS rc=0
+PPTEST libcbor memory_utils_test PASS rc=0
+PPTEST libcbor negint_encoders_test PASS rc=0
+PPTEST libcbor negint_test PASS rc=0
+PPTEST libcbor pretty_printer_test PASS rc=0
+PPTEST libcbor stack_over_limit_test PASS rc=0
+PPTEST libcbor string_encoders_test PASS rc=0
+PPTEST libcbor string_test PASS rc=0
+PPTEST libcbor structurally_equal_test PASS rc=0
+PPTEST libcbor tag_encoders_test PASS rc=0
+PPTEST libcbor tag_test PASS rc=0
+PPTEST libcbor uint_encoders_test PASS rc=0
+PPTEST libcbor uint_test PASS rc=0
+PPTEST libcbor unicode_test PASS rc=0
+PPTEST-END
+
+# 

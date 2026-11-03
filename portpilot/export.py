@@ -27,14 +27,22 @@ def recipe(name, reps):
                      "fixes": fixes_applied(r)}
     ai = [a for r in reps.values() for rnd in r["rounds"] for a in rnd.get("ai", [])]
     triage = [t for r in reps.values() for t in r.get("triage", [])]
-    return {"name": name, "url": first["url"], "ref": first["ref"], "subdir": first.get("subdir", "."),
-            "cmake_args": given, "cpus": cpus, "ai_patches": ai, "triage": triage}
+    needs = sorted({n for r in reps.values() for n in r.get("needs", [])})
+    rec = {"name": name, "url": first["url"], "ref": first["ref"], "subdir": first.get("subdir", "."),
+           "cmake_args": given, "cpus": cpus, "ai_patches": ai, "triage": triage}
+    if needs:
+        rec["needs"] = needs
+    if any(r.get("installed") for r in reps.values()):
+        rec["install"] = True
+    return rec
 
 
 def readme(rec, tests):
     cmd = (f"python -m portpilot port {rec['name']} {rec['url']} {rec['ref']} "
            + " ".join(f"--cmake={a}" for a in rec["cmake_args"])
-           + (f" --ai {len(rec['ai_patches'])}" if rec["ai_patches"] else "")).strip()
+           + (f" --ai {len(rec['ai_patches'])}" if rec["ai_patches"] else "")
+           + (" --install" if rec.get("install") else "")
+           + "".join(f" --needs {n}" for n in rec.get("needs", []))).strip()
     lines = [f"# {rec['name']} {rec['ref']} on QNX 8.0", "", f"Upstream: {rec['url']}", "", "## Result", ""]
     for cpu, c in rec["cpus"].items():
         lines.append(f"- {cpu}: {c['result']} in {c['rounds']} build round(s)")
@@ -60,7 +68,12 @@ def readme(rec, tests):
         state = "kept" if t.get("accepted") else "reverted"
         lines.append(f"- test triage round {t['round']} ({t.get('model', '?')}): {', '.join(t.get('files', []))} - "
                      f"passing tests {t.get('passed_before', '?')} -> {t.get('passed_after', '?')}, {state}")
-    lines += ["", "## Reproduce", "", "```", cmd, "```", ""]
+    lines += ["", "## Reproduce", ""]
+    if rec.get("needs"):
+        lines += [f"Port {', '.join(rec['needs'])} first with `--install` (see ports/"
+                  f"{'/, ports/'.join(rec['needs'])}/); the build finds {'them' if len(rec['needs']) > 1 else 'it'} "
+                  f"in the build host's stage directory.", ""]
+    lines += ["```", cmd, "```", ""]
     return "\n".join(lines)
 
 

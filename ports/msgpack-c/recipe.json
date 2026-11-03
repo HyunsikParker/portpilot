@@ -4,37 +4,48 @@
  "ref": "c-7.0.2",
  "subdir": ".",
  "cmake_args": [
-  "-DMSGPACK_BUILD_TESTS=OFF",
+  "-DMSGPACK_BUILD_TESTS=ON",
   "-DMSGPACK_BUILD_EXAMPLES=ON"
  ],
  "cpus": {
   "aarch64le": {
    "result": "built",
-   "rounds": 1,
+   "rounds": 2,
    "cflags": [
     "-D_QNX_SOURCE"
    ],
-   "ldflags": [],
+   "ldflags": [
+    "-lregex"
+   ],
    "cmake_args": [
-    "-DMSGPACK_BUILD_TESTS=OFF",
+    "-DMSGPACK_BUILD_TESTS=ON",
     "-DMSGPACK_BUILD_EXAMPLES=ON"
    ],
-   "fixes": []
+   "fixes": [
+    "regex"
+   ]
   },
   "x86_64": {
    "result": "built",
-   "rounds": 1,
+   "rounds": 2,
    "cflags": [
     "-D_QNX_SOURCE"
    ],
-   "ldflags": [],
+   "ldflags": [
+    "-lregex"
+   ],
    "cmake_args": [
-    "-DMSGPACK_BUILD_TESTS=OFF",
+    "-DMSGPACK_BUILD_TESTS=ON",
     "-DMSGPACK_BUILD_EXAMPLES=ON"
    ],
-   "fixes": []
+   "fixes": [
+    "regex"
+   ]
   }
  },
  "ai_patches": [],
- "triage": []
+ "triage": [],
+ "needs": [
+  "googletest"
+ ]
 }

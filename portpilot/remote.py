@@ -16,6 +16,11 @@ HOST = host.from_env()
 LOCAL = Path(__file__).resolve().parent.parent / "runs"
 
 
+def stage_root():
+    """Where `port --install` puts a library for later ports to find: <work>/stage/<cpu>/usr, a CMake find root."""
+    return f"{HOST.work}\\stage".replace("\\", "/")
+
+
 def _bat(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args):
     src = f"{HOST.work}\\{name}"
     bld = f"{HOST.work}\\build_{name}_{cpu}"
@@ -33,7 +38,8 @@ def _bat(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args):
         f"if exist {bld} rmdir /s /q {bld}",
         f'cmake -G Ninja -S {src}\\{subdir} -B {bld} -DCMAKE_TOOLCHAIN_FILE={HOST.work}\\qnx.nto.toolchain.cmake '
         f'-DCPU={tool_cpu} -DCMAKE_SYSTEM_PROCESSOR={var_cpu} -DCPUVARDIR={var_cpu} -DCMAKE_BUILD_TYPE=Release '
-        f'"-DPORTPILOT_C_FLAGS={" ".join(cflags)}" "-DPORTPILOT_LD_FLAGS={" ".join(ldflags)}" {args} '
+        f'"-DPORTPILOT_C_FLAGS={" ".join(cflags)}" "-DPORTPILOT_LD_FLAGS={" ".join(ldflags)}" '
+        f'-DPORTPILOT_STAGE={stage_root()} {args} '
         f"> {HOST.work}\\{name}_{cpu}_configure.log 2>&1",
         "echo configure_exit=%ERRORLEVEL%",
         f"cmake --build {bld} -j 8 -- -k 0 > {HOST.work}\\{name}_{cpu}_build.log 2>&1",
@@ -293,7 +299,24 @@ def ai_step(name, ref, log, rounds, tmp, k, notes=()):
     return info
 
 
-def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, ai_rounds=0, reuse_patch=False):
+def install_port(name, cpu):
+    """cmake --install into the stage root, so a later port (e.g. a library's tests) can find_package() this one."""
+    var_cpu = "aarch64le" if cpu.startswith("aarch64") else cpu
+    prefix = f"{stage_root()}/{var_cpu}/usr"
+    out = HOST.run_bat("\r\n".join([
+        "@echo off",
+        f"call {HOST.sdp_env} >nul 2>&1",
+        f"cmake --install {HOST.work}\\build_{name}_{cpu} --prefix {prefix} > {HOST.work}\\{name}_{cpu}_install.log 2>&1",
+        "echo install_exit=%ERRORLEVEL%",
+        "",
+    ]), f"{HOST.work}\\install_{name}.bat")
+    ok = "install_exit=0" in out
+    print(f"[{name}] install into {prefix}: {'done' if ok else 'failed, see ' + name + '_' + cpu + '_install.log'}", flush=True)
+    return prefix if ok else None
+
+
+def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, ai_rounds=0, reuse_patch=False,
+         install=False, needs=()):
     """Build, then alternate catalogue fixes and (when the catalogue has nothing left) AI patches until the build
     passes or both are exhausted. An AI patch is kept only if the next build gets further; otherwise it is reverted."""
     tmp = LOCAL / name
@@ -373,6 +396,10 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
     built = rounds[-1]["build_exit"] == "0" and rounds[-1]["configure_exit"] == "0"
     report = {"name": name, "url": url, "ref": ref, "subdir": subdir, "cpu": cpu, "rounds": rounds,
               "result": "built" if built else "needs-patch"}
+    if needs:
+        report["needs"] = list(needs)
+    if built and install:
+        report["installed"] = install_port(name, cpu)
     (tmp / f"report_{cpu}.json").write_text(json.dumps(report, indent=1))
     return report
 
@@ -385,8 +412,13 @@ def main():
     ap.add_argument("--cmake", action="append", default=[], help="one CMake argument, repeatable: --cmake=-DFOO=ON")
     ap.add_argument("--ai", type=int, default=0, help="AI patch rounds after the catalogue runs out (default 0)")
     ap.add_argument("--reuse-patch", action="store_true", help="apply runs/<name>/<name>.patch before the first build")
+    ap.add_argument("--install", action="store_true",
+                    help="after a passing build, install into <work>/stage/<cpu>/usr for later ports (e.g. a test framework)")
+    ap.add_argument("--needs", action="append", default=[],
+                    help="a port this one builds against, installed earlier with --install (recorded in the recipe)")
     a = ap.parse_args()
-    r = port(a.name, a.url, a.ref, a.subdir, a.cpu, a.cmake, ai_rounds=a.ai, reuse_patch=a.reuse_patch)
+    r = port(a.name, a.url, a.ref, a.subdir, a.cpu, a.cmake, ai_rounds=a.ai, reuse_patch=a.reuse_patch,
+             install=a.install, needs=a.needs)
     print(f"[{a.name}] result: {r['result']} after {len(r['rounds'])} rounds; "
           f"report runs/{a.name}/report_{a.cpu}.json, patch runs/{a.name}/{a.name}.patch")
 

@@ -4,7 +4,7 @@
  "ref": "uriparser-1.0.3",
  "subdir": ".",
  "cmake_args": [
-  "-DURIPARSER_BUILD_TESTS=OFF",
+  "-DURIPARSER_BUILD_TESTS=ON",
   "-DURIPARSER_BUILD_DOCS=OFF"
  ],
  "cpus": {
@@ -15,14 +15,16 @@
     "-D_QNX_SOURCE"
    ],
    "ldflags": [
-    "-lsocket"
+    "-lsocket",
+    "-lregex"
    ],
    "cmake_args": [
-    "-DURIPARSER_BUILD_TESTS=OFF",
+    "-DURIPARSER_BUILD_TESTS=ON",
     "-DURIPARSER_BUILD_DOCS=OFF"
    ],
    "fixes": [
-    "sockets"
+    "sockets",
+    "regex"
    ]
   },
   "x86_64": {
@@ -32,17 +34,22 @@
     "-D_QNX_SOURCE"
    ],
    "ldflags": [
-    "-lsocket"
+    "-lsocket",
+    "-lregex"
    ],
    "cmake_args": [
-    "-DURIPARSER_BUILD_TESTS=OFF",
+    "-DURIPARSER_BUILD_TESTS=ON",
     "-DURIPARSER_BUILD_DOCS=OFF"
    ],
    "fixes": [
-    "sockets"
+    "sockets",
+    "regex"
    ]
   }
  },
  "ai_patches": [],
- "triage": []
+ "triage": [],
+ "needs": [
+  "googletest"
+ ]
 }

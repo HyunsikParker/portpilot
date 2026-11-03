@@ -1,0 +1,32 @@
+{
+ "name": "googletest",
+ "url": "https://github.com/google/googletest.git",
+ "ref": "v1.17.0",
+ "subdir": ".",
+ "cmake_args": [],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 1,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [],
+   "fixes": []
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 1,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [],
+   "fixes": []
+  }
+ },
+ "ai_patches": [],
+ "triage": [],
+ "install": true
+}

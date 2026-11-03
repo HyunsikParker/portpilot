@@ -81,6 +81,9 @@ The AI stage uses the local Claude Code CLI by default (`claude -p`, no tools). 
 python -m portpilot vm build                                  # once: QNX 8.0 x86_64 QEMU image with the boot hook
 python -m portpilot port osqp https://github.com/osqp/osqp.git v1.0.0 --cmake=-DOSQP_BUILD_UNITTESTS=ON --ai 2
 python -m portpilot port osqp https://github.com/osqp/osqp.git v1.0.0 --cpu aarch64le --reuse-patch
+python -m portpilot port googletest https://github.com/google/googletest.git v1.17.0 --install   # a test framework
+python -m portpilot port uriparser https://github.com/uriparser/uriparser.git uriparser-1.0.3 \
+    --cmake=-DURIPARSER_BUILD_TESTS=ON --needs googletest      # builds its tests against the installed GoogleTest
 python -m portpilot test osqp json-c --tag demo                # run their CTest suites on the QNX target
 python -m portpilot triage osqp --run demo                     # AI fixes for tests that fail on the target
 python -m portpilot report --readme README.md                 # runs/report.html and the table below
@@ -91,8 +94,9 @@ python -m portpilot export osqp                               # ports/osqp/: rec
 
 Every port below builds for both CPUs. The test column counts the project's own CTest entries on the QNX 8.0 x86_64
 QEMU target; `-` means the tests were not run: Paho MQTT's need an MQTT broker, Cyclone DDS's need its host IDL
-compiler, and the others need a test framework the project does not vendor (cmocka, CUnit, GoogleTest, check) or were
-not enabled in its build. The serial console logs and run reports behind these numbers are in `results/`, and
+compiler, civetweb's, libcoap's and open62541's need a test framework that is not ported yet (check, CUnit).
+GoogleTest and cmocka are ported as test frameworks and their own tests are not run; uriparser and msgpack-c build
+their tests against the installed GoogleTest, and libcbor against cmocka (`--install`, `--needs`). The serial console logs and run reports behind these numbers are in `results/`, and
 each port's recipe, patch and AI transcripts are in `ports/<name>/`.
 
 See `runs/report.html` after a run. The table below is filled from the reports in this repository.
@@ -102,22 +106,24 @@ See `runs/report.html` after a run. The table below is filled from the reports i
 |---|---|---|---|---|---|
 | backward-cpp | v1.6 | built | built | 5/5 pass | CMake policy 3.5; AI build patch ×2 |
 | civetweb | v1.16 | built | built | - | CMake policy 3.5; -lsocket; AI build patch ×1 |
+| cmocka | cmocka-2.0.2 | built | built | - | none |
 | cyclonedds | 11.0.1 | built | built | - | AI build patch ×1 |
 | fmt | 12.2.0 | built | built | 20/21 pass | -lregex |
+| googletest | v1.17.0 | built | built | - | none |
 | json-c | json-c-0.19-20260627 | built | built | 27/28 pass | none |
 | libarchive | v3.8.11 | built | built | 816/1137 pass | link launcher |
-| libcbor | v0.14.0 | built | built | - | none |
+| libcbor | v0.14.0 | built | built | 28/28 pass | none |
 | libcoap | v4.3.5 | built | built | - | -lsocket |
 | libzmq | v4.3.5 | built | built | 110/121 pass | CMake policy 3.5 |
 | mbedtls | v4.2.0 | built | built | 145/148 pass | -lsocket; AI test fix ×2 |
-| msgpack-c | c-7.0.2 | built | built | - | none |
+| msgpack-c | c-7.0.2 | built | built | 5/5 pass | -lregex |
 | nng | v2.1.0 | built | built | 0/1 pass | header swap |
 | open62541 | v1.5.10 | built | built | - | queue header; <netinet/in.h>; libc stubs; -lsocket |
 | osqp | v1.0.0 | built | built | 3/3 pass | AI build patch ×1; AI test fix ×1 |
 | paho-mqtt-c | v1.3.16 | built | built | - | endian header; libc stubs |
 | ruckig | v0.19.4 | built | built | 1/1 pass | -lsocket; doctest std headers |
 | spdlog | v1.17.0 | built | built | 1/1 pass | -lsocket |
-| uriparser | uriparser-1.0.3 | built | built | - | -lsocket |
+| uriparser | uriparser-1.0.3 | built | built | 1/1 pass | -lsocket; -lregex |
 | wolfssl | v5.9.4-stable | built | built | 2/2 pass | -lsocket; AI test fix ×1 |
 | yaml-cpp | yaml-cpp-0.9.0 | built | built | 0/1 pass | none |
 <!-- results:end -->

@@ -4,7 +4,7 @@
  "ref": "v0.14.0",
  "subdir": ".",
  "cmake_args": [
-  "-DWITH_TESTS=OFF",
+  "-DWITH_TESTS=ON",
   "-DWITH_EXAMPLES=ON"
  ],
  "cpus": {
@@ -16,7 +16,7 @@
    ],
    "ldflags": [],
    "cmake_args": [
-    "-DWITH_TESTS=OFF",
+    "-DWITH_TESTS=ON",
     "-DWITH_EXAMPLES=ON"
    ],
    "fixes": []
@@ -29,12 +29,15 @@
    ],
    "ldflags": [],
    "cmake_args": [
-    "-DWITH_TESTS=OFF",
+    "-DWITH_TESTS=ON",
     "-DWITH_EXAMPLES=ON"
    ],
    "fixes": []
   }
  },
  "ai_patches": [],
- "triage": []
+ "triage": [],
+ "needs": [
+  "cmocka"
+ ]
 }

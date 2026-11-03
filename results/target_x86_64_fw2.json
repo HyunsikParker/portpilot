@@ -1,0 +1,279 @@
+{
+ "cpu": "x86_64",
+ "tag": "fw2",
+ "libraries": [
+  "uriparser",
+  "msgpack-c",
+  "libcbor"
+ ],
+ "finished": true,
+ "boot": "PPBOOT exited_by_itself=True",
+ "staged": [
+  {
+   "name": "uriparser",
+   "tests": 1,
+   "disabled": []
+  },
+  {
+   "name": "msgpack-c",
+   "tests": 5,
+   "disabled": []
+  },
+  {
+   "name": "libcbor",
+   "tests": 28,
+   "disabled": []
+  }
+ ],
+ "counts": {
+  "uriparser": {
+   "PASS": 1
+  },
+  "msgpack-c": {
+   "PASS": 5
+  },
+  "libcbor": {
+   "PASS": 28
+  }
+ },
+ "results": [
+  {
+   "library": "uriparser",
+   "test": "test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "msgpack-c",
+   "test": "buffer_c",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "msgpack-c",
+   "test": "fixint_c",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "msgpack-c",
+   "test": "msgpack_c",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "msgpack-c",
+   "test": "pack_unpack_c",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "msgpack-c",
+   "test": "streaming_c",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "array_encoders_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "array_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "bad_inputs_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "bytestring_encoders_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "bytestring_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "callbacks_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "cbor_serialize_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "cbor_stream_decode_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "copy_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "float_ctrl_encoders_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "float_ctrl_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "fuzz_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "map_encoders_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "map_get_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "map_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "memory_utils_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "negint_encoders_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "negint_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "pretty_printer_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "stack_over_limit_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "string_encoders_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "string_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "structurally_equal_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "tag_encoders_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "tag_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "uint_encoders_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "uint_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "libcbor",
+   "test": "unicode_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  }
+ ]
+}
