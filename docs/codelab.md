@@ -131,8 +131,8 @@ call C:\qnx800\host\common\bin\mkqnximage.bat --force --type=qemu --arch=x86_64 
 
 ## 5. Put the tests on a second disk
 
-`mkqnx6fsimg` writes a QNX6 filesystem image from a build file that maps paths on the disk to files on the host.
-Save as `tests.build` (paths shortened; use your own):
+Stay in the `vm` directory for the rest of the codelab. `mkqnx6fsimg` writes a QNX6 filesystem image from a build
+file that maps paths on the disk to files on the host. Save as `tests.build` (paths shortened; use your own):
 
 ```
 [num_sectors=262144]
@@ -179,7 +179,7 @@ nothing on the serial console in our runs.
 
 ## 7. Let PortPilot do it
 
-PortPilot automates steps 2 to 6 for any CMake project, applies the fixes from the table above when it sees their
+PortPilot automates steps 2 to 6 for CMake projects, applies the fixes from the table above when it sees their
 messages, and can ask a language model for a patch when none applies:
 
 ```
