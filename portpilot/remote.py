@@ -379,8 +379,9 @@ def main():
     ap.add_argument("--ai", type=int, default=0, help="AI patch rounds after the catalogue runs out (default 0)")
     ap.add_argument("--reuse-patch", action="store_true", help="apply runs/<name>/<name>.patch before the first build")
     a = ap.parse_args()
-    print(json.dumps(port(a.name, a.url, a.ref, a.subdir, a.cpu, a.cmake, ai_rounds=a.ai, reuse_patch=a.reuse_patch),
-                     indent=1)[:2000])
+    r = port(a.name, a.url, a.ref, a.subdir, a.cpu, a.cmake, ai_rounds=a.ai, reuse_patch=a.reuse_patch)
+    print(f"[{a.name}] result: {r['result']} after {len(r['rounds'])} rounds; "
+          f"report runs/{a.name}/report_{a.cpu}.json, patch runs/{a.name}/{a.name}.patch")
 
 
 if __name__ == "__main__":
