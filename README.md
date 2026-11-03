@@ -13,12 +13,16 @@ and boots QNX in QEMU to run the project's CTest suite.
 ## How a port runs
 
 ```
-git clone ──► configure + build with qcc ──► read the log ──► catalogue fix? ──yes──► rebuild
-                                                    │ no
-                                                    ▼
-                                          AI patch (unified diff) ──► rebuild ──► kept only if the build got further
-                                                    │
-built ──► test executables + shared libs + data on a qnx6 disk ──► boot QNX 8.0 in QEMU ──► one PASS/FAIL line per test
+git clone ─► configure + build with qcc ─► read the log ─► catalogue fix? ─yes─► rebuild
+                                                │ no
+                                                ▼
+                                    AI patch (unified diff) ─► rebuild ─► kept only if the build got further
+                                                │ built
+                                                ▼
+         tests, shared libs and data on a qnx6 disk ─► boot QNX 8.0 in QEMU ─► one PASS/FAIL line per test
+                                                │ failures
+                                                ▼
+                    AI patch ─► rebuild ─► rerun on QNX ─► kept only if more tests pass and none regress
 ```
 
 1. **Build loop** (`portpilot port`). Each round configures and builds the project for one CPU and counts the errors.
@@ -30,14 +34,21 @@ built ──► test executables + shared libs + data on a qnx6 disk ──► b
 2. **AI patch** (`--ai N`). When no catalogue rule applies, PortPilot sends the model the project's own errors with
    the surrounding source lines; for undefined symbols it adds the files that define them and the build-file lines
    that select those files. The model answers with a unified diff, which is applied to the upstream copy and kept
-   only if the next build gets further (configure passes, or fewer errors). A diff that does not apply is sent back
-   once with the current file text. Diagnostics that point into the QNX SDP are dropped, so no SDP file content
+   only if the next build gets further (configure passes, then fewer failed build steps, then fewer errors). A patch
+   that does not help is reverted and described to the model in the next round; a diff that does not apply is sent
+   back once with the current file text. Diagnostics that point into the QNX SDP are dropped, so no SDP file content
    leaves the build host.
 3. **Target run** (`portpilot test`). PortPilot asks CTest for the test list, writes the test executables, the
    project's shared libraries and their working directories onto a qnx6 filesystem image, and attaches it as a second
    disk to the QNX VM. A boot hook (`vm/post_start.custom`) mounts it, runs each test with a time limit, prints one
-   `PPTEST <library> <test> PASS|FAIL|TIMEOUT` line per test on the serial console, and powers the VM off.
-4. **Report** (`portpilot report`). One HTML page per run directory: build result per CPU, the fixes applied, the AI
+   `PPTEST <library> <test> PASS|FAIL|TIMEOUT` line per test on the serial console, and powers the VM off. Shared
+   libraries the tests need from the SDP's `usr/lib` are staged on the test disk (found with `readelf`). A test killed
+   by a signal is reported with the signal, the core file QNX's `dumper` wrote and the last `slogger2` entries.
+4. **Test triage** (`portpilot triage`). Tests that build but fail on the target go to the model with their output,
+   the project code that printed it, and any string literals in generated files that still point at the build host.
+   The proposed patch is applied, the project rebuilt and its tests rerun on the QNX VM; the patch is kept only if
+   more tests pass and no passing test fails.
+5. **Report** (`portpilot report`). One HTML page per run directory: build result per CPU, the fixes applied, the AI
    rounds, and the tests that did not pass with their output.
 
 The final `git diff` of each upstream copy is saved as `runs/<name>/<name>.patch`; together with the recorded CMake
