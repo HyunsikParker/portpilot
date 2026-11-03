@@ -60,6 +60,10 @@ class Bundle:
 
     def add_tree(self, target, host):
         self.dirs.add(target)
+        for dirpath, dirnames, _ in os.walk(host):   # empty output directories CMake made for the tests count too
+            dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+            for d in dirnames:
+                self.dirs.add(f"{target}/{_fwd(os.path.relpath(os.path.join(dirpath, d), host))}")
         for f in _walk(host):
             rel = _fwd(os.path.relpath(f, host))
             self.add_file(f"{target}/{rel}", f)
