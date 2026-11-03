@@ -48,3 +48,23 @@ def apply(rules, cflags, ldflags):
         cflags += [f for f in r.cflags if f not in cflags]
         ldflags += [f for f in r.ldflags if f not in ldflags]
     return cflags, ldflags
+
+
+# Headers that some POSIX systems provide but QNX 8.0 does not, and the header that declares the same things on QNX.
+HEADER_SUBST = {
+    "sys/errno.h": "errno.h",
+    "sys/sysctl.h": None,      # no equivalent; needs a code change, reported for review
+    "sys/epoll.h": None,       # QNX has no epoll; the project's poll/kqueue-free path must be selected
+}
+MISSING_HEADER = re.compile(r"^(?P<file>(?:[A-Za-z]:)?[^:\n]+?):\d+:\d+: fatal error: (?P<hdr>[\w/.+-]+): No such file", re.M)
+
+
+def header_patches(log):
+    """[(file, old_header, new_header)] for missing headers that have a QNX replacement."""
+    out = []
+    for m in MISSING_HEADER.finditer(log):
+        new = HEADER_SUBST.get(m.group("hdr"))
+        item = (m.group("file").replace("\\", "/"), m.group("hdr"), new)
+        if new and item not in out:
+            out.append(item)
+    return out

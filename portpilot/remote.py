@@ -61,12 +61,22 @@ def attempt(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp):
             "cflags": list(cflags), "ldflags": list(ldflags)}, logs
 
 
+def apply_header_patches(patches):
+    """Edit the remote upstream copy in place; the final `git diff` becomes the port's patch series."""
+    for f, old, new in patches:
+        ps = (f"$f='{f}'; (Get-Content -LiteralPath $f -Raw) -replace '#include\\s*<{old.replace('.', '[.]')}>', "
+              f"'#include <{new}>' | Set-Content -LiteralPath $f -NoNewline")
+        _worker("windows", ps)
+
+
 def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
     tmp = LOCAL / name
     tmp.mkdir(parents=True, exist_ok=True)
     tc = tmp / "qnx.nto.toolchain.cmake"
     tc.write_text(scaffold.TOOLCHAIN)
     _worker("push", str(tc), "pp/qnx.nto.toolchain.cmake")
+    # start from pristine upstream so the recorded patch series is complete and reproducible
+    _worker("windows", f"if (Test-Path '{REMOTE_ROOT}\\{name}') {{ git -C '{REMOTE_ROOT}\\{name}' checkout -- . }}")
     cflags, ldflags, rounds = ["-D_QNX_SOURCE"], [], []
     for i in range(max_rounds):
         rec, logs = attempt(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp)
@@ -80,9 +90,15 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
               f"rules={rec['matched_rules']} ({rec['seconds']} s)", flush=True)
         if rec["build_exit"] == "0" and rec["configure_exit"] == "0":
             break
-        if (new_c, new_l) == (cflags, ldflags):
-            break  # nothing new to try from the catalogue: leave for the next stage (patches or an AI proposal)
+        patches = fixes.header_patches(log)
+        if patches:
+            rec["patches"] = [f"{Path(f).name}: <{a}> -> <{b}>" for f, a, b in patches]
+            apply_header_patches(patches)
+        if (new_c, new_l) == (cflags, ldflags) and not patches:
+            break  # nothing new to try from the catalogue: leave for the next stage (an AI proposal)
         cflags, ldflags = new_c, new_l
+    _worker("windows", f"git -C '{REMOTE_ROOT}\\{name}' diff --output='{REMOTE_ROOT}\\{name}.patch'")
+    _worker("pull", f"pp/{name}.patch", str(tmp / f"{name}.patch"))
     report = {"name": name, "url": url, "ref": ref, "cpu": cpu, "rounds": rounds,
               "result": "built" if rounds[-1]["build_exit"] == "0" else "needs-patch"}
     (tmp / "report.json").write_text(json.dumps(report, indent=1))
