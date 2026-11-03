@@ -150,11 +150,13 @@ PP_BASE_LD=${LD_LIBRARY_PATH:-/proc/boot:/system/lib:/system/lib/dll}:/tests/sdp
 pp_run() {
     lib=$1; name=$2; limit=$3; will_fail=$4; skip_rc=$5; pass_re=$6; dir=$7
     shift 7
-    rm -f /tmp/pp_timeout
+    rm -f /tmp/pp_timeout /tmp/pp_pidin
     ( cd "$dir" && exec "$@" ) >/tmp/pp_out 2>&1 &
     pid=$!
     # the watcher polls once a second and leaves as soon as the test ends, so no sleep outlives its test
     ( i=0; while [ $i -lt $limit ]; do sleep 1; kill -0 $pid 2>/dev/null || exit 0; i=$((i+1)); done
+      # a hung test: record each thread's QNX kernel state (CONDVAR, MUTEX, RECEIVE, REPLY, ...) before killing it
+      pidin -p $pid >/tmp/pp_pidin 2>&1
       kill -9 $pid 2>/dev/null && echo x >/tmp/pp_timeout ) &
     watcher=$!
     wait $pid
@@ -162,6 +164,7 @@ pp_run() {
     wait $watcher
     if [ -e /tmp/pp_timeout ]; then
         verdict=TIMEOUT
+        sed 's/^/PPLOG pidin: /' /tmp/pp_pidin
     elif [ "$skip_rc" != "-" -a "$rc" = "$skip_rc" ]; then
         verdict=SKIP
     elif [ -n "$pass_re" ]; then
