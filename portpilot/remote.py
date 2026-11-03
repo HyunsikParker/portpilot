@@ -282,7 +282,7 @@ def ai_step(name, ref, log, rounds, tmp, k, notes=()):
     return info
 
 
-def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, ai_rounds=0):
+def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, ai_rounds=0, reuse_patch=False):
     """Build, then alternate catalogue fixes and (when the catalogue has nothing left) AI patches until the build
     passes or both are exhausted. An AI patch is kept only if the next build gets further; otherwise it is reverted."""
     tmp = LOCAL / name
@@ -295,6 +295,12 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
     HOST.ps(f"if (Test-Path '{src}') {{ git -C '{src}' config core.autocrlf false; "
             f"git -C '{src}' rm -q -r --cached . ; git -C '{src}' reset -q --hard; "
             f"git -C '{src}' submodule foreach --quiet --recursive 'git reset -q --hard' }}")
+    replayed = None
+    saved = tmp / f"{name}.patch"
+    if reuse_patch and saved.exists() and saved.stat().st_size:
+        # start from the port's recorded source changes (catalogue edits, AI and triage patches), e.g. for another CPU
+        ok, out = apply_patch(name, saved, f"replay_{name}")
+        replayed = f"replayed {saved.name}" + ("" if ok else f" (failed: {out[-120:]})")
     cflags, ldflags, rounds = ["-D_QNX_SOURCE"], [], []
     catalogue_rounds = ai_used = 0
     pending = None   # (ai info, progress before the patch)
@@ -326,6 +332,8 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
                     break
                 pending = (info, good_progress)
                 continue
+        if replayed and not rounds:
+            rec.setdefault("patches", []).append(replayed)
         rounds.append(rec)
         good_log, good_progress = log, progress(rec)
         tag = f" ai={rec['ai'][0]['files']}" if rec.get("ai") else ""
@@ -364,8 +372,10 @@ def main():
     ap.add_argument("--cpu", default="x86_64")
     ap.add_argument("--cmake", action="append", default=[], help="one CMake argument, repeatable: --cmake=-DFOO=ON")
     ap.add_argument("--ai", type=int, default=0, help="AI patch rounds after the catalogue runs out (default 0)")
+    ap.add_argument("--reuse-patch", action="store_true", help="apply runs/<name>/<name>.patch before the first build")
     a = ap.parse_args()
-    print(json.dumps(port(a.name, a.url, a.ref, a.subdir, a.cpu, a.cmake, ai_rounds=a.ai), indent=1)[:2000])
+    print(json.dumps(port(a.name, a.url, a.ref, a.subdir, a.cpu, a.cmake, ai_rounds=a.ai, reuse_patch=a.reuse_patch),
+                     indent=1)[:2000])
 
 
 if __name__ == "__main__":

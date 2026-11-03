@@ -255,10 +255,16 @@ def markdown(ports, tests):
             test_cell = f"{passed}/{len(res)} pass"
         else:
             test_cell = "-"
-        changes = fixes_applied(rep) if rep else []
+        changes = []
+        for f in (fixes_applied(rep) if rep else []):
+            if short(f) not in changes:
+                changes.append(short(f))
         ai = sum(1 for r in reps.values() for rnd in r["rounds"] for a in rnd.get("ai", []) if a.get("accepted"))
+        tri = sum(1 for r in reps.values() for t in r.get("triage", []) if t.get("accepted"))
         if ai:
-            changes = changes + [f"{ai} AI patch{'es' if ai > 1 else ''}"]
+            changes.append(f"AI build patch ×{ai}")
+        if tri:
+            changes.append(f"AI test fix ×{tri}")
         rows.append(f"| {n} | {rep['ref'] if rep else ''} | {cells[0]} | {cells[1]} | {test_cell} | "
                     f"{'; '.join(changes) if changes else 'none'} |")
     return "\n".join(rows) + "\n"
