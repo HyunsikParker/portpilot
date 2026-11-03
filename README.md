@@ -6,8 +6,8 @@ build log, applies known QNX porting fixes, asks a language model for a source p
 and boots QNX in QEMU to run the project's CTest suite.
 
 - QNX version: QNX SDP 8.0 (QNX OS 8.0.0)
-- Target: QNX 8.0 x86_64 on QEMU, image built with the SDP's `mkqnximage --type=qemu`; aarch64le builds are checked
-  with the toolchain only (see Limitations)
+- Target: QNX 8.0 x86_64 on QEMU, image built with the SDP's `mkqnximage --type=qemu`; aarch64le ports are
+  build-checked only (see Limitations)
 - Toolchain: `qcc` (GCC 12.2.0) through a generated CMake toolchain file, Ninja
 
 ## How a port runs
@@ -80,12 +80,19 @@ The AI stage uses the local Claude Code CLI by default (`claude -p`, no tools). 
 ```
 python -m portpilot vm build                                  # once: QNX 8.0 x86_64 QEMU image with the boot hook
 python -m portpilot port osqp https://github.com/osqp/osqp.git v1.0.0 --cmake=-DOSQP_BUILD_UNITTESTS=ON --ai 2
-python -m portpilot port osqp https://github.com/osqp/osqp.git v1.0.0 --cpu aarch64le
+python -m portpilot port osqp https://github.com/osqp/osqp.git v1.0.0 --cpu aarch64le --reuse-patch
 python -m portpilot test osqp json-c --tag demo                # run their CTest suites on the QNX target
-python -m portpilot report                                    # runs/report.html
+python -m portpilot triage osqp --run demo                     # AI fixes for tests that fail on the target
+python -m portpilot report --readme README.md                 # runs/report.html and the table below
+python -m portpilot export osqp                               # ports/osqp/: recipe, patch, README, AI transcripts
 ```
 
 ## Results
+
+Every port below builds for both CPUs. The test column counts the project's own CTest entries on the QNX 8.0 x86_64
+QEMU target; `-` means the project's tests were not enabled (they need a broker, a host code generator or a test
+framework that is not vendored). The serial console logs and run reports behind these numbers are in `results/`, and
+each port's recipe, patch and AI transcripts are in `ports/<name>/`.
 
 See `runs/report.html` after a run. The table below is filled from the reports in this repository.
 
@@ -120,11 +127,13 @@ See `runs/report.html` after a run. The table below is filled from the reports i
   for them yet.
 - Target runs use x86_64. The base SDP has no QEMU aarch64 startup binary for `mkqnximage`, so aarch64le ports are
   build-checked only.
-- QEMU runs under TCG without networking on a Windows host; tests that need a network peer or a broker are reported
-  as failures or time-outs.
-- Projects that build their own host code generator (Cyclone DDS's `idlc`) need that tool built for the host first.
+- QEMU runs under TCG with no network interface on a Windows host (loopback only); tests that need a network peer
+  or a broker fail or time out, and slow suites can hit the per-test time limit.
+- Projects that build their own host code generator need that tool built for the host first. Cyclone DDS's `idlc` did
+  not build with MinGW-w64 GCC 16, so only the Cyclone DDS core library is ported and its tests are not run.
+- nng's tests block at start-up on the target; the cause is not yet known.
 
 ## Licence
 
-PortPilot is MIT licensed. Patches in `runs/` and in `ports/` apply to their upstream projects and fall under those
-projects' licences. No QNX SDP files are included in this repository.
+PortPilot is MIT licensed. The patches in `ports/` apply to their upstream projects and fall under those projects'
+licences. No QNX SDP files are included in this repository.
