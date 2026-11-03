@@ -1,0 +1,48 @@
+You are porting the open-source project civetweb (v1.16) to QNX 8.0. The build still fails after these
+QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required), replayed civetweb.patch.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: open a directory that is passed as dirfd to the *at() functions (openat, fstatat, unlinkat,
+mkdirat, ...) with O_DIRECTORY, or those calls report ENOTDIR; query fstatvfs()/fpathconf() for a directory through
+a descriptor opened with O_RDONLY, e.g. openat(dirfd, ".", O_RDONLY), not through the O_DIRECTORY one.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Ports already built for QNX and installed for this build: check. Their headers, static libraries, CMake package files and pkg-config .pc files are under the toolchain's CMake find root, so find_package(), find_library(), find_path() and pkg_check_modules() find them; prefer them over downloading and building a copy during the build.
+
+Build inputs that no rule produces (ninja): third_party/lib/libcheck.a (needed by unittest/main-c-unit-test)
+
+Build-file lines that mention those inputs:
+BUILD unittest\CMakeLists.txt:47
+unset(INSTALL_DIR)
+link_directories("${CHECK_INSTALL_DIR}/lib")
+include_directories("${CHECK_INSTALL_DIR}/include")
+if ((WIN32 AND MINGW) OR APPLE)
+>   set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${CHECK_INSTALL_DIR}/lib/libcheck.a")
+  set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${CHECK_INSTALL_DIR}/lib/libcompat.a")
+elseif (WIN32)
+BUILD unittest\CMakeLists.txt:53
+elseif (WIN32)
+  set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${CHECK_INSTALL_DIR}/lib/check.lib")
+  set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${CHECK_INSTALL_DIR}/lib/compat.lib")
+else()
+>   set(CHECK_LIBRARIES "${CHECK_INSTALL_DIR}/lib/libcheck.a")
+endif()
+find_package(LibM)
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.
+
+Earlier attempts that did not help and were reverted:
+
+Attempt 1 changed unittest/CMakeLists.txt; the build then had 55 errors in 2 failed steps, e.g.
+  C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-Release.cmake:49: CMake message: Command failed: 1
+
+Attempt 2 changed unittest/CMakeLists.txt; the build then had 112 errors in 2 failed steps, e.g.

@@ -1,0 +1,132 @@
+
+non UEFI or UEFI+CSM boot
+ACPI table not found (0x4746434d)
+System behaves poorly without PCID support.
+overriding mask for controller 2, vector_base 0
+---> Starting slogger2
+---> Starting PCI Services
+---> Starting fsevmgr
+# ---> Starting devb
+---> Mounting file systems
+Path=0 - Intel 82371SB
+ target=0 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+ target=1 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+Path=1 - Intel 82371SB
+ target=0 lun=0            CD-ROM(5) - QEMU     QEMU DVD-ROM     Rev: 2.5+
+---> Mounting file systems
+---> Starting Networking
+if_up: tries exhausted
+ifconfig: interface vtnet0 does not exist
+no valid interfaces found
+---> Starting sshd
+/usr/libexec/sshd-auth does not exist or is not executable
+
+---> Starting misc
+PPTEST-BEGIN QNX portpilot 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+PPINFO tmp: /dev/hd0t179                513M       17M      497M       4%  /data/          
+PPTEST-LIB civetweb 50
+PPTEST civetweb test-private-http-message PASS rc=0
+PPTEST civetweb test-private-http-keep-alive PASS rc=0
+PPTEST civetweb test-private-url-parsing-1 PASS rc=0
+PPTEST civetweb test-private-url-parsing-2 PASS rc=0
+PPTEST civetweb test-private-url-parsing-3 PASS rc=0
+PPTEST civetweb test-private-internal-parsing-1 PASS rc=0
+PPTEST civetweb test-private-internal-parsing-2 PASS rc=0
+PPTEST civetweb test-private-internal-parsing-3 PASS rc=0
+PPTEST civetweb test-private-internal-parsing-4 PASS rc=0
+PPTEST civetweb test-private-internal-parsing-5 PASS rc=0
+PPTEST civetweb test-private-internal-parsing-6 PASS rc=0
+PPTEST civetweb test-private-internal-parsing-7 PASS rc=0
+PPTEST civetweb test-private-encode-decode PASS rc=0
+PPTEST civetweb test-private-mask-data PASS rc=0
+PPTEST civetweb test-private-date-parsing PASS rc=0
+PPTEST civetweb test-private-sha1 PASS rc=0
+PPTEST civetweb test-private-config-options PASS rc=0
+PPTEST civetweb test-publicfunc-version PASS rc=0
+PPTEST civetweb test-publicfunc-options PASS rc=0
+PPTEST civetweb test-publicfunc-mime-types PASS rc=0
+PPTEST civetweb test-publicfunc-strcasecmp PASS rc=0
+PPTEST civetweb test-publicfunc-url-encoding-decoding PASS rc=0
+PPTEST civetweb test-publicfunc-base64-encoding-decoding PASS rc=0
+PPTEST civetweb test-publicfunc-cookies-and-variables PASS rc=0
+PPTEST civetweb test-publicfunc-md5 PASS rc=0
+PPTEST civetweb test-publicfunc-aux-functions PASS rc=0
+PPTEST civetweb test-publicserver-check-test-environment FAIL rc=1
+PPLOG 0%: Checks: 1, Failures: 0, Errors: 1
+PPLOG C:/build-host/work/civetweb/unittest/public_server.c:160:E:Check test environment:test_the_test_environment:0: (after this point) Early exit with return value 1
+PPLOG ...
+PPLOG Test directory: /tests/civetweb/src/unittest
+PPLOG Running suite(s): PublicServer
+PPLOG Certificate /tests/civetweb/build/unittest/../../resources/ssl_cert.pem not found
+PPLOG 0%: Checks: 1, Failures: 0, Errors: 1
+PPLOG C:/build-host/work/civetweb/unittest/public_server.c:160:E:Check test environment:test_the_test_environment:0: (after this point) Early exit with return value 1
+PPTEST civetweb test-publicserver-init-library PASS rc=0
+PPTEST civetweb test-publicserver-start-threads PASS rc=0
+PPTEST civetweb test-publicserver-minimal-http-server PASS rc=0
+PPTEST civetweb test-publicserver-minimal-https-server PASS rc=0
+PPTEST civetweb test-publicserver-minimal-http-client FAIL rc=1
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTP Client:test_minimal_client:0: Could not determine IP of any external server
+PPLOG ...
+PPLOG Test directory: /tests/civetweb/src/unittest
+PPLOG Running suite(s): PublicServer
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTP Client:test_minimal_client:0: Could not determine IP of any external server
+PPTEST civetweb test-publicserver-minimal-https-client FAIL rc=1
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTPS Client:test_minimal_tls_client:0: Could not determine IP of any external server
+PPLOG ...
+PPLOG Test directory: /tests/civetweb/src/unittest
+PPLOG Running suite(s): PublicServer
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTPS Client:test_minimal_tls_client:0: Could not determine IP of any external server
+PPTEST civetweb test-publicserver-start-stop-http-server PASS rc=0
+PPTEST civetweb test-publicserver-start-stop-http-server-ipv6 PASS rc=0
+PPTEST civetweb test-publicserver-start-stop-https-server PASS rc=0
+PPTEST civetweb test-publicserver-tls-server-client PASS rc=0
+PPTEST civetweb test-publicserver-server-requests FAIL rc=1
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/public_server.c:1672:F:Server Requests:test_request_handlers:0: Mandatory file ../../output/cgi_test.cgi must be built before starting the test (cwd: /tests/civetweb/build/unittest)
+PPLOG ...
+PPLOG Working directory is /tests/civetweb/build/unittest
+PPLOG This file needs to be compiled manually before starting the test
+PPLOG e.g. by gcc unittest/cgi_test.c -o output/cgi_test.cgi
+PPLOG 
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/public_server.c:1672:F:Server Requests:test_request_handlers:0: Mandatory file ../../output/cgi_test.cgi must be built before starting the test (cwd: /tests/civetweb/build/unittest)
+PPTEST civetweb test-publicserver-store-body PASS rc=0
+PPTEST civetweb test-publicserver-handle-form PASS rc=0
+PPTEST civetweb test-publicserver-http-authentication PASS rc=0
+PPTEST civetweb test-publicserver-http-keep-alive PASS rc=0
+PPTEST civetweb test-publicserver-error-handling PASS rc=0
+PPTEST civetweb test-publicserver-error-logging PASS rc=0
+PPTEST civetweb test-publicserver-limit-speed PASS rc=0
+Killed 
+PPLOG pidin:      pid tid name                         prio STATE          Blocked                     
+PPLOG pidin:  3883027   1 ld/unittest/main-c-unit-test  10r REPLY          1                           
+PPTEST civetweb test-publicserver-large-file TIMEOUT rc=137
+PPLOG ...
+PPLOG Test directory: /tests/civetweb/src/unittest
+PPLOG Running suite(s): PublicServer
+PPTEST civetweb test-timer-timer-single-shot PASS rc=0
+PPTEST civetweb test-timer-timer-periodic FAIL rc=1
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/timertest.c:144:F:Timer Periodic:test_timer_cyclic:0: Assertion 'c[0] <= +1' failed: c[0] == 100, +1 == 1
+PPLOG ...
+PPLOG Test directory: /tests/civetweb/src/unittest
+PPLOG Running suite(s): Timer
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/timertest.c:144:F:Timer Periodic:test_timer_cyclic:0: Assertion 'c[0] <= +1' failed: c[0] == 100, +1 == 1
+PPTEST civetweb test-timer-timer-mixed FAIL rc=1
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/timertest.c:331:F:Timer Mixed:test_timer_mixed:0: Assertion 'c[1] == 0' failed: c[1] == 2, 0 == 0
+PPLOG ...
+PPLOG Test directory: /tests/civetweb/src/unittest
+PPLOG Running suite(s): Timer
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/civetweb/unittest/timertest.c:331:F:Timer Mixed:test_timer_mixed:0: Assertion 'c[1] == 0' failed: c[1] == 2, 0 == 0
+PPTEST civetweb test-exe-helper-funcs PASS rc=0
+PPTEST-END
+umount(/tests) failed: Resource busy 
+
+# 

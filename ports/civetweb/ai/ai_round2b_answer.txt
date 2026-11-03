@@ -1,0 +1,7 @@
+I can't produce a correct diff without the text of the file to change.
+
+`test/CMakeLists.txt` doesn't exist in civetweb v1.16. The tests live in `unittest/`, and the `ExternalProject_Add(check-unit-test-framework ...)` that downloads and builds check is in `unittest/CMakeLists.txt`.
+
+The fix is to have that file use the check port that is already installed for QNX instead of downloading and building its own copy. On QNX it should call `find_package(check CONFIG)` or `pkg_check_modules(CHECK check)`, skip the `ExternalProject_Add`, and link the unit test targets against the found library. This would be guarded with `if(CMAKE_SYSTEM_NAME STREQUAL "QNX")`.
+
+A unified diff only applies if its context lines match the file exactly, and I don't have that file's text. Please send the current contents of `unittest/CMakeLists.txt`, and of the root `CMakeLists.txt` section that adds the `unittest` subdirectory. I'll then reply with an exact diff.

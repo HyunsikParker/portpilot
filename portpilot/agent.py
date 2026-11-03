@@ -20,6 +20,8 @@ ERROR = re.compile(r"^(?P<file>(?:[A-Za-z]:)?[^:\n]+?):(?P<line>\d+):(?P<col>\d+
 CMAKE_ERROR = re.compile(r"^CMake Error at (?P<file>[^\n]+?):(?P<line>\d+) \((?P<cmd>\w+)\):\n(?P<msg>(?: {2}.*\n?)+)", re.M)
 UNDEFINED = re.compile(r"undefined reference to `([^']+)'")
 MISSING_LIB = re.compile(r"cannot find -l([A-Za-z0-9_+.-]+)")
+EXTERNAL_STEP = re.compile(r"FAILED: .*?-stamp[/\\]([A-Za-z0-9_.+-]+?)-(download|update|patch|configure|build|install)\b")
+MISSING_INPUT = re.compile(r"ninja: error: '([^']+)', needed by '([^']+)', missing and no known rule to make it")
 SDP_MARKERS = ("qnx800", "/target/qnx/", "\\target\\qnx\\", "/host/win64/", "\\host\\win64\\")
 MAX_ERRORS = 8
 CONTEXT = 12
@@ -91,13 +93,29 @@ def undefined_symbols(log):
     return sorted(set(UNDEFINED.findall(log)))[:20]
 
 
+def missing_inputs(log):
+    """Build inputs no rule produces, e.g. a library an ExternalProject builds without declaring it: (input, needed by)."""
+    return sorted(set(MISSING_INPUT.findall(log)))[:5]
+
+
+def failed_external_steps(log):
+    """ExternalProject steps that failed, e.g. a test framework the project downloads and builds: (project, step)."""
+    return sorted(set(EXTERNAL_STEP.findall(log)))[:3]
+
+
 def missing_libraries(log):
     """Libraries the link line asks for that neither QNX nor the installed ports provide."""
     return sorted(set(MISSING_LIB.findall(log)))[:10]
 
 
-def build_prompt(name, ref, applied, errors, snippets, symbols, symbol_notes="", libraries=(), library_notes=""):
+def build_prompt(name, ref, applied, errors, snippets, symbols, symbol_notes="", libraries=(), library_notes="",
+                 inputs=(), input_notes="", installed=(), external=(), external_notes=""):
     parts = ["Build errors (paths relative to the project root) with the source around each one:"] if errors else []
+    if installed:
+        parts.insert(0, "Ports already built for QNX and installed for this build: " + ", ".join(installed)
+                     + ". Their headers, static libraries, CMake package files and pkg-config .pc files are under the "
+                       "toolchain's CMake find root, so find_package(), find_library(), find_path() and pkg_check_modules() "
+                       "find them; prefer them over downloading and building a copy during the build.")
     for (rel, line, msg), snip in zip(errors, snippets):
         parts.append(f"--- {rel}:{line}: error: {msg}\n{snip}")
     if symbols:
@@ -110,6 +128,15 @@ def build_prompt(name, ref, applied, errors, snippets, symbols, symbol_notes="",
                      + ", ".join(f"-l{n}" for n in libraries))
     if library_notes:
         parts.append("Build-file lines that mention those libraries:\n" + library_notes)
+    if inputs:
+        parts.append("Build inputs that no rule produces (ninja): "
+                     + "; ".join(f"{a} (needed by {b})" for a, b in inputs))
+    if input_notes:
+        parts.append("Build-file lines that mention those inputs:\n" + input_notes)
+    if external:
+        parts.append("ExternalProject steps that failed: " + ", ".join(f"{n} ({step})" for n, step in external))
+    if external_notes:
+        parts.append("Build-file lines that mention those external projects (edit these files):\n" + external_notes)
     return PROMPT.format(name=name, ref=ref, applied=", ".join(applied) or "none", facts=QNX_FACTS,
                          errors="\n\n".join(parts))
 

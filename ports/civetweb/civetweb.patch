@@ -17,3 +17,70 @@ index 7d18213..b699a8c 100644
    else()
      execute_process(
        COMMAND ${CMAKE_C_COMPILER} -dumpmachine
+diff --git a/unittest/CMakeLists.txt b/unittest/CMakeLists.txt
+index 7aa3497..d6e5759 100644
+--- a/unittest/CMakeLists.txt
++++ b/unittest/CMakeLists.txt
+@@ -18,6 +18,20 @@ ENDIF()
+ ## Print what version of the CHECK unit test framework we are using
+ message(STATUS "Using check unit test framework from ${CHECK_URL}")
+ 
++if(QNX)
++  # Use the check port already built and installed for QNX instead of downloading and building it
++  find_package(check CONFIG QUIET)
++  if(TARGET Check::check)
++    set(QNX_CHECK_LIBRARIES Check::check)
++  else()
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(QNX_CHECK REQUIRED IMPORTED_TARGET check)
++    set(QNX_CHECK_LIBRARIES PkgConfig::QNX_CHECK)
++  endif()
++  list(APPEND QNX_CHECK_LIBRARIES m)
++  add_custom_target(check-unit-test-framework)
++  set(CHECK_INSTALL_DIR "${CMAKE_CURRENT_BINARY_DIR}/check-qnx")
++else()
+ ExternalProject_Add(check-unit-test-framework
+   DEPENDS civetweb-c-library
+ 
+@@ -40,6 +54,7 @@ DOWNLOAD_NAME "master.zip"
+   
+ ExternalProject_Get_Property(check-unit-test-framework INSTALL_DIR)
+ set(CHECK_INSTALL_DIR ${INSTALL_DIR})
++endif()
+ unset(INSTALL_DIR)
+ link_directories("${CHECK_INSTALL_DIR}/lib")
+ include_directories("${CHECK_INSTALL_DIR}/include")
+@@ -50,7 +65,22 @@ elseif (WIN32)
+   set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${CHECK_INSTALL_DIR}/lib/check.lib")
+   set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${CHECK_INSTALL_DIR}/lib/compat.lib")
+ else()
+-  set(CHECK_LIBRARIES "${CHECK_INSTALL_DIR}/lib/libcheck.a")
++  if (CMAKE_SYSTEM_NAME STREQUAL "QNX")
++    # On QNX use the check port installed under the toolchain find root.
++    find_path(QNX_CHECK_INCLUDE_DIR NAMES check.h)
++    find_library(QNX_CHECK_LIBRARY NAMES check)
++    find_library(QNX_CHECK_COMPAT_LIBRARY NAMES compat)
++    if (NOT QNX_CHECK_INCLUDE_DIR OR NOT QNX_CHECK_LIBRARY)
++      message(FATAL_ERROR "check unit test framework not found for QNX")
++    endif()
++    include_directories(BEFORE "${QNX_CHECK_INCLUDE_DIR}")
++    set(CHECK_LIBRARIES "${QNX_CHECK_LIBRARY}")
++    if (QNX_CHECK_COMPAT_LIBRARY)
++      set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${QNX_CHECK_COMPAT_LIBRARY}")
++    endif()
++  else()
++    set(CHECK_LIBRARIES "${CHECK_INSTALL_DIR}/lib/libcheck.a")
++  endif()
+ endif()
+ find_package(LibM)
+ if (LIBM_FOUND)
+@@ -74,6 +104,9 @@ endif()
+ target_include_directories(
+   public-func-c-unit-tests PUBLIC
+   ${PROJECT_SOURCE_DIR}/include)
++if(QNX)
++  set(CHECK_LIBRARIES ${QNX_CHECK_LIBRARIES})
++endif()
+ target_link_libraries(public-func-c-unit-tests civetweb-c-library ${CHECK_LIBRARIES})
+ add_dependencies(public-func-c-unit-tests check-unit-test-framework)
+ 

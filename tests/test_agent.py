@@ -54,3 +54,30 @@ def test_missing_link_libraries_reach_the_prompt():
     assert libs == ["subunit"]
     prompt = agent.build_prompt("demo", "v1.0", [], [], [], [], "", libs, "BUILD tests/CMakeLists.txt:19\n> list(APPEND LIBS subunit)")
     assert "Libraries missing at link time" in prompt and "-lsubunit" in prompt and "list(APPEND LIBS subunit)" in prompt
+
+
+def test_missing_build_inputs_reach_the_prompt():
+    log = "ninja: error: 'third_party/lib/libcheck.a', needed by 'unittest/main-c-unit-test', missing and no known rule to make it\n"
+    inputs = agent.missing_inputs(log)
+    assert inputs == [("third_party/lib/libcheck.a", "unittest/main-c-unit-test")]
+    prompt = agent.build_prompt("demo", "v1.0", [], [], [], [], inputs=inputs, input_notes="> set(CHECK_LIBRARIES ...)")
+    assert "Build inputs that no rule produces" in prompt and "third_party/lib/libcheck.a" in prompt
+
+
+def test_a_build_that_runs_steps_outranks_one_that_cannot_start():
+    from portpilot import remote
+    stuck = {"configure_exit": "0", "build_exit": "1", "errors": 1, "failed_steps": 0,
+             "steps_run": remote.count_steps_run("ninja: error: 'x.a', needed by 'y', missing and no known rule to make it")}
+    ran = {"configure_exit": "0", "build_exit": "1", "errors": 55, "failed_steps": 2,
+           "steps_run": remote.count_steps_run("[1/500] Building C object a.o\n[2/500] Building C object b.o\nFAILED: c.o")}
+    assert stuck["steps_run"] == 0 and ran["steps_run"] == 2
+    assert remote.progress(ran) > remote.progress(stuck)
+
+
+def test_failed_external_project_steps_are_named():
+    log = ("FAILED: [code=1] third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure "
+           "C:/b/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure\n")
+    assert agent.failed_external_steps(log) == [("check-unit-test-framework", "configure")]
+    prompt = agent.build_prompt("demo", "v1", [], [], [], [], external=[("check-unit-test-framework", "configure")],
+                                external_notes="BUILD unittest/CMakeLists.txt:21\n> ExternalProject_Add(check-unit-test-framework")
+    assert "ExternalProject steps that failed: check-unit-test-framework (configure)" in prompt

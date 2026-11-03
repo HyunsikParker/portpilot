@@ -1,61 +1,131 @@
 You are porting the open-source project civetweb (v1.16) to QNX 8.0. The build still fails after these
-QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required).
+QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required), replayed civetweb.patch, sockets.
 
 Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
 Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
 <sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
 Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: open a directory that is passed as dirfd to the *at() functions (openat, fstatat, unlinkat,
+mkdirat, ...) with O_DIRECTORY, or those calls report ENOTDIR; query fstatvfs()/fpathconf() for a directory through
+a descriptor opened with O_RDONLY, e.g. openat(dirfd, ".", O_RDONLY), not through the O_DIRECTORY one.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Ports already built for QNX and installed for this build: check. Their headers, static libraries, CMake package files and pkg-config .pc files are under the toolchain's CMake find root, so find_package(), find_library(), find_path() and pkg_check_modules() find them; prefer them over downloading and building a copy during the build.
 
 Build errors (paths relative to the project root) with the source around each one:
 
---- cmake/DetermineTargetArchitecture.cmake:37: error: CMake message: Failed to determine target architecture triplet: 1
-    1  # - Determines the target architecture of the compilation
-    2  #
-    3  # This function checks the architecture that will be built by the compiler
-    4  # and sets a variable to the architecture
-    5  #
-    6  #  determine_target_architecture(<OUTPUT_VAR>)
-    7  #
-    8  # - Example
-    9  #
-   10  # include(DetermineTargetArchitecture)
-   11  # determine_target_architecture(PROJECT_NAME_ARCHITECTURE)
-   12  
-   13  if(__determine_target_architecture)
-   14    return()
-   15  endif()
-   16  set(__determine_target_architecture INCLUDED)
-   17  
-   18  function(determine_target_architecture FLAG)
-   19    if (MSVC)
-   20      if("${MSVC_C_ARCHITECTURE_ID}" STREQUAL "X86")
-   21        set(ARCH "i686")
-   22      elseif("${MSVC_C_ARCHITECTURE_ID}" STREQUAL "x64")
-   23        set(ARCH "x86_64")
-   24      elseif("${MSVC_C_ARCHITECTURE_ID}" STREQUAL "ARM")
-   25        set(ARCH "arm")
-   26      else()
-   27        message(FATAL_ERROR "Failed to determine the MSVC target architecture: ${MSVC_C_ARCHITECTURE_ID}")
-   28      endif()
-   29    else()
-   30      execute_process(
-   31        COMMAND ${CMAKE_C_COMPILER} -dumpmachine
-   32        RESULT_VARIABLE RESULT
-   33        OUTPUT_VARIABLE ARCH
-   34        ERROR_QUIET
-   35      )
-   36      if (RESULT)
-   37>       message(FATAL_ERROR "Failed to determine target architecture triplet: ${RESULT}")
-   38      endif()
-   39      string(REGEX MATCH "([^-]+).*" ARCH_MATCH ${ARCH})
-   40      if (NOT CMAKE_MATCH_1 OR NOT ARCH_MATCH)
-   41        message(FATAL_ERROR "Failed to match the target architecture triplet: ${ARCH}")
-   42      endif()
-   43      set(ARCH ${CMAKE_MATCH_1})
-   44    endif()
-   45    message(STATUS "Target architecture - ${ARCH}")
-   46    set(FLAG ${ARCH} PARENT_SCOPE)
-   47  endfunction()
+--- C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-Release.cmake:49: error: CMake message: Command failed: 1
+    1  
+    2  cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
+    3  
+    4  set(command "C:/Program Files/CMake/bin/cmake.exe;-DCMAKE_BUILD_TYPE=Release;-DCMAKE_C_COMPILER=C:/Users/<user>/qnx800/host/win64/x86_64/usr/bin/qcc.exe;-DCMAKE_INSTALL_PREFIX=C:/build-host/work/build_civetweb_x86_64/third_party;-GNinja;-S;C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework;-B;C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework")
+    5  set(log_merged "")
+    6  set(log_output_on_failure "")
+    7  set(stdout_log "C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-out.log")
+    8  set(stderr_log "C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-err.log")
+    9  execute_process(
+   10    COMMAND ${command}
+   11    RESULT_VARIABLE result
+   12    OUTPUT_FILE "${stdout_log}"
+   13    ERROR_FILE "${stderr_log}"
+   14  )
+   15  macro(read_up_to_max_size log_file output_var)
+   16    file(SIZE ${log_file} determined_size)
+   17    set(max_size 10240)
+   18    if (determined_size GREATER max_size)
+   19      math(EXPR seek_position "${determined_size} - ${max_size}")
+   20      file(READ ${log_file} ${output_var} OFFSET ${seek_position})
+   21      set(${output_var} "...skipping to end...\n${${output_var}}")
+   22    else()
+   23      file(READ ${log_file} ${output_var})
+   24    endif()
+   25  endmacro()
+   26  if(result)
+   27    set(msg "Command failed: ${result}\n")
+   28    foreach(arg IN LISTS command)
+   29      set(msg "${msg} '${arg}'")
+   30    endforeach()
+   31    if (${log_merged})
+   32      set(msg "${msg}\nSee also\n  ${stderr_log}")
+   33    else()
+   34      set(msg "${msg}\nSee also\n  C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-*.log")
+   35    endif()
+   36    if (${log_output_on_failure})
+   37      message(SEND_ERROR "${msg}")
+   38      if (${log_merged})
+   39        read_up_to_max_size("${stderr_log}" error_log_contents)
+   40        message(STATUS "Log output is:\n${error_log_contents}")
+   41      else()
+   42        read_up_to_max_size("${stdout_log}" out_log_contents)
+   43        read_up_to_max_size("${stderr_log}" err_log_contents)
+   44        message(STATUS "stdout output is:\n${out_log_contents}")
+   45        message(STATUS "stderr output is:\n${err_log_contents}")
+   46      endif()
+   47      message(FATAL_ERROR "Stopping after outputting logs.")
+   48    else()
+   49>     message(FATAL_ERROR "${msg}")
+   50    endif()
+   51  else()
+   52    if(NOT "Ninja" MATCHES "Ninja")
+   53      set(msg "check-unit-test-framework configure command succeeded.  See also C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-*.log")
+   54      message(STATUS "${msg}")
+   55    endif()
+   56  endif()
+
+ExternalProject steps that failed: check-unit-test-framework (configure)
+
+Build-file lines that mention those external projects (edit these files):
+BUILD unittest\CMakeLists.txt:21
+
+## Print what version of the CHECK unit test framework we are using
+message(STATUS "Using check unit test framework from ${CHECK_URL}")
+
+> ExternalProject_Add(check-unit-test-framework
+  DEPENDS civetweb-c-library
+
+BUILD unittest\CMakeLists.txt:41
+  LOG_TEST ${THIRD_PARTY_LOGGING}
+  LOG_INSTALL ${THIRD_PARTY_LOGGING})
+  
+  
+> ExternalProject_Get_Property(check-unit-test-framework INSTALL_DIR)
+set(CHECK_INSTALL_DIR ${INSTALL_DIR})
+unset(INSTALL_DIR)
+BUILD unittest\CMakeLists.txt:93
+target_include_directories(
+  public-func-c-unit-tests PUBLIC
+  ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(public-func-c-unit-tests civetweb-c-library ${CHECK_LIBRARIES})
+> add_dependencies(public-func-c-unit-tests check-unit-test-framework)
+
+add_library(public-server-c-unit-tests STATIC public_server.c)
+BUILD unittest\CMakeLists.txt:103
+target_include_directories(
+  public-server-c-unit-tests PUBLIC
+  ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(public-server-c-unit-tests civetweb-c-library ${CHECK_LIBRARIES})
+> add_dependencies(public-server-c-unit-tests check-unit-test-framework)
+
+add_library(private-c-unit-tests STATIC private.c)
+BUILD unittest\CMakeLists.txt:110
+target_include_directories(
+  private-c-unit-tests PUBLIC
+  ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(private-c-unit-tests ${CHECK_LIBRARIES})
+> add_dependencies(private-c-unit-tests check-unit-test-framework)
+
+add_library(timer-c-unit-tests STATIC timertest.c)
+BUILD unittest\CMakeLists.txt:117
+target_include_directories(
+  timer-c-unit-tests PUBLIC
+  ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(timer-c-unit-tests ${CHECK_LIBRARIES})
+> add_dependencies(timer-c-unit-tests check-unit-test-framework)
+
+add_library(exe-c-unit-tests STATIC private_exe.c)
 
 Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
 Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with

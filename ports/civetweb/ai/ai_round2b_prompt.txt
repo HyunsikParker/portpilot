@@ -1,0 +1,89 @@
+You are porting the open-source project civetweb (v1.16) to QNX 8.0. The build still fails after these
+QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required), replayed civetweb.patch, sockets.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: open a directory that is passed as dirfd to the *at() functions (openat, fstatat, unlinkat,
+mkdirat, ...) with O_DIRECTORY, or those calls report ENOTDIR; query fstatvfs()/fpathconf() for a directory through
+a descriptor opened with O_RDONLY, e.g. openat(dirfd, ".", O_RDONLY), not through the O_DIRECTORY one.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Ports already built for QNX and installed for this build: check. Their headers, static libraries, CMake package files and pkg-config .pc files are under the toolchain's CMake find root, so find_package(), find_library(), find_path() and pkg_check_modules() find them; prefer them over downloading and building a copy during the build.
+
+Build errors (paths relative to the project root) with the source around each one:
+
+--- C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-Release.cmake:49: error: CMake message: Command failed: 1
+    1  
+    2  cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
+    3  
+    4  set(command "C:/Program Files/CMake/bin/cmake.exe;-DCMAKE_BUILD_TYPE=Release;-DCMAKE_C_COMPILER=C:/Users/<user>/qnx800/host/win64/x86_64/usr/bin/qcc.exe;-DCMAKE_INSTALL_PREFIX=C:/build-host/work/build_civetweb_x86_64/third_party;-GNinja;-S;C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework;-B;C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework")
+    5  set(log_merged "")
+    6  set(log_output_on_failure "")
+    7  set(stdout_log "C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-out.log")
+    8  set(stderr_log "C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-err.log")
+    9  execute_process(
+   10    COMMAND ${command}
+   11    RESULT_VARIABLE result
+   12    OUTPUT_FILE "${stdout_log}"
+   13    ERROR_FILE "${stderr_log}"
+   14  )
+   15  macro(read_up_to_max_size log_file output_var)
+   16    file(SIZE ${log_file} determined_size)
+   17    set(max_size 10240)
+   18    if (determined_size GREATER max_size)
+   19      math(EXPR seek_position "${determined_size} - ${max_size}")
+   20      file(READ ${log_file} ${output_var} OFFSET ${seek_position})
+   21      set(${output_var} "...skipping to end...\n${${output_var}}")
+   22    else()
+   23      file(READ ${log_file} ${output_var})
+   24    endif()
+   25  endmacro()
+   26  if(result)
+   27    set(msg "Command failed: ${result}\n")
+   28    foreach(arg IN LISTS command)
+   29      set(msg "${msg} '${arg}'")
+   30    endforeach()
+   31    if (${log_merged})
+   32      set(msg "${msg}\nSee also\n  ${stderr_log}")
+   33    else()
+   34      set(msg "${msg}\nSee also\n  C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-*.log")
+   35    endif()
+   36    if (${log_output_on_failure})
+   37      message(SEND_ERROR "${msg}")
+   38      if (${log_merged})
+   39        read_up_to_max_size("${stderr_log}" error_log_contents)
+   40        message(STATUS "Log output is:\n${error_log_contents}")
+   41      else()
+   42        read_up_to_max_size("${stdout_log}" out_log_contents)
+   43        read_up_to_max_size("${stderr_log}" err_log_contents)
+   44        message(STATUS "stdout output is:\n${out_log_contents}")
+   45        message(STATUS "stderr output is:\n${err_log_contents}")
+   46      endif()
+   47      message(FATAL_ERROR "Stopping after outputting logs.")
+   48    else()
+   49>     message(FATAL_ERROR "${msg}")
+   50    endif()
+   51  else()
+   52    if(NOT "Ninja" MATCHES "Ninja")
+   53      set(msg "check-unit-test-framework configure command succeeded.  See also C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-*.log")
+   54      message(STATUS "${msg}")
+   55    endif()
+   56  endif()
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.
+
+Your previous diff did not apply: error: test/CMakeLists.txt: No such file or directory
+Here is the current text of the lines it tried to change. Reply with a corrected diff.
+
+--- test/CMakeLists.txt
+
+
+--- test/CMakeLists.txt

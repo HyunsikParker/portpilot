@@ -1,0 +1,93 @@
+You are porting the open-source project civetweb (v1.16) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: open a directory that is passed as dirfd to the *at() functions (openat, fstatat, unlinkat,
+mkdirat, ...) with O_DIRECTORY, or those calls report ENOTDIR; query fstatvfs()/fpathconf() for a directory through
+a descriptor opened with O_RDONLY, e.g. openat(dirfd, ".", O_RDONLY), not through the O_DIRECTORY one.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- test-publicserver-check-test-environment (FAIL, exit 1)
+0%: Checks: 1, Failures: 0, Errors: 1
+C:/build-host/work/civetweb/unittest/public_server.c:160:E:Check test environment:test_the_test_environment:0: (after this point) Early exit with return value 1
+...
+Test directory: /tests/civetweb/src/unittest
+Running suite(s): PublicServer
+Certificate /tests/civetweb/build/unittest/../../resources/ssl_cert.pem not found
+0%: Checks: 1, Failures: 0, Errors: 1
+C:/build-host/work/civetweb/unittest/public_server.c:160:E:Check test environment:test_the_test_environment:0: (after this point) Early exit with return value 1
+
+--- test-publicserver-minimal-http-client (FAIL, exit 1)
+0%: Checks: 1, Failures: 1, Errors: 0
+C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTP Client:test_minimal_client:0: Could not determine IP of any external server
+...
+Test directory: /tests/civetweb/src/unittest
+Running suite(s): PublicServer
+0%: Checks: 1, Failures: 1, Errors: 0
+C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTP Client:test_minimal_client:0: Could not determine IP of any external server
+
+--- test-publicserver-minimal-https-client (FAIL, exit 1)
+0%: Checks: 1, Failures: 1, Errors: 0
+C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTPS Client:test_minimal_tls_client:0: Could not determine IP of any external server
+...
+Test directory: /tests/civetweb/src/unittest
+Running suite(s): PublicServer
+0%: Checks: 1, Failures: 1, Errors: 0
+C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTPS Client:test_minimal_tls_client:0: Could not determine IP of any external server
+
+--- test-publicserver-server-requests (FAIL, exit 1)
+0%: Checks: 1, Failures: 1, Errors: 0
+C:/build-host/work/civetweb/unittest/public_server.c:1672:F:Server Requests:test_request_handlers:0: Mandatory file ../../output/cgi_test.cgi must be built before starting the test (cwd: /tests/civetweb/build/unittest)
+...
+Working directory is /tests/civetweb/build/unittest
+This file needs to be compiled manually before starting the test
+e.g. by gcc unittest/cgi_test.c -o output/cgi_test.cgi
+
+0%: Checks: 1, Failures: 1, Errors: 0
+C:/build-host/work/civetweb/unittest/public_server.c:1672:F:Server Requests:test_request_handlers:0: Mandatory file ../../output/cgi_test.cgi must be built before starting the test (cwd: /tests/civetweb/build/unittest)
+
+--- test-publicserver-large-file (TIMEOUT, exit 137)
+...
+Test directory: /tests/civetweb/src/unittest
+Running suite(s): PublicServer
+
+--- test-timer-timer-periodic (FAIL, exit 1)
+0%: Checks: 1, Failures: 1, Errors: 0
+C:/build-host/work/civetweb/unittest/timertest.c:144:F:Timer Periodic:test_timer_cyclic:0: Assertion 'c[0] <= +1' failed: c[0] == 100, +1 == 1
+...
+Test directory: /tests/civetweb/src/unittest
+Running suite(s): Timer
+0%: Checks: 1, Failures: 1, Errors: 0
+C:/build-host/work/civetweb/unittest/timertest.c:144:F:Timer Periodic:test_timer_cyclic:0: Assertion 'c[0] <= +1' failed: c[0] == 100, +1 == 1
+
+... and 1 more failing tests with similar output
+
+Project code that prints or handles these messages:
+
+FILE unittest\public_server.c:98
+			}
+		}
+	}
+
+> 	ck_abort_msg("Could not determine IP of any external server");
+	return "0.0.0.0";
+}
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+(none found)
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.

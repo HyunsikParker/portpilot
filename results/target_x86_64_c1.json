@@ -1,0 +1,433 @@
+{
+ "cpu": "x86_64",
+ "tag": "c1",
+ "libraries": [
+  "civetweb"
+ ],
+ "finished": true,
+ "boot": "PPBOOT exited_by_itself=True",
+ "staged": [
+  {
+   "name": "civetweb",
+   "tests": 50,
+   "disabled": []
+  }
+ ],
+ "counts": {
+  "civetweb": {
+   "PASS": 43,
+   "FAIL": 6,
+   "TIMEOUT": 1
+  }
+ },
+ "results": [
+  {
+   "library": "civetweb",
+   "test": "test-private-http-message",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-http-keep-alive",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-url-parsing-1",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-url-parsing-2",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-url-parsing-3",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-internal-parsing-1",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-internal-parsing-2",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-internal-parsing-3",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-internal-parsing-4",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-internal-parsing-5",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-internal-parsing-6",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-internal-parsing-7",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-encode-decode",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-mask-data",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-date-parsing",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-sha1",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-private-config-options",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-version",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-options",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-mime-types",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-strcasecmp",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-url-encoding-decoding",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-base64-encoding-decoding",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-cookies-and-variables",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-md5",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicfunc-aux-functions",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-check-test-environment",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "0%: Checks: 1, Failures: 0, Errors: 1",
+    "C:/build-host/work/civetweb/unittest/public_server.c:160:E:Check test environment:test_the_test_environment:0: (after this point) Early exit with return value 1",
+    "...",
+    "Test directory: /tests/civetweb/src/unittest",
+    "Running suite(s): PublicServer",
+    "Certificate /tests/civetweb/build/unittest/../../resources/ssl_cert.pem not found",
+    "0%: Checks: 1, Failures: 0, Errors: 1",
+    "C:/build-host/work/civetweb/unittest/public_server.c:160:E:Check test environment:test_the_test_environment:0: (after this point) Early exit with return value 1"
+   ]
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-init-library",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-start-threads",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-minimal-http-server",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-minimal-https-server",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-minimal-http-client",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTP Client:test_minimal_client:0: Could not determine IP of any external server",
+    "...",
+    "Test directory: /tests/civetweb/src/unittest",
+    "Running suite(s): PublicServer",
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTP Client:test_minimal_client:0: Could not determine IP of any external server"
+   ]
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-minimal-https-client",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTPS Client:test_minimal_tls_client:0: Could not determine IP of any external server",
+    "...",
+    "Test directory: /tests/civetweb/src/unittest",
+    "Running suite(s): PublicServer",
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/public_server.c:98:F:Minimal HTTPS Client:test_minimal_tls_client:0: Could not determine IP of any external server"
+   ]
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-start-stop-http-server",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-start-stop-http-server-ipv6",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-start-stop-https-server",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-tls-server-client",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-server-requests",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/public_server.c:1672:F:Server Requests:test_request_handlers:0: Mandatory file ../../output/cgi_test.cgi must be built before starting the test (cwd: /tests/civetweb/build/unittest)",
+    "...",
+    "Working directory is /tests/civetweb/build/unittest",
+    "This file needs to be compiled manually before starting the test",
+    "e.g. by gcc unittest/cgi_test.c -o output/cgi_test.cgi",
+    "",
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/public_server.c:1672:F:Server Requests:test_request_handlers:0: Mandatory file ../../output/cgi_test.cgi must be built before starting the test (cwd: /tests/civetweb/build/unittest)"
+   ]
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-store-body",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-handle-form",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-http-authentication",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-http-keep-alive",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-error-handling",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-error-logging",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-limit-speed",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": [
+    "pidin:      pid tid name                         prio STATE          Blocked                     ",
+    "pidin:  3883027   1 ld/unittest/main-c-unit-test  10r REPLY          1                           "
+   ]
+  },
+  {
+   "library": "civetweb",
+   "test": "test-publicserver-large-file",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "...",
+    "Test directory: /tests/civetweb/src/unittest",
+    "Running suite(s): PublicServer"
+   ]
+  },
+  {
+   "library": "civetweb",
+   "test": "test-timer-timer-single-shot",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "civetweb",
+   "test": "test-timer-timer-periodic",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/timertest.c:144:F:Timer Periodic:test_timer_cyclic:0: Assertion 'c[0] <= +1' failed: c[0] == 100, +1 == 1",
+    "...",
+    "Test directory: /tests/civetweb/src/unittest",
+    "Running suite(s): Timer",
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/timertest.c:144:F:Timer Periodic:test_timer_cyclic:0: Assertion 'c[0] <= +1' failed: c[0] == 100, +1 == 1"
+   ]
+  },
+  {
+   "library": "civetweb",
+   "test": "test-timer-timer-mixed",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/timertest.c:331:F:Timer Mixed:test_timer_mixed:0: Assertion 'c[1] == 0' failed: c[1] == 2, 0 == 0",
+    "...",
+    "Test directory: /tests/civetweb/src/unittest",
+    "Running suite(s): Timer",
+    "0%: Checks: 1, Failures: 1, Errors: 0",
+    "C:/build-host/work/civetweb/unittest/timertest.c:331:F:Timer Mixed:test_timer_mixed:0: Assertion 'c[1] == 0' failed: c[1] == 2, 0 == 0"
+   ]
+  },
+  {
+   "library": "civetweb",
+   "test": "test-exe-helper-funcs",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  }
+ ]
+}

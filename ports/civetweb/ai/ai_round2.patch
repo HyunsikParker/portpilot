@@ -1,15 +1,31 @@
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -13,6 +13,10 @@ endif()
- target_link_libraries(c-library ${CMAKE_THREAD_LIBS_INIT})
- if (WIN32)
-   target_link_libraries(c-library ws2_32)
- endif()
-+# QNX keeps the BSD socket API (socket, bind, getaddrinfo, ...) in libsocket
-+if (CMAKE_SYSTEM_NAME STREQUAL "QNX")
-+  target_link_libraries(c-library socket)
-+endif()
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -11,6 +11,21 @@
  
- # Need Lua?
- if (CIVETWEB_ENABLE_LUA)
+ # We use the check unit testing framework for our C unit tests
+ include(ExternalProject)
++# On QNX use the check port that is already built and installed for the
++# target instead of downloading and building a copy during the build.
++if (QNX)
++  find_path(CHECK_INCLUDE_DIR NAMES check.h)
++  find_library(CHECK_LIBRARY NAMES check)
++endif()
++if (QNX AND CHECK_INCLUDE_DIR AND CHECK_LIBRARY)
++  message(STATUS "Using installed check: ${CHECK_LIBRARY}")
++  # Keep the target name so existing add_dependencies() calls still work
++  add_custom_target(check-unit-test-framework)
++  include_directories("${CHECK_INCLUDE_DIR}")
++  set(CHECK_LIBRARIES "${CHECK_LIBRARY}")
++else()
+ #if(NOT WIN32)
+ #  # Apply the patch to check to fix CMake building on OS X
+ #  set(CHECK_PATCH_COMMAND patch
+@@ -49,6 +64,7 @@
+ else()
+   set(CHECK_LIBRARIES "${CHECK_INSTALL_DIR}/lib/libcheck.a")
+ endif()
++endif()
+ find_package(LibM)
+ if (LIBM_FOUND)
+   set(CHECK_LIBRARIES "${CHECK_LIBRARIES};LIBM::LIBM")

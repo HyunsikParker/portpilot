@@ -1,0 +1,28 @@
+diff --git a/unittest/CMakeLists.txt b/unittest/CMakeLists.txt
+--- a/unittest/CMakeLists.txt
++++ b/unittest/CMakeLists.txt
+@@ -43,7 +43,23 @@
+ unset(INSTALL_DIR)
+ link_directories("${CHECK_INSTALL_DIR}/lib")
+ include_directories("${CHECK_INSTALL_DIR}/include")
+-if ((WIN32 AND MINGW) OR APPLE)
++if (QNX)
++  find_path(CHECK_SYSTEM_INCLUDE_DIR check.h)
++  find_library(CHECK_SYSTEM_LIBRARY NAMES check libcheck.a)
++  if (NOT CHECK_SYSTEM_INCLUDE_DIR OR NOT CHECK_SYSTEM_LIBRARY)
++    message(FATAL_ERROR "QNX: the prebuilt 'check' unit test library was not found")
++  endif()
++  include_directories("${CHECK_SYSTEM_INCLUDE_DIR}")
++  set(CHECK_LIBRARIES "${CHECK_SYSTEM_LIBRARY}")
++  set_property(TARGET check-unit-test-framework PROPERTY EXCLUDE_FROM_ALL TRUE)
++  macro(add_dependencies _civetweb_dep_target)
++    set(_civetweb_deps ${ARGN})
++    list(REMOVE_ITEM _civetweb_deps check-unit-test-framework)
++    if (_civetweb_deps)
++      _add_dependencies(${_civetweb_dep_target} ${_civetweb_deps})
++    endif()
++  endmacro()
++elseif ((WIN32 AND MINGW) OR APPLE)
+   set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${CHECK_INSTALL_DIR}/lib/libcheck.a")
+   set(CHECK_LIBRARIES "${CHECK_LIBRARIES};${CHECK_INSTALL_DIR}/lib/libcompat.a")
+ elseif (WIN32)

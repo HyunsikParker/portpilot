@@ -1,106 +1,79 @@
 You are porting the open-source project civetweb (v1.16) to QNX 8.0. The build still fails after these
-QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required).
+QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required), replayed civetweb.patch, sockets.
 
 Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
 Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
 <sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
 Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: open a directory that is passed as dirfd to the *at() functions (openat, fstatat, unlinkat,
+mkdirat, ...) with O_DIRECTORY, or those calls report ENOTDIR; query fstatvfs()/fpathconf() for a directory through
+a descriptor opened with O_RDONLY, e.g. openat(dirfd, ".", O_RDONLY), not through the O_DIRECTORY one.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
 
-Undefined symbols at link time: accept, bind, connect, freeaddrinfo, getaddrinfo, getnameinfo, getsockname, getsockopt, listen, recv, send, setsockopt, shutdown, socket
+Ports already built for QNX and installed for this build: check. Their headers, static libraries, CMake package files and pkg-config .pc files are under the toolchain's CMake find root, so find_package(), find_library(), find_path() and pkg_check_modules() find them; prefer them over downloading and building a copy during the build.
 
-Where those symbols are defined, and the build-file lines that mention the defining files:
-DEF docs\Embedding.md:257: Master thread uses `poll()` and `accept()` to accept new connections on
-DEF src\third_party\duktape-1.5.2\examples\eventloop\client-socket-test.js:12: EventLoop.connect(HOST, PORT, function (fd) {
-DEF src\third_party\duktape-1.8.0\examples\eventloop\client-socket-test.js:12: EventLoop.connect(HOST, PORT, function (fd) {
-DEF src\third_party\lua-5.3.6\doc\manual.html:10805: For compatibility, Lua will continue to accept (and ignore) this character.
-BUILD src\third_party\duktape-1.5.2\license.spdx:2818
-  <rdf:Description rdf:nodeID="svBMzJkP123">
-    <_3:licenseConcluded rdf:resource="http://spdx.org/licenses/MIT"/>
-    <_3:licenseInfoInFile rdf:resource="http://spdx.org/rdf/terms#none"/>
-    <_3:copyrightText>Copyright 2013-2016 Duktape authors (see AUTHORS.rst in the Duktape distributable)</_3:copyrightText>
-    <_3:checksum rdf:nodeID="svBMzJkP124"/>
-    <rdf:type rdf:resource="http://spdx.org/rdf/terms#File"/>
->     <_3:fileName>./examples/eventloop/client-socket-test.js</_3:fileName>
-    <_3:fileType rdf:resource="http://spdx.org/rdf/terms#fileType_source"/>
-  </rdf:Description>
-BUILD src\third_party\duktape-1.5.2\examples\eventloop\client-socket-test.js:21
-        print('read from fd', fd);
-        print(data);
-        EventLoop.close(fd);
-    });
-    EventLoop.write(fd, "GET / HTTP/1.1\r\n" +
-                        "Host: " + HOST + "\r\n" +
->                         "User-Agent: client-socket-test.js\r\n" +
-                        "\r\n");
-});
-BUILD src\third_party\duktape-1.8.0\license.spdx:2235
-  <rdf:Description rdf:nodeID="Nd3e7dba43fef48a484cafff2dd9b0a13">
-    <ns1:fileType rdf:resource="http://spdx.org/rdf/terms#fileType_source"/>
-    <rdf:type rdf:resource="http://spdx.org/rdf/terms#File"/>
-    <ns1:checksum rdf:nodeID="N942026923c0c430b994ada89d4f73dbb"/>
-    <ns1:copyrightText>Copyright 2013-2017 Duktape authors (see AUTHORS.rst in the Duktape distributable)</ns1:copyrightText>
-    <ns1:licenseInfoInFile rdf:resource="http://spdx.org/rdf/terms#none"/>
->     <ns1:fileName>./examples/eventloop/client-socket-test.js</ns1:fileName>
-    <ns1:licenseConcluded rdf:resource="http://spdx.org/licenses/MIT"/>
-  </rdf:Description>
-BUILD README.md:76
-Quick start documentation
---------------------------
+Build errors (paths relative to the project root) with the source around each one:
 
-- [docs/Installing.md](https://github.com/civetweb/civetweb/blob/master/docs/Installing.md) - Install Guide (for end users using pre-built binaries)
-- [docs/UserManual.md](https://github.com/civetweb/civetweb/blob/master/docs/UserManual.md) - End User Guide
-- [docs/Building.md](https://github.com/civetweb/civetweb/blob/master/docs/Building.md) - Building the Server (quick start guide)
-> - [docs/Embedding.md](https://github.com/civetweb/civetweb/blob/master/docs/Embedding.md) - Embedding (how to add HTTP support to an existing application)
-- [docs/OpenSSL.md](https://github.com/civetweb/civetweb/blob/master/docs/OpenSSL.md) - Adding HTTPS (SSL/TLS) support using OpenSSL.
-- [API documentation](https://github.com/civetweb/civetweb/tree/master/docs/api) - Additional documentation on the civetweb application programming interface ([civetweb.h](https://github.com/civetweb/civetweb/blob/master/include/civetweb.h)).
-BUILD docs\APIReference.md:7
-# CivetWeb API Reference
-
-CivetWeb is often used as HTTP and HTTPS library inside a larger application.
-A C API is available to integrate the CivetWeb functionality in a larger
-codebase.
-This document describes the public C API. Basic usage examples of
-> the API can be found in [Embedding.md](Embedding.md), as well as in the
-examples directory.
-
-BUILD docs\Building.md:5
-Building CivetWeb
-=========
-
-This guide covers the build instructions for the stand-alone web server.
-> See [Embedding.md](https://github.com/civetweb/civetweb/blob/master/docs/Embedding.md) for information on extending an existing C or C++ application. A brief overview of the source code files can be found in [Embedding.md](https://github.com/civetweb/civetweb/blob/master/docs/Embedding.md) as well.
-
-#### Where to get the source code?
-BUILD src\mod_lua.inl:221
-		                "%s: %s failed: out of memory",
-		                lua_title,
-		                lua_operation);
-		break;
-#if LUA_VERSION_NUM < 504
-	/* LUA_ERRGCMM has been removed in Lua 5.4.
-> 	 * See https://www.lua.org/manual/5.4/manual.html#8.3 */
-	case LUA_ERRGCMM:
-		mg_cry_internal(conn,
-BUILD src\mod_lua.inl:3179
-	/* Lua state is ready to use now. */
-	/* Currently we have two different syntax options:
-	 * Either "classic" CivetWeb syntax:
-	 *    <? code ?>
-	 *    <?= expression ?>
-	 * Or "Kepler Syntax"
-> 	 * https://keplerproject.github.io/cgilua/manual.html#templates
-	 *    <?lua chunk ?>
-	 *    <?lua= expression ?>
-BUILD src\third_party\lua-5.1.5\doc\contents.html:47
-<A HREF="http://www.amazon.com/exec/obidos/ASIN/8590379833/lua-indexmanual-20">Buy a copy</A>
-of this book and
-<A HREF="http://www.lua.org/donations.html">help to support</A>
-the Lua project.
-
-<P>
-> <A HREF="manual.html">start</A>
-&middot;
-<A HREF="#contents">contents</A>
+--- C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-Release.cmake:49: error: CMake message: Command failed: 1
+    1  
+    2  cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
+    3  
+    4  set(command "C:/Program Files/CMake/bin/cmake.exe;-DCMAKE_BUILD_TYPE=Release;-DCMAKE_C_COMPILER=C:/Users/<user>/qnx800/host/win64/x86_64/usr/bin/qcc.exe;-DCMAKE_INSTALL_PREFIX=C:/build-host/work/build_civetweb_x86_64/third_party;-GNinja;-S;C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework;-B;C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework")
+    5  set(log_merged "")
+    6  set(log_output_on_failure "")
+    7  set(stdout_log "C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-out.log")
+    8  set(stderr_log "C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-err.log")
+    9  execute_process(
+   10    COMMAND ${command}
+   11    RESULT_VARIABLE result
+   12    OUTPUT_FILE "${stdout_log}"
+   13    ERROR_FILE "${stderr_log}"
+   14  )
+   15  macro(read_up_to_max_size log_file output_var)
+   16    file(SIZE ${log_file} determined_size)
+   17    set(max_size 10240)
+   18    if (determined_size GREATER max_size)
+   19      math(EXPR seek_position "${determined_size} - ${max_size}")
+   20      file(READ ${log_file} ${output_var} OFFSET ${seek_position})
+   21      set(${output_var} "...skipping to end...\n${${output_var}}")
+   22    else()
+   23      file(READ ${log_file} ${output_var})
+   24    endif()
+   25  endmacro()
+   26  if(result)
+   27    set(msg "Command failed: ${result}\n")
+   28    foreach(arg IN LISTS command)
+   29      set(msg "${msg} '${arg}'")
+   30    endforeach()
+   31    if (${log_merged})
+   32      set(msg "${msg}\nSee also\n  ${stderr_log}")
+   33    else()
+   34      set(msg "${msg}\nSee also\n  C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-*.log")
+   35    endif()
+   36    if (${log_output_on_failure})
+   37      message(SEND_ERROR "${msg}")
+   38      if (${log_merged})
+   39        read_up_to_max_size("${stderr_log}" error_log_contents)
+   40        message(STATUS "Log output is:\n${error_log_contents}")
+   41      else()
+   42        read_up_to_max_size("${stdout_log}" out_log_contents)
+   43        read_up_to_max_size("${stderr_log}" err_log_contents)
+   44        message(STATUS "stdout output is:\n${out_log_contents}")
+   45        message(STATUS "stderr output is:\n${err_log_contents}")
+   46      endif()
+   47      message(FATAL_ERROR "Stopping after outputting logs.")
+   48    else()
+   49>     message(FATAL_ERROR "${msg}")
+   50    endif()
+   51  else()
+   52    if(NOT "Ninja" MATCHES "Ninja")
+   53      set(msg "check-unit-test-framework configure command succeeded.  See also C:/build-host/work/build_civetweb_x86_64/third_party/src/check-unit-test-framework-stamp/check-unit-test-framework-configure-*.log")
+   54      message(STATUS "${msg}")
+   55    endif()
+   56  endif()
 
 Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
 Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with

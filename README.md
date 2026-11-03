@@ -94,11 +94,11 @@ python -m portpilot export osqp                               # ports/osqp/: rec
 
 Every port below builds for both CPUs. The test column counts the project's own CTest entries on the QNX 8.0 x86_64
 QEMU target; `-` means the tests were not run: Paho MQTT's need an MQTT broker, Cyclone DDS's need its host IDL
-compiler, libcoap's need CUnit (which has no CMake build), and civetweb's are not enabled because its test build
-downloads and builds its own copy of check.
-GoogleTest, cmocka and check are ported as test frameworks and their own tests are not run; uriparser and msgpack-c
-build their tests against the installed GoogleTest, libcbor against cmocka and open62541 against check (`--install`,
-`--needs`; check is found through PortPilot's pkg-config reader). Tests that run a build-host program, such as
+compiler, and libcoap's need CUnit (which has no CMake build). GoogleTest, cmocka and check are ported as test
+frameworks and their own tests are not run; uriparser and msgpack-c build their tests against the installed
+GoogleTest, libcbor against cmocka, and open62541 and civetweb against check (`--install`, `--needs`). open62541 finds
+check through PortPilot's pkg-config reader; civetweb's test build downloaded and built its own copy until an AI build
+patch pointed it at the installed one on QNX. Tests that run a build-host program, such as
 open62541's Python code-generator checks, are listed as host-only and not run on the target. The serial console logs
 and run reports behind these numbers are in `results/`, and each port's recipe, patch and AI transcripts are in
 `ports/<name>/`.
@@ -110,7 +110,7 @@ See `runs/report.html` after a run. The table below is filled from the reports i
 |---|---|---|---|---|---|
 | backward-cpp | v1.6 | built | built | 5/5 pass | CMake policy 3.5; AI build patch ×2 |
 | check | 0.15.2 | built | built | - | AI build patch ×1 |
-| civetweb | v1.16 | built | built | - | CMake policy 3.5; -lsocket; AI build patch ×1 |
+| civetweb | v1.16 | built | built | 43/50 pass | recorded patch; CMake policy 3.5; -lsocket; AI build patch ×1 |
 | cmocka | cmocka-2.0.2 | built | built | - | none |
 | cyclonedds | 11.0.1 | built | built | - | AI build patch ×1 |
 | fmt | 12.2.0 | built | built | 20/21 pass | -lregex |

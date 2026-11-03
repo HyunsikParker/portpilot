@@ -5,7 +5,7 @@
  "subdir": ".",
  "cmake_args": [
   "-DCIVETWEB_ENABLE_SSL=OFF",
-  "-DCIVETWEB_BUILD_TESTING=OFF"
+  "-DCIVETWEB_BUILD_TESTING=ON"
  ],
  "cpus": {
   "aarch64le": {
@@ -19,7 +19,7 @@
    ],
    "cmake_args": [
     "-DCIVETWEB_ENABLE_SSL=OFF",
-    "-DCIVETWEB_BUILD_TESTING=OFF",
+    "-DCIVETWEB_BUILD_TESTING=ON",
     "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
    ],
    "fixes": [
@@ -39,10 +39,11 @@
    ],
    "cmake_args": [
     "-DCIVETWEB_ENABLE_SSL=OFF",
-    "-DCIVETWEB_BUILD_TESTING=OFF",
+    "-DCIVETWEB_BUILD_TESTING=ON",
     "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
    ],
    "fixes": [
+    "replayed civetweb.patch",
     "configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)",
     "sockets"
    ]
@@ -53,13 +54,24 @@
    "round": 1,
    "applied": true,
    "accepted": true,
-   "prompt_chars": 3056,
+   "prompt_chars": 7634,
    "model": "claude-opus-5-5",
    "files": [
-    "cmake/DetermineTargetArchitecture.cmake"
+    "unittest/CMakeLists.txt"
    ],
    "apply_output": "apply_exit=0"
   }
  ],
- "triage": []
+ "triage": [
+  {
+   "round": 1,
+   "model": "claude-opus-5-5",
+   "files": [],
+   "unfixable": true,
+   "applied": false
+  }
+ ],
+ "needs": [
+  "check"
+ ]
 }

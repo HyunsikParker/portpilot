@@ -179,9 +179,15 @@ def save_patch(name, tmp):
 
 
 def progress(rec):
-    """How far a build got: configure passing outranks everything, then fewer failed build steps (a fixed fatal error
-    can expose many ordinary ones in the same file), then fewer error lines."""
-    return (rec["configure_exit"] == "0", rec["build_exit"] == "0", -rec.get("failed_steps", 0), -rec["errors"])
+    """How far a build got: configure passing outranks everything, then whether ninja ran any build step at all (a
+    missing input stops it before the first one), then fewer failed build steps (a fixed fatal error can expose many
+    ordinary ones in the same file), then fewer error lines."""
+    return (rec["configure_exit"] == "0", rec["build_exit"] == "0", rec.get("steps_run", 1) > 0,
+            -rec.get("failed_steps", 0), -rec["errors"])
+
+
+def count_steps_run(build_log):
+    return sum(1 for line in build_log.splitlines() if re.match(r"\[\d+/\d+\] ", line))
 
 
 def count_errors(build_log):
@@ -281,23 +287,27 @@ def catalogue_step(name, cpu, log, rec, cflags, ldflags, cmake_args):
     return new_c, new_l, cmake_args, changed
 
 
-def ai_step(name, ref, log, rounds, tmp, k, notes=()):
+def ai_step(name, ref, log, rounds, tmp, k, notes=(), needs=()):
     """Ask the model for a patch and apply it to the upstream copy. Returns the round's record, or None if there was
     nothing to ask about or no patch could be applied (after one retry that shows the model the current file text)."""
     errors = agent.collect_errors(log, f"{HOST.work}\\{name}")
     symbols = agent.undefined_symbols(log)
     libraries = agent.missing_libraries(log)
-    if not errors and not symbols and not libraries:
+    inputs = agent.missing_inputs(log)
+    external = agent.failed_external_steps(log)
+    if not errors and not symbols and not libraries and not inputs and not external:
         return None
     applied = sorted({r for rec in rounds for r in rec.get("matched_rules", [])}
                      | {p for rec in rounds for p in rec.get("patches", [])})
     prompt = agent.build_prompt(name, ref, applied, errors, source_snippets(name, errors), symbols,
-                                symbol_context(name, symbols), libraries, library_context(name, libraries))
+                                symbol_context(name, symbols), libraries, library_context(name, libraries),
+                                inputs, library_context(name, [Path(a).name for a, _ in inputs]), needs,
+                                external, library_context(name, [n for n, _ in external]))
     if notes:
         prompt += "\n\nEarlier attempts that did not help and were reverted:\n\n" + "\n\n".join(notes)
     info = {"round": k, "applied": False, "accepted": False, "prompt_chars": len(prompt)}
     print(f"[{name}] no catalogue rule left; asking the model about {len(errors)} build errors, {len(symbols)} "
-          f"undefined symbols and {len(libraries)} missing libraries", flush=True)
+          f"undefined symbols, {len(libraries)} missing libraries and {len(inputs)} missing build inputs", flush=True)
     for attempt_no in (1, 2):
         answer, info["model"] = agent.ask(prompt)
         diff = agent.extract_diff(answer)
@@ -368,6 +378,7 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
         log = logs["configure"] + "\n" + logs["build"]
         rec["errors"], rec["cmake_args"], rec["matched_rules"] = count_errors(logs["build"]), list(cmake_args), []
         rec["failed_steps"] = count_failed_steps(logs["build"])
+        rec["steps_run"] = count_steps_run(logs["build"])
         passed = rec["build_exit"] == "0" and rec["configure_exit"] == "0"
         if pending:
             info, before = pending
@@ -384,7 +395,7 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
                 if ai_used >= ai_rounds:
                     break
                 ai_used += 1
-                info = ai_step(name, ref, good_log, rounds, tmp, ai_used, notes)
+                info = ai_step(name, ref, good_log, rounds, tmp, ai_used, notes, needs)
                 if not info or not info["applied"]:
                     break
                 pending = (info, good_progress)
@@ -407,7 +418,7 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
         if ai_used >= ai_rounds:
             break
         ai_used += 1
-        info = ai_step(name, ref, log, rounds, tmp, ai_used, notes)
+        info = ai_step(name, ref, log, rounds, tmp, ai_used, notes, needs)
         if not info or not info["applied"]:
             if info:
                 rec.setdefault("ai", []).append(info)

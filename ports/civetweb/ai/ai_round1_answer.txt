@@ -1,20 +1,36 @@
 ```diff
-diff --git a/cmake/DetermineTargetArchitecture.cmake b/cmake/DetermineTargetArchitecture.cmake
---- a/cmake/DetermineTargetArchitecture.cmake
-+++ b/cmake/DetermineTargetArchitecture.cmake
-@@ -26,6 +26,14 @@ function(determine_target_architecture FLAG)
-     else()
-       message(FATAL_ERROR "Failed to determine the MSVC target architecture: ${MSVC_C_ARCHITECTURE_ID}")
-     endif()
-+  elseif(CMAKE_SYSTEM_NAME STREQUAL "QNX")
-+    # qcc does not support -dumpmachine; use the toolchain's processor
-+    set(ARCH "${CMAKE_SYSTEM_PROCESSOR}")
-+    if (NOT ARCH)
-+      message(FATAL_ERROR "Failed to determine the QNX target architecture")
-+    endif()
-+    # aarch64le -> aarch64, x86_64 unchanged
-+    string(REGEX REPLACE "le$" "" ARCH "${ARCH}")
-   else()
-     execute_process(
-       COMMAND ${CMAKE_C_COMPILER} -dumpmachine
+diff --git a/unittest/CMakeLists.txt b/unittest/CMakeLists.txt
+--- a/unittest/CMakeLists.txt
++++ b/unittest/CMakeLists.txt
+@@ -21,2 +21,16 @@
+-ExternalProject_Add(check-unit-test-framework
++if(QNX)
++  # Use the check port already built and installed for QNX instead of downloading and building it
++  find_package(check CONFIG QUIET)
++  if(TARGET Check::check)
++    set(QNX_CHECK_LIBRARIES Check::check)
++  else()
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(QNX_CHECK REQUIRED IMPORTED_TARGET check)
++    set(QNX_CHECK_LIBRARIES PkgConfig::QNX_CHECK)
++  endif()
++  list(APPEND QNX_CHECK_LIBRARIES m)
++  add_custom_target(check-unit-test-framework)
++  set(CHECK_INSTALL_DIR "${CMAKE_CURRENT_BINARY_DIR}/check-qnx")
++else()
++ExternalProject_Add(check-unit-test-framework
+   DEPENDS civetweb-c-library
+@@ -41,3 +55,4 @@
+ ExternalProject_Get_Property(check-unit-test-framework INSTALL_DIR)
+ set(CHECK_INSTALL_DIR ${INSTALL_DIR})
++endif()
+ unset(INSTALL_DIR)
+@@ -89,4 +104,7 @@
+ target_include_directories(
+   public-func-c-unit-tests PUBLIC
+   ${PROJECT_SOURCE_DIR}/include)
++if(QNX)
++  set(CHECK_LIBRARIES ${QNX_CHECK_LIBRARIES})
++endif()
+ target_link_libraries(public-func-c-unit-tests civetweb-c-library ${CHECK_LIBRARIES})
 ```
