@@ -1,0 +1,166 @@
+You are porting the open-source project mbedtls (v4.2.0) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- aes.cbc-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.cbc.datax
+
+--- aes.cfb-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.cfb.datax
+
+--- aes.ctr-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.ctr.datax
+
+--- aes.ecb-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.ecb.datax
+
+--- aes.ofb-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.ofb.datax
+
+--- aes.rest-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.rest.datax
+
+... and 142 more failing tests with similar output
+
+Project code that prints or handles these messages:
+
+FILE tests\scripts\components-configuration-crypto.sh:2390
+}
+
+component_test_psa_crypto_drivers () {
+    # Test dispatch to drivers and fallbacks with
+>     # test_suite_psa_crypto_driver_wrappers test suite. The test drivers that
+    # are wrappers around the builtin drivers are activated by
+    # PSA_CRYPTO_DRIVER_TEST.
+    #
+    # For the time being, some test cases in test_suite_block_cipher and
+FILE tf-psa-crypto\docs\architecture\psa-crypto-implementation-structure.md:97
+
+* [ ] `include/psa/crypto.h` and `include/psa/crypto_sizes.h`, or `include/psa/crypto_extra.h` — [New functions and macros](#new-functions-and-macros)
+* [ ] `library/psa_crypto.c`, `scripts/data_files/driver_templates/*.jinja` — [Implementation of the mechanisms](#implementation-of-the-mechanisms)
+* [ ] If adding stateful functions: `include/psa/crypto_struct.h`, `include/psa/crypto_builtin_*.h`, `include/psa/crypto_driver_contexts_*.h` — [Translucent data structures](#translucent-data-structures)
+> * [ ] `tests/suites/test_suite_psa_crypto.data`, `tests/suites/test_suite_psa_crypto.function`, `tests/suites/test_suite_psa_crypto_driver_wrappers.*` — [Unit tests](#unit-tests)
+
+Note that this is just a basic guide. In some cases, you won't need to change all the files listed here. In some cases, you may need to change other files.
+
+### PSA standardization
+FILE tf-psa-crypto\docs\architecture\psa-crypto-implementation-structure.md:171
+* Known answer tests.
+* Potential edge cases (e.g. data less/equal/more than the block size, number equal to zero in asymmetric cryptography).
+* Tests with invalid keys (e.g. wrong size or format).
+* Tests with invalid data (e.g. wrong size or format, output buffer too small, invalid padding).
+> * For new functions: incorrect function call sequence, driver dispatch (in `tests/suites/test_suite_psa_crypto_driver_wrappers.*`).
+* For key derivation algorithms: variation on the sequence of input steps, variation on the output size.
+
+FILE tf-psa-crypto\docs\architecture\testing\driver-interface-test-strategy.md:345
+order to check that drivers are called when they're supposed to, and that the
+core behaves as expected when they return errors (in particular, that we fall
+back to the built-in implementation when the driver returns `NOT_SUPPORTED`).
+
+> This is `test_suite_psa_crypto_driver_wrappers`, which is maintained manually
+(that is, the test cases in the `.data` files are not auto-generated). The
+entire test suite depends on the test drivers being enabled
+(`PSA_CRYPTO_DRIVER_TEST`), which is not the case in the default or full
+config.
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+tests\test_suite_config.mbedtls_boolean.c:1913: const char *default_filename = ".\\test_suite_config.mbedtls_boolean.datax";
+tests\test_suite_config.tls_combinations.c:905: const char *default_filename = ".\\test_suite_config.tls_combinations.datax";
+tests\test_suite_constant_time_hmac.c:1026: const char *default_filename = ".\\test_suite_constant_time_hmac.datax";
+tests\test_suite_debug.c:1363: const char *default_filename = ".\\test_suite_debug.datax";
+tests\test_suite_error.c:920: const char *default_filename = ".\\test_suite_error.datax";
+tests\test_suite_mps.c:2217: const char *default_filename = ".\\test_suite_mps.datax";
+tests\test_suite_net.c:1014: const char *default_filename = ".\\test_suite_net.datax";
+tests\test_suite_pkcs7.c:1306: const char *default_filename = ".\\test_suite_pkcs7.datax";
+tests\test_suite_ssl.c:11341: const char *default_filename = ".\\test_suite_ssl.datax";
+tests\test_suite_ssl.records.c:10075: const char *default_filename = ".\\test_suite_ssl.records.datax";
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.
+
+Your previous diff did not apply: error: patch failed: framework/scripts/generate_test_code.py:1178
+Here is the current text of the lines it tried to change. Reply with a corrected diff.
+
+--- framework/scripts/generate_test_code.py
+ 1071      :param snippets: Dictionary to contain code pieces to be
+ 1072                       substituted in the template.
+ 1073      :return:
+ 1074      """
+ 1075      snippets['test_file'] = c_file
+ 1076      snippets['test_main_file'] = template_file
+ 1077      snippets['test_case_file'] = funcs_file
+ 1078      snippets['test_case_data_file'] = data_file
+ 1079  
+ 1080  
+ 1081  def read_code_from_input_files(platform_file, helpers_file,
+ 1082                                 out_data_file, snippets):
+ 1083      """
+ 1084      Read code from input files and create substitutions for replacement
+ 1085      strings in the template file.
+ 1086  
+ 1087      :param platform_file: Platform file object
+ 1088      :param helpers_file: Helper functions file object
+ 1089      :param out_data_file: Output intermediate data file object
+ 1090      :param snippets: Dictionary to contain code pieces to be
+ 1091                       substituted in the template.
+ 1092      :return:
+ 1093      """
+ 1094      # Read helpers
+ 1095      with open(helpers_file, 'r') as help_f, open(platform_file, 'r') as \
+ 1096              platform_f:
+ 1097          snippets['test_common_helper_file'] = helpers_file
+ 1098          snippets['test_common_helpers'] = help_f.read()
+ 1099          snippets['test_platform_file'] = platform_file
+ 1100          snippets['platform_code'] = platform_f.read().replace(
+ 1101>             'DATA_FILE', out_data_file.replace('\\', '\\\\'))  # escape '\'
+ 1102  
+ 1103  
+ 1104  def write_test_source_file(template_file, c_file, snippets):
+ 1105      """
+ 1106      Write output source file with generated source code.
+ 1107  
+ 1108      :param template_file: Template file name
+ 1109      :param c_file: Output source file
+ 1110      :param snippets: Generated and code snippets
+ 1111      :return:
+ 1112      """
+ 1113  
+ 1114      # Create a placeholder pattern with the correct named capture groups
+ 1115      # to override the default provided with Template.
+ 1116      # Match nothing (no way of escaping placeholders).
+ 1117      escaped = "(?P<escaped>(?!))"
+ 1118      # Match the "__MBEDTLS_TEST_TEMPLATE__PLACEHOLDER_NAME" pattern.
+ 1119      named = "__MBEDTLS_TEST_TEMPLATE__(?P<named>[A-Z][_A-Z0-9]*)"
+ 1120      # Match nothing (no braced placeholder syntax).
+ 1121      braced = "(?P<braced>(?!))"
+ 1122      # If not already matched, a "__MBEDTLS_TEST_TEMPLATE__" prefix is invalid.
+ 1123      invalid = "(?P<invalid>__MBEDTLS_TEST_TEMPLATE__)"
+ 1124      placeholder_pattern = re.compile("|".join([escaped, named, braced, invalid]))
+ 1125  
+ 1126      with open(template_file, 'r') as template_f, open(c_file, 'w') as c_f:
+ 1127          for line_no, line in enumerate(template_f.readlines(), 1):
+ 1128              # Update line number. +1 as #line directive sets next line number
+ 1129              snippets['line_no'] = line_no + 1
+ 1130              template = string.Template(line)
+ 1131              template.pattern = placeholder_pattern

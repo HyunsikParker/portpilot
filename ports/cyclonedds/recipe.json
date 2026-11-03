@@ -1,0 +1,63 @@
+{
+ "name": "cyclonedds",
+ "url": "https://github.com/eclipse-cyclonedds/cyclonedds.git",
+ "ref": "11.0.1",
+ "subdir": ".",
+ "cmake_args": [
+  "-DBUILD_IDLC=OFF",
+  "-DENABLE_SSL=OFF",
+  "-DBUILD_EXAMPLES=OFF",
+  "-DBUILD_TESTING=OFF",
+  "-DBUILD_DDSPERF=OFF"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 1,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DBUILD_IDLC=OFF",
+    "-DENABLE_SSL=OFF",
+    "-DBUILD_EXAMPLES=OFF",
+    "-DBUILD_TESTING=OFF",
+    "-DBUILD_DDSPERF=OFF"
+   ],
+   "fixes": [
+    "replayed cyclonedds.patch"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DBUILD_IDLC=OFF",
+    "-DENABLE_SSL=OFF",
+    "-DBUILD_EXAMPLES=OFF",
+    "-DBUILD_TESTING=OFF",
+    "-DBUILD_DDSPERF=OFF"
+   ],
+   "fixes": []
+  }
+ },
+ "ai_patches": [
+  {
+   "round": 1,
+   "applied": true,
+   "accepted": true,
+   "prompt_chars": 3992,
+   "model": "claude-opus-5-5",
+   "files": [
+    "src/ddsrt/src/netstat/qnx/netstat.c"
+   ],
+   "apply_output": "apply_exit=0"
+  }
+ ],
+ "triage": []
+}

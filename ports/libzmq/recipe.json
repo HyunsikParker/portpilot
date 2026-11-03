@@ -1,0 +1,46 @@
+{
+ "name": "libzmq",
+ "url": "https://github.com/zeromq/libzmq.git",
+ "ref": "v4.3.5",
+ "subdir": ".",
+ "cmake_args": [
+  "-DBUILD_TESTS=ON",
+  "-DWITH_LIBSODIUM=OFF"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DBUILD_TESTS=ON",
+    "-DWITH_LIBSODIUM=OFF",
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+   ],
+   "fixes": [
+    "configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DBUILD_TESTS=ON",
+    "-DWITH_LIBSODIUM=OFF",
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+   ],
+   "fixes": [
+    "configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

@@ -1,0 +1,137 @@
+You are porting the open-source project wolfssl (v5.9.4-stable) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- unit_test (FAIL, exit 1)
+MEMORY   test passed!
+octets   test passed!
+base64   test passed!
+can't open ./certs/client-key.der, Please run from wolfSSL home dir error L=38052 errno=2
+ [fiducial line numbers: 14283 44975 71537 92369]
+RSA      test failed!
+ error L=38053 errno=2
+ [fiducial line numbers: 14283 44975 71537 92369]
+...
+AES-GCM  test passed!
+can't open ./certs/client-key.der, Please run from wolfSSL home dir error L=38052 errno=2
+ [fiducial line numbers: 14283 44975 71537 92369]
+RSA      test failed!
+ error L=38053 errno=2
+ [fiducial line numbers: 14283 44975 71537 92369]
+
+--- wolfcrypttest (FAIL, exit 1)
+octets   test passed!
+base64   test passed!
+can't open ./certs/client-key.der, Please run from wolfSSL home dir error L=38052 errno=2
+ [fiducial line numbers: 14283 44975 71537 92369]
+RSA      test failed!
+ error L=38053 errno=2
+ [fiducial line numbers: 14283 44975 71537 92369]
+Exiting main with return code: -1
+...
+can't open ./certs/client-key.der, Please run from wolfSSL home dir error L=38052 errno=2
+ [fiducial line numbers: 14283 44975 71537 92369]
+RSA      test failed!
+ error L=38053 errno=2
+ [fiducial line numbers: 14283 44975 71537 92369]
+Exiting main with return code: -1
+
+Project code that prints or handles these messages:
+
+FILE IDE\Espressif\ESP-IDF\examples\wolfssl_test\README.md:223
+logging  test passed!
+time test passed!
+mutex    test passed!
+Test complete
+> I (136548) wolfcrypt_test: Exiting main with return code:  0
+
+I (136548) wolfssl_test: wolf_test_task complete success result code = 0
+```
+
+FILE IDE\Espressif\ESP-IDF\examples\wolfssl_test_idf\README.md:149
+logging  test passed!
+time test passed!
+mutex    test passed!
+Test complete
+> I (136548) wolfcrypt_test: Exiting main with return code:  0
+
+I (136548) wolfssl_test: wolf_test_task complete success result code = 0
+```
+FILE IDE\PlatformIO\examples\wolfssl_test\README.md:234
+I (261331) wolfssl_esp32_mp: Success: no esp_mp_exptmod errors.
+I (261337) wolfssl_esp32_mp: Max N->used: esp_mp_max_used = 64
+I (261344) wolfssl_esp32_mp: Max timeout: esp_mp_max_timeout = 1
+Test complete
+> I (261352) wc_test: Exiting main with return code:  0
+
+
+wolf_test_task complete! result code: 0
+I (261361) main_task: Returned from app_main()
+FILE wolfcrypt\test\test.c:3967
+#endif
+
+#if defined(WOLFSSL_ESPIDF)
+        /* ESP_LOGI to print takes up a lot less memory than printf */
+>         ESP_LOGI(ESPIDF_TAG, "Exiting main with return code: % d\n",
+                        args.return_code);
+#else
+        /* gate this for target platforms wishing to avoid printf reference */
+        printf("Exiting main with return code: %ld\n", (long int)args.return_code);
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+wolfcrypt\test\test_paths.h:31: #define CERT_PREFIX "C:/build-host/work/wolfssl/"
+wolfcrypt\test\test_paths.h:32: #define CERT_WRITE_TEMP_DIR "C:/build-host/work/build_wolfssl_x86_64/"
+
+wolfcrypt\test\test_paths.h is generated from wolfcrypt/test/test_paths.h.in in the source tree:
+/* wolfcrypt/test/test_paths.h
+ *
+ * Copyright (C) 2006-2026 wolfSSL Inc.
+ *
+ * This file is part of wolfSSL.
+ *
+ * wolfSSL is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * wolfSSL is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA
+ */
+
+#ifndef NO_FILESYSTEM
+#ifdef CERT_REL_PREFIX
+    #define CERT_PREFIX CERT_REL_PREFIX
+    #ifndef NO_WRITE_TEMP_FILES
+        #ifndef CERT_WRITE_TEMP_DIR
+            #define CERT_WRITE_TEMP_DIR "./"
+        #endif
+    #endif
+#else
+    #define CERT_PREFIX "@abs_top_srcdir@/"
+    #define CERT_WRITE_TEMP_DIR "@abs_top_builddir@/"
+#endif /* CERT_REL_PREFIX */
+#endif /* NO_FILESYSTEM */
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.

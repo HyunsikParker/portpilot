@@ -1,0 +1,12 @@
+diff --git a/examples/pubsub_realtime/server_pubsub_subscribe_rt_state_machine.c b/examples/pubsub_realtime/server_pubsub_subscribe_rt_state_machine.c
+index 0fb4243..b1db691 100644
+--- a/examples/pubsub_realtime/server_pubsub_subscribe_rt_state_machine.c
++++ b/examples/pubsub_realtime/server_pubsub_subscribe_rt_state_machine.c
+@@ -1,6 +1,7 @@
+ /* This work is licensed under a Creative Commons CCZero 1.0 Universal License.
+  * See http://creativecommons.org/publicdomain/zero/1.0/ for more information. */
+ 
++#include <netinet/in.h>
+ #include <open62541/plugin/log_stdout.h>
+ #include <open62541/server.h>
+ #include <open62541/server_pubsub.h>

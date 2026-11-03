@@ -1,0 +1,19 @@
+```diff
+diff --git a/backward.hpp b/backward.hpp
+--- a/backward.hpp
++++ b/backward.hpp
+@@ -804,5 +804,13 @@
+ #include <unwind.h>
++#if defined(__QNX__)
++// QNX's <unwind.h> does not declare _Unwind_Backtrace, although libgcc
++// provides it. Declare it here with the same signature that GCC's and
++// LLVM's <unwind.h> use.
++extern "C" _Unwind_Reason_Code
++_Unwind_Backtrace(_Unwind_Reason_Code (*)(struct _Unwind_Context *, void *),
++                  void *);
++#endif
+ namespace backward {
+ #endif
+ 
+ namespace details {
+```

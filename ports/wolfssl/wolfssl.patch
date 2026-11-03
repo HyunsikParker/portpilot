@@ -1,0 +1,20 @@
+diff --git a/wolfcrypt/test/test_paths.h.in b/wolfcrypt/test/test_paths.h.in
+index bc685b7..85b598e 100644
+--- a/wolfcrypt/test/test_paths.h.in
++++ b/wolfcrypt/test/test_paths.h.in
+@@ -20,6 +20,15 @@
+  */
+ 
+ #ifndef NO_FILESYSTEM
++/* When cross-compiling for QNX the configure-time absolute source/build
++ * directories belong to the build host and do not exist on the target.
++ * The tests are run from the wolfSSL home dir on the target, so use
++ * paths relative to the current working directory. */
++#if !defined(CERT_REL_PREFIX) && \
++    (defined(__QNX__) || defined(__QNXNTO__))
++    #define CERT_REL_PREFIX "./"
++#endif
++
+ #ifdef CERT_REL_PREFIX
+     #define CERT_PREFIX CERT_REL_PREFIX
+     #ifndef NO_WRITE_TEMP_FILES

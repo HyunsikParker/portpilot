@@ -1,0 +1,52 @@
+{
+ "name": "ruckig",
+ "url": "https://github.com/pantor/ruckig.git",
+ "ref": "v0.19.4",
+ "subdir": ".",
+ "cmake_args": [
+  "-DBUILD_TESTS=ON",
+  "-DBUILD_EXAMPLES=ON"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE",
+    "-DDOCTEST_CONFIG_USE_STD_HEADERS"
+   ],
+   "ldflags": [
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DBUILD_TESTS=ON",
+    "-DBUILD_EXAMPLES=ON"
+   ],
+   "fixes": [
+    "sockets",
+    "doctest-std-headers"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE",
+    "-DDOCTEST_CONFIG_USE_STD_HEADERS"
+   ],
+   "ldflags": [
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DBUILD_TESTS=ON",
+    "-DBUILD_EXAMPLES=ON"
+   ],
+   "fixes": [
+    "sockets",
+    "doctest-std-headers"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

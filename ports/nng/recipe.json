@@ -1,0 +1,44 @@
+{
+ "name": "nng",
+ "url": "https://github.com/nanomsg/nng.git",
+ "ref": "v2.1.0",
+ "subdir": ".",
+ "cmake_args": [
+  "-DNNG_TESTS=ON",
+  "-DNNG_TOOLS=ON"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DNNG_TESTS=ON",
+    "-DNNG_TOOLS=ON"
+   ],
+   "fixes": [
+    "posix_udp.c: <sys/errno.h> -> <errno.h>"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DNNG_TESTS=ON",
+    "-DNNG_TOOLS=ON"
+   ],
+   "fixes": [
+    "posix_udp.c: <sys/errno.h> -> <errno.h>"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

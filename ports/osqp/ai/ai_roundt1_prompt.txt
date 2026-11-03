@@ -1,0 +1,160 @@
+You are porting the open-source project osqp (v1.0.0) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- osqp_tester (FAIL, exit 18)
+ERROR in osqp_setup: KKT matrix factorization.
+The problem seems to be non-convex.
+ERROR in osqp_codegen: KKT matrix factorization.
+C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
+  REQUIRE( exitflag == expected_error )
+with expansion:
+  8 == 0
+with messages:
+...
+optimal rho estimate: 1.86e-01
+
+===============================================================================
+test cases:  38 |  31 passed |  7 failed
+assertions: 488 | 470 passed | 18 failed
+
+
+--- osqp_tester_custom_memory (FAIL, exit 18)
+ERROR in osqp_setup: KKT matrix factorization.
+The problem seems to be non-convex.
+ERROR in osqp_codegen: KKT matrix factorization.
+C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
+  REQUIRE( exitflag == expected_error )
+with expansion:
+  8 == 0
+with messages:
+...
+optimal rho estimate: 1.86e-01
+
+===============================================================================
+test cases:  38 |  31 passed |  7 failed
+assertions: 488 | 470 passed | 18 failed
+
+
+Project code that prints or handles these messages:
+
+FILE algebra\mkl\lin_sys\direct\pardiso_interface.c:238
+    return OSQP_LINSYS_SOLVER_INIT_ERROR;
+  }
+  if ( s->iparm[21] < n ) {
+    // Error: Number of positive eigenvalues of KKT should be the same as dimension of P
+>     c_eprint("KKT matrix has fewer positive eigenvalues than it should. The problem seems to be non-convex.");
+    return OSQP_NONCVX_ERROR;
+  }
+
+  return 0;
+FILE algebra\_common\lin_sys\qdldl\qdldl_interface.c:124
+    osqp_profiler_sec_pop(OSQP_PROFILER_SEC_LINSYS_NUM_FAC);
+
+    if (factor_status < 0){
+      // Error
+>       c_eprint("Error in KKT matrix LDL factorization when computing the nonzero elements. There are zeros in the diagonal matrix");
+      return factor_status;
+    } else if (factor_status < nvar) {
+      // Error: Number of positive elements of D should be equal to nvar
+      c_eprint("Error in KKT matrix LDL factorization when computing the nonzero elements. The problem seems to be non-convex");
+FILE algebra\_common\lin_sys\qdldl\qdldl_interface.c:128
+      c_eprint("Error in KKT matrix LDL factorization when computing the nonzero elements. There are zeros in the diagonal matrix");
+      return factor_status;
+    } else if (factor_status < nvar) {
+      // Error: Number of positive elements of D should be equal to nvar
+>       c_eprint("Error in KKT matrix LDL factorization when computing the nonzero elements. The problem seems to be non-convex");
+      return -2;
+    }
+
+    return 0;
+FILE include\public\osqp_api_functions.h:250
+ * It performs:
+ * - data and settings validation
+ * - problem data scaling
+ * - setup linear system solver:
+>  *      - direct solver: KKT matrix factorization is performed here
+ *      - indirect solver: reduced KKT matrix preconditioning is performed here
+ *
+ * NB: This is the only function that allocates dynamic memory and is not used
+ * during code generation
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+_deps\qdldl-src\examples\example.c:119: printf("D:\n");
+
+Compile definition CODEGEN_DIR is set to an absolute build-host path (build.ninja). CMake lines that mention it:
+.github\workflows\algebra-builtin.yml:133
+                  -B tests/codegen/compilation_test/build \
+                  -DOSQP_BUILD_DIR=$OSQP_BUILD_DIR_PREFIX \
+>                   -DOSQP_TEST_CODEGEN_DIR=$OSQP_BUILD_DIR_PREFIX/tests/testcodes
+            cmake --build tests/codegen/compilation_test/build
+            ./tests/codegen/compilation_test/build/osqp_codegen_embedded_mode1
+.github\workflows\codegen.yaml:22
+      env:
+        OSQP_BUILD_DIR_PREFIX: ${{ github.workspace }}/build
+>         OSQP_CODEGEN_DIR_PREFIX: ${{ github.workspace }}/../codegen
+
+      steps:
+.github\workflows\codegen.yaml:32
+        - name: Prep
+          run: |
+>             mkdir $OSQP_CODEGEN_DIR_PREFIX
+            mkdir $OSQP_CODEGEN_DIR_PREFIX/mat
+            mkdir $OSQP_CODEGEN_DIR_PREFIX/vec
+
+Compile definition CODEGEN1_DIR is set to an absolute build-host path (build.ninja). CMake lines that mention it:
+tests\CMakeLists.txt:153
+
+add_compile_definitions(CODEGEN_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/")
+> add_compile_definitions(CODEGEN1_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded1/")
+add_compile_definitions(CODEGEN2_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded2/")
+
+tests\codegen\test_codegen.cpp:78
+    GENERATE( table<OSQPInt, std::string>(
+        { /* first is embedded mode, second is output directory */
+>           std::make_tuple( 1, CODEGEN1_DIR ),
+          std::make_tuple( 2, CODEGEN2_DIR ) } ) );
+
+tests\codegen\test_codegen.cpp:127
+    GENERATE( table<OSQPInt, std::string>(
+        { /* first is embedded mode, second is output directory */
+>           std::make_tuple( 1, CODEGEN1_DIR ),
+          std::make_tuple( 2, CODEGEN2_DIR ) } ) );
+
+Compile definition CODEGEN2_DIR is set to an absolute build-host path (build.ninja). CMake lines that mention it:
+tests\CMakeLists.txt:154
+add_compile_definitions(CODEGEN_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/")
+add_compile_definitions(CODEGEN1_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded1/")
+> add_compile_definitions(CODEGEN2_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded2/")
+
+option(OSQP_GENERATE_COVERAGE_REPORT "Generate an HTML coverage report")
+tests\codegen\test_codegen.cpp:79
+        { /* first is embedded mode, second is output directory */
+          std::make_tuple( 1, CODEGEN1_DIR ),
+>           std::make_tuple( 2, CODEGEN2_DIR ) } ) );
+
+  char name[100];
+tests\codegen\test_codegen.cpp:128
+        { /* first is embedded mode, second is output directory */
+          std::make_tuple( 1, CODEGEN1_DIR ),
+>           std::make_tuple( 2, CODEGEN2_DIR ) } ) );
+
+  char name[100];
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.

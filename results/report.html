@@ -1,0 +1,3786 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PortPilot report</title><style>
+:root { --ink:#1b1b1b; --muted:#5d5d5d; --line:#d9d9d6; --paper:#fbfbf9; --panel:#f1f1ee; --ok:#1f6f43; --bad:#a1281e;
+        --warn:#8a5a00; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --ink:#e8e8e4; --muted:#a3a39e; --line:#3a3a37; --paper:#151514;
+        --panel:#1f1f1d; --ok:#6fcf97; --bad:#ff8a7a; --warn:#e3b45c; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1080px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+h2 { font-size: 17px; margin: 36px 0 10px; }
+.lede { color: var(--muted); margin: 0 0 20px; max-width: 72ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 28px; padding: 12px 0; border-top: 1px solid var(--line);
+         border-bottom: 1px solid var(--line); font-size: 14px; }
+.facts b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+.facts span { color: var(--muted); }
+.wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ok { color: var(--ok); } .bad { color: var(--bad); } .warn { color: var(--warn); } .muted { color: var(--muted); }
+code, .mono { font: 13px/1.45 ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+details { border-bottom: 1px solid var(--line); padding: 10px 0; }
+summary { cursor: pointer; font-weight: 600; }
+summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.round { margin: 8px 0 0 0; padding: 8px 12px; background: var(--panel); border-radius: 6px; }
+.round p { margin: 2px 0; }
+pre { margin: 6px 0 0; padding: 8px 10px; background: var(--panel); border-radius: 6px; overflow-x: auto; font-size: 12px; }
+ul { margin: 4px 0; padding-left: 20px; }
+footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
+.patch summary { font-weight: 400; color: var(--muted); font-size: 13px; }
+.patch pre { max-height: 420px; }
+pre .add { color: var(--ok); } pre .del { color: var(--bad); } pre .hunk { color: var(--muted); }
+.tag { display: inline-block; padding: 1px 7px; margin: 1px 2px 1px 0; border: 1px solid var(--line); border-radius: 10px;
+       font-size: 12px; white-space: nowrap; }
+.tag.ai { border-color: var(--ok); color: var(--ok); }
+meter { width: 64px; height: 8px; vertical-align: middle; margin-right: 6px; }
+</style></head><body><main>
+<h1>PortPilot port report</h1>
+<p class="lede">Open-source C and C++ libraries ported to QNX 8.0 by PortPilot: built with the QNX SDP 8.0 toolchain
+(qcc, GCC 12.2) for x86_64 and aarch64le, then each project's own CTest suite run on a QNX 8.0 x86_64 QEMU target.</p>
+<div class="facts">
+<div><b>20</b><span>libraries</span></div>
+<div><b>20</b><span>built for x86_64</span></div>
+<div><b>20</b><span>built for aarch64le</span></div>
+<div><b>1130/1469</b><span>CTest entries passed on the target</span></div>
+<div><b>5/5</b><span>AI build patches kept</span></div>
+<div><b>+137</b><span>tests fixed by triage on QNX</span></div>
+</div>
+<h2>Libraries</h2>
+<div class="wrap"><table>
+<thead><tr><th>Library</th><th>x86_64</th><th>aarch64le</th><th>Tests on QNX target</th><th>Fixes applied</th></tr></thead>
+<tbody><tr><td><b>backward-cpp</b> <span class="muted mono">v1.6</span></td><td class="ok">built <span class="muted">(4 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num ok"><meter min="0" max="5" value="5"></meter> 5/5 pass</td><td><span class="tag">CMake policy 3.5</span> <span class="tag ai">AI build ×2</span></td></tr><tr><td><b>civetweb</b> <span class="muted mono">v1.16</span></td><td class="ok">built <span class="muted">(4 rounds)</span></td><td class="ok">built <span class="muted">(3 rounds)</span></td><td class="muted">not run</td><td><span class="tag">CMake policy 3.5</span> <span class="tag">-lsocket</span> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>cyclonedds</b> <span class="muted mono">11.0.1</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="muted">not run</td><td> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>fmt</b> <span class="muted mono">12.2.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num warn"><meter min="0" max="21" value="20"></meter> 20/21 pass · 1 fail</td><td><span class="tag">-lregex</span></td></tr><tr><td><b>json-c</b> <span class="muted mono">json-c-0.19-20260627</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="num warn"><meter min="0" max="28" value="27"></meter> 27/28 pass · 1 fail</td><td><span class=muted>none</span></td></tr><tr><td><b>libarchive</b> <span class="muted mono">v3.8.11</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num warn"><meter min="0" max="1137" value="816"></meter> 816/1137 pass · 51 fail, 270 skip</td><td><span class="tag">link launcher</span></td></tr><tr><td><b>libcbor</b> <span class="muted mono">v0.14.0</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>libcoap</b> <span class="muted mono">v4.3.5</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="muted">not run</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>libzmq</b> <span class="muted mono">v4.3.5</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num warn"><meter min="0" max="121" value="110"></meter> 110/121 pass · 3 fail, 4 timeout, 4 skip</td><td><span class="tag">CMake policy 3.5</span></td></tr><tr><td><b>mbedtls</b> <span class="muted mono">v4.2.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num warn"><meter min="0" max="148" value="145"></meter> 145/148 pass · 2 fail, 1 timeout</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×2</span></td></tr><tr><td><b>msgpack-c</b> <span class="muted mono">c-7.0.2</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>nng</b> <span class="muted mono">v2.1.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 timeout</td><td><span class="tag">header swap</span></td></tr><tr><td><b>open62541</b> <span class="muted mono">v1.5.10</span></td><td class="ok">built <span class="muted">(4 rounds)</span></td><td class="ok">built <span class="muted">(4 rounds)</span></td><td class="muted">not run</td><td><span class="tag">queue header</span> <span class="tag">&lt;netinet/in.h&gt;</span> <span class="tag">libc stubs</span> <span class="tag">-lsocket</span></td></tr><tr><td><b>osqp</b> <span class="muted mono">v1.0.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="num ok"><meter min="0" max="3" value="3"></meter> 3/3 pass</td><td> <span class="tag ai">AI build ×1</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>paho-mqtt-c</b> <span class="muted mono">v1.3.16</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="muted">not run</td><td><span class="tag">endian header</span> <span class="tag">libc stubs</span></td></tr><tr><td><b>ruckig</b> <span class="muted mono">v0.19.4</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span> <span class="tag">doctest std headers</span></td></tr><tr><td><b>spdlog</b> <span class="muted mono">v1.17.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>uriparser</b> <span class="muted mono">uriparser-1.0.3</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="muted">not run</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>wolfssl</b> <span class="muted mono">v5.9.4-stable</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num ok"><meter min="0" max="2" value="2"></meter> 2/2 pass</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>yaml-cpp</b> <span class="muted mono">yaml-cpp-0.9.0</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 fail</td><td><span class=muted>none</span></td></tr></tbody></table></div>
+<h2>Details</h2>
+<details><summary>backward-cpp</summary><p class="muted">aarch64le · <a href="https://github.com/bombela/backward-cpp.git">https://github.com/bombela/backward-cpp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">configure failed</span></p>
+<p>Change: replayed backward-cpp.patch</p>
+<p>Change: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/bombela/backward-cpp.git">https://github.com/bombela/backward-cpp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">configure failed</span></p>
+<p>Change: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="bad">7 errors</span></p>
+</div><div class="round"><p><b>Round 3</b> · <span class="bad">6 errors</span></p>
+<p>AI patch 1 (claude-opus-5-5): <code>backward.hpp, test/_test_main.cpp</code> · <b class="ok">kept</b></p>
+<details class="patch"><summary>Show patch</summary><pre>diff --git a/backward.hpp b/backward.hpp
+--- a/backward.hpp
++++ b/backward.hpp
+<span class="hunk">@@ -796,6 +796,14 @@</span>
+ };
+ 
+ #if BACKWARD_HAS_UNWIND == 1
+ 
+<span class="add">+#if defined(__QNX__)</span>
+<span class="add">+// QNX is not one of the systems whose include section pulls in &lt;unwind.h&gt;,</span>
+<span class="add">+// but the Unwinder below is still compiled. Include it at global scope.</span>
+<span class="add">+} // namespace backward</span>
+<span class="add">+#include &lt;unwind.h&gt;</span>
+<span class="add">+namespace backward {</span>
+<span class="add">+#endif</span>
+<span class="add">+</span>
+ namespace details {
+ 
+ template &lt;typename F&gt; class Unwinder {
+diff --git a/test/_test_main.cpp b/test/_test_main.cpp
+--- a/test/_test_main.cpp
++++ b/test/_test_main.cpp
+<span class="hunk">@@ -43,6 +43,10 @@</span>
+ inline const char *getprogname() {
+   return GetModuleFileName(NULL, argv0, sizeof(argv0)) ? argv0 : NULL;
+ }
+<span class="add">+#elif defined(__QNX__)</span>
+<span class="add">+// QNX libc sets __progname at startup (used by err()/warn()).</span>
+<span class="add">+extern &quot;C&quot; char *__progname;</span>
+<span class="add">+#define getprogname() __progname</span>
+ #elif !defined(__APPLE__)
+ // N.B.  getprogname() is an Apple/BSD-ism.
+ // program_invocation_name is a GLIBC-ism, but it&#x27;s also</pre></details>
+</div><div class="round"><p><b>Round 4</b> · <span class="ok">built</span></p>
+<p>AI patch 2 (claude-opus-5-5): <code>backward.hpp</code> · <b class="ok">kept</b></p>
+<details class="patch"><summary>Show patch</summary><pre>diff --git a/backward.hpp b/backward.hpp
+--- a/backward.hpp
++++ b/backward.hpp
+<span class="hunk">@@ -804,5 +804,13 @@</span>
+ #include &lt;unwind.h&gt;
+<span class="add">+#if defined(__QNX__)</span>
+<span class="add">+// QNX&#x27;s &lt;unwind.h&gt; does not declare _Unwind_Backtrace, although libgcc</span>
+<span class="add">+// provides it. Declare it here with the same signature that GCC&#x27;s and</span>
+<span class="add">+// LLVM&#x27;s &lt;unwind.h&gt; use.</span>
+<span class="add">+extern &quot;C&quot; _Unwind_Reason_Code</span>
+<span class="add">+_Unwind_Backtrace(_Unwind_Reason_Code (*)(struct _Unwind_Context *, void *),</span>
+<span class="add">+                  void *);</span>
+<span class="add">+#endif</span>
+ namespace backward {
+ #endif
+ 
+ namespace details {</pre></details>
+</div></details><details><summary>civetweb</summary><p class="muted">aarch64le · <a href="https://github.com/civetweb/civetweb.git">https://github.com/civetweb/civetweb.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">configure failed</span></p>
+<p>Change: replayed civetweb.patch</p>
+<p>Change: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="bad">56 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 3</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/civetweb/civetweb.git">https://github.com/civetweb/civetweb.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">configure failed</span></p>
+<p>Change: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="bad">configure failed</span></p>
+</div><div class="round"><p><b>Round 3</b> · <span class="bad">55 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+<p>AI patch 1 (claude-opus-5-5): <code>cmake/DetermineTargetArchitecture.cmake</code> · <b class="ok">kept</b></p>
+<details class="patch"><summary>Show patch</summary><pre>diff --git a/cmake/DetermineTargetArchitecture.cmake b/cmake/DetermineTargetArchitecture.cmake
+--- a/cmake/DetermineTargetArchitecture.cmake
++++ b/cmake/DetermineTargetArchitecture.cmake
+<span class="hunk">@@ -26,6 +26,14 @@ function(determine_target_architecture FLAG)</span>
+     else()
+       message(FATAL_ERROR &quot;Failed to determine the MSVC target architecture: ${MSVC_C_ARCHITECTURE_ID}&quot;)
+     endif()
+<span class="add">+  elseif(CMAKE_SYSTEM_NAME STREQUAL &quot;QNX&quot;)</span>
+<span class="add">+    # qcc does not support -dumpmachine; use the toolchain&#x27;s processor</span>
+<span class="add">+    set(ARCH &quot;${CMAKE_SYSTEM_PROCESSOR}&quot;)</span>
+<span class="add">+    if (NOT ARCH)</span>
+<span class="add">+      message(FATAL_ERROR &quot;Failed to determine the QNX target architecture&quot;)</span>
+<span class="add">+    endif()</span>
+<span class="add">+    # aarch64le -&gt; aarch64, x86_64 unchanged</span>
+<span class="add">+    string(REGEX REPLACE &quot;le$&quot; &quot;&quot; ARCH &quot;${ARCH}&quot;)</span>
+   else()
+     execute_process(
+       COMMAND ${CMAKE_C_COMPILER} -dumpmachine</pre></details>
+</div><div class="round"><p><b>Round 4</b> · <span class="ok">built</span></p>
+</div></details><details><summary>cyclonedds</summary><p class="muted">aarch64le · <a href="https://github.com/eclipse-cyclonedds/cyclonedds.git">https://github.com/eclipse-cyclonedds/cyclonedds.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+<p>Change: replayed cyclonedds.patch</p>
+</div><p class="muted">x86_64 · <a href="https://github.com/eclipse-cyclonedds/cyclonedds.git">https://github.com/eclipse-cyclonedds/cyclonedds.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">2 errors</span></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+<p>AI patch 1 (claude-opus-5-5): <code>src/ddsrt/src/netstat/qnx/netstat.c</code> · <b class="ok">kept</b></p>
+<details class="patch"><summary>Show patch</summary><pre>diff --git a/src/ddsrt/src/netstat/qnx/netstat.c b/src/ddsrt/src/netstat/qnx/netstat.c
+--- a/src/ddsrt/src/netstat/qnx/netstat.c
++++ b/src/ddsrt/src/netstat/qnx/netstat.c
+<span class="hunk">@@ -1,49 +1,47 @@</span>
+ #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;string.h&gt;
+ #include &lt;inttypes.h&gt;
+<span class="add">+#include &lt;errno.h&gt;</span>
+ 
+<span class="del">-#include &lt;devctl.h&gt;</span>
+<span class="del">-#include &lt;sys/ioctl.h&gt;</span>
+<span class="del">-#include &lt;sys/dcmd_io-net.h&gt;</span>
+<span class="add">+#include &lt;sys/types.h&gt;</span>
+<span class="add">+#include &lt;sys/socket.h&gt;</span>
+ #include &lt;net/if.h&gt;
+<span class="del">-#include &lt;net/ifdrvcom.h&gt;</span>
+<span class="add">+#include &lt;ifaddrs.h&gt;</span>
+ 
+ #include &lt;dds/ddsrt/heap.h&gt;
+ #include &lt;dds/ddsrt/string.h&gt;
+ #include &lt;dds/ddsrt/netstat.h&gt;
+ #include &lt;dds/ddsrt/log.h&gt;
+ 
+ struct ddsrt_netstat_control {
+   char *name;
+ };
+ 
+ dds_return_t ddsrt_netstat_get (struct ddsrt_netstat_control *control, struct ddsrt_netstat *stats)
+ {
+<span class="del">-  struct drvcom_stats dstats;</span>
+<span class="del">-  nic_stats_t *ifstats;</span>
+<span class="del">-  int s;</span>
+<span class="del">-</span>
+<span class="del">-  if ((s = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {</span>
+<span class="del">-    return DDS_RETCODE_ERROR;</span>
+<span class="del">-  }</span>
+<span class="del">-</span>
+<span class="del">-  (void)strncpy(dstats.dcom_cmd.ifdc_name, control-&gt;name, IFNAMSIZ);</span>
+<span class="del">-  dstats.dcom_cmd.ifdc_cmd = DRVCOM_STATS;</span>
+<span class="del">-  dstats.dcom_cmd.ifdc_len = sizeof(*ifstats);</span>
+<span class="del">-  ifstats = &amp;dstats.dcom_stats;</span>
+<span class="del">-</span>
+<span class="del">-  if (devctl(s, SIOCGDRVCOM, &amp;dstats, sizeof(dstats), 0) != EOK) {</span>
+<span class="del">-    DDS_ERROR(&quot;devctl() failed for SIOCGDRVCOM for if &#x27;%s&#x27;: %s\n&quot;, </span>
+<span class="del">-      dstats.dcom_cmd.ifdc_name, strerror(errno));</span>
+<span class="del">-    close(s);</span>
+<span class="del">-    return DDS_RETCODE_ERROR;</span>
+<span class="del">-  }</span>
+<span class="del">-  stats-&gt;ipkt = ifstats-&gt;rxed_ok;</span>
+<span class="del">-  stats-&gt;opkt = ifstats-&gt;txed_ok;</span>
+<span class="del">-  stats-&gt;ibytes = ifstats-&gt;octets_rxed_ok;</span>
+<span class="del">-  stats-&gt;obytes = ifstats-&gt;octets_txed_ok;</span>
+<span class="del">-  </span>
+<span class="del">-  close(s);</span>
+<span class="del">-  return DDS_RETCODE_OK;</span>
+<span class="add">+  struct ifaddrs *ifa_list, *ifa;</span>
+<span class="add">+  dds_return_t rc = DDS_RETCODE_ERROR;</span>
+<span class="add">+</span>
+<span class="add">+  if (getifaddrs (&amp;ifa_list) != 0) {</span>
+<span class="add">+    DDS_ERROR(&quot;getifaddrs() failed: %s\n&quot;, strerror(errno));</span>
+<span class="add">+    return DDS_RETCODE_ERROR;</span>
+<span class="add">+  }</span>
+<span class="add">+  for (ifa = ifa_list; ifa != NULL; ifa = ifa-&gt;ifa_next) {</span>
+<span class="add">+    const struct if_data *ifd;</span>
+<span class="add">+    if (ifa-&gt;ifa_addr == NULL || ifa-&gt;ifa_addr-&gt;sa_family != AF_LINK ||</span>
+<span class="add">+        ifa-&gt;ifa_data == NULL || strcmp (ifa-&gt;ifa_name, control-&gt;name) != 0)</span>
+<span class="add">+      continue;</span>
+<span class="add">+    ifd = (const struct if_data *) ifa-&gt;ifa_data;</span>
+<span class="add">+    stats-&gt;ipkt = ifd-&gt;ifi_ipackets;</span>
+<span class="add">+    stats-&gt;opkt = ifd-&gt;ifi_opackets;</span>
+<span class="add">+    stats-&gt;ibytes = ifd-&gt;ifi_ibytes;</span>
+<span class="add">+    stats-&gt;obytes = ifd-&gt;ifi_obytes;</span>
+<span class="add">+    rc = DDS_RETCODE_OK;</span>
+<span class="add">+    break;</span>
+<span class="add">+  }</span>
+<span class="add">+  freeifaddrs (ifa_list);</span>
+<span class="add">+  if (rc != DDS_RETCODE_OK)</span>
+<span class="add">+    DDS_ERROR(&quot;no link-level statistics for if &#x27;%s&#x27;\n&quot;, control-&gt;name);</span>
+<span class="add">+  return rc;</span>
+ }</pre></details>
+</div></details><details><summary>fmt</summary><p class="muted">aarch64le · <a href="https://github.com/fmtlib/fmt.git">https://github.com/fmtlib/fmt.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">114 errors</span></p>
+<p>Catalogue rules: <code>regex</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/fmtlib/fmt.git">https://github.com/fmtlib/fmt.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">114 errors</span></p>
+<p>Catalogue rules: <code>regex</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><div class="round"><p><b>Test triage 1</b> (claude-opus-5-5): <code>no patch</code> · tests passing on QNX ? → ? · <b class="bad">UNFIXABLE</b></p></div><p><b>Tests that did not pass on the target</b></p><p class="mono">printf-test · FAIL (exit 1)</p><pre>[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] printf_test.float_precision
+[  FAILED  ] printf_test.float
+
+ 2 FAILED TESTS
+...
+[  PASSED  ] 40 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] printf_test.float_precision
+[  FAILED  ] printf_test.float
+
+ 2 FAILED TESTS</pre></details><details><summary>json-c</summary><p class="muted">aarch64le · <a href="https://github.com/json-c/json-c.git">https://github.com/json-c/json-c.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/json-c/json-c.git">https://github.com/json-c/json-c.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+</div><p><b>Tests that did not pass on the target</b></p><p class="mono">test_json_patch · FAIL (exit 1)</p><pre>...
+ERROR: &quot;test_json_patch /tests/json-c/src/tests&quot; exited with incorrect exit status:  != 0
+ERROR: &quot;test_json_patch /tests/json-c/src/tests&quot; (test_json_patch) failed (set VERBOSE=1 to see full output):
++ diff /tests/json-c/src/tests/test_json_patch.expected testSubDir/test_json_patch.test/test_json_patch.out
+cp &quot;testSubDir/test_json_patch.test/test_json_patch.out&quot; &quot;/tests/json-c/src/tests/test_json_patch.expected&quot;</pre></details><details><summary>libarchive</summary><p class="muted">aarch64le · <a href="https://github.com/libarchive/libarchive.git">https://github.com/libarchive/libarchive.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">0 errors</span></p>
+<p>Change: linker launcher: object list to ld in its own response file (Windows command-line limit)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/libarchive/libarchive.git">https://github.com/libarchive/libarchive.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">0 errors</span></p>
+<p>Change: linker launcher: object list to ld in its own response file (Windows command-line limit)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p><b>Tests that did not pass on the target</b></p><p class="mono">libarchive_test_7zip_filename_encoding_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_acl_platform_nfs4 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_acl_platform_posix1e_restore · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_acl_platform_posix1e_read · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_md5 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_rmd160 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_sha1 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_sha256 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_sha384 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_sha512 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_string_conversion · SKIP (exit 2)</p><pre>  Assertions checked:  156817
+  Assertions failed:        0
+  Skips reported:           2
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:  156817
+  Assertions failed:        0
+  Skips reported:           2
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_string_conversion_fail_c · FAIL (exit 1)</p><pre>  Assertions checked:      18
+  Assertions failed:        3
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  77: test_archive_string_conversion_fail_c (3 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T06.40.20-000
+</pre><p class="mono">libarchive_test_archive_string_conversion_fail_latin1 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_string_conversion_utf16_utf8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_string_conversion_utf8_utf16 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_string_update_utf8_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_string_update_utf8_utf8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_string_update_utf8_koi8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_grzip · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_lrzip · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_b64encode · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_by_name_grzip · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_by_name_lrzip · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_by_name_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_by_name_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_add_filter_by_name_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_set_format_by_name_xar · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_archive_write_set_format_filter_by_ext_tar_zst · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_compat_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:      35
+  Assertions failed:        0
+  Skips reported:          13
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      35
+  Assertions failed:        0
+  Skips reported:          13
+1 tests passed, no failures</pre><p class="mono">libarchive_test_compat_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_compat_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      18
+  Assertions failed:        0
+  Skips reported:           3
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      18
+  Assertions failed:        0
+  Skips reported:           3
+1 tests passed, no failures</pre><p class="mono">libarchive_test_entry · FAIL (exit 1)</p><pre>  Assertions checked:     399
+  Assertions failed:        1
+  Skips reported:           1
+
+Failing tests:
+...
+
+Failing tests:
+  194: test_entry (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T06.42.41-000
+</pre><p class="mono">libarchive_test_extattr_freebsd · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_UTF8_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_KOI8R_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_KOI8R_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_CP1251_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_ru_RU_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_Russian_Russia · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_EUCJP_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_EUCJP_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_CP932_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_long_gname_utf16 · SKIP (exit 2)</p><pre>  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_fail_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_gnutar_filename_encoding_UTF32_substitute · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_link_resolver_unicode_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_open_filename_proc_einval · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_pax_filename_encoding_KOI8R · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_pax_filename_encoding_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_pax_filename_encoding_EUCJP · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_pax_filename_encoding_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_pax_filename_encoding_KOI8R_BINARY · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_pax_filename_encoding_KOI8R_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_pax_filename_encoding_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_pax_filename_encoding · SKIP (exit 2)</p><pre>  Assertions checked:    6844
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:    6844
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_disk_directory_traversals · FAIL (exit 139)</p><pre>...
+
+If tests fail or crash, details will be in:
+   /tmp/libarchive_test.2026-11-03T06.55.32-000
+
+Reference files will be read from: /tests/libarchive/src/libarchive/test
+Exercising: PPLOG signal 11; core file: libarchive_test.core
+slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
+slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
+slog2: Nov 03 05:48:14.865                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
+slog2: Nov 03 05:48:15.047                  dhcpcd.221199                 slog*     0  &lt;30&gt;Nov 03 05:48:15 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
+slog2: Nov 03 05:48:15.173                  dhcpcd.221199                 slog      0  &lt;27&gt;Nov 03 05:48:15 dhcpcd[225297-1]: no valid interfaces found</pre><p class="mono">libarchive_test_read_extract · FAIL (exit 1)</p><pre>  Assertions checked:      72
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  249: test_read_extract (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T06.55.42-000
+</pre><p class="mono">libarchive_test_read_filter_grzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_filter_lrzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_filter_lzop · SKIP (exit 2)</p><pre>  Assertions checked:     458
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     458
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_filter_lzop_multiple_parts · SKIP (exit 2)</p><pre>  Assertions checked:    5139
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:    5139
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_7zip_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_7zip_zstd_solid · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_7zip_zstd_bcj · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_7zip_zstd_nobcj · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_7zip_zstd_arm · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_7zip_lzma2_arm64 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_7zip_lzma2_riscv · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_7zip_zstd_sparc · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cab_filename · SKIP (exit 2)</p><pre>  Assertions checked:     208
+  Assertions failed:        0
+  Skips reported:           2
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     208
+  Assertions failed:        0
+  Skips reported:           2
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_eucJP_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_UTF8_eucJP · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_UTF8_UTF8_jp · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_CP866_KOI8R · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_CP866_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_KOI8R_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_KOI8R_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_UTF8_KOI8R · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_UTF8_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_UTF8_UTF8_ru · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_eucJP_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_UTF8_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_CP866_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_CP866_CP1251_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_KOI8R_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_cpio_filename_UTF8_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_eucJP_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_CP866_KOI8R · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_CP866_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_KOI8R_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_KOI8R_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_eucJP_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_CP866_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_CP866_CP1251_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_gtar_filename_KOI8R_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_lha_filename · SKIP (exit 2)</p><pre>  Assertions checked:     230
+  Assertions failed:        0
+  Skips reported:           2
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     230
+  Assertions failed:        0
+  Skips reported:           2
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_lha_filename_UTF16 · SKIP (exit 2)</p><pre>  Assertions checked:     953
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     953
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_rar_unicode_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_rar_unicode_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_rar_multivolume_w · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_rar_newsub_huge · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_rar_symlink_huge · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_rar4_solid_encrypted · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_rar5_unicode · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_tar_filename · SKIP (exit 2)</p><pre>  Assertions checked:     621
+  Assertions failed:        0
+  Skips reported:           3
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     621
+  Assertions failed:        0
+  Skips reported:           3
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_ustar_filename · SKIP (exit 2)</p><pre>  Assertions checked:     904
+  Assertions failed:        0
+  Skips reported:           9
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     904
+  Assertions failed:        0
+  Skips reported:           9
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar · SKIP (exit 2)</p><pre>  Assertions checked:      47
+  Assertions failed:        0
+  Skips reported:          13
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      47
+  Assertions failed:        0
+  Skips reported:          13
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_xattr_fstype_cleanup · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_duplicate_filename_node · SKIP (exit 2)</p><pre>  Assertions checked:     660
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     660
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_large_mode · SKIP (exit 2)</p><pre>  Assertions checked:     483
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     483
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_base64_oob · SKIP (exit 2)</p><pre>  Assertions checked:     224
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     224
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_atou64_overread · SKIP (exit 2)</p><pre>  Assertions checked:     231
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     231
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_empty_xattr · SKIP (exit 2)</p><pre>  Assertions checked:     319
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     319
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_toc_premature_stream_end · SKIP (exit 2)</p><pre>  Assertions checked:     385
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     385
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_parse_time_overread · SKIP (exit 2)</p><pre>  Assertions checked:     259
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     259
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_invalid_seek_offset · SKIP (exit 2)</p><pre>  Assertions checked:     651
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     651
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_xar_doublelink · SKIP (exit 2)</p><pre>  Assertions checked:     531
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     531
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zstd_one_file · SKIP (exit 2)</p><pre>  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zstd_one_file_blockread · SKIP (exit 2)</p><pre>  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zstd_multi · SKIP (exit 2)</p><pre>  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zstd_multi_blockread · SKIP (exit 2)</p><pre>  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_utf8_paths · SKIP (exit 2)</p><pre>  Assertions checked:    1030
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:    1030
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_CP932_eucJP · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_CP932_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_UTF8_eucJP · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_UTF8_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_CP866_KOI8R · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_CP866_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_KOI8R_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_KOI8R_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_UTF8_KOI8R · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_UTF8_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_UTF8_UTF8_ru · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_CP932_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_UTF8_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_CP866_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_CP866_CP1251_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_KOI8R_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_UTF8_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_filename_KOI8R_UTF8_2 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes128 · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes256 · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes256_stored · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes256_large · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes256_large_bzip2 · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes256_large_lzma · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes256_large_ppmd · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes256_large_xz · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_winzip_aes256_large_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_deflate_encrypted · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zipx_bzip2_encrypted · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zipx_lzma_encrypted · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zipx_xz_encrypted · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zipx_zstd_encrypted · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_deflate_encrypted_streaming · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zipx_bzip2_encrypted_streaming · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zipx_lzma_encrypted_streaming · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zipx_xz_encrypted_streaming · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_zipx_zstd_encrypted_streaming · SKIP (exit 2)</p><pre>  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      13
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_format_zip_ppmd8_aes256_streaming · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_append_lrzip_filter · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_append_lz4_filter · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_append_zstd_filter · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_append_filter_wrong_program · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_truncated_filter_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      15
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      15
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_sparse_basic · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_fully_sparse_files · SKIP (exit 2)</p><pre>  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      10
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_UTF8_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_KOI8R_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_KOI8R_CP866 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_CP1251_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_ru_RU_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_Russian_Russia · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_EUCJP_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_EUCJP_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_CP932_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_ustar_filename_encoding_fail_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_v7tar_filename_encoding_fail_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_disk · FAIL (exit 1)</p><pre>  Assertions checked:     188
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  767: test_write_disk (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T07.07.08-000
+</pre><p class="mono">libarchive_test_write_disk_appledouble · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_disk_appledouble_zip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_disk_hfs_compression · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_disk_mac_metadata · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_disk_no_hfs_compression · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_disk_perms · FAIL (exit 1)</p><pre>  Assertions checked:     100
+  Assertions failed:        1
+  Skips reported:           1
+
+Failing tests:
+...
+
+Failing tests:
+  777: test_write_disk_perms (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T07.07.20-000
+</pre><p class="mono">libarchive_test_write_disk_secure_physicaldrive · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_disk_secure744 · SKIP (exit 2)</p><pre>  Assertions checked:      52
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      52
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_disk_times · SKIP (exit 2)</p><pre>  Assertions checked:      32
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      32
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lrzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lz4_disable_stream_checksum · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lz4_enable_block_checksum · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lz4_block_size_4 · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lz4_block_size_5 · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lz4_block_size_6 · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lz4_block_dependence · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lz4_empty_archive · SKIP (exit 2)</p><pre>  Assertions checked:      14
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      14
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_filter_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      14
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      14
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_7zip_basic_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_7zip_large_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      15
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      15
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_fflags · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_md5_digest_set_no_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_md5_digest_set_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_md5_digest_set_non_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_rmd160_digest_set_no_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_rmd160_digest_set_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_rmd160_digest_set_non_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha1_digest_set_no_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha1_digest_set_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha1_digest_set_non_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha256_digest_set_no_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha256_digest_set_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha256_digest_set_non_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha384_digest_set_no_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha384_digest_set_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha384_digest_set_non_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha512_digest_set_no_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha512_digest_set_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_mtree_digests_sha512_digest_set_non_empty_data · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_option_missing_value · SKIP (exit 2)</p><pre>  Assertions checked:      24
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      24
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_xar · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_xar_entry_trunc · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_xar_unregister · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_xar_empty · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_xar_fflags · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_zip_winzip_aes128_encryption · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_zip_winzip_aes256_encryption · SKIP (exit 2)</p><pre>  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      12
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_zip_compression_zstd · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_zip_windows_path · FAIL (exit 139)</p><pre>...
+
+If tests fail or crash, details will be in:
+   /tmp/libarchive_test.2026-11-03T07.14.13-000
+
+Reference files will be read from: /tests/libarchive/src/libarchive/test
+Exercising: PPLOG signal 11; core file: libarchive_test.core
+slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
+slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
+slog2: Nov 03 05:48:14.865                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
+slog2: Nov 03 05:48:15.047                  dhcpcd.221199                 slog*     0  &lt;30&gt;Nov 03 05:48:15 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
+slog2: Nov 03 05:48:15.173                  dhcpcd.221199                 slog      0  &lt;27&gt;Nov 03 05:48:15 dhcpcd[225297-1]: no valid interfaces found</pre><p class="mono">libarchive_test_xattr_platform · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_zip_filename_encoding_UTF8 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_zip_filename_encoding_KOI8R · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_zip_filename_encoding_ru_RU_CP1251 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_zip_filename_encoding_Russian_Russia · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_zip_filename_encoding_EUCJP · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_zip_filename_encoding_CP932 · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_zip_filename_encoding_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">libarchive_test_zip_filename_encoding_fail_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcat_test_empty_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:      30
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      30
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcat_test_empty_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      28
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      28
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcat_test_expand_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:      74
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      74
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcat_test_expand_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      66
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      66
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_basic · FAIL (exit 1)</p><pre>  Assertions checked:      61
+  Assertions failed:       30
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  1: test_basic (30 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.43.40-000
+</pre><p class="mono">bsdtar_test_copy · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:287: r != 0
+   Description: Error invoking &quot;&quot;/tests/libarchive/build/bin/bsdtar&quot; cf archive  --format pax&quot;
+      r=256 (0x100, 0400)
+      0=0 (0x0, 00)
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
+...
+
+Failing tests:
+  2: test_copy (4459 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.43.42-000
+</pre><p class="mono">bsdtar_test_extract_tar_grz · SKIP (exit 2)</p><pre>  Assertions checked:     222
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     222
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_extract_tar_lrz · SKIP (exit 2)</p><pre>  Assertions checked:     329
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     329
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_extract_tar_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:     264
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     264
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_extract_tar_lzo · SKIP (exit 2)</p><pre>  Assertions checked:     349
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     349
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_extract_tar_zstd · SKIP (exit 2)</p><pre>  Assertions checked:     189
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     189
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_format_newc · FAIL (exit 1)</p><pre>  Assertions checked:      35
+  Assertions failed:        7
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  18: test_format_newc (7 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.16-000
+</pre><p class="mono">bsdtar_test_missing_file · FAIL (exit 1)</p><pre>  Assertions checked:      17
+  Assertions failed:        2
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  22: test_missing_file (2 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.21-000
+</pre><p class="mono">bsdtar_test_option_C_upper · FAIL (exit 1)</p><pre>  Assertions checked:      90
+  Assertions failed:       10
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  23: test_option_C_upper (10 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.23-000
+</pre><p class="mono">bsdtar_test_option_H_upper · FAIL (exit 1)</p><pre>  Assertions checked:      59
+  Assertions failed:       31
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  25: test_option_H_upper (31 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.28-000
+</pre><p class="mono">bsdtar_test_option_L_upper · FAIL (exit 1)</p><pre>  Assertions checked:      59
+  Assertions failed:       27
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  26: test_option_L_upper (27 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.30-000
+</pre><p class="mono">bsdtar_test_option_O_upper · FAIL (exit 1)</p><pre>  Assertions checked:      54
+  Assertions failed:        9
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  27: test_option_O_upper (9 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.32-000
+</pre><p class="mono">bsdtar_test_option_T_upper · FAIL (exit 1)</p><pre>  Assertions checked:      86
+  Assertions failed:       23
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  29: test_option_T_upper (23 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.37-000
+</pre><p class="mono">bsdtar_test_option_U_upper · FAIL (exit 1)</p><pre>  Assertions checked:     120
+  Assertions failed:       19
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  30: test_option_U_upper (19 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.40-000
+</pre><p class="mono">bsdtar_test_option_X_upper · FAIL (exit 1)</p><pre>  Assertions checked:     119
+  Assertions failed:       23
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  31: test_option_X_upper (23 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.42-000
+</pre><p class="mono">bsdtar_test_option_a · FAIL (exit 1)</p><pre>      systemf(&quot;%s --auto-compress -cf test7.tar.Z f 2&gt;test7.err&quot;, testprog)=256 (0x100, 0400)
+0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
+0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
+0050 20 65 72 72 6f 72 73 0a                          errors.
+
+...
+
+Failing tests:
+  32: test_option_a (15 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.44-000
+</pre><p class="mono">bsdtar_test_option_acls · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_b · FAIL (exit 1)</p><pre>  Tests run:                1
+  Assertions checked:      29
+  Assertions failed:        9
+  Skips reported:           0
+
+...
+
+Failing tests:
+  34: test_option_b (9 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.48-000
+</pre><p class="mono">bsdtar_test_option_b64encode · FAIL (exit 1)</p><pre>  Assertions checked:      16
+  Assertions failed:        2
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  35: test_option_b64encode (2 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.52-000
+</pre><p class="mono">bsdtar_test_option_exclude · FAIL (exit 1)</p><pre>  Assertions checked:      98
+  Assertions failed:       16
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  36: test_option_exclude (16 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.53-000
+</pre><p class="mono">bsdtar_test_option_exclude_vcs · FAIL (exit 1)</p><pre>  Assertions checked:     232
+  Assertions failed:       41
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  37: test_option_exclude_vcs (41 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.57-000
+</pre><p class="mono">bsdtar_test_option_fflags · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_gid_gname · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:62: data + 116 != &quot;000021  &quot;
+      size 8 = 8
+      Dump of data + 116
+  Assertions checked:      34
+  Assertions failed:       14
+...
+
+Failing tests:
+  39: test_option_gid_gname (14 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.00-000
+</pre><p class="mono">bsdtar_test_option_group · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:61: data + 116 != &quot;000021  &quot;
+      size 8 = 8
+      Dump of data + 116
+  Assertions checked:      29
+  Assertions failed:       12
+...
+
+Failing tests:
+  40: test_option_group (12 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.03-000
+</pre><p class="mono">bsdtar_test_option_grzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_t · FAIL (exit 1)</p><pre>  Assertions checked:      33
+  Assertions failed:        4
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  42: test_option_ignore_zeros_mode_t (4 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.06-000
+</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_x · FAIL (exit 1)</p><pre>  Assertions checked:      30
+  Assertions failed:        2
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  43: test_option_ignore_zeros_mode_x (2 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.09-000
+</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_c · FAIL (exit 1)</p><pre>  Assertions checked:      34
+  Assertions failed:        4
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  44: test_option_ignore_zeros_mode_c (4 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.10-000
+</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_r · FAIL (exit 1)</p><pre>  Assertions checked:      34
+  Assertions failed:        4
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  45: test_option_ignore_zeros_mode_r (4 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.11-000
+</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_u · FAIL (exit 1)</p><pre>  Assertions checked:      34
+  Assertions failed:        4
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  46: test_option_ignore_zeros_mode_u (4 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.13-000
+</pre><p class="mono">bsdtar_test_option_j · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_k · FAIL (exit 1)</p><pre>  Assertions checked:      67
+  Assertions failed:       11
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  48: test_option_k (11 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.16-000
+</pre><p class="mono">bsdtar_test_option_lrzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_lzma · FAIL (exit 1)</p><pre>  Assertions checked:      11
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  52: test_option_lzma (1 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.22-000
+</pre><p class="mono">bsdtar_test_option_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_mode · FAIL (exit 1)</p><pre>  Assertions checked:      30
+  Assertions failed:        6
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  54: test_option_mode (6 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.25-000
+</pre><p class="mono">bsdtar_test_option_mtime · FAIL (exit 1)</p><pre>  Assertions checked:      47
+  Assertions failed:       11
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  55: test_option_mtime (11 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.27-000
+</pre><p class="mono">bsdtar_test_option_n · FAIL (exit 1)</p><pre>  Assertions checked:      62
+  Assertions failed:       17
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  56: test_option_n (17 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.30-000
+</pre><p class="mono">bsdtar_test_option_newer_than · FAIL (exit 1)</p><pre>  Assertions checked:      46
+  Assertions failed:        6
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  57: test_option_newer_than (6 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.33-000
+</pre><p class="mono">bsdtar_test_option_nodump · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_older_than · FAIL (exit 1)</p><pre>  Assertions checked:      50
+  Assertions failed:        6
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  59: test_option_older_than (6 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.38-000
+</pre><p class="mono">bsdtar_test_option_owner · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:61: data + 108 != &quot;177143  &quot;
+      size 8 = 8
+      Dump of data + 108
+  Assertions checked:      29
+  Assertions failed:       12
+...
+
+Failing tests:
+  60: test_option_owner (12 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.41-000
+</pre><p class="mono">bsdtar_test_option_q · FAIL (exit 1)</p><pre>  Assertions checked:      27
+  Assertions failed:        6
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  62: test_option_q (6 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.44-000
+</pre><p class="mono">bsdtar_test_option_r · FAIL (exit 1)</p><pre>  Assertions checked:      15
+  Assertions failed:        3
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  63: test_option_r (3 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.46-000
+</pre><p class="mono">bsdtar_test_option_s · SKIP (exit 2)</p><pre>  Assertions checked:      27
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      27
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_safe_writes · FAIL (exit 1)</p><pre>  Assertions checked:      54
+  Assertions failed:        7
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  65: test_option_safe_writes (7 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.49-000
+</pre><p class="mono">bsdtar_test_option_uid_uname · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:63: data + 265 != &quot;foofoofoo &quot;
+      size 10 = 10
+      Dump of data + 265
+  Assertions checked:      34
+  Assertions failed:       14
+...
+
+Failing tests:
+  67: test_option_uid_uname (14 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.51-000
+</pre><p class="mono">bsdtar_test_option_uuencode · FAIL (exit 1)</p><pre>  Assertions checked:      16
+  Assertions failed:        2
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  68: test_option_uuencode (2 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.54-000
+</pre><p class="mono">bsdtar_test_option_xattrs · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_xz · FAIL (exit 1)</p><pre>  Assertions checked:      11
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  70: test_option_xz (1 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.56-000
+</pre><p class="mono">bsdtar_test_option_z · FAIL (exit 1)</p><pre>  Assertions checked:      11
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  71: test_option_z (1 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.58-000
+</pre><p class="mono">bsdtar_test_option_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_patterns · FAIL (exit 1)</p><pre>  Assertions checked:   65635
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  73: test_patterns (1 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.46.00-000
+</pre><p class="mono">bsdtar_test_stdio · FAIL (exit 1)</p><pre>  Assertions checked:      46
+  Assertions failed:       11
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  75: test_stdio (11 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.46.05-000
+</pre><p class="mono">bsdtar_test_strip_components · FAIL (exit 1)</p><pre>  Assertions checked:      51
+  Assertions failed:        8
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  76: test_strip_components (8 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.46.08-000
+</pre><p class="mono">bsdtar_test_symlink_dir · FAIL (exit 1)</p><pre>  Assertions checked:      89
+  Assertions failed:       16
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  77: test_symlink_dir (16 failures)
+
+Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.46.09-000
+</pre><p class="mono">bsdtar_test_windows · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_basic · FAIL (exit 1)</p><pre>  Assertions checked:     138
+  Assertions failed:        7
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  1: test_basic (7 failures)
+
+Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.46.15-000
+</pre><p class="mono">bsdcpio_test_extract_cpio_grz · SKIP (exit 2)</p><pre>  Assertions checked:     210
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     210
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_extract_cpio_lrz · SKIP (exit 2)</p><pre>  Assertions checked:     270
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     270
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_extract_cpio_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:     229
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     229
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_extract_cpio_lzo · SKIP (exit 2)</p><pre>  Assertions checked:     324
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     324
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_extract_cpio_zstd · SKIP (exit 2)</p><pre>  Assertions checked:     172
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     172
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_option_grzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_option_lrzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_option_lz4 · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_option_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_option_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:      11
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdcpio_test_passthrough_reverse · FAIL (exit 1)</p><pre>  Assertions checked:      21
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  49: test_passthrough_reverse (1 failures)
+
+Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.47.24-000
+</pre><p class="mono">bsdunzip_test_windows_paths · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre><p class="mono">bsdunzip_test_I · SKIP (exit 2)</p><pre>  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:       9
+  Assertions failed:        0
+  Skips reported:           1
+1 tests passed, no failures</pre></details><details><summary>libcbor</summary><p class="muted">aarch64le · <a href="https://github.com/PJK/libcbor.git">https://github.com/PJK/libcbor.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/PJK/libcbor.git">https://github.com/PJK/libcbor.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+</div></details><details><summary>libcoap</summary><p class="muted">aarch64le · <a href="https://github.com/obgm/libcoap.git">https://github.com/obgm/libcoap.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">396 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/obgm/libcoap.git">https://github.com/obgm/libcoap.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">378 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div></details><details><summary>libzmq</summary><p class="muted">aarch64le · <a href="https://github.com/zeromq/libzmq.git">https://github.com/zeromq/libzmq.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">configure failed</span></p>
+<p>Change: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/zeromq/libzmq.git">https://github.com/zeromq/libzmq.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">configure failed</span></p>
+<p>Change: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p><b>Tests that did not pass on the target</b></p><p class="mono">test_system · FAIL (exit 1)</p><pre>2 Tests 1 Failures 0 Ignored 
+FAIL
+...
+W: Only able to create 995 sockets on this box
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_system.cpp:69:test_max_sockets:FAIL: I: Tune your system to increase maximum allowed file handles\nI: Run &#x27;ulimit -n 1200&#x27; in bash\n
+
+-----------------------
+2 Tests 1 Failures 0 Ignored 
+FAIL</pre><p class="mono">test_hwm_pubsub · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
+
+-----------------------
+10 Tests 1 Failures 0 Ignored 
+FAIL
+...
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:132:test_blocking_ipc:FAIL: Expected 0 to be greater than 0. sent = 6000, received = 0
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
+
+-----------------------
+10 Tests 1 Failures 0 Ignored 
+FAIL</pre><p class="mono">test_router_mandatory · TIMEOUT (exit 137)</p><pre>...</pre><p class="mono">test_shutdown_stress · TIMEOUT (exit 137)</p><pre>...</pre><p class="mono">test_monitor · TIMEOUT (exit 137)</p><pre>WARNING: Forced closure of 4 sockets, this is an implementation error unless the test case failed
+...
+WARNING: Forced closure of 4 sockets, this is an implementation error unless the test case failed</pre><p class="mono">test_reconnect_ivl · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:19:test_reconnect_ivl_ipc:FAIL: zmq_unbind (sb_, my_endpoint_) failed, errno = 2 (No such file or directory)
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
+3 Tests 1 Failures 0 Ignored 
+FAIL
+...
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
+
+-----------------------
+3 Tests 1 Failures 0 Ignored 
+FAIL</pre><p class="mono">test_socks · TIMEOUT (exit 137)</p><pre>...
+socks_server: bound to: tcp://127.0.0.1:58636
+push_server: bound to: tcp://127.0.0.1:59798
+pull_client: use socks proxy: tcp://127.0.0.1:58636
+pull_client: connected to: tcp://127.0.0.1:59798
+push_server: sending 2 messages
+socks_server: delay basic auth socks server start</pre><p class="mono">test_connect_null_fuzzer · SKIP (exit 77)</p><pre>...</pre><p class="mono">test_bind_null_fuzzer · SKIP (exit 77)</p><pre>...</pre><p class="mono">test_connect_fuzzer · SKIP (exit 77)</p><pre>...</pre><p class="mono">test_bind_fuzzer · SKIP (exit 77)</p><pre>...</pre></details><details><summary>mbedtls</summary><p class="muted">aarch64le · <a href="https://github.com/Mbed-TLS/mbedtls.git">https://github.com/Mbed-TLS/mbedtls.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">394 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+<p>Change: replayed mbedtls.patch (failed: warning: recount: unexpected line: Submodule tf-psa-crypto contains modified content)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/Mbed-TLS/mbedtls.git">https://github.com/Mbed-TLS/mbedtls.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">394 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><div class="round"><p><b>Test triage 1</b> (claude-opus-5-5): <code>framework/scripts/generate_test_code.py</code> · tests passing on QNX 0 → 13 · <b class="ok">kept</b></p><details class="patch"><summary>Show patch</summary><pre>diff --git a/framework/scripts/generate_test_code.py b/framework/scripts/generate_test_code.py
+--- a/framework/scripts/generate_test_code.py
++++ b/framework/scripts/generate_test_code.py
+<span class="hunk">@@ -1097,8 +1097,10 @@ def read_code_from_input_files(platform_file, helpers_file,</span>
+         snippets[&#x27;test_common_helper_file&#x27;] = helpers_file
+         snippets[&#x27;test_common_helpers&#x27;] = help_f.read()
+         snippets[&#x27;test_platform_file&#x27;] = platform_file
+<span class="add">+        # Use &#x27;/&#x27; as separator: it works on every host and on targets</span>
+<span class="add">+        # (e.g. QNX) where the generated binary runs cross-compiled.</span>
+         snippets[&#x27;platform_code&#x27;] = platform_f.read().replace(
+<span class="del">-            &#x27;DATA_FILE&#x27;, out_data_file.replace(&#x27;\\&#x27;, &#x27;\\\\&#x27;))  # escape &#x27;\&#x27;</span>
+<span class="add">+            &#x27;DATA_FILE&#x27;, out_data_file.replace(&#x27;\\&#x27;, &#x27;/&#x27;))</span>
+ 
+ 
+ def write_test_source_file(template_file, c_file, snippets):</pre></details></div><div class="round"><p><b>Test triage 2</b> (claude-opus-5-5): <code>tf-psa-crypto/framework/scripts/generate_test_code.py</code> · tests passing on QNX 13 → 134 · <b class="ok">kept</b></p><details class="patch"><summary>Show patch</summary><pre>diff --git a/tf-psa-crypto/framework/scripts/generate_test_code.py b/tf-psa-crypto/framework/scripts/generate_test_code.py
+--- a/tf-psa-crypto/framework/scripts/generate_test_code.py
++++ b/tf-psa-crypto/framework/scripts/generate_test_code.py
+<span class="hunk">@@ -1097,8 +1097,10 @@ def read_code_from_input_files(platform_file, helpers_file,</span>
+         snippets[&#x27;test_common_helper_file&#x27;] = helpers_file
+         snippets[&#x27;test_common_helpers&#x27;] = help_f.read()
+         snippets[&#x27;test_platform_file&#x27;] = platform_file
+<span class="add">+        # Use &#x27;/&#x27; as separator: it works on every host and on targets</span>
+<span class="add">+        # (e.g. QNX) where the generated binary runs cross-compiled.</span>
+         snippets[&#x27;platform_code&#x27;] = platform_f.read().replace(
+<span class="del">-            &#x27;DATA_FILE&#x27;, out_data_file.replace(&#x27;\\&#x27;, &#x27;\\\\&#x27;))  # escape &#x27;\&#x27;</span>
+<span class="add">+            &#x27;DATA_FILE&#x27;, out_data_file.replace(&#x27;\\&#x27;, &#x27;/&#x27;))</span>
+ 
+ 
+ def write_test_source_file(template_file, c_file, snippets):</pre></details></div><p><b>Tests that did not pass on the target</b></p><p class="mono">psa_crypto.pbkdf2-suite · TIMEOUT (exit 137)</p><pre>...
+PSA key derivation: PBKDF2-HMAC(SHA-1), RFC6070 #4 ................ PASS
+PSA key derivation: PBKDF2-HMAC(SHA-256), RFC7914 #2 .............. PASS
+PSA key derivation: PBKDF2-AES-CMAC-PRF-128, inputs from RFC6070 #  PPTEST mbedtls psa_crypto.persistent-suite PASS rc=0</pre><p class="mono">psa_crypto.persistent-suite · FAIL (exit 1)</p><pre>...
+Failed to open test file: .\test_suite_psa_crypto.persistent.datax</pre><p class="mono">x509write-suite · FAIL (exit 1)</p><pre>  memcmp(buf, check_buf, pem_len - 1) == 0
+  at line 221, C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+Certificate Request check Server1, set_extension .................. FAILED
+  memcmp(buf, check_buf, pem_len - 1) == 0
+  at line 221, C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+...
+OID from numeric string - OID with maximum subidentifier .......... PASS
+OID from numeric string - OID with overflowing subidentifier ...... PASS
+
+----------------------------------------------------------------------------
+
+FAILED (62 / 96 tests (0 skipped))</pre></details><details><summary>msgpack-c</summary><p class="muted">aarch64le · <a href="https://github.com/msgpack/msgpack-c.git">https://github.com/msgpack/msgpack-c.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/msgpack/msgpack-c.git">https://github.com/msgpack/msgpack-c.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+</div></details><details><summary>nng</summary><p class="muted">aarch64le · <a href="https://github.com/nanomsg/nng.git">https://github.com/nanomsg/nng.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">2 errors</span></p>
+<p>Change: posix_udp.c: &lt;sys/errno.h&gt; -&gt; &lt;errno.h&gt;</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/nanomsg/nng.git">https://github.com/nanomsg/nng.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">2 errors</span></p>
+<p>Change: posix_udp.c: &lt;sys/errno.h&gt; -&gt; &lt;errno.h&gt;</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p><b>Tests that did not pass on the target</b></p><p class="mono">nng.core.aio_test · TIMEOUT (exit 137)</p><pre>Test sleep:</pre></details><details><summary>open62541</summary><p class="muted">aarch64le · <a href="https://github.com/open62541/open62541.git">https://github.com/open62541/open62541.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">75 errors</span></p>
+<p>Change: force-include project queue header open62541_queue.h</p>
+<p>Change: server_pubsub_subscribe_rt_state_machine.c: add &lt;netinet/in.h&gt;</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="bad">100 errors</span></p>
+<p>Change: empty stub archives for -lpthread, -lrt (functions are in QNX libc)</p>
+</div><div class="round"><p><b>Round 3</b> · <span class="bad">3608 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 4</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/open62541/open62541.git">https://github.com/open62541/open62541.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">75 errors</span></p>
+<p>Change: force-include project queue header open62541_queue.h</p>
+<p>Change: server_pubsub_subscribe_rt_state_machine.c: add &lt;netinet/in.h&gt;</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="bad">100 errors</span></p>
+<p>Change: empty stub archives for -lpthread, -lrt (functions are in QNX libc)</p>
+</div><div class="round"><p><b>Round 3</b> · <span class="bad">3512 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 4</b> · <span class="ok">built</span></p>
+</div></details><details><summary>osqp</summary><p class="muted">aarch64le · <a href="https://github.com/osqp/osqp.git">https://github.com/osqp/osqp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+<p>Change: replayed osqp.patch</p>
+</div><p class="muted">x86_64 · <a href="https://github.com/osqp/osqp.git">https://github.com/osqp/osqp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">18 errors</span></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+<p>AI patch 1 (claude-opus-5-5): <code>src/CMakeLists.txt</code> · <b class="ok">kept</b></p>
+<details class="patch"><summary>Show patch</summary><pre>diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+<span class="hunk">@@ -61,7 +61,7 @@</span>
+ if(OSQP_ENABLE_INTERRUPT AND NOT OSQP_CUSTOM_INTERRUPT)
+   if(IS_WINDOWS)
+     target_sources(OSQPLIB PRIVATE &quot;${CMAKE_CURRENT_SOURCE_DIR}/interrupt_windows.c&quot;)
+<span class="del">-  elseif(IS_MAC OR IS_LINUX)</span>
+<span class="add">+  elseif(IS_MAC OR IS_LINUX OR CMAKE_SYSTEM_NAME STREQUAL &quot;QNX&quot;)</span>
+     target_sources(OSQPLIB PRIVATE &quot;${CMAKE_CURRENT_SOURCE_DIR}/interrupt_unix.c&quot;)
+   endif()
+ endif()</pre></details>
+</div><div class="round"><p><b>Test triage 1</b> (claude-opus-5-5): <code>tests/CMakeLists.txt</code> · tests passing on QNX 1 → 3 · <b class="ok">kept</b></p><details class="patch"><summary>Show patch</summary><pre>diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+<span class="hunk">@@ -150,8 +150,49 @@</span>
+ 
+<span class="del">-add_compile_definitions(CODEGEN_DIR=&quot;${CMAKE_CURRENT_BINARY_DIR}/testcodes/&quot;)</span>
+<span class="del">-add_compile_definitions(CODEGEN1_DIR=&quot;${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded1/&quot;)</span>
+<span class="del">-add_compile_definitions(CODEGEN2_DIR=&quot;${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded2/&quot;)</span>
+<span class="add">+if(CMAKE_CROSSCOMPILING)</span>
+<span class="add">+  # The build-host binary directory does not exist on the target, so the</span>
+<span class="add">+  # codegen output goes to a directory relative to the test&#x27;s working directory.</span>
+<span class="add">+  set(OSQP_TEST_CODEGEN_BASE &quot;testcodes/&quot;)</span>
+<span class="add">+else()</span>
+<span class="add">+  set(OSQP_TEST_CODEGEN_BASE &quot;${CMAKE_CURRENT_BINARY_DIR}/testcodes/&quot;)</span>
+<span class="add">+endif()</span>
+<span class="add">+</span>
+<span class="add">+add_compile_definitions(CODEGEN_DIR=&quot;${OSQP_TEST_CODEGEN_BASE}&quot;)</span>
+<span class="add">+add_compile_definitions(CODEGEN1_DIR=&quot;${OSQP_TEST_CODEGEN_BASE}embedded1/&quot;)</span>
+<span class="add">+add_compile_definitions(CODEGEN2_DIR=&quot;${OSQP_TEST_CODEGEN_BASE}embedded2/&quot;)</span>
+<span class="add">+</span>
+<span class="add">+if(CMAKE_CROSSCOMPILING AND NOT WIN32)</span>
+<span class="add">+  # On the target, create the codegen output directories before the tests run.</span>
+<span class="add">+  set(OSQP_TEST_CODEGEN_DIRS_SRC &quot;${CMAKE_CURRENT_BINARY_DIR}/osqp_test_codegen_dirs.cpp&quot;)</span>
+<span class="add">+  file(WRITE &quot;${OSQP_TEST_CODEGEN_DIRS_SRC}&quot; [=[</span>
+<span class="add">+#include &lt;sys/types.h&gt;</span>
+<span class="add">+#include &lt;sys/stat.h&gt;</span>
+<span class="add">+</span>
+<span class="add">+namespace {</span>
+<span class="add">+struct OsqpTestCodegenDirs {</span>
+<span class="add">+  OsqpTestCodegenDirs() {</span>
+<span class="add">+    (void)mkdir(CODEGEN_DIR, 0777);</span>
+<span class="add">+    (void)mkdir(CODEGEN1_DIR, 0777);</span>
+<span class="add">+    (void)mkdir(CODEGEN2_DIR, 0777);</span>
+<span class="add">+  }</span>
+<span class="add">+};</span>
+<span class="add">+OsqpTestCodegenDirs osqp_test_codegen_dirs_instance;</span>
+<span class="add">+}</span>
+<span class="add">+]=])</span>
+<span class="add">+</span>
+<span class="add">+  function(osqp_add_test_codegen_dirs_source)</span>
+<span class="add">+    foreach(_osqp_tgt osqp_tester osqp_tester_custom_memory)</span>
+<span class="add">+      if(TARGET ${_osqp_tgt})</span>
+<span class="add">+        target_sources(${_osqp_tgt} PRIVATE &quot;${OSQP_TEST_CODEGEN_DIRS_SRC}&quot;)</span>
+<span class="add">+      endif()</span>
+<span class="add">+    endforeach()</span>
+<span class="add">+  endfunction()</span>
+<span class="add">+</span>
+<span class="add">+  cmake_language(DEFER CALL osqp_add_test_codegen_dirs_source)</span>
+<span class="add">+endif()</span>
+ 
+ option(OSQP_GENERATE_COVERAGE_REPORT &quot;Generate an HTML coverage report&quot;)</pre></details></div></details><details><summary>paho-mqtt-c</summary><p class="muted">aarch64le · <a href="https://github.com/eclipse-paho/paho.mqtt.c.git">https://github.com/eclipse-paho/paho.mqtt.c.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">43 errors</span></p>
+<p>Change: force-include PortPilot endian helpers (htobe32, be32toh, ...)</p>
+<p>Change: empty stub archives for -lpthread (functions are in QNX libc)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/eclipse-paho/paho.mqtt.c.git">https://github.com/eclipse-paho/paho.mqtt.c.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">43 errors</span></p>
+<p>Change: force-include PortPilot endian helpers (htobe32, be32toh, ...)</p>
+<p>Change: empty stub archives for -lpthread (functions are in QNX libc)</p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div></details><details><summary>ruckig</summary><p class="muted">aarch64le · <a href="https://github.com/pantor/ruckig.git">https://github.com/pantor/ruckig.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">417 errors</span></p>
+<p>Catalogue rules: <code>sockets, doctest-std-headers</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/pantor/ruckig.git">https://github.com/pantor/ruckig.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">417 errors</span></p>
+<p>Catalogue rules: <code>sockets, doctest-std-headers</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div></details><details><summary>spdlog</summary><p class="muted">aarch64le · <a href="https://github.com/gabime/spdlog.git">https://github.com/gabime/spdlog.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">4 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/gabime/spdlog.git">https://github.com/gabime/spdlog.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">4 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div></details><details><summary>uriparser</summary><p class="muted">aarch64le · <a href="https://github.com/uriparser/uriparser.git">https://github.com/uriparser/uriparser.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">2 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/uriparser/uriparser.git">https://github.com/uriparser/uriparser.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">2 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div></details><details><summary>wolfssl</summary><p class="muted">aarch64le · <a href="https://github.com/wolfSSL/wolfssl.git">https://github.com/wolfSSL/wolfssl.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">197 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/wolfSSL/wolfssl.git">https://github.com/wolfSSL/wolfssl.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">208 errors</span></p>
+<p>Catalogue rules: <code>sockets</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><div class="round"><p><b>Test triage 1</b> (claude-opus-5-5): <code>wolfcrypt/test/test_paths.h.in</code> · tests passing on QNX 0 → 1 · <b class="ok">kept</b></p><details class="patch"><summary>Show patch</summary><pre>diff --git a/wolfcrypt/test/test_paths.h.in b/wolfcrypt/test/test_paths.h.in
+--- a/wolfcrypt/test/test_paths.h.in
++++ b/wolfcrypt/test/test_paths.h.in
+<span class="hunk">@@ -19,6 +19,15 @@</span>
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA
+  */
+ 
+ #ifndef NO_FILESYSTEM
+<span class="add">+/* When cross-compiling for QNX the configure-time absolute source/build</span>
+<span class="add">+ * directories belong to the build host and do not exist on the target.</span>
+<span class="add">+ * The tests are run from the wolfSSL home dir on the target, so use</span>
+<span class="add">+ * paths relative to the current working directory. */</span>
+<span class="add">+#if !defined(CERT_REL_PREFIX) &amp;&amp; \</span>
+<span class="add">+    (defined(__QNX__) || defined(__QNXNTO__))</span>
+<span class="add">+    #define CERT_REL_PREFIX &quot;./&quot;</span>
+<span class="add">+#endif</span>
+<span class="add">+</span>
+ #ifdef CERT_REL_PREFIX
+     #define CERT_PREFIX CERT_REL_PREFIX
+     #ifndef NO_WRITE_TEMP_FILES</pre></details></div><div class="round"><p><b>Test triage 2</b> (claude-opus-5-5): <code>no patch</code> · tests passing on QNX ? → ? · <b class="bad">UNFIXABLE</b></p></div></details><details><summary>yaml-cpp</summary><p class="muted">aarch64le · <a href="https://github.com/jbeder/yaml-cpp.git">https://github.com/jbeder/yaml-cpp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">1 errors</span></p>
+<p>Catalogue rules: <code>signed-char</code></p>
+</div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
+</div><p class="muted">x86_64 · <a href="https://github.com/jbeder/yaml-cpp.git">https://github.com/jbeder/yaml-cpp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
+</div><div class="round"><p><b>Test triage 1</b> (claude-opus-5-5): <code>no patch</code> · tests passing on QNX ? → ? · <b class="bad">UNFIXABLE</b></p></div><p><b>Tests that did not pass on the target</b></p><p class="mono">yaml-cpp::test · FAIL (exit 1)</p><pre>[       OK ] LoadNodeTest.BlockCRNLEncoded (3 ms)
+[ RUN      ] LoadNodeTest.BlockCREncoded
+C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/yaml-cpp/test/node/node_test.cpp:672: Failure
+Expected equality of these values:
+  x
+...
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] NodeTest.FloatingPrecisionDouble
+
+ 1 FAILED TEST
+  YOU HAVE 8 DISABLED TESTS
+</pre></details>
+<footer>Generated 2026-11-03 08:08 UTC from runs/*/report_*.json and runs/target_*.json.</footer>
+</main></body></html>

@@ -1,0 +1,13 @@
+diff --git a/src/platform/posix/posix_udp.c b/src/platform/posix/posix_udp.c
+index c0357b5..f052ce4 100644
+--- a/src/platform/posix/posix_udp.c
++++ b/src/platform/posix/posix_udp.c
+@@ -11,7 +11,7 @@
+ #include "core/nng_impl.h"
+ #include "nng/nng.h"
+ #include "platform/posix/posix_impl.h"
+-#include <sys/errno.h>
++#include <errno.h>
+ #include <sys/types.h>
+ 
+ #ifdef NNG_PLATFORM_POSIX

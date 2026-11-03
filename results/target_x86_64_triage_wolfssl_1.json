@@ -1,0 +1,86 @@
+{
+ "cpu": "x86_64",
+ "tag": "triage_wolfssl_1",
+ "libraries": [
+  "wolfssl"
+ ],
+ "finished": true,
+ "boot": "PPBOOT exited_by_itself=True",
+ "staged": [
+  {
+   "name": "wolfssl",
+   "tests": 2,
+   "disabled": []
+  }
+ ],
+ "counts": {
+  "wolfssl": {
+   "TIMEOUT": 1,
+   "PASS": 1
+  }
+ },
+ "results": [
+  {
+   "library": "wolfssl",
+   "test": "unit_test",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "error    test passed!",
+    "MEMORY   test passed!",
+    "octets   test passed!",
+    "base64   test passed!",
+    "  Begin Group: error",
+    "    422: test_wc_GetErrorStringDecisionCoverage             : passed (  0.00068)",
+    "    423: test_wc_ErrorStringDecisionCoverage                : passed (  0.00014)",
+    "  End Group  : error",
+    "  Begin Group: random",
+    "    424: test_wc_InitRng                                    : passed (  0.00442)",
+    "    425: test_wc_RNG_GenerateBlock_Reseed                   : skipped",
+    "    771: test_wc_falcon_error_paths                         : skipped",
+    "    772: test_wc_FalconDecisionCoverage                     : skipped",
+    "    773: test_falcon_cb_free                                : skipped",
+    "  End Group  : falcon",
+    "    921: test_wc_ParseCert_Error                            : passed (  0.00065)",
+    "    922: test_MakeCertWithPathLen                           : skipped",
+    "    923: test_PathLenSelfIssued                             : skipped",
+    "    924: test_PathLenSelfIssuedAllowed                      : skipped",
+    "   1164: test_wolfSSL_EVP_Cipher_des_cbc_error              : skipped",
+    "   1165: test_evp_cipher_pkcs7_pad_zero                     : skipped",
+    "   1166: test_evp_cipher_aead_aad_overflow                  : skipped",
+    "  End Group  : evp_cipher",
+    "   1228: test_wolfSSL_ERR_peek_last_error_line              : skipped",
+    "   1229: test_wolfSSL_ERR_print_errors_cb                   : skipped",
+    "   1230: test_wolfSSL_GetLoggingCb                          : passed (  0.00015)",
+    "   1231: test_WOLFSSL_ERROR_MSG                             : skipped",
+    "   1232: test_wc_ERR_remove_state                           : skipped",
+    "   1233: test_wc_ERR_print_errors_fp                        : skipped",
+    "   1234: test_wolfSSL_configure_args                        : skipped",
+    "   1235: test_wolfSSL_sk_SSL_CIPHER                         : skipped",
+    "   1236: test_wolfSSL_SSL_CIPHER_find                       : skipped",
+    "   1470: test_error_queue_per_thread                        : skipped",
+    "   1471: test_wolfSSL_ERR_put_error                         : skipped",
+    "   1472: test_wolfSSL_ERR_get_error_order                   : skipped",
+    "   1473: test_wolfSSL_ERR_GET_REASON_version_mismatch       : skipped",
+    "   1474: test_wolfSSL_ERR_print_errors                      : skipped",
+    "  Begin Group: ossl_obj",
+    "   1475: test_OBJ_NAME_do_all                               : skipped",
+    "   1476: test_wolfSSL_OBJ                                   : skipped",
+    "...",
+    "memio client error = -313, received alert fatal error",
+    "memio client error = -313, received alert fatal error",
+    "memio client error = -313, received alert fatal error",
+    "memio client error = -313, received alert fatal error",
+    "memio client error = -313, received alert fatal error",
+    "memio client error = -313, received alert fatal error"
+   ]
+  },
+  {
+   "library": "wolfssl",
+   "test": "wolfcrypttest",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "name": "paho-mqtt-c",
+ "url": "https://github.com/eclipse-paho/paho.mqtt.c.git",
+ "ref": "v1.3.16",
+ "subdir": ".",
+ "cmake_args": [
+  "-DPAHO_BUILD_SAMPLES=ON",
+  "-DPAHO_WITH_SSL=OFF"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE",
+    "-include",
+    "C:/Users/<user>/Documents/portpilot-work/pp/portpilot_compat/portpilot_endian.h"
+   ],
+   "ldflags": [
+    "-LC:/Users/<user>/Documents/portpilot-work/pp/qnx_stubs/aarch64le"
+   ],
+   "cmake_args": [
+    "-DPAHO_BUILD_SAMPLES=ON",
+    "-DPAHO_WITH_SSL=OFF"
+   ],
+   "fixes": [
+    "force-include PortPilot endian helpers (htobe32, be32toh, ...)",
+    "empty stub archives for -lpthread (functions are in QNX libc)"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE",
+    "-include",
+    "C:/Users/<user>/Documents/portpilot-work/pp/portpilot_compat/portpilot_endian.h"
+   ],
+   "ldflags": [
+    "-LC:/Users/<user>/Documents/portpilot-work/pp/qnx_stubs/x86_64"
+   ],
+   "cmake_args": [
+    "-DPAHO_BUILD_SAMPLES=ON",
+    "-DPAHO_WITH_SSL=OFF"
+   ],
+   "fixes": [
+    "force-include PortPilot endian helpers (htobe32, be32toh, ...)",
+    "empty stub archives for -lpthread (functions are in QNX libc)"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

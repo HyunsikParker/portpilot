@@ -1,0 +1,37 @@
+{
+ "name": "json-c",
+ "url": "https://github.com/json-c/json-c.git",
+ "ref": "json-c-0.19-20260627",
+ "subdir": ".",
+ "cmake_args": [
+  "-DBUILD_TESTING=ON"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 1,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DBUILD_TESTING=ON"
+   ],
+   "fixes": []
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 1,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DBUILD_TESTING=ON"
+   ],
+   "fixes": []
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

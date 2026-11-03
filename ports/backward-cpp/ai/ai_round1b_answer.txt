@@ -1,0 +1,29 @@
+```diff
+diff --git a/backward.hpp b/backward.hpp
+--- a/backward.hpp
++++ b/backward.hpp
+@@ -432,6 +432,10 @@
+ } // namespace details
+ } // namespace backward
+ #endif // BACKWARD_ATLEAST_CXX11
++
++#if defined(__QNX__) && BACKWARD_HAS_UNWIND == 1
++#include <unwind.h>
++#endif
+ 
+ namespace backward {
+ namespace details {
+diff --git a/test/_test_main.cpp b/test/_test_main.cpp
+--- a/test/_test_main.cpp
++++ b/test/_test_main.cpp
+@@ -43,7 +43,9 @@
+ inline const char *getprogname() {
+   return GetModuleFileName(NULL, argv0, sizeof(argv0)) ? argv0 : NULL;
+ }
++#elif defined(__QNX__)
++#include <stdlib.h> // QNX libc provides getprogname()
+ #elif !defined(__APPLE__)
+ // N.B.  getprogname() is an Apple/BSD-ism.
+ // program_invocation_name is a GLIBC-ism, but it's also
+ //  supported by libmusl.
+```

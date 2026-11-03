@@ -1,0 +1,20 @@
+```diff
+diff --git a/cmake/DetermineTargetArchitecture.cmake b/cmake/DetermineTargetArchitecture.cmake
+--- a/cmake/DetermineTargetArchitecture.cmake
++++ b/cmake/DetermineTargetArchitecture.cmake
+@@ -26,6 +26,14 @@ function(determine_target_architecture FLAG)
+     else()
+       message(FATAL_ERROR "Failed to determine the MSVC target architecture: ${MSVC_C_ARCHITECTURE_ID}")
+     endif()
++  elseif(CMAKE_SYSTEM_NAME STREQUAL "QNX")
++    # qcc does not support -dumpmachine; use the toolchain's processor
++    set(ARCH "${CMAKE_SYSTEM_PROCESSOR}")
++    if (NOT ARCH)
++      message(FATAL_ERROR "Failed to determine the QNX target architecture")
++    endif()
++    # aarch64le -> aarch64, x86_64 unchanged
++    string(REGEX REPLACE "le$" "" ARCH "${ARCH}")
+   else()
+     execute_process(
+       COMMAND ${CMAKE_C_COMPILER} -dumpmachine
+```

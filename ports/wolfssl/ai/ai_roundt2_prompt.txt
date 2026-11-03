@@ -1,0 +1,130 @@
+You are porting the open-source project wolfssl (v5.9.4-stable) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- unit_test (TIMEOUT, exit 137)
+   1470: test_error_queue_per_thread                        : skipped
+   1471: test_wolfSSL_ERR_put_error                         : skipped
+   1472: test_wolfSSL_ERR_get_error_order                   : skipped
+   1473: test_wolfSSL_ERR_GET_REASON_version_mismatch       : skipped
+   1474: test_wolfSSL_ERR_print_errors                      : skipped
+  Begin Group: ossl_obj
+   1475: test_OBJ_NAME_do_all                               : skipped
+   1476: test_wolfSSL_OBJ                                   : skipped
+...
+memio client error = -313, received alert fatal error
+memio client error = -313, received alert fatal error
+memio client error = -313, received alert fatal error
+memio client error = -313, received alert fatal error
+memio client error = -313, received alert fatal error
+memio client error = -313, received alert fatal error
+
+Project code that prints or handles these messages:
+
+FILE tests\api.c:21275
+#endif /* WOLFSSL_HAVE_ERROR_QUEUE && OPENSSL_EXTRA */
+    return EXPECT_RESULT();
+}
+
+> static int test_wolfSSL_ERR_GET_REASON_version_mismatch(void)
+{
+    EXPECT_DECLS;
+#if defined(WOLFSSL_HAVE_ERROR_QUEUE) && defined(OPENSSL_EXTRA) && \
+    defined(WOLFSSL_TLS13) && !defined(WOLFSSL_NO_TLS12) && \
+FILE tests\api.c:42813
+    /* Can't memory test as callbacks use Assert. */
+    TEST_DECL(test_error_queue_per_thread),
+    TEST_DECL(test_wolfSSL_ERR_put_error),
+    TEST_DECL(test_wolfSSL_ERR_get_error_order),
+>     TEST_DECL(test_wolfSSL_ERR_GET_REASON_version_mismatch),
+#ifndef NO_BIO
+    TEST_DECL(test_wolfSSL_ERR_print_errors),
+#endif
+
+FILE tests\api\test_error.c:40
+ * return / copy a fixed "no support" string; the same calls still compile and
+ * return non-NULL, so this test is valid in both configurations (that is the
+ * NO_ERROR_STRINGS compiled-out path the coding-standard asks us to exercise).
+ */
+> int test_wc_GetErrorStringDecisionCoverage(void)
+{
+    EXPECT_DECLS;
+    int e;
+
+FILE tests\api\test_error.h:27
+#define WOLFCRYPT_TEST_ERROR_H
+
+#include <tests/api/api_decl.h>
+
+> int test_wc_GetErrorStringDecisionCoverage(void);
+int test_wc_ErrorStringDecisionCoverage(void);
+
+#define TEST_ERROR_DECLS                                                     \
+    TEST_DECL_GROUP("error", test_wc_GetErrorStringDecisionCoverage),        \
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+wolfcrypt\test\test_paths.h:40: #define CERT_PREFIX "C:/build-host/work/wolfssl/"
+wolfcrypt\test\test_paths.h:41: #define CERT_WRITE_TEMP_DIR "C:/build-host/work/build_wolfssl_x86_64/"
+
+wolfcrypt\test\test_paths.h is generated from wolfcrypt/test/test_paths.h.in in the source tree:
+/* wolfcrypt/test/test_paths.h
+ *
+ * Copyright (C) 2006-2026 wolfSSL Inc.
+ *
+ * This file is part of wolfSSL.
+ *
+ * wolfSSL is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * wolfSSL is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335, USA
+ */
+
+#ifndef NO_FILESYSTEM
+/* When cross-compiling for QNX the configure-time absolute source/build
+ * directories belong to the build host and do not exist on the target.
+ * The tests are run from the wolfSSL home dir on the target, so use
+ * paths relative to the current working directory. */
+#if !defined(CERT_REL_PREFIX) && \
+    (defined(__QNX__) || defined(__QNXNTO__))
+    #define CERT_REL_PREFIX "./"
+#endif
+
+#ifdef CERT_REL_PREFIX
+    #define CERT_PREFIX CERT_REL_PREFIX
+    #ifndef NO_WRITE_TEMP_FILES
+        #ifndef CERT_WRITE_TEMP_DIR
+            #define CERT_WRITE_TEMP_DIR "./"
+        #endif
+    #endif
+#else
+    #define CERT_PREFIX "@abs_top_srcdir@/"
+    #define CERT_WRITE_TEMP_DIR "@abs_top_builddir@/"
+#endif /* CERT_REL_PREFIX */
+#endif /* NO_FILESYSTEM */
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.

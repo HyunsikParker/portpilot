@@ -1,0 +1,45 @@
+You are porting the open-source project backward-cpp (v1.6) to QNX 8.0. The build still fails after these
+QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required).
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Build errors (paths relative to the project root) with the source around each one:
+
+--- backward.hpp:816: error: '_Unwind_Backtrace' was not declared in this scope
+  804  #include <unwind.h>
+  805  namespace backward {
+  806  #endif
+  807  
+  808  namespace details {
+  809  
+  810  template <typename F> class Unwinder {
+  811  public:
+  812    size_t operator()(F &f, size_t depth) {
+  813      _f = &f;
+  814      _index = -1;
+  815      _depth = depth;
+  816>     _Unwind_Backtrace(&this->backtrace_trampoline, this);
+  817      return static_cast<size_t>(_index);
+  818    }
+  819  
+  820  private:
+  821    F *_f;
+  822    ssize_t _index;
+  823    size_t _depth;
+  824  
+  825    static _Unwind_Reason_Code backtrace_trampoline(_Unwind_Context *ctx,
+  826                                                    void *self) {
+  827      return (static_cast<Unwinder *>(self))->backtrace(ctx);
+  828    }
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.

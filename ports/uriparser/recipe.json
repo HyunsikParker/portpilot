@@ -1,0 +1,48 @@
+{
+ "name": "uriparser",
+ "url": "https://github.com/uriparser/uriparser.git",
+ "ref": "uriparser-1.0.3",
+ "subdir": ".",
+ "cmake_args": [
+  "-DURIPARSER_BUILD_TESTS=OFF",
+  "-DURIPARSER_BUILD_DOCS=OFF"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DURIPARSER_BUILD_TESTS=OFF",
+    "-DURIPARSER_BUILD_DOCS=OFF"
+   ],
+   "fixes": [
+    "sockets"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DURIPARSER_BUILD_TESTS=OFF",
+    "-DURIPARSER_BUILD_DOCS=OFF"
+   ],
+   "fixes": [
+    "sockets"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

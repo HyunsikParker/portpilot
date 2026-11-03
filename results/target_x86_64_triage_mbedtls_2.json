@@ -1,0 +1,1547 @@
+{
+ "cpu": "x86_64",
+ "tag": "triage_mbedtls_2",
+ "libraries": [
+  "mbedtls"
+ ],
+ "finished": true,
+ "boot": "PPBOOT exited_by_itself=True",
+ "staged": [
+  {
+   "name": "mbedtls",
+   "tests": 148,
+   "disabled": []
+  }
+ ],
+ "counts": {
+  "mbedtls": {
+   "PASS": 134,
+   "FAIL": 12,
+   "TIMEOUT": 1
+  }
+ },
+ "results": [
+  {
+   "library": "mbedtls",
+   "test": "aes.cbc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "aes.cfb-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "aes.ctr-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "aes.ecb-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "aes.ofb-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "aes.rest-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "aes.xts-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "alignment-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "aria-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "asn1parse-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "asn1write-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "base64-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum.misc-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "Base test mbedtls_mpi_read_file #1 ................................ FAILED",
+    "  file != NULL",
+    "  at line 274, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_bignum.function",
+    "Test mbedtls_mpi_read_file #1 (Empty file) ........................ FAILED",
+    "  file != NULL",
+    "  at line 274, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_bignum.function",
+    "Test mbedtls_mpi_read_file #2 (Illegal input) ..................... FAILED",
+    "  file != NULL",
+    "  at line 274, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_bignum.function",
+    "Test mbedtls_mpi_read_file #3 (Input too big) ..................... FAILED",
+    "  file != NULL",
+    "  at line 274, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_bignum.function",
+    "Base test mbedtls_mpi_write_file #1 ............................... FAILED",
+    "  file_out != NULL",
+    "  at line 306, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_bignum.function",
+    "Test mbedtls_mpi_lsb: 0 (null) .................................... PASS",
+    "Test mbedtls_mpi_gen_prime (Safe with lower error rate) ........... PASS",
+    "Test mbedtls_mpi_gen_prime standard RSA #1 (lower error rate) ..... PASS",
+    "Test mbedtls_mpi_gen_prime standard RSA #2 (lower error rate) ..... PASS",
+    "Test bit getting (Value bit 25) ................................... PASS",
+    "Test bit getting (Larger but same limb) ........................... PASS",
+    "Test bit getting (Larger and non-existing limb) ................... PASS",
+    "FAILED (648 / 653 tests (1 skipped))",
+    "...",
+    "",
+    "PASS",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (648 / 653 tests (1 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum_core.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum_core.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum_mod.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum_mod.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum_mod_raw-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum_mod_raw.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "bignum_random-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "block_cipher-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "camellia-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "ccm-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "chacha20-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "chachapoly-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.aes-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.aria-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.camellia-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.ccm-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.chacha20-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.chachapoly-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.constant_time-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.gcm-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cipher.padding-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "cmac-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "common-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "config.crypto_combinations-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "config.psa_boolean-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "config.psa_combinations-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "constant_time-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "ctr_drbg-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "CTR_DRBG write/update seed file [#1] .............................. FAILED",
+    "  mbedtls_ctr_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 439, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_ctr_drbg.function",
+    "CTR_DRBG write/update seed file [#2] .............................. PASS",
+    "FAILED (293 / 294 tests (13 skipped))",
+    "...",
+    "Increment counter ff0000000001 .................................... PASS",
+    "Increment counter ff000000000001 .................................. PASS",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (293 / 294 tests (13 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "dispatch_transparent.dilithium_py-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "dispatch_transparent.key-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "dispatch_transparent.mldsa_multipart-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "dispatch_transparent.sign-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "ecdsa-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "ecjpake-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "ecp-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "ecp.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "entropy-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "gcm.aes128_de-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "gcm.aes128_en-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "gcm.aes192_de-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "gcm.aes192_en-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "gcm.aes256_de-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "gcm.aes256_en-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "gcm.camellia-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "gcm.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "hmac_drbg.misc-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "HMAC_DRBG write/update seed file SHA-1 [#1] ....................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA-1 [#2] ....................... PASS",
+    "HMAC_DRBG write/update seed file SHA-224 [#1] ..................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA-224 [#2] ..................... PASS",
+    "HMAC_DRBG write/update seed file SHA-256 [#1] ..................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA-256 [#2] ..................... PASS",
+    "HMAC_DRBG write/update seed file SHA-384 [#1] ..................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA-384 [#2] ..................... PASS",
+    "HMAC_DRBG write/update seed file SHA-512 [#1] ..................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA-512 [#2] ..................... PASS",
+    "HMAC_DRBG write/update seed file SHA3-224 [#1] .................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA3-224 [#2] .................... PASS",
+    "HMAC_DRBG write/update seed file SHA3-256 [#1] .................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA3-256 [#2] .................... PASS",
+    "HMAC_DRBG write/update seed file SHA3-384 [#1] .................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA3-384 [#2] .................... PASS",
+    "HMAC_DRBG write/update seed file SHA3-512 [#1] .................... FAILED",
+    "  mbedtls_hmac_drbg_write_seed_file(&ctx, path) == ret",
+    "  at line 143, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_hmac_drbg.function",
+    "HMAC_DRBG write/update seed file SHA3-512 [#2] .................... PASS",
+    "FAILED (28 / 37 tests (0 skipped))",
+    "...",
+    "",
+    "PASS",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (28 / 37 tests (0 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "hmac_drbg.no_reseed-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "hmac_drbg.nopr-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "hmac_drbg.pr-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "lmots-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "lms-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "md-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "generic MD5 Hash file #1 .......................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic MD5 Hash file #2 .......................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic MD5 Hash file #3 .......................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic MD5 Hash file #4 .......................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic RIPEMD160 Hash file #0 (from paper) ....................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic RIPEMD160 Hash file #1 .................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic RIPEMD160 Hash file #2 .................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic RIPEMD160 Hash file #3 .................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic RIPEMD160 Hash file #4 .................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "generic SHA3-224 Hash file #1 ..................................... FAILED",
+    "  0 == mbedtls_md_file(md_info, filename, output)",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "...",
+    "  at line 411, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_md.function",
+    "  lhs = 0x0000000000000000 = 0",
+    "  rhs = 0xffffffffffffae00 = -20992",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (271 / 316 tests (0 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "mdx-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "memory_buffer_alloc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "nist_kw-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "oid-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "pem-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "pk-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "Check pair #1 (EC, OK) ............................................ FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #2 (EC, bad) ........................................... FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #3 (RSA, OK) 2048 bit keys ............................. FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #4 (RSA, bad) .......................................... FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #5 (RSA vs EC) ......................................... FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #6 521 bit ec keys ..................................... FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #7 521 pub vs 256 prv bit ec keys ...................... FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #8 256 pub vs 521 prv bit ec keys ...................... FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #9 256 ec keys NIST vs brainpool ....................... FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #10 4096 pub vs 2048 prv bit rsa keys .................. FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #11 2048 pub vs 4096 prv bit rsa keys .................. FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "Check pair #12 (RSA, OK) 4096 bit keys ............................ FAILED",
+    "  mbedtls_pk_parse_public_keyfile(&pub, pub_file) == 0",
+    "  at line 1037, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "RSA hash_len overflow (size_t vs unsigned int) .................... PASS",
+    "PK get type from parsed key, RSA .................................. FAILED",
+    "  mbedtls_pk_parse_keyfile(&ctx, key_file, NULL) == 0",
+    "  at line 2202, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pk.function",
+    "...",
+    "PK size macro: MBEDTLS_PK_ECP_PRV_DER_MAX_BYTES: only curve is P-2  ----",
+    "   Unmet dependencies: 41 42 43 44 45 46 47 48 ",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (389 / 412 tests (12 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "pk.pk_can_do_psa-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "pkcs5-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "pkparse-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "Parse RSA Key #1 (No password when required) ...................... FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #2 (Correct password) ............................... FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #3 (Wrong password) ................................. FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #6 (AES-128 Encrypted) .............................. FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #7 (AES-192 Encrypted) .............................. FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #8 (AES-256 Encrypted) .............................. FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #11 (2048-bit, AES-128 Encrypted) ................... FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #12 (2048-bit, AES-192 Encrypted) ................... FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #13 (2048-bit, AES-256 Encrypted) ................... FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Parse RSA Key #16 (4096-bit, AES-128 Encrypted) ................... FAILED",
+    "  res == result",
+    "  at line 127, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkparse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "...",
+    "OneAsymmetricKey X25519, doesn't match masking requirements #2 .... PASS",
+    "OneAsymmetricKey X448, doesn't match masking requirements #3 ...... PASS",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (40 / 378 tests (4 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "pkwrite-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "Public key write check RSA ........................................ FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check RSA (DER) .................................. FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check RSA 4096 ................................... FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check RSA 4096 (DER) ............................. FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check EC 256 bits ................................ FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check EC 256 bits (DER) .......................... FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check EC 521 bits ................................ FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check EC 521 bits (DER) .......................... FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check EC Brainpool 512 bits ...................... FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Public key write check EC Brainpool 512 bits (DER) ................ FAILED",
+    "  mbedtls_pk_load_file(key_file, &check_buf, &check_buf_len) == 0",
+    "  at line 133, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tf-psa-crypto/tests/suites/test_suite_pkwrite.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "...",
+    "Export public key PSA - pk_copy_public_from_psa - RSA 4096 bits ... PASS",
+    "Export public key PSA - unpopulated PK context .................... PASS",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (13 / 60 tests (0 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "platform-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "platform_printf-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "platform_threading-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "platform_unix-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "platform_util-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "poly1305-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "pqcp_mldsa.dilithium_py-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "pqcp_mldsa.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto.concurrent-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto.pbkdf2-suite",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "...",
+    "PSA key derivation: PBKDF2-HMAC(SHA-1), RFC6070 #4 ................ PPTEST mbedtls psa_crypto.persistent-suite PASS rc=0"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto.pkcs1_v15_constant_time-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_attributes-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_constant_time-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_driver_wrappers-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_ecp-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_entropy-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_generate_key.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_hash-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_init-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_low_hash.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_memory-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_metadata-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_mldsa.dilithium_py-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_mldsa.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_mldsa.multipart-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_not_supported.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_not_supported.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_op_fail.generated-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_op_fail.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_pake-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_persistent_key-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_slot_management-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_storage_format.current-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_storage_format.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_storage_format.v0-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_util-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_crypto_xof-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "psa_its-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "random-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "rsa.constant_time-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "rsa-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "rsa.pkcs1_v15-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "rsa.pkcs1_v21-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "sha1-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "sha256-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "sha3.kat-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "sha3.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "sha3.multi-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "sha3.shake_py-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "sha512-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "tf_psa_crypto_version-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "config.mbedtls_boolean-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "config.tls_combinations-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "constant_time_hmac-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "debug-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "Debug print certificate #1 (RSA) .................................. FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 274, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_debug.function",
+    "Debug print certificate #1.1 (RSA) ................................ ----",
+    "Debug print certificate #2 (EC) ................................... FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 274, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_debug.function",
+    "Debug print certificate #2.1 (EC) ................................. ----",
+    "FAILED (29 / 31 tests (2 skipped))",
+    "...",
+    "Debug print certificate #2.1 (EC) ................................. ----",
+    "   Unmet dependencies: 7 ",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (29 / 31 tests (2 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "error-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "mps-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "net-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "pkcs7-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "PKCS7 Signed Data Parse Pass SHA256 #1 ............................ FAILED",
+    "  res == 0",
+    "  at line 65, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Signed Data Parse Pass SHA1 #2 .............................. FAILED",
+    "  res == 0",
+    "  at line 65, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Signed Data Parse Pass Without CERT #3 ...................... FAILED",
+    "  res == 0",
+    "  at line 65, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Signed Data Parse with zero signers ......................... FAILED",
+    "  res == 0",
+    "  at line 65, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Signed Data Parse reused object after multiple signers ...... FAILED",
+    "  mbedtls_pk_load_file(first_pkcs7_file, &first_pkcs7_buf, &first_buflen) == 0",
+    "  at line 93, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Signed Data Parse reused object from multiple signers to one  FAILED",
+    "  mbedtls_pk_load_file(first_pkcs7_file, &first_pkcs7_buf, &first_buflen) == 0",
+    "  at line 93, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Signed Data Parse Fail with multiple certs #4 ............... FAILED",
+    "  res == 0",
+    "  at line 65, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Signed Data Parse Fail with corrupted cert #5.0 ............. FAILED",
+    "  res == 0",
+    "  at line 65, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Parse Fail with Inlined Content Info #5.2 ................... FAILED",
+    "  res == 0",
+    "  at line 65, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "PKCS7 Signed Data Parse Fail with corrupted signer info #6 ........ FAILED",
+    "  res == 0",
+    "  at line 65, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_pkcs7.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "...",
+    "PKCS7 Parse Failure Invalid ASN1: Change tag 04 to 02 #793.0 ...... PASS",
+    "PKCS7 Parse Failure Invalid ASN1: Change length from 256 to 257 #7  PASS",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (780 / 818 tests (5 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "ssl-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "Message transport mock - socket read error ........................ PASS",
+    "Message transport mock - one-way interleaved sends/reads .......... PASS",
+    "Message transport mock - two-way interleaved sends/reads .......... PASS",
+    "Test mbedtls_endpoint sanity for the client ....................... PASS",
+    "Session serialization, save-load: no ticket, cert ................. FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &original, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Session serialization, save-load: small ticket, cert .............. FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &original, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Session serialization, save-load: large ticket, cert .............. FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &original, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Session serialization, load-save: no ticket, cert ................. FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &session, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2751, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Session serialization, load-save: small ticket, cert .............. FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &session, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2751, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Session serialization, load-save: large ticket, cert .............. FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &session, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2751, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Session serialization, save buffer size: no ticket, cert .......... FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &session, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2823, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Session serialization, save buffer size: small ticket, cert ....... FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &session, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2823, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "Session serialization, save buffer size: large ticket, cert ....... FAILED",
+    "  mbedtls_test_ssl_tls12_populate_session( &session, ticket_len, endpoint_type, crt_file) == 0",
+    "  at line 2823, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_ssl.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "...",
+    "TLS 1.3 EndOfEarlyData record boundary alignment enforcement ...... ----",
+    "   Unmet dependencies: 45 ",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (899 / 911 tests (146 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "ssl.records-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "ssl.tls-defrag-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "ssl_decrypt.misc-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "test_helpers-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "timing-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "version-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "x509_oid-suite",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "mbedtls",
+   "test": "x509parse-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "X509 CRT information #1 ........................................... FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information #1 (DER) ..................................... FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information #2 ........................................... FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information #2 (DER) ..................................... FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information #3 ........................................... FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information #3 (DER) ..................................... FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information MD5 Digest ................................... FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information SHA1 Digest .................................. FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information SHA224 Digest ................................ FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "X509 CRT information SHA256 Digest ................................ FAILED",
+    "  mbedtls_x509_crt_parse_file(&crt, crt_file) == 0",
+    "  at line 566, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509parse.function",
+    "  lhs = 0xffffffffffffc200 = -15872",
+    "...",
+    "OID get numeric string - overlong encoding ........................ PASS",
+    "OID get numeric string - overlong encoding, second subidentifier .. PASS",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (518 / 893 tests (58 skipped))"
+   ]
+  },
+  {
+   "library": "mbedtls",
+   "test": "x509write-suite",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "Certificate Request check Server1 SHA1 ............................ FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 SHA224 .......................... FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 SHA256 .......................... FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 SHA384 .......................... FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 SHA512 .......................... FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 MD5 ............................. FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 key_usage ....................... FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check opaque Server1 key_usage ................ FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 266, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 key_usage empty ................. FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 ns_cert_type .................... FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 ns_cert_type empty .............. FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1 key_usage + ns_cert_type ........ FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server5 ECDSA, key_usage ................ FAILED",
+    "  mbedtls_pk_parse_keyfile(&key, key_file, NULL) == 0",
+    "  at line 188, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function",
+    "Certificate Request check Server1, set_extension .................. FAILED",
+    "...",
+    "OID from numeric string - OID with maximum subidentifier .......... PASS",
+    "OID from numeric string - OID with overflowing subidentifier ...... PASS",
+    "",
+    "----------------------------------------------------------------------------",
+    "",
+    "FAILED (54 / 96 tests (0 skipped))"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+You are porting the open-source project osqp (v1.0.0) to QNX 8.0. The build still fails after these
+QNX fixes were applied: none.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+
+Compiler errors (paths relative to the project root) with the source around each one:
+
+Undefined symbols at link time: osqp_end_interrupt_listener, osqp_is_interrupted, osqp_start_interrupt_listener
+
+Where those symbols are defined, and the build-file lines that mention the defining files:
+DEF src\interrupt_unix.c:15: void osqp_start_interrupt_listener(void) {
+DEF src\interrupt_unix.c:25: void osqp_end_interrupt_listener(void) {
+DEF src\interrupt_unix.c:31: int osqp_is_interrupted(void) {
+DEF src\interrupt_windows.c:17: void osqp_start_interrupt_listener(void) {
+DEF src\interrupt_windows.c:22: void osqp_end_interrupt_listener(void) {
+DEF src\interrupt_windows.c:26: int osqp_is_interrupted(void) {
+BUILD src\CMakeLists.txt:65
+
+# Add the ctrl-c handler if enabled and not overriden
+if(OSQP_ENABLE_INTERRUPT AND NOT OSQP_CUSTOM_INTERRUPT)
+  if(IS_WINDOWS)
+    target_sources(OSQPLIB PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/interrupt_windows.c")
+  elseif(IS_MAC OR IS_LINUX)
+>     target_sources(OSQPLIB PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/interrupt_unix.c")
+  endif()
+endif()
+BUILD src\CMakeLists.txt:63
+  target_sources(OSQPLIB PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/derivative.c")
+endif()
+
+# Add the ctrl-c handler if enabled and not overriden
+if(OSQP_ENABLE_INTERRUPT AND NOT OSQP_CUSTOM_INTERRUPT)
+  if(IS_WINDOWS)
+>     target_sources(OSQPLIB PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/interrupt_windows.c")
+  elseif(IS_MAC OR IS_LINUX)
+    target_sources(OSQPLIB PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/interrupt_unix.c")
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.

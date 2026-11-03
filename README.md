@@ -92,24 +92,24 @@ See `runs/report.html` after a run. The table below is filled from the reports i
 <!-- results:begin -->
 | Library | Version | x86_64 | aarch64le | Tests on the QNX 8.0 target | Changes |
 |---|---|---|---|---|---|
-| backward-cpp | v1.6 | built | - | 5/5 pass | CMake policy 3.5; AI build patch ×2 |
-| civetweb | v1.16 | built | - | - | CMake policy 3.5; -lsocket; AI build patch ×1 |
-| cyclonedds | 11.0.1 | built | - | - | AI build patch ×1 |
+| backward-cpp | v1.6 | built | built | 5/5 pass | CMake policy 3.5; AI build patch ×2 |
+| civetweb | v1.16 | built | built | - | CMake policy 3.5; -lsocket; AI build patch ×1 |
+| cyclonedds | 11.0.1 | built | built | - | AI build patch ×1 |
 | fmt | 12.2.0 | built | built | 20/21 pass | -lregex |
-| json-c | json-c-0.19-20260627 | built | - | 27/28 pass | none |
-| libarchive | v3.8.11 | built | - | 816/1137 pass | link launcher |
-| libcbor | v0.14.0 | built | - | - | none |
-| libcoap | v4.3.5 | built | - | - | -lsocket |
+| json-c | json-c-0.19-20260627 | built | built | 27/28 pass | none |
+| libarchive | v3.8.11 | built | built | 816/1137 pass | link launcher |
+| libcbor | v0.14.0 | built | built | - | none |
+| libcoap | v4.3.5 | built | built | - | -lsocket |
 | libzmq | v4.3.5 | built | built | 110/121 pass | CMake policy 3.5 |
-| mbedtls | v4.2.0 | built | - | 145/148 pass | -lsocket; AI test fix ×2 |
+| mbedtls | v4.2.0 | built | built | 145/148 pass | -lsocket; AI test fix ×2 |
 | msgpack-c | c-7.0.2 | built | built | - | none |
 | nng | v2.1.0 | built | built | 0/1 pass | header swap |
 | open62541 | v1.5.10 | built | built | - | queue header; <netinet/in.h>; libc stubs; -lsocket |
-| osqp | v1.0.0 | built | - | 3/3 pass | AI build patch ×1; AI test fix ×1 |
+| osqp | v1.0.0 | built | built | 3/3 pass | AI build patch ×1; AI test fix ×1 |
 | paho-mqtt-c | v1.3.16 | built | built | - | endian header; libc stubs |
-| ruckig | v0.19.4 | built | - | 1/1 pass | -lsocket; doctest std headers |
+| ruckig | v0.19.4 | built | built | 1/1 pass | -lsocket; doctest std headers |
 | spdlog | v1.17.0 | built | built | 1/1 pass | -lsocket |
-| uriparser | uriparser-1.0.3 | built | - | - | -lsocket |
+| uriparser | uriparser-1.0.3 | built | built | - | -lsocket |
 | wolfssl | v5.9.4-stable | built | built | 2/2 pass | -lsocket; AI test fix ×1 |
 | yaml-cpp | yaml-cpp-0.9.0 | built | built | 0/1 pass | none |
 <!-- results:end -->

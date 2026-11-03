@@ -1,0 +1,63 @@
+You are porting the open-source project civetweb (v1.16) to QNX 8.0. The build still fails after these
+QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required).
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+
+Build errors (paths relative to the project root) with the source around each one:
+
+--- cmake/DetermineTargetArchitecture.cmake:37: error: CMake message: Failed to determine target architecture triplet: 1
+    1  # - Determines the target architecture of the compilation
+    2  #
+    3  # This function checks the architecture that will be built by the compiler
+    4  # and sets a variable to the architecture
+    5  #
+    6  #  determine_target_architecture(<OUTPUT_VAR>)
+    7  #
+    8  # - Example
+    9  #
+   10  # include(DetermineTargetArchitecture)
+   11  # determine_target_architecture(PROJECT_NAME_ARCHITECTURE)
+   12  
+   13  if(__determine_target_architecture)
+   14    return()
+   15  endif()
+   16  set(__determine_target_architecture INCLUDED)
+   17  
+   18  function(determine_target_architecture FLAG)
+   19    if (MSVC)
+   20      if("${MSVC_C_ARCHITECTURE_ID}" STREQUAL "X86")
+   21        set(ARCH "i686")
+   22      elseif("${MSVC_C_ARCHITECTURE_ID}" STREQUAL "x64")
+   23        set(ARCH "x86_64")
+   24      elseif("${MSVC_C_ARCHITECTURE_ID}" STREQUAL "ARM")
+   25        set(ARCH "arm")
+   26      else()
+   27        message(FATAL_ERROR "Failed to determine the MSVC target architecture: ${MSVC_C_ARCHITECTURE_ID}")
+   28      endif()
+   29    else()
+   30      execute_process(
+   31        COMMAND ${CMAKE_C_COMPILER} -dumpmachine
+   32        RESULT_VARIABLE RESULT
+   33        OUTPUT_VARIABLE ARCH
+   34        ERROR_QUIET
+   35      )
+   36      if (RESULT)
+   37>       message(FATAL_ERROR "Failed to determine target architecture triplet: ${RESULT}")
+   38      endif()
+   39      string(REGEX MATCH "([^-]+).*" ARCH_MATCH ${ARCH})
+   40      if (NOT CMAKE_MATCH_1 OR NOT ARCH_MATCH)
+   41        message(FATAL_ERROR "Failed to match the target architecture triplet: ${ARCH}")
+   42      endif()
+   43      set(ARCH ${CMAKE_MATCH_1})
+   44    endif()
+   45    message(STATUS "Target architecture - ${ARCH}")
+   46    set(FLAG ${ARCH} PARENT_SCOPE)
+   47  endfunction()
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.

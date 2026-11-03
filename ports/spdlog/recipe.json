@@ -1,0 +1,45 @@
+{
+ "name": "spdlog",
+ "url": "https://github.com/gabime/spdlog.git",
+ "ref": "v1.17.0",
+ "subdir": ".",
+ "cmake_args": [
+  "-DSPDLOG_BUILD_TESTS=ON"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DSPDLOG_BUILD_TESTS=ON"
+   ],
+   "fixes": [
+    "sockets"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DSPDLOG_BUILD_TESTS=ON"
+   ],
+   "fixes": [
+    "sockets"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

@@ -1,0 +1,15 @@
+```diff
+diff --git a/framework/scripts/generate_test_code.py b/framework/scripts/generate_test_code.py
+--- a/framework/scripts/generate_test_code.py
++++ b/framework/scripts/generate_test_code.py
+@@ -1178,6 +1178,9 @@
+         snippets['test_common_helper_file'] = helpers_file
+         snippets['test_common_helpers'] = help_f.read()
+         snippets['test_platform_file'] = platform_file
++        # The generated program may run on a different OS than the host that
++        # generated it, so embed the default data file path with '/'
++        # separators, which every supported target accepts.
+         snippets['platform_code'] = platform_f.read().replace(
+-            'DATA_FILE', out_data_file.replace('\\', '\\\\'))  # escape '\'
++            'DATA_FILE', out_data_file.replace('\\', '/'))
+```

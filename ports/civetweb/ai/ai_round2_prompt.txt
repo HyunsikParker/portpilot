@@ -1,0 +1,108 @@
+You are porting the open-source project civetweb (v1.16) to QNX 8.0. The build still fails after these
+QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required).
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+
+Undefined symbols at link time: accept, bind, connect, freeaddrinfo, getaddrinfo, getnameinfo, getsockname, getsockopt, listen, recv, send, setsockopt, shutdown, socket
+
+Where those symbols are defined, and the build-file lines that mention the defining files:
+DEF docs\Embedding.md:257: Master thread uses `poll()` and `accept()` to accept new connections on
+DEF src\third_party\duktape-1.5.2\examples\eventloop\client-socket-test.js:12: EventLoop.connect(HOST, PORT, function (fd) {
+DEF src\third_party\duktape-1.8.0\examples\eventloop\client-socket-test.js:12: EventLoop.connect(HOST, PORT, function (fd) {
+DEF src\third_party\lua-5.3.6\doc\manual.html:10805: For compatibility, Lua will continue to accept (and ignore) this character.
+BUILD src\third_party\duktape-1.5.2\license.spdx:2818
+  <rdf:Description rdf:nodeID="svBMzJkP123">
+    <_3:licenseConcluded rdf:resource="http://spdx.org/licenses/MIT"/>
+    <_3:licenseInfoInFile rdf:resource="http://spdx.org/rdf/terms#none"/>
+    <_3:copyrightText>Copyright 2013-2016 Duktape authors (see AUTHORS.rst in the Duktape distributable)</_3:copyrightText>
+    <_3:checksum rdf:nodeID="svBMzJkP124"/>
+    <rdf:type rdf:resource="http://spdx.org/rdf/terms#File"/>
+>     <_3:fileName>./examples/eventloop/client-socket-test.js</_3:fileName>
+    <_3:fileType rdf:resource="http://spdx.org/rdf/terms#fileType_source"/>
+  </rdf:Description>
+BUILD src\third_party\duktape-1.5.2\examples\eventloop\client-socket-test.js:21
+        print('read from fd', fd);
+        print(data);
+        EventLoop.close(fd);
+    });
+    EventLoop.write(fd, "GET / HTTP/1.1\r\n" +
+                        "Host: " + HOST + "\r\n" +
+>                         "User-Agent: client-socket-test.js\r\n" +
+                        "\r\n");
+});
+BUILD src\third_party\duktape-1.8.0\license.spdx:2235
+  <rdf:Description rdf:nodeID="Nd3e7dba43fef48a484cafff2dd9b0a13">
+    <ns1:fileType rdf:resource="http://spdx.org/rdf/terms#fileType_source"/>
+    <rdf:type rdf:resource="http://spdx.org/rdf/terms#File"/>
+    <ns1:checksum rdf:nodeID="N942026923c0c430b994ada89d4f73dbb"/>
+    <ns1:copyrightText>Copyright 2013-2017 Duktape authors (see AUTHORS.rst in the Duktape distributable)</ns1:copyrightText>
+    <ns1:licenseInfoInFile rdf:resource="http://spdx.org/rdf/terms#none"/>
+>     <ns1:fileName>./examples/eventloop/client-socket-test.js</ns1:fileName>
+    <ns1:licenseConcluded rdf:resource="http://spdx.org/licenses/MIT"/>
+  </rdf:Description>
+BUILD README.md:76
+Quick start documentation
+--------------------------
+
+- [docs/Installing.md](https://github.com/civetweb/civetweb/blob/master/docs/Installing.md) - Install Guide (for end users using pre-built binaries)
+- [docs/UserManual.md](https://github.com/civetweb/civetweb/blob/master/docs/UserManual.md) - End User Guide
+- [docs/Building.md](https://github.com/civetweb/civetweb/blob/master/docs/Building.md) - Building the Server (quick start guide)
+> - [docs/Embedding.md](https://github.com/civetweb/civetweb/blob/master/docs/Embedding.md) - Embedding (how to add HTTP support to an existing application)
+- [docs/OpenSSL.md](https://github.com/civetweb/civetweb/blob/master/docs/OpenSSL.md) - Adding HTTPS (SSL/TLS) support using OpenSSL.
+- [API documentation](https://github.com/civetweb/civetweb/tree/master/docs/api) - Additional documentation on the civetweb application programming interface ([civetweb.h](https://github.com/civetweb/civetweb/blob/master/include/civetweb.h)).
+BUILD docs\APIReference.md:7
+# CivetWeb API Reference
+
+CivetWeb is often used as HTTP and HTTPS library inside a larger application.
+A C API is available to integrate the CivetWeb functionality in a larger
+codebase.
+This document describes the public C API. Basic usage examples of
+> the API can be found in [Embedding.md](Embedding.md), as well as in the
+examples directory.
+
+BUILD docs\Building.md:5
+Building CivetWeb
+=========
+
+This guide covers the build instructions for the stand-alone web server.
+> See [Embedding.md](https://github.com/civetweb/civetweb/blob/master/docs/Embedding.md) for information on extending an existing C or C++ application. A brief overview of the source code files can be found in [Embedding.md](https://github.com/civetweb/civetweb/blob/master/docs/Embedding.md) as well.
+
+#### Where to get the source code?
+BUILD src\mod_lua.inl:221
+		                "%s: %s failed: out of memory",
+		                lua_title,
+		                lua_operation);
+		break;
+#if LUA_VERSION_NUM < 504
+	/* LUA_ERRGCMM has been removed in Lua 5.4.
+> 	 * See https://www.lua.org/manual/5.4/manual.html#8.3 */
+	case LUA_ERRGCMM:
+		mg_cry_internal(conn,
+BUILD src\mod_lua.inl:3179
+	/* Lua state is ready to use now. */
+	/* Currently we have two different syntax options:
+	 * Either "classic" CivetWeb syntax:
+	 *    <? code ?>
+	 *    <?= expression ?>
+	 * Or "Kepler Syntax"
+> 	 * https://keplerproject.github.io/cgilua/manual.html#templates
+	 *    <?lua chunk ?>
+	 *    <?lua= expression ?>
+BUILD src\third_party\lua-5.1.5\doc\contents.html:47
+<A HREF="http://www.amazon.com/exec/obidos/ASIN/8590379833/lua-indexmanual-20">Buy a copy</A>
+of this book and
+<A HREF="http://www.lua.org/donations.html">help to support</A>
+the Lua project.
+
+<P>
+> <A HREF="manual.html">start</A>
+&middot;
+<A HREF="#contents">contents</A>
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.

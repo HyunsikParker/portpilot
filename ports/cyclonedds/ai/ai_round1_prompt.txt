@@ -1,0 +1,96 @@
+You are porting the open-source project cyclonedds (11.0.1) to QNX 8.0. The build still fails after these
+QNX fixes were applied: none.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Build errors (paths relative to the project root) with the source around each one:
+
+--- src/ddsrt/src/netstat/qnx/netstat.c:8: error: sys/dcmd_io-net.h: No such file or directory
+    1  #include <stdio.h>
+    2  #include <stdlib.h>
+    3  #include <string.h>
+    4  #include <inttypes.h>
+    5  
+    6  #include <devctl.h>
+    7  #include <sys/ioctl.h>
+    8> #include <sys/dcmd_io-net.h>
+    9  #include <net/if.h>
+   10  #include <net/ifdrvcom.h>
+   11  
+   12  #include <dds/ddsrt/heap.h>
+   13  #include <dds/ddsrt/string.h>
+   14  #include <dds/ddsrt/netstat.h>
+   15  #include <dds/ddsrt/log.h>
+   16  
+   17  struct ddsrt_netstat_control {
+   18    char *name;
+   19  };
+   20  
+   21  dds_return_t ddsrt_netstat_get (struct ddsrt_netstat_control *control, struct ddsrt_netstat *stats)
+   22  {
+   23    struct drvcom_stats dstats;
+   24    nic_stats_t *ifstats;
+   25    int s;
+   26  
+   27    if ((s = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
+   28      return DDS_RETCODE_ERROR;
+   29    }
+   30  
+   31    (void)strncpy(dstats.dcom_cmd.ifdc_name, control->name, IFNAMSIZ);
+   32    dstats.dcom_cmd.ifdc_cmd = DRVCOM_STATS;
+   33    dstats.dcom_cmd.ifdc_len = sizeof(*ifstats);
+   34    ifstats = &dstats.dcom_stats;
+   35  
+   36    if (devctl(s, SIOCGDRVCOM, &dstats, sizeof(dstats), 0) != EOK) {
+   37      DDS_ERROR("devctl() failed for SIOCGDRVCOM for if '%s': %s\n", 
+   38        dstats.dcom_cmd.ifdc_name, strerror(errno));
+   39      close(s);
+   40      return DDS_RETCODE_ERROR;
+   41    }
+   42    stats->ipkt = ifstats->rxed_ok;
+   43    stats->opkt = ifstats->txed_ok;
+   44    stats->ibytes = ifstats->octets_rxed_ok;
+   45    stats->obytes = ifstats->octets_txed_ok;
+   46    
+   47    close(s);
+   48    return DDS_RETCODE_OK;
+   49  }
+   50  
+   51  
+   52  dds_return_t ddsrt_netstat_new (struct ddsrt_netstat_control **control, const char *device)
+   53  {
+   54    struct ddsrt_netstat_control *c = ddsrt_malloc (sizeof (*c));
+   55    struct ddsrt_netstat dummy;
+   56    c->name = ddsrt_strdup (device);
+   57    if (ddsrt_netstat_get (c, &dummy) != DDS_RETCODE_OK)
+   58    {
+   59      ddsrt_free (c->name);
+   60      ddsrt_free (c);
+   61      *control = NULL;
+   62      return DDS_RETCODE_ERROR;
+   63    }
+   64    else
+   65    {
+   66      *control = c;
+   67      return DDS_RETCODE_OK;
+   68    }
+   69  }
+   70  
+   71  dds_return_t ddsrt_netstat_free (struct ddsrt_netstat_control *control)
+   72  {
+   73    ddsrt_free (control->name);
+   74    ddsrt_free (control);
+   75    return DDS_RETCODE_OK;
+   76  }
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.

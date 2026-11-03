@@ -1,0 +1,60 @@
+{
+ "name": "open62541",
+ "url": "https://github.com/open62541/open62541.git",
+ "ref": "v1.5.10",
+ "subdir": ".",
+ "cmake_args": [
+  "-DUA_BUILD_UNIT_TESTS=OFF",
+  "-DUA_BUILD_EXAMPLES=ON"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 4,
+   "cflags": [
+    "-D_QNX_SOURCE",
+    "-include",
+    "C:/Users/<user>/Documents/portpilot-work/pp/open62541/deps/open62541_queue.h"
+   ],
+   "ldflags": [
+    "-LC:/Users/<user>/Documents/portpilot-work/pp/qnx_stubs/aarch64le",
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DUA_BUILD_UNIT_TESTS=OFF",
+    "-DUA_BUILD_EXAMPLES=ON"
+   ],
+   "fixes": [
+    "force-include project queue header open62541_queue.h",
+    "server_pubsub_subscribe_rt_state_machine.c: add <netinet/in.h>",
+    "empty stub archives for -lpthread, -lrt (functions are in QNX libc)",
+    "sockets"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 4,
+   "cflags": [
+    "-D_QNX_SOURCE",
+    "-include",
+    "C:/Users/<user>/Documents/portpilot-work/pp/open62541/deps/open62541_queue.h"
+   ],
+   "ldflags": [
+    "-LC:/Users/<user>/Documents/portpilot-work/pp/qnx_stubs/x86_64",
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DUA_BUILD_UNIT_TESTS=OFF",
+    "-DUA_BUILD_EXAMPLES=ON"
+   ],
+   "fixes": [
+    "force-include project queue header open62541_queue.h",
+    "server_pubsub_subscribe_rt_state_machine.c: add <netinet/in.h>",
+    "empty stub archives for -lpthread, -lrt (functions are in QNX libc)",
+    "sockets"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

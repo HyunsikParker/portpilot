@@ -1,0 +1,68 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e259021..e326a64 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -61,7 +61,7 @@ endif()
+ if(OSQP_ENABLE_INTERRUPT AND NOT OSQP_CUSTOM_INTERRUPT)
+   if(IS_WINDOWS)
+     target_sources(OSQPLIB PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/interrupt_windows.c")
+-  elseif(IS_MAC OR IS_LINUX)
++  elseif(IS_MAC OR IS_LINUX OR CMAKE_SYSTEM_NAME STREQUAL "QNX")
+     target_sources(OSQPLIB PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/interrupt_unix.c")
+   endif()
+ endif()
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 2959f86..3793094 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -149,9 +149,47 @@ file( MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testcodes )
+ file( MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded1 )
+ file( MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded2 )
+ 
+-add_compile_definitions(CODEGEN_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/")
+-add_compile_definitions(CODEGEN1_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded1/")
+-add_compile_definitions(CODEGEN2_DIR="${CMAKE_CURRENT_BINARY_DIR}/testcodes/embedded2/")
++if(CMAKE_CROSSCOMPILING)
++  # The build-host binary directory does not exist on the target, so the
++  # codegen output goes to a directory relative to the test's working directory.
++  set(OSQP_TEST_CODEGEN_BASE "testcodes/")
++else()
++  set(OSQP_TEST_CODEGEN_BASE "${CMAKE_CURRENT_BINARY_DIR}/testcodes/")
++endif()
++
++add_compile_definitions(CODEGEN_DIR="${OSQP_TEST_CODEGEN_BASE}")
++add_compile_definitions(CODEGEN1_DIR="${OSQP_TEST_CODEGEN_BASE}embedded1/")
++add_compile_definitions(CODEGEN2_DIR="${OSQP_TEST_CODEGEN_BASE}embedded2/")
++
++if(CMAKE_CROSSCOMPILING AND NOT WIN32)
++  # On the target, create the codegen output directories before the tests run.
++  set(OSQP_TEST_CODEGEN_DIRS_SRC "${CMAKE_CURRENT_BINARY_DIR}/osqp_test_codegen_dirs.cpp")
++  file(WRITE "${OSQP_TEST_CODEGEN_DIRS_SRC}" [=[
++#include <sys/types.h>
++#include <sys/stat.h>
++
++namespace {
++struct OsqpTestCodegenDirs {
++  OsqpTestCodegenDirs() {
++    (void)mkdir(CODEGEN_DIR, 0777);
++    (void)mkdir(CODEGEN1_DIR, 0777);
++    (void)mkdir(CODEGEN2_DIR, 0777);
++  }
++};
++OsqpTestCodegenDirs osqp_test_codegen_dirs_instance;
++}
++]=])
++
++  function(osqp_add_test_codegen_dirs_source)
++    foreach(_osqp_tgt osqp_tester osqp_tester_custom_memory)
++      if(TARGET ${_osqp_tgt})
++        target_sources(${_osqp_tgt} PRIVATE "${OSQP_TEST_CODEGEN_DIRS_SRC}")
++      endif()
++    endforeach()
++  endfunction()
++
++  cmake_language(DEFER CALL osqp_add_test_codegen_dirs_source)
++endif()
+ 
+ option(OSQP_GENERATE_COVERAGE_REPORT "Generate an HTML coverage report")
+ mark_as_advanced(OSQP_GENERATE_COVERAGE_REPORT)

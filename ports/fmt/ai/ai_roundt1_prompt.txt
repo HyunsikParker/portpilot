@@ -1,0 +1,84 @@
+You are porting the open-source project fmt (12.2.0) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- printf-test (FAIL, exit 1)
+[ RUN      ] printf_test.vprintf
+[       OK ] printf_test.vprintf (6 ms)
+[ RUN      ] printf_test.check_format_string_regression
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] printf_test.float_precision
+[  FAILED  ] printf_test.float
+
+ 2 FAILED TESTS
+...
+[  PASSED  ] 40 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] printf_test.float_precision
+[  FAILED  ] printf_test.float
+
+ 2 FAILED TESTS
+
+Project code that prints or handles these messages:
+
+FILE test\printf-test.cc:296
+  char test[] = {'H', 'e', 'l', 'l', 'o'};
+  EXPECT_EQ(fmt::sprintf("%.4s", test), "Hell");
+}
+
+> TEST(printf_test, ignore_precision_for_non_numeric_arg) {
+  EXPECT_PRINTF("abc", "%.5s", "abc");
+}
+
+TEST(printf_test, dynamic_precision) {
+FILE test\printf-test.cc:555
+               "42");
+}
+
+template <typename... Args>
+> void check_format_string_regression(fmt::string_view s, const Args&... args) {
+  fmt::sprintf(s, args...);
+}
+
+TEST(printf_test, check_format_string_regression) {
+FILE test\printf-test.cc:559
+void check_format_string_regression(fmt::string_view s, const Args&... args) {
+  fmt::sprintf(s, args...);
+}
+
+> TEST(printf_test, check_format_string_regression) {
+  check_format_string_regression("%c%s", 'x', "");
+}
+
+TEST(printf_test, fixed_large_exponent) {
+FILE test\printf-test.cc:560
+  fmt::sprintf(s, args...);
+}
+
+TEST(printf_test, check_format_string_regression) {
+>   check_format_string_regression("%c%s", 'x', "");
+}
+
+TEST(printf_test, fixed_large_exponent) {
+  EXPECT_EQ("1000000000000000000000", fmt::sprintf("%.*f", -13, 1e21));
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+(none found)
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.

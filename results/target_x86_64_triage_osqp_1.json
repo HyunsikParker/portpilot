@@ -1,0 +1,44 @@
+{
+ "cpu": "x86_64",
+ "tag": "triage_osqp_1",
+ "libraries": [
+  "osqp"
+ ],
+ "finished": true,
+ "boot": "PPBOOT exited_by_itself=True",
+ "staged": [
+  {
+   "name": "osqp",
+   "tests": 3,
+   "disabled": []
+  }
+ ],
+ "counts": {
+  "osqp": {
+   "PASS": 3
+  }
+ },
+ "results": [
+  {
+   "library": "osqp",
+   "test": "lin_alg_tester",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "osqp",
+   "test": "osqp_tester",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "osqp",
+   "test": "osqp_tester_custom_memory",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  }
+ ]
+}

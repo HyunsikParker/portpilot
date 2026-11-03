@@ -1,0 +1,48 @@
+{
+ "name": "libarchive",
+ "url": "https://github.com/libarchive/libarchive.git",
+ "ref": "v3.8.11",
+ "subdir": ".",
+ "cmake_args": [
+  "-DENABLE_TEST=ON",
+  "-DENABLE_OPENSSL=OFF"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DENABLE_TEST=ON",
+    "-DENABLE_OPENSSL=OFF",
+    "-DCMAKE_C_LINKER_LAUNCHER=C:/Users/<user>/AppData/Local/Programs/Python/Python313/python.exe;C:/Users/<user>/Documents/portpilot-work/pp/portpilot_compat/portpilot_link_launcher.py",
+    "-DCMAKE_CXX_LINKER_LAUNCHER=C:/Users/<user>/AppData/Local/Programs/Python/Python313/python.exe;C:/Users/<user>/Documents/portpilot-work/pp/portpilot_compat/portpilot_link_launcher.py"
+   ],
+   "fixes": [
+    "linker launcher: object list to ld in its own response file (Windows command-line limit)"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DENABLE_TEST=ON",
+    "-DENABLE_OPENSSL=OFF",
+    "-DCMAKE_C_LINKER_LAUNCHER=C:/Users/<user>/AppData/Local/Programs/Python/Python313/python.exe;C:/Users/<user>/Documents/portpilot-work/pp/portpilot_compat/portpilot_link_launcher.py",
+    "-DCMAKE_CXX_LINKER_LAUNCHER=C:/Users/<user>/AppData/Local/Programs/Python/Python313/python.exe;C:/Users/<user>/Documents/portpilot-work/pp/portpilot_compat/portpilot_link_launcher.py"
+   ],
+   "fixes": [
+    "linker launcher: object list to ld in its own response file (Windows command-line limit)"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

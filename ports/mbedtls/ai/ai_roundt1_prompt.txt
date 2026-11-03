@@ -1,0 +1,100 @@
+You are porting the open-source project mbedtls (v4.2.0) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- aes.cbc-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.cbc.datax
+
+--- aes.cfb-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.cfb.datax
+
+--- aes.ctr-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.ctr.datax
+
+--- aes.ecb-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.ecb.datax
+
+--- aes.ofb-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.ofb.datax
+
+--- aes.rest-suite (FAIL, exit 1)
+...
+Failed to open test file: .\test_suite_aes.rest.datax
+
+... and 142 more failing tests with similar output
+
+Project code that prints or handles these messages:
+
+FILE tests\scripts\components-configuration-crypto.sh:2390
+}
+
+component_test_psa_crypto_drivers () {
+    # Test dispatch to drivers and fallbacks with
+>     # test_suite_psa_crypto_driver_wrappers test suite. The test drivers that
+    # are wrappers around the builtin drivers are activated by
+    # PSA_CRYPTO_DRIVER_TEST.
+    #
+    # For the time being, some test cases in test_suite_block_cipher and
+FILE tf-psa-crypto\docs\architecture\psa-crypto-implementation-structure.md:97
+
+* [ ] `include/psa/crypto.h` and `include/psa/crypto_sizes.h`, or `include/psa/crypto_extra.h` — [New functions and macros](#new-functions-and-macros)
+* [ ] `library/psa_crypto.c`, `scripts/data_files/driver_templates/*.jinja` — [Implementation of the mechanisms](#implementation-of-the-mechanisms)
+* [ ] If adding stateful functions: `include/psa/crypto_struct.h`, `include/psa/crypto_builtin_*.h`, `include/psa/crypto_driver_contexts_*.h` — [Translucent data structures](#translucent-data-structures)
+> * [ ] `tests/suites/test_suite_psa_crypto.data`, `tests/suites/test_suite_psa_crypto.function`, `tests/suites/test_suite_psa_crypto_driver_wrappers.*` — [Unit tests](#unit-tests)
+
+Note that this is just a basic guide. In some cases, you won't need to change all the files listed here. In some cases, you may need to change other files.
+
+### PSA standardization
+FILE tf-psa-crypto\docs\architecture\psa-crypto-implementation-structure.md:171
+* Known answer tests.
+* Potential edge cases (e.g. data less/equal/more than the block size, number equal to zero in asymmetric cryptography).
+* Tests with invalid keys (e.g. wrong size or format).
+* Tests with invalid data (e.g. wrong size or format, output buffer too small, invalid padding).
+> * For new functions: incorrect function call sequence, driver dispatch (in `tests/suites/test_suite_psa_crypto_driver_wrappers.*`).
+* For key derivation algorithms: variation on the sequence of input steps, variation on the output size.
+
+FILE tf-psa-crypto\docs\architecture\testing\driver-interface-test-strategy.md:345
+order to check that drivers are called when they're supposed to, and that the
+core behaves as expected when they return errors (in particular, that we fall
+back to the built-in implementation when the driver returns `NOT_SUPPORTED`).
+
+> This is `test_suite_psa_crypto_driver_wrappers`, which is maintained manually
+(that is, the test cases in the `.data` files are not auto-generated). The
+entire test suite depends on the test drivers being enabled
+(`PSA_CRYPTO_DRIVER_TEST`), which is not the case in the default or full
+config.
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+tests\test_suite_config.mbedtls_boolean.c:1913: const char *default_filename = ".\\test_suite_config.mbedtls_boolean.datax";
+tests\test_suite_config.tls_combinations.c:905: const char *default_filename = ".\\test_suite_config.tls_combinations.datax";
+tests\test_suite_constant_time_hmac.c:1026: const char *default_filename = ".\\test_suite_constant_time_hmac.datax";
+tests\test_suite_debug.c:1363: const char *default_filename = ".\\test_suite_debug.datax";
+tests\test_suite_error.c:920: const char *default_filename = ".\\test_suite_error.datax";
+tests\test_suite_mps.c:2217: const char *default_filename = ".\\test_suite_mps.datax";
+tests\test_suite_net.c:1014: const char *default_filename = ".\\test_suite_net.datax";
+tests\test_suite_pkcs7.c:1306: const char *default_filename = ".\\test_suite_pkcs7.datax";
+tests\test_suite_ssl.c:11341: const char *default_filename = ".\\test_suite_ssl.datax";
+tests\test_suite_ssl.records.c:10075: const char *default_filename = ".\\test_suite_ssl.records.datax";
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.

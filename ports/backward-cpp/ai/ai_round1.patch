@@ -1,0 +1,33 @@
+diff --git a/backward.hpp b/backward.hpp
+--- a/backward.hpp
++++ b/backward.hpp
+@@ -796,6 +796,14 @@
+ };
+ 
+ #if BACKWARD_HAS_UNWIND == 1
+ 
++#if defined(__QNX__)
++// QNX is not one of the systems whose include section pulls in <unwind.h>,
++// but the Unwinder below is still compiled. Include it at global scope.
++} // namespace backward
++#include <unwind.h>
++namespace backward {
++#endif
++
+ namespace details {
+ 
+ template <typename F> class Unwinder {
+diff --git a/test/_test_main.cpp b/test/_test_main.cpp
+--- a/test/_test_main.cpp
++++ b/test/_test_main.cpp
+@@ -43,6 +43,10 @@
+ inline const char *getprogname() {
+   return GetModuleFileName(NULL, argv0, sizeof(argv0)) ? argv0 : NULL;
+ }
++#elif defined(__QNX__)
++// QNX libc sets __progname at startup (used by err()/warn()).
++extern "C" char *__progname;
++#define getprogname() __progname
+ #elif !defined(__APPLE__)
+ // N.B.  getprogname() is an Apple/BSD-ism.
+ // program_invocation_name is a GLIBC-ism, but it's also

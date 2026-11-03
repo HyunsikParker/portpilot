@@ -1,0 +1,40 @@
+{
+ "name": "msgpack-c",
+ "url": "https://github.com/msgpack/msgpack-c.git",
+ "ref": "c-7.0.2",
+ "subdir": ".",
+ "cmake_args": [
+  "-DMSGPACK_BUILD_TESTS=OFF",
+  "-DMSGPACK_BUILD_EXAMPLES=ON"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 1,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DMSGPACK_BUILD_TESTS=OFF",
+    "-DMSGPACK_BUILD_EXAMPLES=ON"
+   ],
+   "fixes": []
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 1,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [],
+   "cmake_args": [
+    "-DMSGPACK_BUILD_TESTS=OFF",
+    "-DMSGPACK_BUILD_EXAMPLES=ON"
+   ],
+   "fixes": []
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

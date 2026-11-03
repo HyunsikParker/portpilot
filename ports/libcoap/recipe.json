@@ -1,0 +1,54 @@
+{
+ "name": "libcoap",
+ "url": "https://github.com/obgm/libcoap.git",
+ "ref": "v4.3.5",
+ "subdir": ".",
+ "cmake_args": [
+  "-DENABLE_DTLS=OFF",
+  "-DENABLE_TESTS=OFF",
+  "-DENABLE_EXAMPLES=ON",
+  "-DENABLE_DOCS=OFF"
+ ],
+ "cpus": {
+  "aarch64le": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DENABLE_DTLS=OFF",
+    "-DENABLE_TESTS=OFF",
+    "-DENABLE_EXAMPLES=ON",
+    "-DENABLE_DOCS=OFF"
+   ],
+   "fixes": [
+    "sockets"
+   ]
+  },
+  "x86_64": {
+   "result": "built",
+   "rounds": 2,
+   "cflags": [
+    "-D_QNX_SOURCE"
+   ],
+   "ldflags": [
+    "-lsocket"
+   ],
+   "cmake_args": [
+    "-DENABLE_DTLS=OFF",
+    "-DENABLE_TESTS=OFF",
+    "-DENABLE_EXAMPLES=ON",
+    "-DENABLE_DOCS=OFF"
+   ],
+   "fixes": [
+    "sockets"
+   ]
+  }
+ },
+ "ai_patches": [],
+ "triage": []
+}

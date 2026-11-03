@@ -1,0 +1,1514 @@
+
+non UEFI or UEFI+CSM boot
+ACPI table not found (0x4746434d)
+System behaves poorly without PCID support.
+overriding mask for controller 2, vector_base 0
+---> Starting slogger2
+---> Starting PCI Services
+---> Starting fsevmgr
+# ---> Starting devb
+---> Mounting file systems
+Path=0 - Intel 82371SB
+ target=0 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+ target=1 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+Path=1 - Intel 82371SB
+ target=0 lun=0            CD-ROM(5) - QEMU     QEMU DVD-ROM     Rev: 2.5+
+---> Mounting file systems
+---> Starting Networking
+if_up: tries exhausted
+ifconfig: interface vtnet0 does not exist
+no valid interfaces found
+---> Starting sshd
+/usr/libexec/sshd-auth does not exist or is not executable
+
+---> Starting misc
+PPTEST-BEGIN QNX portpilot 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+PPTEST-LIB json-c 28
+PPTEST json-c test_json_parse_cli PASS rc=0
+PPTEST json-c test1 PASS rc=0
+PPTEST json-c test2 PASS rc=0
+PPTEST json-c test4 PASS rc=0
+PPTEST json-c testReplaceExisting PASS rc=0
+PPTEST json-c test_cast PASS rc=0
+PPTEST json-c test_charcase PASS rc=0
+PPTEST json-c test_compare PASS rc=0
+PPTEST json-c test_deep_copy PASS rc=0
+PPTEST json-c test_deep_nesting PASS rc=0
+PPTEST json-c test_double_serializer PASS rc=0
+PPTEST json-c test_float PASS rc=0
+PPTEST json-c test_int_add PASS rc=0
+PPTEST json-c test_int_get PASS rc=0
+PPTEST json-c test_locale PASS rc=0
+PPTEST json-c test_null PASS rc=0
+PPTEST json-c test_parse PASS rc=0
+PPTEST json-c test_parse_int64 PASS rc=0
+PPTEST json-c test_printbuf PASS rc=0
+PPTEST json-c test_set_serializer PASS rc=0
+PPTEST json-c test_set_value PASS rc=0
+PPTEST json-c test_strerror PASS rc=0
+PPTEST json-c test_util_file PASS rc=0
+PPTEST json-c test_visit PASS rc=0
+PPTEST json-c test_object_iterator PASS rc=0
+PPTEST json-c test_json_pointer PASS rc=0
+PPTEST json-c test_safe_json_pointer_set PASS rc=0
+PPTEST json-c test_json_patch FAIL rc=1
+PPLOG ...
+PPLOG ERROR: "test_json_patch /tests/json-c/src/tests" exited with incorrect exit status:  != 0
+PPLOG ERROR: "test_json_patch /tests/json-c/src/tests" (test_json_patch) failed (set VERBOSE=1 to see full output):
+PPLOG + diff /tests/json-c/src/tests/test_json_patch.expected testSubDir/test_json_patch.test/test_json_patch.out
+PPLOG cp "testSubDir/test_json_patch.test/test_json_patch.out" "/tests/json-c/src/tests/test_json_patch.expected"
+PPTEST-LIB libarchive 180
+PPTEST libarchive bsdcat_test_0 PASS rc=0
+PPTEST libarchive bsdcat_test_empty_gz PASS rc=0
+PPTEST libarchive bsdcat_test_empty_lz4 SKIP rc=2
+PPLOG   Assertions checked:      30
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      30
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_empty_xz PASS rc=0
+PPTEST libarchive bsdcat_test_empty_zstd SKIP rc=2
+PPLOG   Assertions checked:      28
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      28
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_error PASS rc=0
+PPTEST libarchive bsdcat_test_error_mixed PASS rc=0
+PPTEST libarchive bsdcat_test_expand_Z PASS rc=0
+PPTEST libarchive bsdcat_test_expand_bz2 PASS rc=0
+PPTEST libarchive bsdcat_test_expand_gz PASS rc=0
+PPTEST libarchive bsdcat_test_expand_lz4 SKIP rc=2
+PPLOG   Assertions checked:      74
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      74
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_expand_mixed PASS rc=0
+PPTEST libarchive bsdcat_test_expand_plain PASS rc=0
+PPTEST libarchive bsdcat_test_expand_xz PASS rc=0
+PPTEST libarchive bsdcat_test_expand_zstd SKIP rc=2
+PPLOG   Assertions checked:      66
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      66
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_help PASS rc=0
+PPTEST libarchive bsdcat_test_stdin PASS rc=0
+PPTEST libarchive bsdcat_test_version PASS rc=0
+PPTEST libarchive bsdtar_test_0 PASS rc=0
+PPTEST libarchive bsdtar_test_basic FAIL rc=1
+PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf -
+PPLOG       r=256 (0x100, 0400)
+PPLOG       0=0 (0x0, 00)
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
+PPLOG 00b0 79 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 y.bsdtar: Error 
+PPLOG 00c0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
+PPLOG 00d0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
+PPLOG 00e0 73 0a                                           s.
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:43: File should exist: file
+PPLOG    Description: copy
+PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf ---format=ustar
+PPLOG       r=256 (0x100, 0400)
+PPLOG       0=0 (0x0, 00)
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
+PPLOG 00b0 79 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 y.bsdtar: Error 
+PPLOG 00c0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
+PPLOG 00d0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
+PPLOG 00e0 73 0a                                           s.
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:43: File should exist: file
+PPLOG    Description: copy_ustar
+PPLOG   Assertions checked:      61
+PPLOG   Assertions failed:       30
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   1: test_basic (30 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.27.41-000
+PPLOG 
+PPTEST libarchive bsdtar_test_copy FAIL rc=1
+PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive --uid=0 --gid=0"
+PPLOG       r=256 (0x100, 0400)
+PPLOG       0=0 (0x0, 00)
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
+PPLOG 00d0 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
+PPLOG 00e0 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
+PPLOG 00f0 20 65 72 72 6f 72 73 0a                          errors.
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:189: File should exist: f/1
+PPLOG    Description: Verifying default
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:190: File should exist: f/1
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 'd' for testing default
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 'f' for testing default
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 'l' for testing default
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 'm' for testing default
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 's' for testing default
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:329: r != 0
+PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive --format=ustar"
+PPLOG       r=256 (0x100, 0400)
+PPLOG       0=0 (0x0, 00)
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:189: File should exist: f/1
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 'd' for testing ustar
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 'f' for testing ustar
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 'l' for testing ustar
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 'm' for testing ustar
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG    Description: Unable to open dir 's' for testing ustar
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:287: r != 0
+PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive  --format pax"
+PPLOG       r=256 (0x100, 0400)
+PPLOG       0=0 (0x0, 00)
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   2: test_copy (4459 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.27.43-000
+PPLOG 
+PPTEST libarchive bsdtar_test_copy_data_warning PASS rc=0
+PPTEST libarchive bsdtar_test_crlf_mtree PASS rc=0
+PPTEST libarchive bsdtar_test_empty_mtree PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_Z PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_bz2 PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_grz SKIP rc=2
+PPLOG   Assertions checked:     222
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     222
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_extract_tar_gz PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_lrz SKIP rc=2
+PPLOG   Assertions checked:     329
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     329
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_extract_tar_lz PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_lz4 SKIP rc=2
+PPLOG   Assertions checked:     264
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     264
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_extract_tar_lzma PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_lzo SKIP rc=2
+PPLOG   Assertions checked:     349
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     349
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_extract_tar_xz PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_zstd SKIP rc=2
+PPLOG   Assertions checked:     189
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     189
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_edit_pathname_hardlink PASS rc=0
+PPTEST libarchive bsdtar_test_format_newc FAIL rc=1
+PPLOG bsdtar: Error exit delayed from previous errors
+PPLOG bsdtar: file1: Cannot stat: Not a directory
+PPLOG bsdtar: file2: Cannot stat: Not a directory
+PPLOG bsdtar: Error exit delayed from previous errors
+PPLOG 
+PPLOG  18: test_format_newc
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_format_newc.c:17: 0 != systemf("%s -cf test1.cpio --format newc file1 file2 file3", testprog)
+PPLOG   Assertions checked:      35
+PPLOG   Assertions failed:        7
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   18: test_format_newc (7 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.28.17-000
+PPLOG 
+PPTEST libarchive bsdtar_test_help PASS rc=0
+PPTEST libarchive bsdtar_test_leading_slash PASS rc=0
+PPTEST libarchive bsdtar_test_list_item PASS rc=0
+PPTEST libarchive bsdtar_test_missing_file FAIL rc=1
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_missing_file.c:14: Assertion failed: 0 == systemf("%s -cf archive.tar file1 file2 2>stderr1", testprog)
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_missing_file.c:15: File should be empty: stderr1
+PPLOG     File size: 136
+PPLOG     Contents:
+PPLOG 0060 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
+PPLOG 0070 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
+PPLOG 0080 20 65 72 72 6f 72 73 0a                          errors.
+PPLOG 
+PPLOG Totals:
+PPLOG   Tests run:                1
+PPLOG   Assertions checked:      17
+PPLOG   Assertions failed:        2
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   22: test_missing_file (2 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.28.22-000
+PPLOG 
+PPTEST libarchive bsdtar_test_option_C_upper FAIL rc=1
+PPLOG bsdtar: Error exit delayed from previous errors
+PPLOG bsdtar: file1: Cannot stat: Not a directory
+PPLOG bsdtar: file2: Cannot stat: Not a directory
+PPLOG bsdtar: Error exit delayed from previous errors
+PPLOG 
+PPLOG  23: test_option_C_upper
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_C_upper.c:25: 0 != systemf("%s -cf archive.tar -C ../d1 file1 -C ../d2 file2", testprog)
+PPLOG bsdtar: Error exit delayed from previous errors
+PPLOG bsdtar: file1: Cannot stat: Not a directory
+PPLOG bsdtar: Error exit delayed from previous errors
+PPLOG : file2
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_C_upper.c:70: 0 != systemf("%s -cf archive.tar -C %s/d1 file1", testprog, testworkdir)
+PPLOG       0=0 (0x0, 00)
+PPLOG   Assertions checked:      90
+PPLOG   Assertions failed:       10
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   23: test_option_C_upper (10 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.28.24-000
+PPLOG 
+PPTEST libarchive bsdtar_test_option_C_mtree PASS rc=0
+PPTEST libarchive bsdtar_test_option_H_upper FAIL rc=1
+PPLOG   Assertions checked:      59
+PPLOG   Assertions failed:       31
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   25: test_option_H_upper (31 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.28.29-000
+PPLOG 
+PPTEST libarchive bsdtar_test_option_L_upper FAIL rc=1
+PPLOG   Assertions checked:      59
+PPLOG   Assertions failed:       27
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   26: test_option_L_upper (27 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.28.31-000
+PPLOG 
+PPTEST libarchive bsdtar_test_option_O_upper FAIL rc=1
+PPLOG bsdtar: Error exit delayed from previous errors
+PPLOG 
+PPLOG  27: test_option_O_upper
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_O_upper.c:16: 0 != systemf("%s -cf archive.tar file1 file2", testprog)
+PPLOG   Expected but not present: file1
+PPLOG   Expected but not present: file2
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_O_upper.c:66: File doesn't match: test.err
+PPLOG   Expected but not present: file1
+PPLOG   Expected but not present: file2
+PPLOG 
+PPLOG Totals:
+PPLOG   Tests run:                1
+PPLOG   Assertions checked:      54
+PPLOG   Assertions failed:        9
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   27: test_option_O_upper (9 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.28.33-000
+PPLOG 
+PPTEST libarchive bsdtar_test_extract_tar_absolute_paths PASS rc=0
+PPTEST libarchive bsdtar_test_option_T_upper FAIL rc=1
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:67: Assertion failed: r == 0
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:69: File should be empty: test1.err
+PPLOG     File size: 226
+PPLOG     Contents:
+PPLOG 00b0 79 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 y.bsdtar: Error 
+PPLOG 00c0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
+PPLOG 00d0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
+PPLOG 00e0 73 0a                                           s.
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:73: 0 != systemf("%s -x -f test1.tar -T filelist -C test1" " > test1b.out 2> test1b.err", testprog)
+PPLOG       0=0 (0x0, 00)
+PPLOG 0090 65 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 e.bsdtar: Error 
+PPLOG 00a0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
+PPLOG 00b0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
+PPLOG 00c0 73 0a                                           s.
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:79: File should exist: test1/f
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:80: File should exist: test1/d1/f1
+PPLOG 0090 74 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 tar: Error exit 
+PPLOG 00a0 64 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 delayed from pre
+PPLOG 00b0 76 69 6f 75 73 20 65 72 72 6f 72 73 0a          vious errors.
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:103: File should exist: test3/f
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:104: File should exist: test3/d1/f1
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:106: File should exist: test3/d1/d2/f3
+PPLOG 0090 65 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 e.bsdtar: Error 
+PPLOG 00a0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
+PPLOG 00b0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
+PPLOG 00c0 73 0a                                           s.
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:121: File should exist: test2/f
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:122: File should exist: test2/d1/f1
+PPLOG   Assertions checked:      86
+PPLOG   Assertions failed:       23
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   29: test_option_T_upper (23 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.28.37-000
+PPLOG 
+PPTEST libarchive bsdtar_test_option_U_upper FAIL rc=1
+PPLOG bsdtar: Error exit delayed from previous errors
+PPLOG 
+PPLOG  30: test_option_U_upper
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_U_upper.c:16: 0 != systemf("%s -cf archive.tar file1 d1/file1", testprog)
+PPLOG 0030 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 65 rror exit delaye
+PPLOG 0040 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 20 d from previous 
+PPLOG 0050 65 72 72 6f 72 73 0a                            errors.
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_U_upper.c:103: 0 != systemf("%s -xPUf ../archive.tar d1/file1 >test.out 2>test.err", testprog)
+PPLOG       0=0 (0x0, 00)
+PPLOG       systemf("%s -xPUf ../archive.tar d1/file1 >test.out 2>test.err", testprog)sh: cannot create test.out: No space left on device
+PPLOG   Assertions checked:     114
+PPLOG   Assertions failed:       32
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   30: test_option_U_upper (32 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.28.39-000
+PPLOG 
+PPTEST libarchive bsdtar_test_option_X_upper FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.42-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.42-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.42-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.42-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.42-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.42-999
+PPTEST libarchive bsdtar_test_option_a FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.46-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.46-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.46-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.46-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.46-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.46-999
+PPTEST libarchive bsdtar_test_option_acls FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.50-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.50-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.50-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.50-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.50-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.50-999
+PPTEST libarchive bsdtar_test_option_b FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.54-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.54-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.54-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.54-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.54-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.54-999
+PPTEST libarchive bsdtar_test_option_b64encode FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.58-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.58-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.58-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.58-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.58-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.28.58-999
+PPTEST libarchive bsdtar_test_option_exclude FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.02-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.02-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.02-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.02-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.02-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.02-999
+PPTEST libarchive bsdtar_test_option_exclude_vcs FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.06-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.06-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.06-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.06-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.06-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.06-999
+PPTEST libarchive bsdtar_test_option_fflags FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.10-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.10-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.10-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.10-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.10-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.10-999
+PPTEST libarchive bsdtar_test_option_gid_gname FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.13-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.13-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.13-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.13-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.13-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.13-999
+PPTEST libarchive bsdtar_test_option_group FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.18-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.18-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.18-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.18-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.18-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.18-999
+PPTEST libarchive bsdtar_test_option_grzip FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.21-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.21-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.21-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.21-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.21-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.21-999
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_t FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.25-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.25-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.25-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.25-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.25-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.25-999
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_x FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.29-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.29-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.29-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.29-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.29-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.29-999
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_c FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.33-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.33-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.33-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.33-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.33-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.33-999
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_r FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.37-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.37-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.37-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.37-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.37-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.37-999
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_u FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.41-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.41-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.41-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.41-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.41-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.41-999
+PPTEST libarchive bsdtar_test_option_j FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.45-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.45-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.45-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.45-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.45-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.45-999
+PPTEST libarchive bsdtar_test_option_k FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.49-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.49-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.49-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.49-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.49-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.49-999
+PPTEST libarchive bsdtar_test_option_keep_newer_files FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.53-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.53-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.53-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.53-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.53-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.53-999
+PPTEST libarchive bsdtar_test_option_lrzip FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.57-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.57-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.57-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.57-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.57-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.29.57-999
+PPTEST libarchive bsdtar_test_option_lz4 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.01-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.01-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.01-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.01-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.01-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.01-999
+PPTEST libarchive bsdtar_test_option_lzma FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.05-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.05-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.05-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.05-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.05-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.05-999
+PPTEST libarchive bsdtar_test_option_lzop FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.09-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.09-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.09-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.09-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.09-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.09-999
+PPTEST libarchive bsdtar_test_option_mode FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.13-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.13-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.13-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.13-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.13-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.13-999
+PPTEST libarchive bsdtar_test_option_mtime FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.17-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.17-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.17-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.17-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.17-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.17-999
+PPTEST libarchive bsdtar_test_option_n FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.21-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.21-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.21-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.21-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.21-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.21-999
+PPTEST libarchive bsdtar_test_option_newer_than FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.25-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.25-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.25-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.25-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.25-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.25-999
+PPTEST libarchive bsdtar_test_option_nodump FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.29-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.29-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.29-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.29-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.29-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.29-999
+PPTEST libarchive bsdtar_test_option_older_than FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.33-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.33-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.33-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.33-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.33-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.33-999
+PPTEST libarchive bsdtar_test_option_owner FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.37-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.37-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.37-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.37-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.37-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.37-999
+PPTEST libarchive bsdtar_test_option_passphrase FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.42-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.42-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.42-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.42-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.42-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.42-999
+PPTEST libarchive bsdtar_test_option_q FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.46-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.46-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.46-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.46-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.46-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.46-999
+PPTEST libarchive bsdtar_test_option_r FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.50-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.50-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.50-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.50-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.50-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.50-999
+PPTEST libarchive bsdtar_test_option_s FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.54-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.54-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.54-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.54-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.54-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.54-999
+PPTEST libarchive bsdtar_test_option_safe_writes FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.58-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.58-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.58-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.58-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.58-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.30.58-999
+PPTEST libarchive bsdtar_test_option_stdout_size_exceeds_declared FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.02-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.02-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.02-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.02-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.02-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.02-999
+PPTEST libarchive bsdtar_test_option_uid_uname FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.06-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.06-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.06-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.06-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.06-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.06-999
+PPTEST libarchive bsdtar_test_option_uuencode FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.10-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.10-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.10-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.10-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.10-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.10-999
+PPTEST libarchive bsdtar_test_option_xattrs FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.14-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.14-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.14-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.14-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.14-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.14-999
+PPTEST libarchive bsdtar_test_option_xz FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.18-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.18-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.18-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.18-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.18-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.18-999
+PPTEST libarchive bsdtar_test_option_z FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.22-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.22-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.22-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.22-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.22-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.22-999
+PPTEST libarchive bsdtar_test_option_zstd FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.26-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.26-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.26-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.26-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.26-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.26-999
+PPTEST libarchive bsdtar_test_patterns FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.30-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.30-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.30-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.30-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.30-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.30-999
+PPTEST libarchive bsdtar_test_print_longpath FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.34-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.34-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.34-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.34-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.34-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.34-999
+PPTEST libarchive bsdtar_test_stdio FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.38-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.38-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.38-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.38-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.38-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.38-999
+PPTEST libarchive bsdtar_test_strip_components FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.41-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.41-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.41-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.41-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.41-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.41-999
+PPTEST libarchive bsdtar_test_symlink_dir FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.45-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.45-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.45-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.45-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.45-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.45-999
+PPTEST libarchive bsdtar_test_version FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.49-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.49-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.49-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.49-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.49-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.49-999
+PPTEST libarchive bsdtar_test_windows FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.53-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.53-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.53-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.53-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.53-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdtar_test.2026-11-03T07.31.53-999
+PPTEST libarchive bsdcpio_test_0 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.31.57-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.31.57-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.31.57-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.31.57-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.31.57-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.31.57-999
+PPTEST libarchive bsdcpio_test_basic FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.01-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.01-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.01-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.01-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.01-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.01-999
+PPTEST libarchive bsdcpio_test_cmdline FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.05-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.05-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.05-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.05-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.05-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.05-999
+PPTEST libarchive bsdcpio_test_extract_cpio_Z FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.09-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.09-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.09-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.09-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.09-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.09-999
+PPTEST libarchive bsdcpio_test_extract_cpio_absolute_paths FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.13-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.13-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.13-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.13-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.13-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.13-999
+PPTEST libarchive bsdcpio_test_extract_cpio_bz2 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.17-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.17-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.17-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.17-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.17-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.17-999
+PPTEST libarchive bsdcpio_test_extract_cpio_grz FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.21-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.21-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.21-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.21-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.21-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.21-999
+PPTEST libarchive bsdcpio_test_extract_cpio_gz FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.25-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.25-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.25-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.25-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.25-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.25-999
+PPTEST libarchive bsdcpio_test_extract_cpio_lrz FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.29-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.29-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.29-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.29-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.29-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.29-999
+PPTEST libarchive bsdcpio_test_extract_cpio_lz FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.33-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.33-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.33-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.33-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.33-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.33-999
+PPTEST libarchive bsdcpio_test_extract_cpio_lz4 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.37-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.37-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.37-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.37-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.37-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.37-999
+PPTEST libarchive bsdcpio_test_extract_cpio_lzma FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.41-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.41-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.41-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.41-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.41-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.41-999
+PPTEST libarchive bsdcpio_test_extract_cpio_lzo FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.45-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.45-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.45-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.45-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.45-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.45-999
+PPTEST libarchive bsdcpio_test_extract_cpio_xz FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.49-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.49-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.49-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.49-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.49-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.49-999
+PPTEST libarchive bsdcpio_test_extract_cpio_zstd FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.53-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.53-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.53-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.53-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.53-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.53-999
+PPTEST libarchive bsdcpio_test_format_newc FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.57-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.57-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.57-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.57-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.57-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.32.57-999
+PPTEST libarchive bsdcpio_test_gcpio_compat FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.01-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.01-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.01-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.01-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.01-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.01-999
+PPTEST libarchive bsdcpio_test_missing_file FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.05-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.05-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.05-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.05-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.05-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.05-999
+PPTEST libarchive bsdcpio_test_option_0 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.09-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.09-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.09-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.09-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.09-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.09-999
+PPTEST libarchive bsdcpio_test_option_B_upper FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.13-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.13-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.13-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.13-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.13-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.13-999
+PPTEST libarchive bsdcpio_test_option_C_upper FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.17-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.17-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.17-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.17-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.17-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.17-999
+PPTEST libarchive bsdcpio_test_option_J_upper FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.21-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.21-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.21-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.21-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.21-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.21-999
+PPTEST libarchive bsdcpio_test_option_L_upper FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.25-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.25-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.25-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.25-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.25-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.25-999
+PPTEST libarchive bsdcpio_test_option_Z_upper FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.29-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.29-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.29-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.29-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.29-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.29-999
+PPTEST libarchive bsdcpio_test_option_a FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.33-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.33-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.33-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.33-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.33-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.33-999
+PPTEST libarchive bsdcpio_test_option_b64encode FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.37-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.37-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.37-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.37-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.37-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.37-999
+PPTEST libarchive bsdcpio_test_option_c FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.41-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.41-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.41-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.41-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.41-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.41-999
+PPTEST libarchive bsdcpio_test_option_d FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.45-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.45-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.45-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.45-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.45-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.45-999
+PPTEST libarchive bsdcpio_test_option_f FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.49-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.49-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.49-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.49-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.49-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.49-999
+PPTEST libarchive bsdcpio_test_option_grzip FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.53-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.53-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.53-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.53-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.53-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.53-999
+PPTEST libarchive bsdcpio_test_option_help FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.57-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.57-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.57-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.57-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.57-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.33.57-999
+PPTEST libarchive bsdcpio_test_option_l FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.01-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.01-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.01-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.01-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.01-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.01-999
+PPTEST libarchive bsdcpio_test_option_lrzip FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.05-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.05-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.05-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.05-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.05-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.05-999
+PPTEST libarchive bsdcpio_test_option_lz4 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.09-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.09-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.09-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.09-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.09-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.09-999
+PPTEST libarchive bsdcpio_test_option_lzma FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.14-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.14-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.14-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.14-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.14-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.14-999
+PPTEST libarchive bsdcpio_test_option_lzop FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.18-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.18-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.18-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.18-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.18-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.18-999
+PPTEST libarchive bsdcpio_test_option_m FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.22-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.22-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.22-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.22-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.22-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.22-999
+PPTEST libarchive bsdcpio_test_option_o_rejected_entry FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.26-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.26-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.26-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.26-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.26-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.26-999
+PPTEST libarchive bsdcpio_test_option_passphrase FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.30-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.30-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.30-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.30-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.30-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.30-999
+PPTEST libarchive bsdcpio_test_option_t FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.35-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.35-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.35-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.35-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.35-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.35-999
+PPTEST libarchive bsdcpio_test_option_u FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.39-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.39-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.39-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.39-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.39-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.39-999
+PPTEST libarchive bsdcpio_test_option_uuencode FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.43-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.43-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.43-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.43-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.43-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.43-999
+PPTEST libarchive bsdcpio_test_option_version FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.47-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.47-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.47-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.47-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.47-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.47-999
+PPTEST libarchive bsdcpio_test_option_xz FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.51-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.51-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.51-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.51-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.51-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.51-999
+PPTEST libarchive bsdcpio_test_option_y FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.55-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.55-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.55-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.55-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.55-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.55-999
+PPTEST libarchive bsdcpio_test_option_z FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.59-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.59-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.59-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.59-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.59-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.34.59-999
+PPTEST libarchive bsdcpio_test_option_zstd FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.03-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.03-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.03-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.03-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.03-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.03-999
+PPTEST libarchive bsdcpio_test_owner_parse FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.07-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.07-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.07-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.07-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.07-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.07-999
+PPTEST libarchive bsdcpio_test_passthrough_dotdot FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.11-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.11-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.11-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.11-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.11-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.11-999
+PPTEST libarchive bsdcpio_test_passthrough_reverse FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.16-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.16-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.16-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.16-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.16-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdcpio_test.2026-11-03T07.35.16-999
+PPTEST libarchive bsdunzip_test_0 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.20-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.20-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.20-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.20-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.20-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.20-999
+PPTEST libarchive bsdunzip_test_basic FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.24-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.24-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.24-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.24-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.24-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.24-999
+PPTEST libarchive bsdunzip_test_doubledash FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.28-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.28-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.28-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.28-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.28-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.28-999
+PPTEST libarchive bsdunzip_test_glob FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.32-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.32-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.32-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.32-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.32-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.32-999
+PPTEST libarchive bsdunzip_test_not_exist FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.36-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.36-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.36-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.36-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.36-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.36-999
+PPTEST libarchive bsdunzip_test_singlefile FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.40-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.40-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.40-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.40-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.40-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.40-999
+PPTEST libarchive bsdunzip_test_stdin FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.44-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.44-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.44-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.44-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.44-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.44-999
+PPTEST libarchive bsdunzip_test_symlink FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.48-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.48-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.48-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.48-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.48-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.48-999
+PPTEST libarchive bsdunzip_test_symlink_dotdot FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.52-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.52-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.52-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.52-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.52-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.52-999
+PPTEST libarchive bsdunzip_test_C FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.56-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.56-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.56-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.56-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.56-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.35.56-999
+PPTEST libarchive bsdunzip_test_p FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.00-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.00-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.00-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.00-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.00-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.00-999
+PPTEST libarchive bsdunzip_test_prompt_long_answer FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.04-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.04-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.04-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.04-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.04-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.04-999
+PPTEST libarchive bsdunzip_test_d_before_zipfile FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.08-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.08-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.08-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.08-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.08-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.08-999
+PPTEST libarchive bsdunzip_test_d_after_zipfile FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.12-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.12-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.12-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.12-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.12-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.12-999
+PPTEST libarchive bsdunzip_test_f FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.16-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.16-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.16-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.16-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.16-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.16-999
+PPTEST libarchive bsdunzip_test_j FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.20-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.20-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.20-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.20-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.20-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.20-999
+PPTEST libarchive bsdunzip_test_L FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.24-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.24-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.24-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.24-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.24-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.24-999
+PPTEST libarchive bsdunzip_test_n FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.28-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.28-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.28-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.28-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.28-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.28-999
+PPTEST libarchive bsdunzip_test_o FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.32-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.32-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.32-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.32-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.32-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.32-999
+PPTEST libarchive bsdunzip_test_q FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.36-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.36-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.36-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.36-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.36-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.36-999
+PPTEST libarchive bsdunzip_test_t FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.40-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.40-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.40-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.40-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.40-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.40-999
+PPTEST libarchive bsdunzip_test_t_bad FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.44-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.44-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.44-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.44-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.44-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.44-999
+PPTEST libarchive bsdunzip_test_u FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.48-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.48-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.48-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.48-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.48-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.48-999
+PPTEST libarchive bsdunzip_test_version FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.51-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.51-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.51-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.51-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.51-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.51-999
+PPTEST libarchive bsdunzip_test_windows_paths FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.55-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.55-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.55-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.55-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.55-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.55-999
+PPTEST libarchive bsdunzip_test_x_single FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.59-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.59-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.59-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.59-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.59-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.36.59-999
+PPTEST libarchive bsdunzip_test_x_multiple FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.03-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.03-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.03-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.03-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.03-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.03-999
+PPTEST libarchive bsdunzip_test_x_multiple_with_d FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.07-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.07-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.07-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.07-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.07-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.07-999
+PPTEST libarchive bsdunzip_test_Z1 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.11-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.11-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.11-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.11-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.11-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.11-999
+PPTEST libarchive bsdunzip_test_Z_1 FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.16-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.16-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.16-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.16-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.16-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.16-999
+PPTEST libarchive bsdunzip_test_P_encryption FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.20-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.20-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.20-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.20-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.20-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.20-999
+PPTEST libarchive bsdunzip_test_I FAIL rc=1
+PPLOG ...
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.23-994
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.23-995
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.23-996
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.23-997
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.23-998
+PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:4383: Could not create directory /tmp/bsdunzip_test.2026-11-03T07.37.23-999
+PPTEST-END
+
+# 

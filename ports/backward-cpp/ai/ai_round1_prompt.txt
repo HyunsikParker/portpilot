@@ -1,0 +1,72 @@
+You are porting the open-source project backward-cpp (v1.6) to QNX 8.0. The build still fails after these
+QNX fixes were applied: configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required).
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Build errors (paths relative to the project root) with the source around each one:
+
+--- test/_test_main.cpp:50: error: 'program_invocation_name' was not declared in this scope
+   38  #else
+   39  #include <stdarg.h>
+   40  
+   41  #ifdef _WIN32
+   42  char argv0[MAX_PATH];
+   43  inline const char *getprogname() {
+   44    return GetModuleFileName(NULL, argv0, sizeof(argv0)) ? argv0 : NULL;
+   45  }
+   46  #elif !defined(__APPLE__)
+   47  // N.B.  getprogname() is an Apple/BSD-ism.
+   48  // program_invocation_name is a GLIBC-ism, but it's also
+   49  //  supported by libmusl.
+   50> #define getprogname() program_invocation_name
+   51  #endif
+   52  
+   53  void error(int status, int errnum, const char *format, ...) {
+   54    fflush(stdout);
+   55    fprintf(stderr, "%s: ", getprogname());
+   56  
+   57    va_list args;
+   58    va_start(args, format);
+   59    vfprintf(stderr, format, args);
+   60    va_end(args);
+   61  
+   62    if (errnum != 0) {
+
+--- backward.hpp:808: error: '_Unwind_Backtrace' was not declared in this scope
+  796  };
+  797  
+  798  #if BACKWARD_HAS_UNWIND == 1
+  799  
+  800  namespace details {
+  801  
+  802  template <typename F> class Unwinder {
+  803  public:
+  804    size_t operator()(F &f, size_t depth) {
+  805      _f = &f;
+  806      _index = -1;
+  807      _depth = depth;
+  808>     _Unwind_Backtrace(&this->backtrace_trampoline, this);
+  809      return static_cast<size_t>(_index);
+  810    }
+  811  
+  812  private:
+  813    F *_f;
+  814    ssize_t _index;
+  815    size_t _depth;
+  816  
+  817    static _Unwind_Reason_Code backtrace_trampoline(_Unwind_Context *ctx,
+  818                                                    void *self) {
+  819      return (static_cast<Unwinder *>(self))->backtrace(ctx);
+  820    }
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.

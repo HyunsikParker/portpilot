@@ -1,0 +1,42 @@
+diff --git a/backward.hpp b/backward.hpp
+index ac7ad51..f1ee78e 100644
+--- a/backward.hpp
++++ b/backward.hpp
+@@ -797,6 +797,22 @@ protected:
+ 
+ #if BACKWARD_HAS_UNWIND == 1
+ 
++#if defined(__QNX__)
++// QNX is not one of the systems whose include section pulls in <unwind.h>,
++// but the Unwinder below is still compiled. Include it at global scope.
++} // namespace backward
++#include <unwind.h>
++#if defined(__QNX__)
++// QNX's <unwind.h> does not declare _Unwind_Backtrace, although libgcc
++// provides it. Declare it here with the same signature that GCC's and
++// LLVM's <unwind.h> use.
++extern "C" _Unwind_Reason_Code
++_Unwind_Backtrace(_Unwind_Reason_Code (*)(struct _Unwind_Context *, void *),
++                  void *);
++#endif
++namespace backward {
++#endif
++
+ namespace details {
+ 
+ template <typename F> class Unwinder {
+diff --git a/test/_test_main.cpp b/test/_test_main.cpp
+index 68211e0..0ddde4e 100644
+--- a/test/_test_main.cpp
++++ b/test/_test_main.cpp
+@@ -43,6 +43,10 @@ char argv0[MAX_PATH];
+ inline const char *getprogname() {
+   return GetModuleFileName(NULL, argv0, sizeof(argv0)) ? argv0 : NULL;
+ }
++#elif defined(__QNX__)
++// QNX libc sets __progname at startup (used by err()/warn()).
++extern "C" char *__progname;
++#define getprogname() __progname
+ #elif !defined(__APPLE__)
+ // N.B.  getprogname() is an Apple/BSD-ism.
+ // program_invocation_name is a GLIBC-ism, but it's also
