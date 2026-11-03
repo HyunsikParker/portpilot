@@ -134,6 +134,12 @@ See `runs/report.html` after a run. The table below is filled from the reports i
   not build with MinGW-w64 GCC 16, so only the Cyclone DDS core library is ported and its tests are not run.
 - nng's tests block at start-up on the target; the cause is not yet known.
 
+## How it was made
+
+PortPilot was written during the QNX Global Hackathon (November 2026) with Claude Code (Anthropic's Claude) as a coding
+assistant. The AI patches and test fixes in `ports/` were produced by the AI stage described above; each one carries
+its prompt and answer in `ports/<name>/ai/`.
+
 ## Licence
 
 PortPilot is MIT licensed. The patches in `ports/` apply to their upstream projects and fall under those projects'
