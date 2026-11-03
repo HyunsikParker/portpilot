@@ -167,6 +167,12 @@ pp_run() {
     if [ "$verdict" != PASS ]; then
         pp_excerpt
     fi
+    if [ "$verdict" = FAIL ] && [ "$rc" -gt 128 ]; then
+        # killed by a signal: name it, and use QNX's own crash records - the core file dumper wrote and the
+        # system log (slogger2) entries from around the crash
+        echo "PPLOG signal $((rc - 128)); core file: $(ls -t /data/var/dumper 2>/dev/null | head -n 1)"
+        slog2info 2>/dev/null | tail -n 5 | sed 's/^/PPLOG slog2: /'
+    fi
 }
 # failure lines with the three lines after each (where test frameworks print the expression and values), then the tail
 pp_excerpt() {
