@@ -48,6 +48,7 @@ footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
 .patch summary { font-weight: 400; color: var(--muted); font-size: 13px; }
 .patch pre { max-height: 420px; }
 pre .add { color: var(--ok); } pre .del { color: var(--bad); } pre .hunk { color: var(--muted); }
+.nowrap { white-space: nowrap; }
 .tag { display: inline-block; padding: 1px 7px; margin: 1px 2px 1px 0; border: 1px solid var(--line); border-radius: 10px;
        font-size: 12px; white-space: nowrap; }
 .tag.ai { border-color: var(--ok); color: var(--ok); }
@@ -98,8 +99,8 @@ def build_cell(report):
     if not report:
         return '<td class="muted">not run</td>'
     if report["result"] == "built":
-        return f'<td class="ok">built <span class="muted">({len(report["rounds"])} rounds)</span></td>'
-    return f'<td class="bad">needs patch <span class="muted">({len(report["rounds"])} rounds)</span></td>'
+        return f'<td class="ok nowrap">built <span class="muted">· {len(report["rounds"])} rounds</span></td>'
+    return f'<td class="bad nowrap">needs patch <span class="muted">· {len(report["rounds"])} rounds</span></td>'
 
 
 def test_cell(entry):
