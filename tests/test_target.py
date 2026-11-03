@@ -52,3 +52,14 @@ def test_launcher_moves_only_objects_into_their_own_response_file(tmp_path):
 
 def test_launcher_leaves_other_arguments_alone(tmp_path):
     assert _launcher().rewrite(["qcc.exe", "@missing.rsp", "-o", "x"]) == ["qcc.exe", "@missing.rsp", "-o", "x"]
+
+
+def test_build_file_quotes_names_with_spaces(tmp_path):
+    f = tmp_path / "A Query Language.pdf"
+    f.write_bytes(b"x")
+    b = target.Bundle()
+    b.dirs.add("lib/doc src")
+    b.add_file("lib/doc src/A Query Language.pdf", str(f))
+    text, _ = b.buildfile()
+    assert '[type=dir] "lib/doc src"' in text
+    assert f'"lib/doc src/A Query Language.pdf" = "{target._fwd(f)}"' in text

@@ -144,6 +144,19 @@ def symbol_context(name, symbols, limit=4):
     return out.replace("\r", "").strip()[:6000]
 
 
+def library_context(name, libraries, limit=3):
+    """For libraries missing at link time: the CMake lines that name them, which is where a link line gets them."""
+    if not libraries:
+        return ""
+    root = f"{HOST.work}\\{name}"
+    alt = "|".join(re.escape(n) for n in libraries[:limit])
+    ps = (f"$r = '{root}'; Get-ChildItem -LiteralPath $r -Recurse -File -Include CMakeLists.txt,*.cmake | "
+          f"Select-String -Pattern '\\b({alt})\\b' -Context 4,2 | Select-Object -First 6 | ForEach-Object {{ "
+          f"'BUILD ' + $_.Path.Substring($r.Length + 1) + ':' + $_.LineNumber; $_.Context.PreContext; '> ' + $_.Line; "
+          f"$_.Context.PostContext }}")
+    return HOST.ps(ps).replace("\r", "").strip()[:4000]
+
+
 def apply_patch(name, patch, tag, reverse=False):
     HOST.put(patch, f"{HOST.work}\\{tag}.patch")
     flag = "-R " if reverse else ""
@@ -241,6 +254,14 @@ def catalogue_step(name, cpu, log, rec, cflags, ldflags, cmake_args):
         rec.setdefault("patches", []).append("linker launcher: object list to ld in its own response file "
                                              "(Windows command-line limit)")
         changed = True
+    if fixes.needs_pkg_config(log) and not any("PKG_CONFIG_EXECUTABLE" in a for a in cmake_args):
+        # answer pkg-config queries from the .pc files of ports installed with --install
+        var_cpu = "aarch64le" if cpu.startswith("aarch64") else cpu
+        script = push_compat_header("portpilot_pkg_config.py")
+        cmake_args = list(cmake_args) + [f"-DPKG_CONFIG_EXECUTABLE={HOST.python}",
+                                         f"-DPKG_CONFIG_ARGN={script};--pc-dir={stage_root()}/{var_cpu}/usr/lib/pkgconfig"]
+        rec.setdefault("patches", []).append("pkg-config: PortPilot's reader for the stage directory's .pc files")
+        changed = True
     if fixes.needs_policy_minimum(log) and "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" not in cmake_args:
         cmake_args = list(cmake_args) + ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"]
         rec.setdefault("patches", []).append("configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)")
@@ -265,17 +286,18 @@ def ai_step(name, ref, log, rounds, tmp, k, notes=()):
     nothing to ask about or no patch could be applied (after one retry that shows the model the current file text)."""
     errors = agent.collect_errors(log, f"{HOST.work}\\{name}")
     symbols = agent.undefined_symbols(log)
-    if not errors and not symbols:
+    libraries = agent.missing_libraries(log)
+    if not errors and not symbols and not libraries:
         return None
     applied = sorted({r for rec in rounds for r in rec.get("matched_rules", [])}
                      | {p for rec in rounds for p in rec.get("patches", [])})
     prompt = agent.build_prompt(name, ref, applied, errors, source_snippets(name, errors), symbols,
-                                symbol_context(name, symbols))
+                                symbol_context(name, symbols), libraries, library_context(name, libraries))
     if notes:
         prompt += "\n\nEarlier attempts that did not help and were reverted:\n\n" + "\n\n".join(notes)
     info = {"round": k, "applied": False, "accepted": False, "prompt_chars": len(prompt)}
-    print(f"[{name}] no catalogue rule left; asking the model about {len(errors)} build errors and {len(symbols)} "
-          f"undefined symbols", flush=True)
+    print(f"[{name}] no catalogue rule left; asking the model about {len(errors)} build errors, {len(symbols)} "
+          f"undefined symbols and {len(libraries)} missing libraries", flush=True)
     for attempt_no in (1, 2):
         answer, info["model"] = agent.ask(prompt)
         diff = agent.extract_diff(answer)

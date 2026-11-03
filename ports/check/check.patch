@@ -1,0 +1,18 @@
+diff --git a/lib/libcompat.h b/lib/libcompat.h
+index ea63a5e..a22053f 100644
+--- a/lib/libcompat.h
++++ b/lib/libcompat.h
+@@ -245,7 +245,12 @@ struct timespec
+ };
+ #endif /* STRUCT_TIMESPEC_DEFINITION_MISSING */
+ 
+-#ifdef STRUCT_ITIMERSPEC_DEFINITION_MISSING
++/*
++ * QNX always provides struct itimerspec in <time.h>; the configure probe
++ * can report it missing, so never redefine it there (doing so also makes
++ * the timer_settime() prototype below conflict with the system one).
++ */
++#if defined(STRUCT_ITIMERSPEC_DEFINITION_MISSING) && !defined(__QNX__)
+ /* 
+  * The following structure is defined in POSIX.1b for timer start values and intervals.
+  * If it is not defined in time.h, then we need to define it here.

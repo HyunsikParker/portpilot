@@ -19,6 +19,7 @@ from pathlib import Path
 ERROR = re.compile(r"^(?P<file>(?:[A-Za-z]:)?[^:\n]+?):(?P<line>\d+):(?P<col>\d+): (?:fatal )?error: (?P<msg>.+)$", re.M)
 CMAKE_ERROR = re.compile(r"^CMake Error at (?P<file>[^\n]+?):(?P<line>\d+) \((?P<cmd>\w+)\):\n(?P<msg>(?: {2}.*\n?)+)", re.M)
 UNDEFINED = re.compile(r"undefined reference to `([^']+)'")
+MISSING_LIB = re.compile(r"cannot find -l([A-Za-z0-9_+.-]+)")
 SDP_MARKERS = ("qnx800", "/target/qnx/", "\\target\\qnx\\", "/host/win64/", "\\host\\win64\\")
 MAX_ERRORS = 8
 CONTEXT = 12
@@ -90,7 +91,12 @@ def undefined_symbols(log):
     return sorted(set(UNDEFINED.findall(log)))[:20]
 
 
-def build_prompt(name, ref, applied, errors, snippets, symbols, symbol_notes=""):
+def missing_libraries(log):
+    """Libraries the link line asks for that neither QNX nor the installed ports provide."""
+    return sorted(set(MISSING_LIB.findall(log)))[:10]
+
+
+def build_prompt(name, ref, applied, errors, snippets, symbols, symbol_notes="", libraries=(), library_notes=""):
     parts = ["Build errors (paths relative to the project root) with the source around each one:"] if errors else []
     for (rel, line, msg), snip in zip(errors, snippets):
         parts.append(f"--- {rel}:{line}: error: {msg}\n{snip}")
@@ -99,6 +105,11 @@ def build_prompt(name, ref, applied, errors, snippets, symbols, symbol_notes="")
     if symbol_notes:
         parts.append("Where those symbols are defined, and the build-file lines that mention the defining files:\n"
                      + symbol_notes)
+    if libraries:
+        parts.append("Libraries missing at link time (not part of QNX 8.0 and not installed for this build): "
+                     + ", ".join(f"-l{n}" for n in libraries))
+    if library_notes:
+        parts.append("Build-file lines that mention those libraries:\n" + library_notes)
     return PROMPT.format(name=name, ref=ref, applied=", ".join(applied) or "none", facts=QNX_FACTS,
                          errors="\n\n".join(parts))
 

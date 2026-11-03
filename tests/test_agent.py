@@ -46,3 +46,11 @@ def test_extract_diff_from_fenced_and_bare_answers():
     assert agent.extract_diff(diff) == diff
     assert agent.extract_diff("I cannot help with that.") == ""
     assert agent.patch_files(diff) == ["src/os.c"]
+
+
+def test_missing_link_libraries_reach_the_prompt():
+    log = "x86_64-pc-nto-qnx8.0.0-ld: cannot find -lsubunit: No such file or directory\n" * 3
+    libs = agent.missing_libraries(log)
+    assert libs == ["subunit"]
+    prompt = agent.build_prompt("demo", "v1.0", [], [], [], [], "", libs, "BUILD tests/CMakeLists.txt:19\n> list(APPEND LIBS subunit)")
+    assert "Libraries missing at link time" in prompt and "-lsubunit" in prompt and "list(APPEND LIBS subunit)" in prompt

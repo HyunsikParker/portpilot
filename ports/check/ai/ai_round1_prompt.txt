@@ -1,0 +1,134 @@
+You are porting the open-source project check (0.15.2) to QNX 8.0. The build still fails after these
+QNX fixes were applied: none.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: open a directory that is passed as dirfd to the *at() functions (openat, fstatat, unlinkat,
+mkdirat, ...) with O_DIRECTORY, or those calls report ENOTDIR; query fstatvfs()/fpathconf() for a directory through
+a descriptor opened with O_RDONLY, e.g. openat(dirfd, ".", O_RDONLY), not through the O_DIRECTORY one.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Build errors (paths relative to the project root) with the source around each one:
+
+--- lib/libcompat.h:253: error: redefinition of 'struct itimerspec'
+  241  struct timespec
+  242  {
+  243      time_t tv_sec;
+  244      long tv_nsec;
+  245  };
+  246  #endif /* STRUCT_TIMESPEC_DEFINITION_MISSING */
+  247  
+  248  #ifdef STRUCT_ITIMERSPEC_DEFINITION_MISSING
+  249  /* 
+  250   * The following structure is defined in POSIX.1b for timer start values and intervals.
+  251   * If it is not defined in time.h, then we need to define it here.
+  252   */
+  253> struct itimerspec
+  254  {
+  255      struct timespec it_interval;
+  256      struct timespec it_value;
+  257  };
+  258  #endif /* STRUCT_ITIMERSPEC_DEFINITION_MISSING */
+  259  
+  260  /* 
+  261   * Do a simple forward declaration in case the struct is not defined.
+  262   * In the versions of timer_create in libcompat, sigevent is never
+  263   * used.
+  264   */
+  265  struct sigevent;
+
+--- lib/libcompat.h:270: error: conflicting types for 'timer_settime'; have 'int(timer_t,  int,  const struct itimerspec *, struct itimerspec *)' {aka 'int(int,  int,  const struct itimerspec *, struct itimerspec *)'}
+  258  #endif /* STRUCT_ITIMERSPEC_DEFINITION_MISSING */
+  259  
+  260  /* 
+  261   * Do a simple forward declaration in case the struct is not defined.
+  262   * In the versions of timer_create in libcompat, sigevent is never
+  263   * used.
+  264   */
+  265  struct sigevent;
+  266  
+  267  CK_DLL_EXP int clock_gettime(clockid_t clk_id, struct timespec *ts);
+  268  CK_DLL_EXP int timer_create(clockid_t clockid, struct sigevent *sevp,
+  269                              timer_t * timerid);
+  270> CK_DLL_EXP int timer_settime(timer_t timerid, int flags,
+  271                               const struct itimerspec *new_value,
+  272                               struct itimerspec *old_value);
+  273  CK_DLL_EXP int timer_delete(timer_t timerid);
+  274  #endif /* HAVE_LIBRT */
+  275  
+  276  /*
+  277   * The following checks are to determine if the system's
+  278   * snprintf (or its variants) should be replaced with
+  279   * the C99 compliant version in libcompat.
+  280   */
+  281  #if HAVE_CONFIG_H
+  282  #include <config.h>
+
+--- lib/timer_settime.c:23: error: conflicting types for 'timer_settime'; have 'int(timer_t,  int,  const struct itimerspec *, struct itimerspec *)' {aka 'int(int,  int,  const struct itimerspec *, struct itimerspec *)'}
+    1  /*
+    2   * Check: a unit test framework for C
+    3   * Copyright (C) 2001, 2002 Arien Malec
+    4   *
+    5   * This library is free software; you can redistribute it and/or
+    6   * modify it under the terms of the GNU Lesser General Public
+    7   * License as published by the Free Software Foundation; either
+    8   * version 2.1 of the License, or (at your option) any later version.
+    9   *
+   10   * This library is distributed in the hope that it will be useful,
+   11   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+   12   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   13   * Lesser General Public License for more details.
+   14   *
+   15   * You should have received a copy of the GNU Lesser General Public
+   16   * License along with this library; if not, write to the
+   17   * Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+   18   * MA 02110-1301, USA.
+   19   */
+   20  
+   21  #include "libcompat.h"
+   22  
+   23> int timer_settime(timer_t timerid CK_ATTRIBUTE_UNUSED,
+   24                    int flags CK_ATTRIBUTE_UNUSED,
+   25                    const struct itimerspec *new_value,
+   26                    struct itimerspec *old_value CK_ATTRIBUTE_UNUSED)
+   27  {
+   28  #ifdef HAVE_SETITIMER
+   29      /*
+   30       * If the system does not have timer_settime() but does have
+   31       * setitimer() use that instead of alarm().
+   32       */
+   33      struct itimerval interval;
+   34  
+   35      interval.it_value.tv_sec = new_value->it_value.tv_sec;
+   36      interval.it_value.tv_usec = new_value->it_value.tv_nsec / 1000;
+   37      interval.it_interval.tv_sec = new_value->it_interval.tv_sec;
+   38      interval.it_interval.tv_usec = new_value->it_interval.tv_nsec / 1000;
+   39  
+   40      return setitimer(ITIMER_REAL, &interval, NULL);
+   41  #else
+   42      int seconds = new_value->it_value.tv_sec;
+   43  
+   44      /* 
+   45       * As the alarm() call has only second precision, if the caller
+   46       * specifies partial seconds, we round up to the nearest second.
+   47       */
+   48      if(new_value->it_value.tv_nsec > 0)
+   49      {
+   50          seconds += 1;
+   51      }
+   52  
+   53      alarm(seconds);
+   54  
+   55      return 0;
+   56  #endif
+   57  }
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.

@@ -127,5 +127,13 @@ def needs_link_response_file(log):
     return bool(LONG_LINK.search(log))
 
 
+# FindPkgConfig with REQUIRED on a build host that has no pkg-config
+NO_PKG_CONFIG = re.compile(r"Could NOT find PkgConfig \(missing: PKG_CONFIG_EXECUTABLE\)")
+
+
+def needs_pkg_config(log):
+    return bool(NO_PKG_CONFIG.search(log))
+
+
 def needs_policy_minimum(log):
     return bool(OLD_CMAKE_POLICY.search(log))

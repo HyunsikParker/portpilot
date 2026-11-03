@@ -1,0 +1,12 @@
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Check dependency
+ find_package(Check REQUIRED)
+ set(LIBS ${CHECK_LIBRARIES} ${open62541_LIBRARIES})
+-if(NOT WIN32 AND NOT APPLE AND NOT (CMAKE_HOST_SYSTEM_NAME MATCHES "OpenBSD") AND NOT (CMAKE_HOST_SYSTEM_NAME MATCHES "FreeBSD"))
++if(NOT WIN32 AND NOT APPLE AND NOT QNX AND NOT (CMAKE_SYSTEM_NAME STREQUAL "QNX") AND NOT (CMAKE_HOST_SYSTEM_NAME MATCHES "OpenBSD") AND NOT (CMAKE_HOST_SYSTEM_NAME MATCHES "FreeBSD"))
+     list(APPEND LIBS subunit)
+ endif()
+ include_directories(${CHECK_INCLUDE_DIRS})

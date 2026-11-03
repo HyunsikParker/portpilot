@@ -1,0 +1,782 @@
+
+non UEFI or UEFI+CSM boot
+ACPI table not found (0x4746434d)
+System behaves poorly without PCID support.
+overriding mask for controller 2, vector_base 0
+---> Starting slogger2
+---> Starting PCI Services
+---> Starting fsevmgr
+# ---> Starting devb
+---> Mounting file systems
+Path=0 - Intel 82371SB
+---> Mounting file systems
+ target=0 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+ target=1 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+Path=1 - Intel 82371SB
+ target=0 lun=0            CD-ROM(5) - QEMU     QEMU DVD-ROM     Rev: 2.5+
+---> Starting Networking
+if_up: tries exhausted
+ifconfig: interface vtnet0 does not exist
+no valid interfaces found
+---> Starting sshd
+/usr/libexec/sshd-auth does not exist or is not executable
+
+---> Starting misc
+PPTEST-BEGIN QNX portpilot 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+PPINFO tmp: /dev/hd0t179                513M       17M      497M       4%  /data/          
+PPTEST-LIB open62541 146
+PPTEST open62541 check_types_builtin PASS rc=0
+PPTEST open62541 check_ziptree PASS rc=0
+PPTEST open62541 check_mp_printf PASS rc=0
+PPTEST open62541 check_base64 PASS rc=0
+PPTEST open62541 check_dtoa PASS rc=0
+PPTEST open62541 check_itoa PASS rc=0
+PPTEST open62541 check_libc_time PASS rc=0
+PPTEST open62541 check_parse_num PASS rc=0
+PPTEST open62541 check_pcg_basic PASS rc=0
+PPTEST open62541 check_utf8 PASS rc=0
+PPTEST open62541 check_musl_inet_pton FAIL rc=1
+PPLOG 95%: Checks: 21, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/check_musl_inet_pton.c:177:F:inet_pton_misc:badAddressFamily:0: Assertion '(*__get_errno_ptr()) == 247' failed: (*__get_errno_ptr()) == 3, 247 == 247
+PPLOG ...
+PPLOG Running suite(s): Test musl_inet_pton address parsing
+PPLOG 95%: Checks: 21, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/check_musl_inet_pton.c:177:F:inet_pton_misc:badAddressFamily:0: Assertion '(*__get_errno_ptr()) == 247' failed: (*__get_errno_ptr()) == 3, 247 == 247
+PPTEST open62541 check_config_default PASS rc=0
+PPTEST open62541 check_log_syslog PASS rc=0
+PPTEST open62541 check_cj5 PASS rc=0
+PPTEST open62541 check_types_builtin_json FAIL rc=1
+PPLOG 99%: Checks: 229, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/check_types_builtin_json.c:1896:F:json_encode:UA_Variant_Double2_json_encode:0: Assertion 'memcmp(&srcData, &outData, sizeof(UA_Double)) == 0' failed
+PPLOG ...
+PPLOG Running suite(s): Built-in Data Types 62541-6 Json
+PPLOG 99%: Checks: 229, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/check_types_builtin_json.c:1896:F:json_encode:UA_Variant_Double2_json_encode:0: Assertion 'memcmp(&srcData, &outData, sizeof(UA_Double)) == 0' failed
+PPTEST open62541 check_types_json_encode PASS rc=0
+PPTEST open62541 check_types_json_decode PASS rc=0
+PPTEST open62541 check_json_config PASS rc=0
+PPTEST open62541 check_pubsub_encoding_json PASS rc=0
+PPTEST open62541 check_pubsub_publish_json FAIL rc=1
+PPLOG [2026-11-03 13:27:13.971 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:27:13.971 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:27:13.975 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:27:13.980 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publish_json.c:38:S:PubSub publish:checked_setup:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG ...
+PPLOG [2026-11-03 13:27:13.971 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:27:13.971 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:27:13.975 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:27:13.980 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publish_json.c:38:S:PubSub publish:checked_setup:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_yxml PASS rc=0
+PPTEST open62541 check_types_builtin_xml PASS rc=0
+PPTEST open62541 check_xml_encoding_roundtrip PASS rc=0
+PPTEST open62541 check_types_memory PASS rc=0
+PPTEST open62541 check_types_range PASS rc=0
+PPTEST open62541 check_types_parse PASS rc=0
+PPTEST open62541 check_eventfilter_parser PASS rc=0
+PPTEST open62541 check_types_custom PASS rc=0
+PPTEST open62541 check_chunking PASS rc=0
+PPTEST open62541 check_utils PASS rc=0
+PPTEST open62541 check_kvm_utils PASS rc=0
+PPTEST open62541 check_util_functions PASS rc=0
+PPTEST open62541 check_types_nodeid_copy PASS rc=0
+PPTEST open62541 check_types_builtin_variant PASS rc=0
+PPTEST open62541 check_types_range_lookup PASS rc=0
+PPTEST open62541 check_types_order PASS rc=0
+PPTEST open62541 check_types_order_struct PASS rc=0
+PPTEST open62541 check_utils_trustlist_path PASS rc=0
+PPTEST open62541 check_types_copy_complex PASS rc=0
+PPTEST open62541 check_types_print PASS rc=0
+PPTEST open62541 check_types_definition PASS rc=0
+PPTEST open62541 check_types_namespace_mapping PASS rc=0
+PPTEST open62541 check_types_allocation_failures PASS rc=0
+PPTEST open62541 check_encoding_roundtrip PASS rc=0
+PPTEST open62541 check_types_builtin_binary PASS rc=0
+PPTEST open62541 check_utils_url_kvm PASS rc=0
+PPTEST open62541 check_securechannel PASS rc=0
+PPTEST open62541 check_securechannel_unit PASS rc=0
+PPTEST open62541 check_timer PASS rc=0
+PPTEST open62541 check_eventloop PASS rc=0
+PPTEST open62541 check_eventloop_tcp FAIL rc=1
+PPLOG [2026-11-03 13:29:04.954 (UTC+0000)] [31merror/network[0m	TCP	| Unable to establish connection: no available sockets
+PPLOG [2026-11-03 13:29:04.955 (UTC+0000)] [31merror/network[0m	TCP	| Unable to establish connection: no available sockets
+PPLOG [2026-11-03 13:29:04.956 (UTC+0000)] trace/eventloop[0m	Iterate the EventLoop
+PPLOG [2026-11-03 13:29:04.958 (UTC+0000)] trace/eventloop[0m	Process delayed callbacks
+PPLOG [2026-11-03 13:29:04.964 (UTC+0000)] trace/eventloop[0m	Iterate the EventLoop
+PPLOG 75%: Checks: 4, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/check_eventloop_tcp.c:220:F:test cases:connectTCP:0: Assertion 'connCount == listenSockets + 2' failed: connCount == 2, listenSockets + 2 == 4
+PPLOG ...
+PPLOG [2026-11-03 13:29:05.194 (UTC+0000)] debug/network[0m	TCP	| Shutting down the ConnectionManager
+PPLOG [2026-11-03 13:29:05.195 (UTC+0000)] debug/network[0m	TCP	| All sockets closed, the EventLoop has stopped
+PPLOG [2026-11-03 13:29:05.197 (UTC+0000)] debug/eventloop[0m	The EventLoop has stopped
+PPLOG [2026-11-03 13:29:05.198 (UTC+0000)] trace/eventloop[0m	Process delayed callbacks
+PPLOG 75%: Checks: 4, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/check_eventloop_tcp.c:220:F:test cases:connectTCP:0: Assertion 'connCount == listenSockets + 2' failed: connCount == 2, listenSockets + 2 == 4
+PPTEST open62541 check_eventloop_udp PASS rc=0
+PPTEST open62541 check_server_config_json PASS rc=0
+PPTEST open62541 check_accesscontrol PASS rc=0
+PPTEST open62541 check_services_view PASS rc=0
+PPTEST open62541 check_services_attributes PASS rc=0
+PPTEST open62541 check_services_nodemanagement PASS rc=0
+PPTEST open62541 check_discovery_coverage PASS rc=0
+PPTEST open62541 check_server_callbacks PASS rc=0
+PPTEST open62541 check_server_password PASS rc=0
+PPTEST open62541 check_mt_shutdown PASS rc=0
+PPTEST open62541 check_mt_addVariableNode PASS rc=0
+PPTEST open62541 check_mt_addVariableTypeNode PASS rc=0
+PPTEST open62541 check_mt_addObjectNode PASS rc=0
+PPTEST open62541 check_mt_readValueAttribute PASS rc=0
+PPTEST open62541 check_mt_writeValueAttribute PASS rc=0
+PPTEST open62541 check_mt_readWriteDelete PASS rc=0
+PPTEST open62541 check_mt_readWriteDeleteCallback PASS rc=0
+PPTEST open62541 check_mt_addDeleteObject PASS rc=0
+PPTEST open62541 check_server_asyncop PASS rc=0
+PPTEST open62541 check_services_call PASS rc=0
+PPTEST open62541 check_services_method_coverage PASS rc=0
+PPTEST open62541 check_services_subscriptions PASS rc=0
+PPTEST open62541 check_subscription_publishqueue PASS rc=0
+PPTEST open62541 check_monitoreditem_filter PASS rc=0
+PPTEST open62541 check_subscription_events PASS rc=0
+PPTEST open62541 check_subscription_events_local PASS rc=0
+PPTEST open62541 check_subscription_event_filter PASS rc=0
+PPTEST open62541 check_nodestore PASS rc=0
+PPTEST open62541 check_server_historical_data PASS rc=0
+PPTEST open62541 check_server_historical_data_circular PASS rc=0
+PPTEST open62541 check_session PASS rc=0
+PPTEST open62541 check_session_errorpaths PASS rc=0
+PPTEST open62541 check_session_authtoken_rng PASS rc=0
+PPTEST open62541 check_server PASS rc=0
+PPTEST open62541 check_server_utils_coverage PASS rc=0
+PPTEST open62541 check_services_securechannel PASS rc=0
+PPTEST open62541 check_server_auditing PASS rc=0
+PPTEST open62541 check_server_jobs PASS rc=0
+PPTEST open62541 check_server_userspace PASS rc=0
+PPTEST open62541 check_node_inheritance PASS rc=0
+PPTEST open62541 check_server_utils PASS rc=0
+PPTEST open62541 check_nodes PASS rc=0
+PPTEST open62541 check_server_diagnostics PASS rc=0
+PPTEST open62541 check_server_readwrite PASS rc=0
+PPTEST open62541 check_server_attr_wrappers PASS rc=0
+PPTEST open62541 check_services_nodemanagement_callbacks PASS rc=0
+PPTEST open62541 check_server_ns0_diagnostics PASS rc=0
+PPTEST open62541 check_server_node_services PASS rc=0
+PPTEST open62541 check_server_client_readwrite PASS rc=0
+PPTEST open62541 check_services_attributes_all PASS rc=0
+PPTEST open62541 check_services_subscriptions_modify PASS rc=0
+PPTEST open62541 check_local_monitored_item PASS rc=0
+PPTEST open62541 check_datachange_deadband_typekinds PASS rc=0
+PPTEST open62541 check_pubsub_encoding PASS rc=0
+PPTEST open62541 check_pubsub_encoding_custom PASS rc=0
+PPTEST open62541 check_pubsub_pds FAIL rc=1
+PPLOG [2026-11-03 13:43:27.135 (UTC+0000)] [31merror/pubsub[0m	PublishedDataSet creation failed. Unsupported PublishedDataSet type.
+PPLOG [2026-11-03 13:43:27.141 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:27.143 (UTC+0000)] [32minfo/network[0m	TCP 7	| Socket closed
+PPLOG [2026-11-03 13:43:27.648 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG [2026-11-03 13:43:32.942 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:43:32.945 (UTC+0000)] [32minfo/pubsub[0m	PublishedDataItems destructor called!
+PPLOG [2026-11-03 13:43:32.947 (UTC+0000)] [32minfo/pubsub[0m	PublishedDataset ns=1;i=50007	| PublishedDataSet deleted
+PPLOG [2026-11-03 13:43:32.951 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:33.822 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:33.823 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:33.825 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:33.827 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:33.835 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG 92%: Checks: 13, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_pds.c:274:F:PubSub PDS extra coverage:AddDataSetFieldRejectedWhenPDSInUse:0: Assertion 'rv == ((UA_StatusCode) 0x00000000)' failed: rv == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG ...
+PPLOG [2026-11-03 13:43:34.656 (UTC+0000)] [32minfo/pubsub[0m	PublishedDataset ns=1;i=50007	| PublishedDataSet deleted
+PPLOG [2026-11-03 13:43:34.659 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:34.662 (UTC+0000)] [32minfo/network[0m	TCP 7	| Socket closed
+PPLOG [2026-11-03 13:43:35.166 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG 92%: Checks: 13, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_pds.c:274:F:PubSub PDS extra coverage:AddDataSetFieldRejectedWhenPDSInUse:0: Assertion 'rv == ((UA_StatusCode) 0x00000000)' failed: rv == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_pubsub_state_machine FAIL rc=1
+PPLOG [2026-11-03 13:43:38.303 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:38.304 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:38.308 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:38.313 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:38.322 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:39.249 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:39.250 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:39.252 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:39.255 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:39.261 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:40.083 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:40.084 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:40.086 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:40.088 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:40.091 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:41.343 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:41.344 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:41.345 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:41.346 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:41.350 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:42.174 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:42.175 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:42.176 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:42.177 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:42.181 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:43.031 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:43.032 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:43.033 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:43.035 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:43.038 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:44.299 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:44.300 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:44.300 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:44.302 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:44.305 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG [2026-11-03 13:43:44.750 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:44.752 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:44.754 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:44.757 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:44.760 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG ...
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine.c:101:F:ReaderGroup state-machine branches:ReaderGroup_EnableWhileConnectionDisabled_GoesToPaused:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine.c:101:F:ReaderGroup state-machine branches:ReaderGroup_BeforeStateChangeCallbackIsInvoked:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine.c:101:F:ReaderGroup state-machine branches:ReaderGroup_EnableWhenDeleteFlagSet_Fails:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine.c:334:F:PubSub public-API invalid-arg paths:AddConnection_AbortedByLifecycleCallback:0: Assertion 'res == ((UA_StatusCode) 0x80010000)' failed: res == 2147614720, ((UA_StatusCode) 0x80010000) == 2147549184
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine.c:101:F:PubSub public-API invalid-arg paths:AddWriterGroup_AbortedByLifecycleCallback:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine.c:101:F:PubSub public-API invalid-arg paths:AddReaderGroup_AbortedByLifecycleCallback:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_pubsub_state_machine_extra FAIL rc=1
+PPLOG [2026-11-03 13:43:50.324 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:50.326 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:50.330 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:50.335 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:50.346 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:51.237 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:51.238 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:51.239 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:51.240 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:51.248 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:52.108 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:52.108 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:52.109 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:52.111 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:52.115 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:52.985 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:52.986 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:52.987 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:52.989 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:52.993 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:53.839 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:53.841 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:53.842 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:53.845 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:53.850 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:54.757 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:54.758 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:54.759 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:54.760 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:54.765 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:55.637 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:55.638 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:55.639 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:55.641 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:55.646 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:43:57.397 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:43:57.398 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:43:57.399 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:43:57.400 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:43:57.404 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG ...
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine_extra.c:153:F:DataSetWriter state-machine branches:DataSetWriter_BeforeStateChangeCallbackIsInvoked:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine_extra.c:153:F:DataSetWriter state-machine branches:DataSetWriter_CustomStateMachineIsUsed:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine_extra.c:153:F:DataSetWriter state-machine branches:DataSetWriter_StateChangeCallbackIsInvoked:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine_extra.c:153:F:WriterGroup create-time validation:WriterGroup_Create_InvalidEncodingMimeType_Fails:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine_extra.c:153:F:WriterGroup create-time validation:WriterGroup_Create_JsonEncodingWithUadpSettings_Fails:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_state_machine_extra.c:153:F:PublishedDataSet / SubscribedDataSet:GenerateFieldMetaData_PublishedVariableNotReadable_ReturnsError:0: Assertion 'res == ((UA_StatusCode) 0x00000000)' failed: res == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_pubsub_connection_udp FAIL rc=1
+PPLOG [2026-11-03 13:44:10.128 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:10.129 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:10.136 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:10.141 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:10.151 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:44:11.011 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:11.012 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:11.013 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:11.014 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:11.019 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:44:11.865 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:11.866 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:11.867 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:11.870 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:11.874 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:44:12.774 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:12.775 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:12.777 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:12.780 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:12.788 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:44:13.701 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:13.702 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:13.703 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:13.705 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:13.751 (UTC+0000)] [33mwarn/network[0m	UDP	| getaddrinfo lookup for "256.0.0.22" on port 4840 failed (Name does not resolve)
+PPLOG [2026-11-03 13:44:13.753 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:13.754 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:13.756 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:13.758 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:13.762 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:44:14.602 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:14.603 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:14.604 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:14.605 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:14.610 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:44:15.498 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:15.499 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:15.500 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:15.502 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:15.539 (UTC+0000)] [33mwarn/network[0m	UDP	| getaddrinfo lookup for "wasd::1:5" on port 4840 failed (Name does not resolve)
+PPLOG ...
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_connection_udp.c:45:F:Create PubSub UDP Connections with minimal valid config:AddConnectionsWithMinimalValidConfiguration:0: Assertion 'psm->connectionsSize == 1' failed: psm->connectionsSize == 0, 1 == 1
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_connection_udp.c:66:F:Create PubSub UDP Connections with minimal valid config:AddConnectionsWithMinimalValidIPv6Configuration:0: Assertion 'psm->connectionsSize == 1' failed: psm->connectionsSize == 0, 1 == 1
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_connection_udp.c:88:F:Create PubSub UDP Connections with minimal valid config:AddRemoveAddConnectionWithMinimalValidConfiguration:0: Assertion 'psm->connectionsSize == 1' failed: psm->connectionsSize == 0, 1 == 1
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_connection_udp.c:113:F:Create PubSub UDP Connections with minimal valid config:AddRemoveAddConnectionWithMinimalValidIPv6Configuration:0: Assertion 'psm->connectionsSize == 1' failed: psm->connectionsSize == 0, 1 == 1
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_connection_udp.c:273:F:Create PubSub UDP Connections with maximal valid config:AddSingleConnectionWithMaximalConfiguration:0: Assertion 'psm->connectionsSize == 1' failed: psm->connectionsSize == 0, 1 == 1
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_connection_udp.c:304:F:Create PubSub UDP Connections with maximal valid config:GetMaximalConnectionConfigurationAndCompareValues:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_pubsub_publish FAIL rc=1
+PPLOG [2026-11-03 13:44:24.482 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:24.484 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:24.490 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:24.499 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:24.510 (UTC+0000)] [33mwarn/network[0m	UDP	| Failed to validate multicast for "224.0.0.22" on port 4840 (None)
+PPLOG [2026-11-03 13:44:24.512 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:24.513 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:24.514 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:24.516 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:24.528 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:24.530 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:24.531 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:24.531 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG [2026-11-03 13:44:25.018 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:25.019 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:25.020 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:25.023 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:25.031 (UTC+0000)] [33mwarn/network[0m	UDP	| Failed to validate multicast for "224.0.0.22" on port 4840 (None)
+PPLOG [2026-11-03 13:44:25.032 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:25.033 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:25.034 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:25.036 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:25.045 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:25.049 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:25.049 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:25.050 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG [2026-11-03 13:44:25.365 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:25.366 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:25.367 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:25.369 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:25.380 (UTC+0000)] [33mwarn/network[0m	UDP	| Failed to validate multicast for "224.0.0.22" on port 4840 (None)
+PPLOG [2026-11-03 13:44:25.382 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:25.382 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:25.383 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:25.383 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:25.392 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:25.395 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:25.397 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:25.398 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG [2026-11-03 13:44:25.692 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG ...
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publish.c:43:S:PubSub Writer/WriterGroup lifecycle and edge cases:checked_setup:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publish.c:43:S:PubSub Writer/WriterGroup lifecycle and edge cases:checked_setup:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publish.c:43:S:PubSub Writer/WriterGroup lifecycle and edge cases:checked_setup:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publish.c:43:S:PubSub Writer/WriterGroup lifecycle and edge cases:checked_setup:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publish.c:43:S:PubSub Writer/WriterGroup lifecycle and edge cases:checked_setup:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publish.c:43:S:PubSub Writer/WriterGroup lifecycle and edge cases:checked_setup:0: Assertion 'retVal == ((UA_StatusCode) 0x00000000)' failed: retVal == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_pubsub_get_state FAIL rc=1
+PPLOG [2026-11-03 13:44:39.398 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:39.399 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:39.404 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:39.409 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:39.413 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:44:40.272 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:40.273 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:40.274 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:40.275 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:40.277 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG START: Test_error_case
+PPLOG [2026-11-03 13:44:41.113 (UTC+0000)] [33mwarn/network[0m	UDP	| Failed to validate multicast for "224.0.0.22" on port 4840 (None)
+PPLOG [2026-11-03 13:44:41.115 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:41.116 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:41.117 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:41.118 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:41.121 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG 0%: Checks: 3, Failures: 3, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_get_state.c:64:F:normal_operation:Test_normal_operation:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_get_state.c:64:F:corner cases:Test_corner_cases:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_get_state.c:64:F:error case:Test_error_case:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG ...
+PPLOG [2026-11-03 13:44:41.126 (UTC+0000)] [32minfo/network[0m	TCP 7	| Socket closed
+PPLOG [2026-11-03 13:44:41.629 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG 0%: Checks: 3, Failures: 3, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_get_state.c:64:F:normal_operation:Test_normal_operation:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_get_state.c:64:F:corner cases:Test_corner_cases:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_get_state.c:64:F:error case:Test_error_case:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPTEST open62541 check_pubsub_udp_unicast FAIL rc=1
+PPLOG [2026-11-03 13:44:44.462 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:44.465 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:44.466 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:44.466 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG [2026-11-03 13:44:47.310 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:47.312 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:47.313 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:47.314 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG 50%: Checks: 2, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_udp_unicast.c:342:F:Publisher publishing and Subscriber subscribing:SinglePublishSubscribeInt32:0: Assertion 'UA_order(publishedNodeData.data, subscribedNodeData.data, subscribedNodeData.type) == UA_ORDER_EQ' failed
+PPLOG ...
+PPLOG [2026-11-03 13:44:48.798 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:48.800 (UTC+0000)] [32minfo/pubsub[0m	PubSubConnection ns=1;i=50007	| Connection deleted
+PPLOG [2026-11-03 13:44:48.801 (UTC+0000)] [32minfo/pubsub[0m	PublishedDataItems destructor called!
+PPLOG [2026-11-03 13:44:48.803 (UTC+0000)] [32minfo/pubsub[0m	PublishedDataset ns=1;i=50012	| PublishedDataSet deleted
+PPLOG 50%: Checks: 2, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_udp_unicast.c:342:F:Publisher publishing and Subscriber subscribing:SinglePublishSubscribeInt32:0: Assertion 'UA_order(publishedNodeData.data, subscribedNodeData.data, subscribedNodeData.type) == UA_ORDER_EQ' failed
+PPTEST open62541 check_pubsub_publisherid FAIL rc=1
+PPLOG [2026-11-03 13:44:51.520 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:51.521 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:51.526 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:51.531 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:51.536 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:44:52.405 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:52.406 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:52.408 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:52.410 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:52.413 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:44:53.258 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:53.259 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:53.261 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:53.262 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:53.266 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:44:54.144 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:54.145 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:54.145 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:54.146 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:54.148 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:44:55.016 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:55.017 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:55.019 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:55.020 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:55.021 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG 0%: Checks: 5, Failures: 5, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId one connection:Test_1_connection:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId multiple connections:Test_multiple_connections:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId string:Test_string_publisherId:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId multiple groups:Test_multiple_groups:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId multiple datasets:Test_multiple_datasets:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG ...
+PPLOG 0%: Checks: 5, Failures: 5, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId one connection:Test_1_connection:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId multiple connections:Test_multiple_connections:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId string:Test_string_publisherId:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId multiple groups:Test_multiple_groups:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publisherid.c:56:F:PublisherId multiple datasets:Test_multiple_datasets:0: Assertion '((UA_StatusCode) 0x00000000) == UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId)' failed: ((UA_StatusCode) 0x00000000) == 0, UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == 2147614720
+PPTEST open62541 check_pubsub_subscribe FAIL rc=1
+PPLOG [2026-11-03 13:44:58.564 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:58.565 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:58.572 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:58.578 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:58.595 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:58.598 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:58.600 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:58.600 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG [2026-11-03 13:44:58.927 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:58.928 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:58.930 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:58.932 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:58.940 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:58.943 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:58.944 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:58.945 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG [2026-11-03 13:44:59.461 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:59.463 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:59.465 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:59.467 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:59.475 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:59.479 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:59.480 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:59.481 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG [2026-11-03 13:44:59.925 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:44:59.926 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:44:59.927 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:44:59.929 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:44:59.937 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:44:59.939 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:44:59.941 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:44:59.942 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG [2026-11-03 13:45:00.380 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:00.381 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:00.382 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:00.384 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:00.394 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:45:00.397 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:45:00.398 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:45:00.399 (UTC+0000)] [33mwarn/server[0m	x509 Certificate Authentication configured, but no encrypting SecurityPolicy. This can leak credentials on the network.
+PPLOG ...
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe.c:121:S:PubSub Reader/ReaderGroup lifecycle and edge cases:checked_setup:0: Assertion 'retval == ((UA_StatusCode) 0x00000000)' failed: retval == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe.c:121:S:PubSub Reader/ReaderGroup lifecycle and edge cases:checked_setup:0: Assertion 'retval == ((UA_StatusCode) 0x00000000)' failed: retval == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe.c:121:S:PubSub Reader/ReaderGroup lifecycle and edge cases:checked_setup:0: Assertion 'retval == ((UA_StatusCode) 0x00000000)' failed: retval == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe.c:121:S:PubSub Reader/ReaderGroup lifecycle and edge cases:checked_setup:0: Assertion 'retval == ((UA_StatusCode) 0x00000000)' failed: retval == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe.c:121:S:PubSub Reader/ReaderGroup lifecycle and edge cases:checked_setup:0: Assertion 'retval == ((UA_StatusCode) 0x00000000)' failed: retval == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe.c:121:S:PubSub Reader/ReaderGroup lifecycle and edge cases:checked_setup:0: Assertion 'retval == ((UA_StatusCode) 0x00000000)' failed: retval == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_pubsub_publishspeed FAIL rc=1
+PPLOG [2026-11-03 13:45:14.853 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:14.854 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:14.859 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:14.868 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publishspeed.c:39:S:Speed of the publisher:checked_setup:0: Assertion 'retval == ((UA_StatusCode) 0x00000000)' failed: retval == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG ...
+PPLOG [2026-11-03 13:45:14.853 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:14.854 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:14.859 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:14.868 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG 0%: Checks: 1, Failures: 1, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_publishspeed.c:39:S:Speed of the publisher:checked_setup:0: Assertion 'retval == ((UA_StatusCode) 0x00000000)' failed: retval == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+Memory fault (core dumped) 
+PPTEST open62541 check_pubsub_offset FAIL rc=139
+PPLOG [2026-11-03 13:45:17.596 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:17.597 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:17.600 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:17.604 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:17.613 (UTC+0000)] [32minfo/pubsub[0m	PublishedDataset ns=1;i=50007	| DataSet created
+PPLOG [2026-11-03 13:45:17.618 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.621 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.622 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.624 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.625 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.626 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.628 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.629 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.630 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG [2026-11-03 13:45:17.631 (UTC+0000)] [31merror/pubsub[0m	PublishedDataset ns=1;i=50007	| PubSub meta data generation: Reading the DataType failed
+PPLOG 0:	Offset 0	OffsetType 0	Component i=100
+PPLOG 1:	Offset 0	OffsetType 0	Component i=0
+PPLOG 2:	Offset 0	OffsetType 0	Component i=3
+PPLOG ...
+PPLOG 37:	Offset 44	OffsetType 3656094710	Component ns=61440;i=0
+PPLOG 38:	Offset 0	OffsetType 0	Component i=0
+PPLOG 39:	Offset 913204592	OffsetType 1936028719	Component 
+PPLOG 40:	Offset 1952805734	OffsetType 1970496117	Component 
+PPLOG 41:	Offset 1667590243	OffsetType 1702113134	Component 
+PPLOG 42:	Offset 795698548	OffsetType 980709231	Component PPLOG signal 11; core file: check_pubsub_offset.core
+PPLOG slog2: Nov 03 13:27:00.984       check_log_syslog.3018771                 slog      0  <10>Nov 03 13:27:00 check_log_syslog: [fatal/discovery] level/category mapping test
+PPLOG slog2: Nov 03 13:27:00.993       check_log_syslog.3018771                 slog      0  <12>Nov 03 13:27:00 check_log_syslog: [warn/application] this should be emitted: 42
+PPLOG slog2: Nov 03 13:27:01.000       check_log_syslog.3018771                 slog      0  <14>Nov 03 13:27:00 check_log_syslog: [info/application] ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKL
+PPLOG slog2: Nov 03 13:28:04.721            check_utils.3874835                 slog*     0  <14>Nov 03 13:28:04 check_utils: [info/unknown] Testing an out-of-range log category
+PPLOG slog2: Nov 03 13:28:04.728            check_utils.3874835                 slog      0  <14>Nov 03 13:28:04 check_utils: [info/unknown] Testing an out-of-range log category
+PPTEST open62541 check_pubsub_custom_state_machine PASS rc=0
+PPTEST open62541 check_pubsub_subscribe_msgrcvtimeout FAIL rc=1
+PPLOG [2026-11-03 13:45:25.916 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:25.918 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:25.924 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:25.930 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:25.936 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:45:26.814 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:26.815 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:26.816 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:26.818 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:26.821 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:45:27.681 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:27.682 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:27.684 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:27.687 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:27.691 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:45:28.557 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:28.559 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:28.560 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:28.561 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:28.563 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG [2026-11-03 13:45:29.400 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:29.400 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:29.401 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:29.402 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:29.405 (UTC+0000)] [32minfo/application[0m	teardown
+PPLOG 0%: Checks: 5, Failures: 5, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_basic:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_different_timeouts:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_wrong_timeout:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_update_config:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_add_remove:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG ...
+PPLOG 0%: Checks: 5, Failures: 5, Errors: 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_basic:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_different_timeouts:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_wrong_timeout:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_update_config:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_subscribe_msgrcvtimeout.c:62:F:Message Receive Timeout:Test_add_remove:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, opConnectionId) == ((UA_StatusCode) 0x00000000)' failed
+PPTEST open62541 check_pubsub_informationmodel FAIL rc=1
+PPLOG [2026-11-03 13:45:33.570 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:33.571 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:33.576 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:33.581 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:33.591 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:34.449 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:34.450 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:34.452 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:34.453 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:34.460 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:37.077 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:37.079 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:37.080 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:37.081 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:37.087 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:37.921 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:37.922 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:37.923 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:37.925 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:37.930 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:38.840 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:38.841 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:38.842 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:38.845 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:38.850 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:39.748 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:39.749 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:39.750 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:39.752 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:39.757 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:40.583 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:40.584 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:40.585 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:40.587 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:40.592 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:41.419 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:41.420 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:41.421 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:41.423 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:41.427 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG ...
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel.c:76:F:PubSub WriterGroup check properties:ReadPublishIntervalAndCompareWithInternalValue:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == ((UA_StatusCode) 0x00000000)' failed: UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel.c:76:F:PubSub WriterGroup check properties:WritePublishIntervalAndCompareWithInternalValue:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == ((UA_StatusCode) 0x00000000)' failed: UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel.c:76:F:PubSub Connection check properties:ReadAddressAndCompareWithInternalValue:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == ((UA_StatusCode) 0x00000000)' failed: UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel.c:76:F:PubSub DataSetReader check properties:ReadWriterGroupIdAndCompareWithInternalValue:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == ((UA_StatusCode) 0x00000000)' failed: UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel.c:76:F:PubSub DataSetReader check properties:ReadDataSetWriterIdAndCompareWithInternalValue:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == ((UA_StatusCode) 0x00000000)' failed: UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel.c:76:F:PubSub DataSetWriter check properties:ReadDataSetWriterIdWGAndCompareWithInternalValue:0: Assertion 'UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == ((UA_StatusCode) 0x00000000)' failed: UA_Server_addPubSubConnection(server, &connectionConfig, assignedId) == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_pubsub_informationmodel_methods FAIL rc=1
+PPLOG [2026-11-03 13:45:51.746 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:51.748 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:51.752 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:51.758 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:51.760 (UTC+0000)] [31merror/server[0m	addPubSubConnection failed
+PPLOG [2026-11-03 13:45:51.771 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:51.774 (UTC+0000)] [32minfo/network[0m	TCP 7	| Socket closed
+PPLOG [2026-11-03 13:45:52.282 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG [2026-11-03 13:45:52.606 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:52.607 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:52.609 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:52.610 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:52.611 (UTC+0000)] [31merror/server[0m	addPubSubConnection failed
+PPLOG [2026-11-03 13:45:52.618 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:52.622 (UTC+0000)] [32minfo/network[0m	TCP 7	| Socket closed
+PPLOG [2026-11-03 13:45:53.125 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG [2026-11-03 13:45:53.449 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:53.450 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:53.451 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:53.454 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:53.456 (UTC+0000)] [31merror/server[0m	addPubSubConnection failed
+PPLOG [2026-11-03 13:45:53.464 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:53.466 (UTC+0000)] [32minfo/network[0m	TCP 7	| Socket closed
+PPLOG [2026-11-03 13:45:53.969 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG [2026-11-03 13:45:54.306 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:54.308 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:54.309 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:54.310 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG [2026-11-03 13:45:54.312 (UTC+0000)] [31merror/server[0m	addPubSubConnection failed
+PPLOG [2026-11-03 13:45:54.320 (UTC+0000)] [32minfo/network[0m	TCP 6	| Socket closed
+PPLOG [2026-11-03 13:45:54.322 (UTC+0000)] [32minfo/network[0m	TCP 7	| Socket closed
+PPLOG [2026-11-03 13:45:54.825 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG [2026-11-03 13:45:55.133 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:45:55.155 (UTC+0000)] [32minfo/network[0m	TCP 10	| Opening a connection to "localhost" on port 4840
+PPLOG [2026-11-03 13:45:55.158 (UTC+0000)] [32minfo/network[0m	TCP 11	| Connection opened from "::1" via the server socket 6
+PPLOG [2026-11-03 13:45:55.163 (UTC+0000)] [32minfo/channel[0m	TCP 11	| SC 1	| SecureChannel created
+PPLOG [2026-11-03 13:45:55.369 (UTC+0000)] [31merror/pubsub[0m	Could not open an UDP channel for receiving
+PPLOG [2026-11-03 13:45:55.369 (UTC+0000)] [31merror/pubsub[0m	Could not create the PubSubConnection. The connection parameters did not validate.
+PPLOG [2026-11-03 13:45:55.370 (UTC+0000)] [32minfo/pubsub[0m	Connection destructor called!
+PPLOG [2026-11-03 13:45:55.372 (UTC+0000)] [32minfo/pubsub[0m	Connection deleted
+PPLOG ...
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel_methods.c:138:F:PubSub connection delete and creation using the information model methods:TestPubSubStatusStateReading:0: Assertion 'result.statusCode == ((UA_StatusCode) 0x00000000)' failed: result.statusCode == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel_methods.c:138:F:PubSub connection delete and creation using the information model methods:TestEnableDisablePubSubConnection:0: Assertion 'result.statusCode == ((UA_StatusCode) 0x00000000)' failed: result.statusCode == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel_methods.c:138:F:PubSub connection delete and creation using the information model methods:TestEnableDisableWriterGroup:0: Assertion 'result.statusCode == ((UA_StatusCode) 0x00000000)' failed: result.statusCode == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel_methods.c:138:F:PubSub connection delete and creation using the information model methods:TestEnableDisableReaderGroup:0: Assertion 'result.statusCode == ((UA_StatusCode) 0x00000000)' failed: result.statusCode == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel_methods.c:138:F:PubSub connection delete and creation using the information model methods:TestEnableDisableDataSetWriter:0: Assertion 'result.statusCode == ((UA_StatusCode) 0x00000000)' failed: result.statusCode == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPLOG C:/build-host/work/open62541/tests/pubsub/check_pubsub_informationmodel_methods.c:138:F:PubSub connection delete and creation using the information model methods:TestEnableDisableDataSetReader:0: Assertion 'result.statusCode == ((UA_StatusCode) 0x00000000)' failed: result.statusCode == 2147614720, ((UA_StatusCode) 0x00000000) == 0
+PPTEST open62541 check_server_readspeed PASS rc=0
+PPTEST open62541 check_server_speed_addnodes PASS rc=0
+PPTEST open62541 check_server_monitoringspeed PASS rc=0
+PPTEST open62541 check_server_reverseconnect PASS rc=0
+PPTEST open62541 check_client PASS rc=0
+PPTEST open62541 check_client_config_coverage PASS rc=0
+PPTEST open62541 check_client_lifecycle_coverage PASS rc=0
+PPTEST open62541 check_client_discovery PASS rc=0
+PPTEST open62541 check_activateSession PASS rc=0
+PPTEST open62541 check_activateSessionAsync PASS rc=0
+PPTEST open62541 check_client_securechannel PASS rc=0
+PPTEST open62541 check_client_async PASS rc=0
+PPTEST open62541 check_client_async_read PASS rc=0
+PPTEST open62541 check_client_async_connect PASS rc=0
+PPTEST open62541 check_client_highlevel PASS rc=0
+PPTEST open62541 check_client_highlevel_read PASS rc=0
+PPTEST open62541 check_client_highlevel_write PASS rc=0
+PPTEST open62541 check_client_highlevel_readwrite PASS rc=0
+Killed 
+PPLOG pidin:      pid tid name                         prio STATE          Blocked                     
+PPLOG pidin: 18186259   1 s/check_client_subscriptions  10r REPLY          163853                      
+PPTEST open62541 check_client_subscriptions TIMEOUT rc=137
+PPLOG [2026-11-03 13:53:53.529 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:53:53.546 (UTC+0000)] [32minfo/network[0m	TCP 10	| Opening a connection to "localhost" on port 4840
+PPLOG [2026-11-03 13:53:53.549 (UTC+0000)] [32minfo/network[0m	TCP 11	| Connection opened from "::1" via the server socket 6
+PPLOG [2026-11-03 13:53:53.553 (UTC+0000)] [32minfo/channel[0m	TCP 11	| SC 1	| SecureChannel created
+PPLOG [2026-11-03 13:53:55.412 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:53:55.435 (UTC+0000)] [32minfo/network[0m	TCP 10	| Opening a connection to "localhost" on port 4840
+PPLOG [2026-11-03 13:53:55.437 (UTC+0000)] [32minfo/network[0m	TCP 11	| Connection opened from "::1" via the server socket 6
+PPLOG [2026-11-03 13:53:55.443 (UTC+0000)] [32minfo/channel[0m	TCP 11	| SC 1	| SecureChannel created
+PPLOG [2026-11-03 13:53:57.474 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:53:57.486 (UTC+0000)] [32minfo/network[0m	TCP 10	| Opening a connection to "localhost" on port 4840
+PPLOG [2026-11-03 13:53:57.489 (UTC+0000)] [32minfo/network[0m	TCP 11	| Connection opened from "::1" via the server socket 6
+PPLOG [2026-11-03 13:53:57.491 (UTC+0000)] [32minfo/channel[0m	TCP 11	| SC 1	| SecureChannel created
+PPLOG [2026-11-03 13:53:58.992 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:53:59.004 (UTC+0000)] [32minfo/network[0m	TCP 10	| Opening a connection to "localhost" on port 4840
+PPLOG [2026-11-03 13:53:59.006 (UTC+0000)] [32minfo/network[0m	TCP 11	| Connection opened from "::1" via the server socket 6
+PPLOG [2026-11-03 13:53:59.008 (UTC+0000)] [32minfo/channel[0m	TCP 11	| SC 1	| SecureChannel created
+PPLOG [2026-11-03 13:53:59.922 (UTC+0000)] [32minfo/network[0m	TCP 4	| The connection closes with error 261
+PPLOG [2026-11-03 13:53:59.924 (UTC+0000)] [32minfo/channel[0m	TCP 4	| SC 0	| SecureChannel closed
+PPLOG [2026-11-03 13:53:59.925 (UTC+0000)] [32minfo/client[0m	Client Status: ChannelState: Closed, SessionState: Closed, ConnectStatus: BadConnectionClosed
+PPLOG [2026-11-03 13:53:59.926 (UTC+0000)] [32minfo/network[0m	TCP 4	| Socket closed
+PPLOG [2026-11-03 13:54:00.034 (UTC+0000)] [31merror/server[0m	The server is not started, cannot be shut down
+PPLOG [2026-11-03 13:54:00.036 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "Administrator"	| Subscription 0 | Subscription deleted
+PPLOG [2026-11-03 13:54:00.059 (UTC+0000)] [33mwarn/server[0m	AccessControl: Unconfigured AccessControl. Users have all permissions.
+PPLOG [2026-11-03 13:54:00.060 (UTC+0000)] [32minfo/server[0m	AccessControl: Anonymous login is enabled
+PPLOG [2026-11-03 13:54:00.373 (UTC+0000)] [31merror/application[0m	Cannot create the Interrupt Manager (only relevant if used)
+PPLOG [2026-11-03 13:54:00.383 (UTC+0000)] [32minfo/network[0m	TCP 10	| Opening a connection to "localhost" on port 4840
+PPLOG [2026-11-03 13:54:00.384 (UTC+0000)] [32minfo/network[0m	TCP 11	| Connection opened from "::1" via the server socket 6
+PPLOG [2026-11-03 13:54:00.386 (UTC+0000)] [32minfo/channel[0m	TCP 11	| SC 1	| SecureChannel created
+PPLOG [2026-11-03 13:54:01.007 (UTC+0000)] [31merror/network[0m	TCP 10	| Send failed with error Broken pipe
+PPLOG [2026-11-03 13:54:01.008 (UTC+0000)] [32minfo/client[0m	Client Status: ChannelState: Closing, SessionState: Created, ConnectStatus: Good
+PPLOG [2026-11-03 13:54:01.009 (UTC+0000)] [33mwarn/client[0m	PublishResponse: Received response for an unknown Subscription
+PPLOG [2026-11-03 13:54:01.010 (UTC+0000)] [33mwarn/client[0m	PublishResponse: Received response for an unknown Subscription
+PPLOG [2026-11-03 13:54:01.023 (UTC+0000)] [32minfo/network[0m	TCP 4	| The connection closes with error 261
+PPLOG [2026-11-03 13:54:01.025 (UTC+0000)] [32minfo/channel[0m	TCP 4	| SC 0	| SecureChannel closed
+PPLOG [2026-11-03 13:54:01.025 (UTC+0000)] [31merror/client[0m	Could not open a TCP connection to the Endpoint at opc.tcp://localhost:4840
+PPLOG [2026-11-03 13:54:01.026 (UTC+0000)] [32minfo/client[0m	Client Status: ChannelState: Closed, SessionState: Created, ConnectStatus: BadConnectionRejected
+PPLOG [2026-11-03 13:54:01.028 (UTC+0000)] [32minfo/network[0m	TCP 4	| Socket closed
+PPLOG [2026-11-03 13:54:01.031 (UTC+0000)] [32minfo/client[0m	Client Status: ChannelState: Closed, SessionState: Closed, ConnectStatus: BadConnectionRejected
+PPLOG [2026-11-03 13:54:01.036 (UTC+0000)] [31merror/server[0m	The server is not started, cannot be shut down
+PPLOG [2026-11-03 13:54:01.037 (UTC+0000)] [32minfo/session[0m	TCP 0	| SC 0	| Session "ns=1;g=1bcafc30-9756-3419-79b7-5b15ea3e6356"	| Subscription 1 | MonitoredItem 1 | Deleting the MonitoredItem
+PPLOG ...
+PPLOG [2026-11-03 13:54:26.918 (UTC+0000)] [33mwarn/client[0m	PublishResponse: Too many PublishRequest, reduce outStandingPublishRequests to 9
+PPLOG [2026-11-03 13:54:26.920 (UTC+0000)] [33mwarn/client[0m	PublishResponse: Too many PublishRequest, reduce outStandingPublishRequests to 8
+PPLOG [2026-11-03 13:54:26.922 (UTC+0000)] [32minfo/session[0m	TCP 11	| SC 1	| Session "ns=1;g=4e392379-b4be-e29b-0680-b85b409479a7"	| Subscription 1 | MonitoredItem 1 | Created the MonitoredItem (Sampling Interval: 250.0ms, Queue Size: 1)
+PPLOG [2026-11-03 13:54:26.923 (UTC+0000)] [33mwarn/client[0m	PublishResponse: Too many PublishRequest, reduce outStandingPublishRequests to 7
+PPLOG [2026-11-03 13:54:26.928 (UTC+0000)] [33mwarn/client[0m	PublishResponse: Too many PublishRequest, reduce outStandingPublishRequests to 6
+PPLOG [2026-11-03 13:54:26.930 (UTC+0000)] [33mwarn/client[0m	PublishResponse: Too many PublishRequest, reduce outStandingPublishRequests to 5
+PPTEST open62541 check_client_subscriptions_datachange PASS rc=0
+PPTEST open62541 check_subscriptionWithactivateSession PASS rc=0
+PPTEST open62541 check_client_reconnect PASS rc=0
+PPTEST open62541 check_client_historical_data PASS rc=0
+PPTEST open62541 check_certificategroup_none PASS rc=0
+PPTEST open62541 check_nodeset_value_mapping PASS rc=0
+PPTEST-END
+umount(/tests) failed: Resource busy 
+
+# 

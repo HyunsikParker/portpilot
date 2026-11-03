@@ -177,7 +177,8 @@ def short(fix):
     """A table-sized name for a catalogue rule or recorded change."""
     if fix in SHORT:
         return SHORT[fix]
-    for key, label in (("CMAKE_POLICY_VERSION_MINIMUM", "CMake policy 3.5"), ("linker launcher", "link launcher"),
+    for key, label in (("replayed ", "recorded patch"), ("CMAKE_POLICY_VERSION_MINIMUM", "CMake policy 3.5"),
+                       ("linker launcher", "link launcher"),
                        ("stub archives", "libc stubs"), ("endian", "endian header"), ("queue header", "queue header"),
                        ("netinet", "<netinet/in.h>"), ("->", "header swap")):
         if key in fix:

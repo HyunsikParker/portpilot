@@ -1,0 +1,31 @@
+You are porting the open-source project open62541 (v1.5.10) to QNX 8.0. The build still fails after these
+QNX fixes were applied: empty stub archives for -lpthread, -lrt (functions are in QNX libc), force-include project queue header open62541_queue.h, replayed open62541.patch, sockets.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: open a directory that is passed as dirfd to the *at() functions (openat, fstatat, unlinkat,
+mkdirat, ...) with O_DIRECTORY, or those calls report ENOTDIR; query fstatvfs()/fpathconf() for a directory through
+a descriptor opened with O_RDONLY, e.g. openat(dirfd, ".", O_RDONLY), not through the O_DIRECTORY one.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Libraries missing at link time (not part of QNX 8.0 and not installed for this build): -lsubunit
+
+Build-file lines that mention those libraries:
+BUILD tests\CMakeLists.txt:19
+# Check dependency
+find_package(Check REQUIRED)
+set(LIBS ${CHECK_LIBRARIES} ${open62541_LIBRARIES})
+if(NOT WIN32 AND NOT APPLE AND NOT (CMAKE_HOST_SYSTEM_NAME MATCHES "OpenBSD") AND NOT (CMAKE_HOST_SYSTEM_NAME MATCHES "FreeBSD"))
+>     list(APPEND LIBS subunit)
+endif()
+include_directories(${CHECK_INCLUDE_DIRS})
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Make the smallest change that lets this code build and behave correctly on QNX. Guard QNX-only code with
+#if defined(__QNX__) so other platforms are unaffected. Do not touch tests to make them pass and do not delete features
+unless QNX cannot support them, in which case disable them only on QNX.
