@@ -158,8 +158,7 @@ def triage(name, run_tag, rounds=2, cpu="x86_64"):
                         f"{len(p1)} tests passed afterwards (before: {len(p0)}). Still failing, e.g.:\n"
                         + "\n".join(f"  {r['test']}: " + " | ".join(r['log'][-3:]) for r in still)))
     report["triage"] = history
-    remote.HOST.ps(f"git -C '{remote.HOST.work}\\{name}' diff --output='{remote.HOST.work}\\{name}.patch'")
-    remote.HOST.get(f"{remote.HOST.work}\\{name}.patch", tmp / f"{name}.patch")
+    remote.save_patch(name, tmp)
     (tmp / f"report_{cpu}.json").write_text(json.dumps(report, indent=1))
     return history
 

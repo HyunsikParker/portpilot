@@ -146,6 +146,13 @@ def apply_patch(name, patch, tag, reverse=False):
     return "apply_exit=0" in out, out.strip()[-400:]
 
 
+def save_patch(name, tmp):
+    """The port's source changes as one patch, including changes inside submodules (mbedtls keeps its test
+    generator in tf-psa-crypto/framework)."""
+    HOST.ps(f"git -C '{HOST.work}\\{name}' diff --submodule=diff --output='{HOST.work}\\{name}.patch'")
+    HOST.get(f"{HOST.work}\\{name}.patch", tmp / f"{name}.patch")
+
+
 def progress(rec):
     """How far a build got: configure passing outranks everything, then fewer failed build steps (a fixed fatal error
     can expose many ordinary ones in the same file), then fewer error lines."""
@@ -286,7 +293,8 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
     # start from pristine upstream (LF line endings, so patches apply as written) and keep the patch series reproducible
     src = f"{HOST.work}\\{name}"
     HOST.ps(f"if (Test-Path '{src}') {{ git -C '{src}' config core.autocrlf false; "
-            f"git -C '{src}' rm -q -r --cached . ; git -C '{src}' reset -q --hard }}")
+            f"git -C '{src}' rm -q -r --cached . ; git -C '{src}' reset -q --hard; "
+            f"git -C '{src}' submodule foreach --quiet --recursive 'git reset -q --hard' }}")
     cflags, ldflags, rounds = ["-D_QNX_SOURCE"], [], []
     catalogue_rounds = ai_used = 0
     pending = None   # (ai info, progress before the patch)
@@ -341,8 +349,7 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
                 print(f"[{name}] AI round {ai_used}: no applicable patch ({info['apply_output'][-120:]})", flush=True)
             break
         pending = (info, progress(rec))
-    HOST.ps(f"git -C '{HOST.work}\\{name}' diff --output='{HOST.work}\\{name}.patch'")
-    HOST.get(f"{HOST.work}\\{name}.patch", tmp / f"{name}.patch")
+    save_patch(name, tmp)
     built = rounds[-1]["build_exit"] == "0" and rounds[-1]["configure_exit"] == "0"
     report = {"name": name, "url": url, "ref": ref, "subdir": subdir, "cpu": cpu, "rounds": rounds,
               "result": "built" if built else "needs-patch"}
