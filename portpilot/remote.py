@@ -110,6 +110,7 @@ def source_snippets(name, errors):
     ps = (f"$items = New-Object System.Collections.ArrayList; {adds}; foreach ($it in $items) {{ $f = $it[0]; if (-not [IO.Path]::IsPathRooted($f)) {{ $f = Join-Path '{root}' $f }}; "
           f"'@@SNIP'; if (Test-Path -LiteralPath $f) {{ $l = @(Get-Content -LiteralPath $f); $n = $it[1]; "
           f"$s = [Math]::Max(1, $n - {agent.CONTEXT}); $e = [Math]::Min($l.Count, $n + {agent.CONTEXT}); "
+          f"if ($l.Count -le {agent.WHOLE_FILE}) {{ $s = 1; $e = $l.Count }}; "
           f"for ($i = $s; $i -le $e; $i++) {{ $m = ' '; if ($i -eq $n) {{ $m = '>' }}; '{{0,5}}{{1}} {{2}}' -f $i, $m, $l[$i - 1] }} }} }}")
     out = HOST.ps(ps)
     parts = out.replace("\r", "").split("@@SNIP\n")[1:]
@@ -146,13 +147,18 @@ def apply_patch(name, patch, tag, reverse=False):
 
 
 def progress(rec):
-    """How far a build got: configuring counts for more than any number of compile errors; then fewer errors is better."""
-    return (rec["configure_exit"] == "0", rec["build_exit"] == "0", -rec["errors"])
+    """How far a build got: configure passing outranks everything, then fewer failed build steps (a fixed fatal error
+    can expose many ordinary ones in the same file), then fewer error lines."""
+    return (rec["configure_exit"] == "0", rec["build_exit"] == "0", -rec.get("failed_steps", 0), -rec["errors"])
 
 
 def count_errors(build_log):
     return sum(1 for line in build_log.splitlines()
                if " error: " in line or "undefined reference" in line or "cannot find -l" in line)
+
+
+def count_failed_steps(build_log):
+    return sum(1 for line in build_log.splitlines() if line.startswith("FAILED:"))
 
 
 def file_context(name, diff):
@@ -264,6 +270,7 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
         rec, logs = attempt(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp)
         log = logs["configure"] + "\n" + logs["build"]
         rec["errors"], rec["cmake_args"], rec["matched_rules"] = count_errors(logs["build"]), list(cmake_args), []
+        rec["failed_steps"] = count_failed_steps(logs["build"])
         passed = rec["build_exit"] == "0" and rec["configure_exit"] == "0"
         if pending:
             info, before = pending

@@ -21,6 +21,7 @@ UNDEFINED = re.compile(r"undefined reference to `([^']+)'")
 SDP_MARKERS = ("qnx800", "/target/qnx/", "\\target\\qnx\\", "/host/win64/", "\\host\\win64\\")
 MAX_ERRORS = 8
 CONTEXT = 12
+WHOLE_FILE = 200   # files this short go into the prompt whole, so a rewrite is possible
 
 QNX_FACTS = """Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
 Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
