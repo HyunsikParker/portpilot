@@ -100,9 +100,18 @@ def plan_library(name, cpu, bundle, work, cap=DEFAULT_TIMEOUT, only=None):
     def rel_target(path):
         return remap(_fwd(path))[len("/tests/"):]
 
-    for f in _walk(build):
-        if SHARED_LIB.search(f):
-            bundle.add_file(f"{name}/lib/{os.path.basename(f)}", f)
+    # On a Windows host CMake cannot create the SONAME links (libjson-c.so.5 -> libjson-c.so.5.5.0) and leaves empty
+    # files; stage the real library under every name instead.
+    libs = [f for f in _walk(build) if SHARED_LIB.search(f)]
+    for f in libs:
+        real = f
+        if os.path.getsize(f) == 0:
+            stem = SHARED_LIB.sub("", os.path.basename(f))
+            full = [g for g in libs if os.path.getsize(g) and SHARED_LIB.sub("", os.path.basename(g)) == stem]
+            if not full:
+                continue
+            real = max(full, key=len)
+        bundle.add_file(f"{name}/lib/{os.path.basename(f)}", real)
     bundle.dirs.add(f"{name}/lib")
     lines = [f"export LD_LIBRARY_PATH=/tests/{name}/lib:$PP_BASE_LD"]
     summary = {"name": name, "tests": 0, "disabled": []}
