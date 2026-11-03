@@ -105,16 +105,27 @@ def triage(name, run_tag, rounds=2, cpu="x86_64"):
                                host_paths=host_path_literals(name, cpu) or "(none found)")
         if notes:
             prompt += "\n\nEarlier patches that did not help and were reverted:\n\n" + "\n\n".join(notes)
-        answer, model = agent.ask(prompt)
-        diff = agent.extract_diff(answer)
-        agent.save_round(tmp, f"t{k}", prompt, answer, diff)
-        step = {"round": k, "model": model, "files": agent.patch_files(diff), "unfixable": answer.strip() == "UNFIXABLE"}
+        patch = tmp / f"ai_roundt{k}.patch"
+        for attempt_no in (1, 2):   # a diff that does not apply goes back once with the current file text
+            answer, model = agent.ask(prompt)
+            diff = agent.extract_diff(answer)
+            agent.save_round(tmp, f"t{k}" if attempt_no == 1 else f"t{k}b", prompt, answer, diff)
+            step = {"round": k, "model": model, "files": agent.patch_files(diff),
+                    "unfixable": answer.strip() == "UNFIXABLE", "applied": False}
+            if not diff:
+                break
+            patch.write_text(diff)
+            step["applied"], step["apply_output"] = remote.apply_patch(name, patch, f"triage_{name}_{k}")
+            if step["applied"]:
+                break
+            items, snippets = remote.file_context(name, diff)
+            prompt += ("\n\nYour previous diff did not apply: " + step["apply_output"][-300:]
+                       + "\nHere is the current text of the lines it tried to change. Reply with a corrected diff.\n\n"
+                       + "\n\n".join(f"--- {f}\n{snip}" for (f, _, _), snip in zip(items, snippets)))
         history.append(step)
         if not diff:
             print(f"[{name}] triage {k}: no patch ({'UNFIXABLE' if step['unfixable'] else 'no diff'})", flush=True)
             break
-        patch = tmp / f"ai_roundt{k}.patch"
-        step["applied"], step["apply_output"] = remote.apply_patch(name, patch, f"triage_{name}_{k}")
         if not step["applied"]:
             print(f"[{name}] triage {k}: patch did not apply", flush=True)
             break
