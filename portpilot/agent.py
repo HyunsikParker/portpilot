@@ -26,7 +26,11 @@ WHOLE_FILE = 200   # files this short go into the prompt whole, so a rewrite is 
 QNX_FACTS = """Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
 Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
 <sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
-Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__."""
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded."""
 
 PROMPT = """You are porting the open-source project {name} ({ref}) to QNX 8.0. The build still fails after these
 QNX fixes were applied: {applied}.
