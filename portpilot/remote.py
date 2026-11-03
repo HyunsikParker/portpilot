@@ -147,10 +147,16 @@ def apply_patch(name, patch, tag, reverse=False):
 
 
 def save_patch(name, tmp):
-    """The port's source changes as one patch, including changes inside submodules (mbedtls keeps its test
-    generator in tf-psa-crypto/framework)."""
-    HOST.ps(f"git -C '{HOST.work}\\{name}' diff --submodule=diff --output='{HOST.work}\\{name}.patch'")
-    HOST.get(f"{HOST.work}\\{name}.patch", tmp / f"{name}.patch")
+    """The port's source changes as one patch that `git apply` at the project root accepts, including changes inside
+    submodules (mbedtls keeps its test generator in tf-psa-crypto/framework), with root-relative paths."""
+    src, out = f"{HOST.work}\\{name}", f"{HOST.work}\\{name}.patch"
+    HOST.run_bat("\r\n".join([
+        "@echo off", f"cd /d {src}",
+        f"git diff --ignore-submodules=all --output={out}",
+        # cmd keeps the bytes as git writes them; git runs the foreach command in sh, which expands $displaypath
+        f'git submodule foreach --quiet --recursive "git diff --ignore-submodules=all --src-prefix=a/$displaypath/ --dst-prefix=b/$displaypath/" >> {out}',
+        ""]), f"{HOST.work}\\save_patch_{name}.bat")
+    HOST.get(out, tmp / f"{name}.patch")
 
 
 def progress(rec):
@@ -299,7 +305,8 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
     src = f"{HOST.work}\\{name}"
     HOST.ps(f"if (Test-Path '{src}') {{ git -C '{src}' config core.autocrlf false; "
             f"git -C '{src}' rm -q -r --cached . ; git -C '{src}' reset -q --hard; "
-            f"git -C '{src}' submodule foreach --quiet --recursive 'git reset -q --hard' }}")
+            f"git -C '{src}' submodule foreach --quiet --recursive "
+            f"'git config core.autocrlf false; git rm -q -r --cached . ; git reset -q --hard' }}")
     replayed = None
     saved = tmp / f"{name}.patch"
     if reuse_patch and saved.exists() and saved.stat().st_size:
