@@ -78,14 +78,37 @@ def export(names, runs=ROOT / "runs", dest=ROOT / "ports"):
         if patch.exists() and patch.stat().st_size:
             shutil.copyfile(patch, out / f"{n}.patch")
         (out / "README.md").write_text(scrub(readme(rec, tests.get(n))))
+        ai = sorted((runs / n).glob("ai_round*"))
+        if ai:   # the model's prompts, answers and patches, so every AI change can be audited
+            (out / "ai").mkdir(exist_ok=True)
+            for f in ai:
+                (out / "ai" / f.name).write_text(scrub(f.read_text(errors="ignore")))
         print(out)
+
+
+def evidence(tags, runs=ROOT / "runs", dest=ROOT / "results"):
+    """Copy the named target runs (report JSON and serial console log) and the HTML report, with host user names
+    hidden, so the repository shows the ports running on QNX 8.0."""
+    dest.mkdir(parents=True, exist_ok=True)
+    for tag in tags:
+        for src in (runs / f"target_x86_64_{tag}.json", runs / "target" / f"serial_x86_64_{tag}.log"):
+            if src.exists():
+                (dest / src.name).write_text(scrub(src.read_text(errors="ignore")))
+                print(dest / src.name)
+    if (runs / "report.html").exists():
+        (dest / "report.html").write_text((runs / "report.html").read_text())
+        print(dest / "report.html")
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("names", nargs="+")
+    ap.add_argument("names", nargs="*")
+    ap.add_argument("--evidence", nargs="*", metavar="TAG", help="target run tags to copy into results/")
     a = ap.parse_args()
-    export(a.names)
+    if a.names:
+        export(a.names)
+    if a.evidence:
+        evidence(a.evidence)
 
 
 if __name__ == "__main__":
