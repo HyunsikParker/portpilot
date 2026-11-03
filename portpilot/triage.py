@@ -78,8 +78,15 @@ def host_path_literals(name, cpu, limit=10):
           f"Select-String -Pattern '\"[A-Za-z]:[/\\\\]', '\"\\.{{1,2}}\\\\\\\\' | Where-Object {{ $_.Line -notmatch '^\\s*#line' }} | Select-Object -First {limit} | "
           f"ForEach-Object {{ $_.Path.Substring($b.Length + 1) + ':' + $_.LineNumber + ': ' + $_.Line.Trim() }}")
     out = remote.HOST.ps(ps).replace("\r", "").strip()
+    # the template each generated file came from (foo.h <- foo.h.in at the same relative path), so a fix can go there
+    generated = sorted({line.split(":", 1)[0] for line in out.splitlines() if ":" in line})[:3]
+    for g in generated:
+        tpl = remote.HOST.ps(f"$t = Join-Path '{remote.HOST.work}\\{name}' '{g}.in'; if (Test-Path -LiteralPath $t) "
+                             f"{{ Get-Content -LiteralPath $t | Select-Object -First 80 }}").replace("\r", "").strip()
+        if tpl:
+            out += f"\n\n{g} is generated from {g.replace(chr(92), '/')}.in in the source tree:\n{tpl}"
     # keep the shape of an absolute Windows path (that is the finding) but not the host's user name
-    return out.replace(work_fwd, "C:/build-host/work").replace(remote.HOST.work, "C:\\build-host\\work")[:3000]
+    return out.replace(work_fwd, "C:/build-host/work").replace(remote.HOST.work, "C:\\build-host\\work")[:6000]
 
 
 def counts(results):
