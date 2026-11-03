@@ -109,6 +109,9 @@ def plan_library(name, cpu, bundle, work, cap=DEFAULT_TIMEOUT, only=None):
             summary["disabled"].append(t["name"])
             continue
         bundle.add_file(rel_target(exe), exe)
+        if not _is_elf(exe) and remap(_fwd(exe)) != _fwd(exe):
+            # a test script (json-c's *.test) usually sources helpers that sit next to it
+            bundle.add_tree(rel_target(os.path.dirname(exe)), os.path.dirname(exe))
         for a in cmd[1:]:
             if os.path.isabs(a) and os.path.exists(a) and remap(_fwd(a)) != _fwd(a):
                 (bundle.add_tree if os.path.isdir(a) else bundle.add_file)(rel_target(a), a)

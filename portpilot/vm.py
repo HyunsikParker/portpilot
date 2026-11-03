@@ -1,7 +1,8 @@
 """Build the QNX 8.0 QEMU image that target test runs boot, using the SDP's mkqnximage.
 
-The image carries one PortPilot addition, vm/post_start.custom: at the end of startup it mounts a second disk (/dev/hd1)
-on /tests, runs /tests/run.sh and shuts down. target.py writes that disk for each run.
+The image carries PortPilot's snippets from vm/: post_start.custom mounts a second disk (/dev/hd1) on /tests at the end of
+startup, runs /tests/run.sh and shuts down (target.py writes that disk for each run); passwd_file.custom and
+group_file.custom add the unprivileged user 'nobody' that some test suites expect.
 usage: python -m portpilot.vm build [--arch x86_64]      (re-run after changing the boot hook; takes a minute)
 """
 import argparse
@@ -9,13 +10,14 @@ from pathlib import Path
 
 from . import host
 
-HOOK = Path(__file__).resolve().parent.parent / "vm" / "post_start.custom"
+SNIPPETS = Path(__file__).resolve().parent.parent / "vm"   # *.custom files go to the image's local/snippets
 
 
 def build(arch):
     h = host.from_env()
     image = rf"{h.vm}\{arch}"
-    h.put(HOOK, rf"{image}\local\snippets\post_start.custom")
+    for snippet in sorted(SNIPPETS.glob("*.custom")):
+        h.put(snippet, rf"{image}\local\snippets\{snippet.name}")
     out = h.run_bat("\r\n".join([
         "@echo off",
         f"call {h.sdp_env} >nul 2>&1",
