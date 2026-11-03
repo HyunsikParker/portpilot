@@ -156,9 +156,21 @@ pp_run() {
     fi
     echo "PPTEST $lib $name $verdict rc=$rc"
     if [ "$verdict" != PASS ]; then
-        grep -E "Failure|Expected|Which is|Actual|actual|expected|Value of|FAILED|error" /tmp/pp_out | head -n 40 | sed 's/^/PPLOG /'
-        tail -n 6 /tmp/pp_out | sed 's/^/PPLOG /'
+        pp_excerpt
     fi
+}
+# failure lines with the three lines after each (where test frameworks print the expression and values), then the tail
+pp_excerpt() {
+    n=0; c=0
+    while IFS= read -r line; do
+        case "$line" in *Failure*|*FAILED*|*Expected*|*rror*|*Assert*|*assert*) n=4;; esac
+        if [ $n -gt 0 ]; then
+            echo "PPLOG $line"; n=$((n-1)); c=$((c+1))
+            [ $c -ge 40 ] && break
+        fi
+    done </tmp/pp_out
+    echo "PPLOG ..."
+    tail -n 6 /tmp/pp_out | sed 's/^/PPLOG /'
 }
 echo "PPTEST-BEGIN $(uname -a)"
 """
