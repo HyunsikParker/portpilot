@@ -219,7 +219,7 @@ def catalogue_step(name, cpu, log, rec, cflags, ldflags, cmake_args):
     return new_c, new_l, cmake_args, changed
 
 
-def ai_step(name, ref, log, rounds, tmp, k):
+def ai_step(name, ref, log, rounds, tmp, k, notes=()):
     """Ask the model for a patch and apply it to the upstream copy. Returns the round's record, or None if there was
     nothing to ask about or no patch could be applied (after one retry that shows the model the current file text)."""
     errors = agent.collect_errors(log, f"{HOST.work}\\{name}")
@@ -230,6 +230,8 @@ def ai_step(name, ref, log, rounds, tmp, k):
                      | {p for rec in rounds for p in rec.get("patches", [])})
     prompt = agent.build_prompt(name, ref, applied, errors, source_snippets(name, errors), symbols,
                                 symbol_context(name, symbols))
+    if notes:
+        prompt += "\n\nEarlier attempts that did not help and were reverted:\n\n" + "\n\n".join(notes)
     info = {"round": k, "applied": False, "accepted": False, "prompt_chars": len(prompt)}
     for attempt_no in (1, 2):
         answer, info["model"] = agent.ask(prompt)
@@ -266,6 +268,8 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
     cflags, ldflags, rounds = ["-D_QNX_SOURCE"], [], []
     catalogue_rounds = ai_used = 0
     pending = None   # (ai info, progress before the patch)
+    notes = []       # rejected AI attempts, shown to the model in later rounds
+    good_log = good_progress = None
     while True:
         rec, logs = attempt(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp)
         log = logs["configure"] + "\n" + logs["build"]
@@ -280,8 +284,20 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
                 apply_patch(name, tmp / f"ai_round{info['round']}.patch", f"ai_{name}_{info['round']}", reverse=True)
                 rounds.append(rec)
                 print(f"[{name}] round {len(rounds)}: AI patch {info['files']} did not help; reverted", flush=True)
-                break
+                after = agent.collect_errors(log, f"{HOST.work}\\{name}")[:5]
+                notes.append(f"Attempt {info['round']} changed {', '.join(info['files'])}; the build then had "
+                             f"{rec['errors']} errors in {rec['failed_steps']} failed steps, e.g.\n"
+                             + "\n".join(f"  {f}:{line}: {msg}" for f, line, msg in after))
+                if ai_used >= ai_rounds:
+                    break
+                ai_used += 1
+                info = ai_step(name, ref, good_log, rounds, tmp, ai_used, notes)
+                if not info or not info["applied"]:
+                    break
+                pending = (info, good_progress)
+                continue
         rounds.append(rec)
+        good_log, good_progress = log, progress(rec)
         tag = f" ai={rec['ai'][0]['files']}" if rec.get("ai") else ""
         if passed:
             print(f"[{name}] round {len(rounds)}: built{tag} ({rec['seconds']} s)", flush=True)
@@ -296,7 +312,7 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, 
         if ai_used >= ai_rounds:
             break
         ai_used += 1
-        info = ai_step(name, ref, log, rounds, tmp, ai_used)
+        info = ai_step(name, ref, log, rounds, tmp, ai_used, notes)
         if not info or not info["applied"]:
             if info:
                 rec.setdefault("ai", []).append(info)
