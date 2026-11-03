@@ -111,8 +111,17 @@ ENDIAN_FUNCS = re.compile(r"(undefined reference to `|implicit declaration of fu
 OLD_CMAKE_POLICY = re.compile(r"Compatibility with CMake < 3\.5 has been removed from CMake")
 
 
+# qcc expands CMake's link response file and spawns ld with the whole object list; past the 32 KiB Windows command-line
+# limit the spawn fails with a misleading "No such file or directory". Handing the response file to ld itself avoids it.
+LONG_LINK = re.compile(r"spawn of \S+-ld(\.exe)? failed: No such file or directory")
+
+
 def needs_endian_compat(log):
     return bool(ENDIAN_FUNCS.search(log))
+
+
+def needs_link_response_file(log):
+    return bool(LONG_LINK.search(log))
 
 
 def needs_policy_minimum(log):

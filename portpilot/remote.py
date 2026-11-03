@@ -10,11 +10,13 @@ import subprocess
 import time
 from pathlib import Path
 
-from . import fixes, scaffold
+from . import agent, fixes, scaffold
 
 WORKER = Path.home() / ".local/bin/victus-worker"
 REMOTE_ROOT = r"C:\Users\dev\Documents\portpilot-work\pp"
 SDP_ENV = r"C:\Users\dev\qnx800\qnxsdp-env.bat"
+HOST_PYTHON = "C:/Users/dev/AppData/Local/Programs/Python/Python313/python.exe"
+HOST_CC = "gcc"  # MinGW-w64 on the build host; code generators that compile helpers read HOSTCC
 LOCAL = Path(__file__).resolve().parent.parent / "runs"
 
 
@@ -33,8 +35,10 @@ def _bat(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args):
     return "\r\n".join([
         "@echo off",
         f"call {SDP_ENV} >nul 2>&1",
+        f"set HOSTCC={HOST_CC}",
         f"cd /d {REMOTE_ROOT}",
-        f"if not exist {src} git clone -q --depth 1 --recurse-submodules --shallow-submodules --branch {ref} {url} {src}",
+        f"if not exist {src} git -c core.autocrlf=false clone -q -c core.autocrlf=false --depth 1 --recurse-submodules "
+        f"--shallow-submodules --branch {ref} {url} {src}",
         f"if exist {bld} rmdir /s /q {bld}",
         f'cmake -G Ninja -S {src}\\{subdir} -B {bld} -DCMAKE_TOOLCHAIN_FILE={REMOTE_ROOT}\\qnx.nto.toolchain.cmake '
         f'-DCPU={tool_cpu} -DCMAKE_SYSTEM_PROCESSOR={var_cpu} -DCPUVARDIR={var_cpu} -DCMAKE_BUILD_TYPE=Release '
@@ -110,14 +114,77 @@ def add_include(files, header):
         _worker("windows", ps)
 
 
-def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
+def source_snippets(name, errors):
+    """Numbered upstream source lines around each error, the error line marked with '>'."""
+    root = f"{REMOTE_ROOT}\\{name}"
+    # an ArrayList keeps each (file, line) pair intact; @(@('a',1)) would flatten a single pair
+    adds = "; ".join(f"[void]$items.Add(@('{rel.replace(chr(39), chr(39) * 2)}',{line}))" for rel, line, _ in errors)
+    ps = (f"$items = New-Object System.Collections.ArrayList; {adds}; foreach ($it in $items) {{ $f = $it[0]; if (-not [IO.Path]::IsPathRooted($f)) {{ $f = Join-Path '{root}' $f }}; "
+          f"'@@SNIP'; if (Test-Path -LiteralPath $f) {{ $l = @(Get-Content -LiteralPath $f); $n = $it[1]; "
+          f"$s = [Math]::Max(1, $n - {agent.CONTEXT}); $e = [Math]::Min($l.Count, $n + {agent.CONTEXT}); "
+          f"for ($i = $s; $i -le $e; $i++) {{ $m = ' '; if ($i -eq $n) {{ $m = '>' }}; '{{0,5}}{{1}} {{2}}' -f $i, $m, $l[$i - 1] }} }} }}")
+    _, out = _worker("windows", ps)
+    parts = out.replace("\r", "").split("@@SNIP\n")[1:]
+    return [p.rstrip("\n") for p in parts] + [""] * (len(errors) - len(parts))
+
+
+def apply_patch(name, patch, tag, reverse=False):
+    _worker("push", str(patch), f"pp/{tag}.patch")
+    flag = "-R " if reverse else ""
+    _, out = _worker("windows", f"git -C '{REMOTE_ROOT}\\{name}' apply {flag}--recount --whitespace=nowarn "
+                                f"'{REMOTE_ROOT}\\{tag}.patch' 2>&1; \"apply_exit=$LASTEXITCODE\"")
+    return "apply_exit=0" in out, out.strip()[-400:]
+
+
+def ai_stage(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp, rounds, log, ai_rounds):
+    """Ask the model for patches until the build passes, a patch fails to help, or the round budget is spent."""
+    applied = sorted({r for rec in rounds for r in rec["matched_rules"]} | {p for rec in rounds for p in rec.get("patches", [])})
+    best = rounds[-1]["errors"]
+    for k in range(1, ai_rounds + 1):
+        errors = agent.collect_errors(log, f"{REMOTE_ROOT}\\{name}")
+        symbols = agent.undefined_symbols(log)
+        if not errors and not symbols:
+            break
+        prompt = agent.build_prompt(name, ref, applied, errors, source_snippets(name, errors), symbols)
+        answer, model = agent.ask(prompt)
+        diff = agent.extract_diff(answer)
+        agent.save_round(tmp, k, prompt, answer, diff)
+        info = {"round": k, "model": model, "files": agent.patch_files(diff), "prompt_chars": len(prompt),
+                "applied": False, "accepted": False}
+        if diff:
+            info["applied"], info["apply_output"] = apply_patch(name, tmp / f"ai_round{k}.patch", f"ai_{name}_{k}")
+        if not info["applied"]:
+            rounds[-1].setdefault("ai", []).append(info)
+            print(f"[{name}] ai round {k}: no applicable patch ({info.get('apply_output', 'no diff')[-120:]})", flush=True)
+            break
+        rec, logs = attempt(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp)
+        rec["errors"] = sum(1 for line in logs["build"].splitlines()
+                            if " error: " in line or "undefined reference" in line or "cannot find -l" in line)
+        rec["matched_rules"], rec["cmake_args"] = [], list(cmake_args)
+        passed = rec["build_exit"] == "0" and rec["configure_exit"] == "0"
+        info["accepted"] = passed or rec["errors"] < best
+        if info["accepted"]:
+            best, log = rec["errors"], logs["configure"] + "\n" + logs["build"]
+        else:
+            apply_patch(name, tmp / f"ai_round{k}.patch", f"ai_{name}_{k}", reverse=True)
+        rec["ai"] = [info]
+        rounds.append(rec)
+        print(f"[{name}] ai round {k}: build={rec['build_exit']} errors={rec['errors']} files={info['files']} "
+              f"accepted={info['accepted']} ({rec['seconds']} s)", flush=True)
+        if passed or not info["accepted"]:
+            break
+
+
+def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4, ai_rounds=0):
     tmp = LOCAL / name
     tmp.mkdir(parents=True, exist_ok=True)
     tc = tmp / "qnx.nto.toolchain.cmake"
     tc.write_text(scaffold.TOOLCHAIN)
     _worker("push", str(tc), "pp/qnx.nto.toolchain.cmake")
-    # start from pristine upstream so the recorded patch series is complete and reproducible
-    _worker("windows", f"if (Test-Path '{REMOTE_ROOT}\\{name}') {{ git -C '{REMOTE_ROOT}\\{name}' checkout -- . }}")
+    # start from pristine upstream (LF line endings, so patches apply as written) and keep the patch series reproducible
+    src = f"{REMOTE_ROOT}\\{name}"
+    _worker("windows", f"if (Test-Path '{src}') {{ git -C '{src}' config core.autocrlf false; "
+                       f"git -C '{src}' rm -q -r --cached . ; git -C '{src}' reset -q --hard }}")
     cflags, ldflags, rounds = ["-D_QNX_SOURCE"], [], []
     for i in range(max_rounds):
         rec, logs = attempt(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp)
@@ -147,6 +214,13 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
             if hdr not in new_c:
                 new_c = new_c + ["-include", hdr]
                 rec.setdefault("patches", []).append("force-include PortPilot endian helpers (htobe32, be32toh, ...)")
+        if fixes.needs_link_response_file(log) and not any("LINKER_LAUNCHER" in a for a in cmake_args):
+            launcher = f"{HOST_PYTHON};{push_compat_header('portpilot_link_launcher.py')}"
+            cmake_args = list(cmake_args) + [f"-DCMAKE_C_LINKER_LAUNCHER={launcher}",
+                                             f"-DCMAKE_CXX_LINKER_LAUNCHER={launcher}"]
+            rec.setdefault("patches", []).append("linker launcher: object list to ld in its own response file "
+                                                 "(Windows command-line limit)")
+            patches = patches or ["link-launcher"]
         if fixes.needs_policy_minimum(log) and "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" not in cmake_args:
             cmake_args = list(cmake_args) + ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"]
             rec.setdefault("patches", []).append("configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)")
@@ -165,6 +239,8 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
         if (new_c, new_l) == (cflags, ldflags) and not patches:
             break  # nothing new to try from the catalogue: leave for the next stage (an AI proposal)
         cflags, ldflags = new_c, new_l
+    if ai_rounds and rounds[-1]["build_exit"] != "0":
+        ai_stage(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp, rounds, log, ai_rounds)
     _worker("windows", f"git -C '{REMOTE_ROOT}\\{name}' diff --output='{REMOTE_ROOT}\\{name}.patch'")
     _worker("pull", f"pp/{name}.patch", str(tmp / f"{name}.patch"))
     report = {"name": name, "url": url, "ref": ref, "cpu": cpu, "rounds": rounds,
@@ -179,8 +255,9 @@ def main():
     ap.add_argument("--subdir", default=".")
     ap.add_argument("--cpu", default="x86_64")
     ap.add_argument("--cmake", action="append", default=[], help="one CMake argument, repeatable: --cmake=-DFOO=ON")
+    ap.add_argument("--ai", type=int, default=0, help="AI patch rounds after the catalogue runs out (default 0)")
     a = ap.parse_args()
-    print(json.dumps(port(a.name, a.url, a.ref, a.subdir, a.cpu, a.cmake), indent=1)[:2000])
+    print(json.dumps(port(a.name, a.url, a.ref, a.subdir, a.cpu, a.cmake, ai_rounds=a.ai), indent=1)[:2000])
 
 
 if __name__ == "__main__":

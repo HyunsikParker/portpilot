@@ -1,0 +1,9 @@
+# PortPilot boot hook: if a second disk holds a test bundle, mount it, run it and power off.
+if [ -e /dev/hd1 ]; then
+    mount -t qnx6 /dev/hd1 /tests
+    if [ -x /tests/run.sh ]; then
+        /tests/run.sh
+        umount /tests
+        shutdown -f
+    fi
+fi
