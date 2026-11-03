@@ -26,6 +26,11 @@ Project code that prints or handles these messages:
 
 {context}
 
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+{host_paths}
+
 Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
 Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
 and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
@@ -64,6 +69,18 @@ def message_context(name, results, limit=3):
     return remote.HOST.ps(ps).replace("\r", "").strip()[:6000]
 
 
+def host_path_literals(name, cpu, limit=10):
+    """Lines of generated sources and headers in the build tree whose string literals point at the build host."""
+    build = f"{remote.HOST.work}\\build_{name}_{cpu}"
+    work_fwd = remote.HOST.work.replace("\\", "/")
+    ps = (f"$b = '{build}'; Get-ChildItem -LiteralPath $b -Recurse -File | Where-Object {{ $_.Extension -in "
+          f"'.h','.c','.cc','.cpp','.hpp','.inc','.inl' -and $_.FullName -notmatch '\\\\CMakeFiles\\\\' }} | "
+          f"Select-String -Pattern '\"[A-Za-z]:[/\\\\]', '\"\\.{{1,2}}\\\\\\\\' | Where-Object {{ $_.Line -notmatch '^\\s*#line' }} | Select-Object -First {limit} | "
+          f"ForEach-Object {{ $_.Path.Substring($b.Length + 1) + ':' + $_.LineNumber + ': ' + $_.Line.Trim() }}")
+    out = remote.HOST.ps(ps).replace("\r", "").strip()
+    return out.replace(work_fwd, "<work>").replace(remote.HOST.work, "<work>")[:3000]
+
+
 def counts(results):
     passed = {r["test"] for r in results if r["verdict"] == "PASS"}
     return passed, len(results)
@@ -83,7 +100,8 @@ def triage(name, run_tag, rounds=2, cpu="x86_64"):
         if not failing:
             break
         prompt = PROMPT.format(name=name, ref=report["ref"], facts=agent.QNX_FACTS, failures=failures_text(failing),
-                               context=message_context(name, failing) or "(no matching source lines found)")
+                               context=message_context(name, failing) or "(no matching source lines found)",
+                               host_paths=host_path_literals(name, cpu) or "(none found)")
         answer, model = agent.ask(prompt)
         diff = agent.extract_diff(answer)
         agent.save_round(tmp, f"t{k}", prompt, answer, diff)

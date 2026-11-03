@@ -221,7 +221,7 @@ def add_runtime_libs(bundle, cpu):
     return sorted(added)
 
 
-def stage(names, cpu, out, work, cap=DEFAULT_TIMEOUT, only=None):
+def stage(names, cpu, out, work, cap=DEFAULT_TIMEOUT, only=None, pre=None):
     os.makedirs(out, exist_ok=True)
     bundle, body, summaries = Bundle(), [], []
     for n in names:
@@ -231,7 +231,8 @@ def stage(names, cpu, out, work, cap=DEFAULT_TIMEOUT, only=None):
     sdp_libs = add_runtime_libs(bundle, cpu)
     run_sh = os.path.join(out, "run.sh")
     with open(run_sh, "w", newline="\n") as f:
-        f.write(RUN_SH_HEAD + "\n".join(body) + "\necho PPTEST-END\n")
+        diag = f"( {pre} ) 2>&1 | sed 's/^/PPINFO /'\n" if pre else ""
+        f.write(RUN_SH_HEAD + diag + "\n".join(body) + "\necho PPTEST-END\n")
     bundle.add_file("run.sh", run_sh)
     text, total = bundle.buildfile()
     bf = os.path.join(out, "tests.build")
@@ -278,7 +279,7 @@ def parse_serial(text):
     return results
 
 
-def run(names, cpu, deadline, tag="all", cap=DEFAULT_TIMEOUT, only=None):
+def run(names, cpu, deadline, tag="all", cap=DEFAULT_TIMEOUT, only=None, pre=None):
     from . import host
     if cpu != "x86_64":
         sys.exit("only the x86_64 VM is set up so far")
@@ -292,7 +293,8 @@ def run(names, cpu, deadline, tag="all", cap=DEFAULT_TIMEOUT, only=None):
     out = rf"{h.work}\target_{cpu}"
     text = h.run_bat("\r\n".join(["@echo off", f"call {h.sdp_env} >nul 2>&1", f"cd /d {h.work}",
                                    f"{h.python} {h.work}\\pp_target.py stage --cpu {cpu} --out {out} --work {h.work} "
-                                   f"--timeout {cap} " + (f'--only "{only}" ' if only else "") + " ".join(names), ""]),
+                                   f"--timeout {cap} " + (f'--only "{only}" ' if only else "")
+                                   + (f'--pre "{pre}" ' if pre else "") + " ".join(names), ""]),
                      rf"{h.work}\pp_stage.bat")
     staged = next((json.loads(l[8:]) for l in text.splitlines() if l.startswith("PPSTAGE ")), None)
     print(json.dumps(staged)[:1500] if staged else text[-1500:], flush=True)
@@ -328,6 +330,7 @@ def main():
     s.add_argument("--work", required=True, help="the build host's work directory (upstream copies and build trees)")
     s.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="upper limit per test, seconds")
     s.add_argument("--only", help="regular expression: run only the tests whose names match")
+    s.add_argument("--pre", help="shell commands to run on the target before the tests (diagnostics; output as PPINFO)")
     r = sub.add_parser("run")
     r.add_argument("names", nargs="+")
     r.add_argument("--cpu", default="x86_64")
@@ -335,11 +338,12 @@ def main():
     r.add_argument("--tag", default="all", help="name for this run's report and serial log")
     r.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="upper limit per test, seconds")
     r.add_argument("--only", help="regular expression: run only the tests whose names match")
+    r.add_argument("--pre", help="shell commands to run on the target before the tests (diagnostics; output as PPINFO)")
     a = ap.parse_args()
     if a.cmd == "stage":
-        stage(a.names, a.cpu, a.out, a.work, a.timeout, a.only)
+        stage(a.names, a.cpu, a.out, a.work, a.timeout, a.only, a.pre)
     else:
-        run(a.names, a.cpu, a.deadline, a.tag, a.timeout, a.only)
+        run(a.names, a.cpu, a.deadline, a.tag, a.timeout, a.only, a.pre)
 
 
 if __name__ == "__main__":
