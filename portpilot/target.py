@@ -54,11 +54,15 @@ class Bundle:
     def __init__(self):
         self.files = {}   # target path (relative to /tests) -> host path
         self.dirs = set()
+        self.trees = set()   # host directories already walked
 
     def add_file(self, target, host):
         self.files.setdefault(target, host)
 
     def add_tree(self, target, host):
+        if host in self.trees:
+            return
+        self.trees.add(host)
         self.dirs.add(target)
         for dirpath, dirnames, _ in os.walk(host):   # empty output directories CMake made for the tests count too
             dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
@@ -122,6 +126,10 @@ def plan_library(name, cpu, bundle, work, cap=DEFAULT_TIMEOUT, only=None):
         wd = props.get("WORKING_DIRECTORY") or os.path.dirname(exe)
         if os.path.isdir(wd) and remap(_fwd(wd)) != _fwd(wd):
             bundle.add_tree(rel_target(wd), wd)
+            parent = os.path.dirname(os.path.normpath(wd))
+            if os.path.normcase(os.path.normpath(wd)).startswith(os.path.normcase(os.path.normpath(build)) + os.sep):
+                # tests in a build subdirectory often read ../<data>, e.g. mbedtls's ../framework/data_files
+                bundle.add_tree(rel_target(parent), parent)
         env = [remap(e) for e in props.get("ENVIRONMENT", [])]
         argv = ([f"env"] + env if env else []) + [remap(_fwd(c)) for c in cmd]
         limit = min(int(float(props.get("TIMEOUT", cap))), cap)
