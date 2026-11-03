@@ -167,15 +167,55 @@ def page(ports, tests, generated):
 """
 
 
+def markdown(ports, tests):
+    """The results table for the README: one row per library."""
+    rows = ["| Library | Version | x86_64 | aarch64le | Tests on the QNX 8.0 target | Changes |",
+            "|---|---|---|---|---|---|"]
+    for n in sorted(set(ports) | set(tests), key=str.lower):
+        reps = ports.get(n, {})
+        rep = reps.get("x86_64") or next(iter(reps.values()), None)
+        cells = []
+        for cpu in CPUS:
+            r = reps.get(cpu)
+            cells.append("-" if not r else ("built" if r["result"] == "built" else "needs patch"))
+        entry = tests.get(n)
+        if entry:
+            res = entry["results"]
+            passed = sum(1 for r in res if r["verdict"] == "PASS")
+            test_cell = f"{passed}/{len(res)} pass"
+        else:
+            test_cell = "-"
+        changes = fixes_applied(rep) if rep else []
+        ai = sum(1 for r in reps.values() for rnd in r["rounds"] for a in rnd.get("ai", []) if a.get("accepted"))
+        if ai:
+            changes = changes + [f"{ai} AI patch{'es' if ai > 1 else ''}"]
+        rows.append(f"| {n} | {rep['ref'] if rep else ''} | {cells[0]} | {cells[1]} | {test_cell} | "
+                    f"{'; '.join(changes) if changes else 'none'} |")
+    return "\n".join(rows) + "\n"
+
+
+def update_readme(readme, table):
+    text = readme.read_text()
+    begin, end = "<!-- results:begin -->", "<!-- results:end -->"
+    if begin not in text or end not in text:
+        raise SystemExit(f"{readme} has no {begin} ... {end} block")
+    head, rest = text.split(begin, 1)
+    _, tail = rest.split(end, 1)
+    readme.write_text(head + begin + "\n" + table + end + tail)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--runs", default=str(Path(__file__).resolve().parent.parent / "runs"))
     ap.add_argument("--out")
+    ap.add_argument("--readme", help="also rewrite the results block of this README")
     a = ap.parse_args()
     runs = Path(a.runs)
     ports, tests = load(runs)
     out = Path(a.out) if a.out else runs / "report.html"
     out.write_text(page(ports, tests, datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")))
+    if a.readme:
+        update_readme(Path(a.readme), markdown(ports, tests))
     print(out)
 
 
