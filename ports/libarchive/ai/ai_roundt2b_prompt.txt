@@ -1,0 +1,203 @@
+You are porting the open-source project libarchive (v3.8.11) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: the *at() functions (openat, fstatat, unlinkat, mkdirat, ...) fail with ENOTDIR on QNX 8.0 when
+the directory descriptor was opened without O_DIRECTORY, e.g. open(".", O_RDONLY); open directories that are used as
+dirfd arguments with O_DIRECTORY.
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- libarchive_test_archive_string_conversion_fail_c (FAIL, exit 1)
+  Assertions checked:      18
+  Assertions failed:        3
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  77: test_archive_string_conversion_fail_c (3 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.17.42-000
+
+
+--- libarchive_test_entry (FAIL, exit 1)
+  Assertions checked:     399
+  Assertions failed:        1
+  Skips reported:           1
+
+Failing tests:
+...
+
+Failing tests:
+  194: test_entry (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.20.02-000
+
+
+--- libarchive_test_read_disk_directory_traversals (FAIL, exit 139)
+...
+
+If tests fail or crash, details will be in:
+   /tmp/libarchive_test.2026-11-03T09.33.07-000
+
+Reference files will be read from: /tests/libarchive/src/libarchive/test
+Exercising: PPLOG signal 11; core file: libarchive_test.core
+slog2: Nov 03 09:15:46.435                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
+slog2: Nov 03 09:15:46.435                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
+slog2: Nov 03 09:16:05.844                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
+slog2: Nov 03 09:16:06.078                  dhcpcd.221199                 slog*     0  <30>Nov 03 09:16:06 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
+slog2: Nov 03 09:16:06.202                  dhcpcd.221199                 slog      0  <27>Nov 03 09:16:06 dhcpcd[225297-1]: no valid interfaces found
+
+--- libarchive_test_read_extract (FAIL, exit 1)
+  Expected: 0775
+  Found: 0755
+
+Totals:
+  Assertions checked:      72
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  249: test_read_extract (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.33.17-000
+
+
+--- libarchive_test_write_disk (FAIL, exit 1)
+  Assertions checked:     188
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  767: test_write_disk (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.44.39-000
+
+
+--- libarchive_test_write_disk_perms (FAIL, exit 1)
+  Assertions checked:     100
+  Assertions failed:        1
+  Skips reported:           1
+
+Failing tests:
+...
+
+Failing tests:
+  777: test_write_disk_perms (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.44.51-000
+
+
+... and 45 more failing tests with similar output
+
+Project code that prints or handles these messages:
+
+FILE test_utils\test_main.c:4404
+	/*
+	 * Banner with basic information.
+	 */
+	printf("\n");
+> 	printf("If tests fail or crash, details will be in:\n");
+	printf("   %s\n", tmpdir);
+	printf("\n");
+	if (verbosity > VERBOSITY_SUMMARY_ONLY) {
+		printf("Reference files will be read from: %s\n", refdir);
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+(none found)
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.
+
+Earlier patches that did not help and were reverted:
+
+Round 1 changed libarchive/archive_read_disk_posix.c: 815 tests passed afterwards (before: 816). Still failing, e.g.:
+  libarchive_test_7zip_filename_encoding_UTF16_win:   Assertions failed:        0 |   Skips reported:           1 | 1 tests passed, no failures
+  libarchive_test_acl_platform_nfs4:   Assertions failed:        0 |   Skips reported:           1 | 1 tests passed, no failures
+  libarchive_test_acl_platform_posix1e_restore:   Assertions failed:        0 |   Skips reported:           1 | 1 tests passed, no failures
+
+Your previous diff did not apply: error: patch failed: libarchive/archive_read_disk_posix.c:2266
+Here is the current text of the lines it tried to change. Reply with a corrected diff.
+
+--- libarchive/archive_read_disk_posix.c
+ 2119  #if defined(O_PATH)
+ 2120  	/* Linux */
+ 2121  	const int o_flag = O_PATH;
+ 2122  #elif defined(O_SEARCH)
+ 2123  	/* SunOS */
+ 2124  	const int o_flag = O_SEARCH;
+ 2125  #elif defined(__FreeBSD__) && defined(O_EXEC)
+ 2126  	/* FreeBSD */
+ 2127  	const int o_flag = O_EXEC;
+ 2128  #endif
+ 2129  
+ 2130  	t->flags = (restore_time != 0)?needsRestoreTimes:0;
+ 2131  	t->flags |= onInitialDir;
+ 2132  	t->visit_type = 0;
+ 2133  	t->tree_errno = 0;
+ 2134  	t->dirname_length = 0;
+ 2135  	t->depth = 0;
+ 2136  	t->descend = 0;
+ 2137  	t->current = NULL;
+ 2138  	t->d = INVALID_DIR_HANDLE;
+ 2139  	t->symlink_mode = t->initial_symlink_mode;
+ 2140  	archive_string_empty(&t->path);
+ 2141  	t->entry_fd = -1;
+ 2142  	t->entry_eof = 0;
+ 2143  	t->entry_remaining_bytes = 0;
+ 2144  	t->initial_filesystem_id = -1;
+ 2145  
+ 2146  	/* First item is set up a lot like a symlink traversal. */
+ 2147  	tree_push(t, path, 0, 0, 0, NULL);
+ 2148  	t->stack->flags = needsFirstVisit;
+ 2149> 	t->maxOpenCount = t->openCount = 1;
+ 2150  	t->initial_dir_fd = open(".", O_RDONLY | O_CLOEXEC);
+ 2151  #if defined(O_PATH) || defined(O_SEARCH) || \
+ 2152   (defined(__FreeBSD__) && defined(O_EXEC))
+ 2153  	/*
+ 2154  	 * Most likely reason to fail opening "." is that it's not readable,
+ 2155  	 * so try again for execute. The consequences of not opening this are
+ 2156  	 * unhelpful and unnecessary errors later.
+ 2157  	 */
+ 2158  	if (t->initial_dir_fd < 0)
+ 2159  		t->initial_dir_fd = open(".", o_flag | O_CLOEXEC);
+ 2160  #endif
+ 2161  	__archive_ensure_cloexec_flag(t->initial_dir_fd);
+ 2162  	t->working_dir_fd = tree_dup(t->initial_dir_fd);
+ 2163  	return (t);
+ 2164  }
+ 2165  
+ 2166  static int
+ 2167  tree_descent(struct tree *t)
+ 2168  {
+ 2169  	int flag, new_fd, r = 0;
+ 2170  
+ 2171  	t->dirname_length = archive_strlen(&t->path);
+ 2172  	flag = O_RDONLY | O_CLOEXEC;
+ 2173  #if defined(O_DIRECTORY)
+ 2174  	flag |= O_DIRECTORY;
+ 2175  #endif
+ 2176  	new_fd = open_on_current_dir(t, t->stack->name.s, flag);
+ 2177  	__archive_ensure_cloexec_flag(new_fd);
+ 2178  	if (new_fd < 0) {
+ 2179  		t->tree_errno = errno;

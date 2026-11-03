@@ -1,0 +1,63 @@
+```diff
+diff --git a/libarchive/archive_read_disk_posix.c b/libarchive/archive_read_disk_posix.c
+--- a/libarchive/archive_read_disk_posix.c
++++ b/libarchive/archive_read_disk_posix.c
+@@ -125,3 +125,64 @@
+ #ifndef O_CLOEXEC
+ #define O_CLOEXEC	0
+ #endif
++
++#if defined(__QNXNTO__)
++/*
++ * On QNX 8.0, directory descriptors opened with O_DIRECTORY (which is
++ * required for the *at() functions to work) do not support fstatvfs()
++ * (ENOSYS) or fpathconf() (EINVAL).  Retry on a plain O_RDONLY
++ * descriptor of the same directory.
++ */
++#if defined(HAVE_FSTATVFS) && defined(HAVE_SYS_STATVFS_H)
++static int
++qnx_fstatvfs(int fd, struct statvfs *st)
++{
++	int r, nfd, e;
++
++	r = fstatvfs(fd, st);
++	if (r == -1 && (errno == ENOSYS || errno == EINVAL)) {
++		nfd = openat(fd, ".", O_RDONLY | O_CLOEXEC);
++		if (nfd >= 0) {
++			r = fstatvfs(nfd, st);
++			e = errno;
++			close(nfd);
++			errno = e;
++		} else
++			errno = ENOSYS;
++	}
++	return (r);
++}
++#define fstatvfs(fd, st)	qnx_fstatvfs((fd), (st))
++#endif
++
++static long
++qnx_fpathconf(int fd, int name)
++{
++	long r;
++	int nfd, e, saved;
++
++	errno = 0;
++	r = fpathconf(fd, name);
++	if (r == -1 && errno == EINVAL) {
++		saved = errno;
++		nfd = openat(fd, ".", O_RDONLY | O_CLOEXEC);
++		if (nfd >= 0) {
++			errno = 0;
++			r = fpathconf(nfd, name);
++			e = errno;
++			close(nfd);
++			errno = e;
++		} else
++			errno = saved;
++	}
++	return (r);
++}
++#define fpathconf(fd, name)	qnx_fpathconf((fd), (name))
++#endif /* __QNXNTO__ */
+```

@@ -30,6 +30,11 @@ def build(arch):
     print(f"mkqnximage {arch}: {'ok' if ok else 'failed'} (log {h.vm}\\mkqnximage_{arch}.log)")
     if not ok:
         print(h.ps(f"Get-Content '{h.vm}\\mkqnximage_{arch}.log' -Tail 8"))
+    else:
+        # test runs boot a fresh copy of this disk, so a run that leaves the disk damaged cannot break the next one
+        # disk-qemu.vmdk is a monolithicFlat descriptor; the disk itself is the raw extent file disk-qemu
+        print(h.ps(rf"Copy-Item '{image}\output\disk-qemu' '{image}\output\disk-qemu.pristine' -Force; "
+                   rf"'pristine disk: ' + (Get-Item '{image}\output\disk-qemu.pristine').Length + ' bytes'"))
     return ok
 
 

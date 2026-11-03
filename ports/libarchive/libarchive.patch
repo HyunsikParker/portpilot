@@ -1,0 +1,103 @@
+diff --git a/libarchive/archive_read_disk_posix.c b/libarchive/archive_read_disk_posix.c
+index fe8d06a..ac014f7 100644
+--- a/libarchive/archive_read_disk_posix.c
++++ b/libarchive/archive_read_disk_posix.c
+@@ -104,6 +104,98 @@
+ #define O_CLOEXEC	0
+ #endif
+ 
++#if defined(__QNXNTO__) && defined(O_DIRECTORY)
++/*
++ * On QNX the *at() functions fail with ENOTDIR when the directory
++ * descriptor was opened without O_DIRECTORY.  Conversely, fstatvfs()
++ * and fpathconf() do not work on an O_DIRECTORY descriptor.  Open
++ * directories with O_DIRECTORY, and query filesystem properties
++ * through a plain O_RDONLY descriptor of the same directory.
++ */
++#ifdef HAVE_SYS_STATVFS_H
++#include <sys/statvfs.h>
++#endif
++
++static int
++qnx_open_dir_aware(const char *path, int flags)
++{
++	int fd;
++
++	if ((flags & O_ACCMODE) == O_RDONLY && (flags & O_DIRECTORY) == 0) {
++		fd = (open)(path, flags | O_DIRECTORY);
++		if (fd >= 0 || errno != ENOTDIR)
++			return (fd);
++	}
++	return ((open)(path, flags));
++}
++
++#ifdef HAVE_OPENAT
++static int
++qnx_openat_dir_aware(int dirfd, const char *path, int flags)
++{
++	int fd;
++
++	if ((flags & O_ACCMODE) == O_RDONLY && (flags & O_DIRECTORY) == 0) {
++		fd = (openat)(dirfd, path, flags | O_DIRECTORY);
++		if (fd >= 0 || errno != ENOTDIR)
++			return (fd);
++	}
++	return ((openat)(dirfd, path, flags));
++}
++#define openat(d, p, f)	qnx_openat_dir_aware(d, p, f)
++#endif
++#define open(p, f)	qnx_open_dir_aware(p, f)
++
++#if defined(HAVE_FSTATVFS) && defined(HAVE_OPENAT)
++static int
++qnx_fstatvfs(int fd, struct statvfs *buf)
++{
++	int r, fd2, saved;
++
++	r = (fstatvfs)(fd, buf);
++	if (r == 0 || errno != ENOSYS)
++		return (r);
++	fd2 = (openat)(fd, ".", O_RDONLY | O_CLOEXEC);
++	if (fd2 < 0) {
++		errno = ENOSYS;
++		return (-1);
++	}
++	r = (fstatvfs)(fd2, buf);
++	saved = errno;
++	close(fd2);
++	errno = saved;
++	return (r);
++}
++#define fstatvfs(fd, buf)	qnx_fstatvfs(fd, buf)
++#endif
++
++#if defined(HAVE_FPATHCONF) && defined(HAVE_OPENAT)
++static long
++qnx_fpathconf(int fd, int name)
++{
++	long r;
++	int fd2, saved;
++
++	errno = 0;
++	r = (fpathconf)(fd, name);
++	if (r != -1 || errno != EINVAL)
++		return (r);
++	fd2 = (openat)(fd, ".", O_RDONLY | O_CLOEXEC);
++	if (fd2 < 0) {
++		errno = EINVAL;
++		return (-1);
++	}
++	errno = 0;
++	r = (fpathconf)(fd2, name);
++	saved = errno;
++	close(fd2);
++	errno = saved;
++	return (r);
++}
++#define fpathconf(fd, name)	qnx_fpathconf(fd, name)
++#endif
++#endif /* __QNXNTO__ && O_DIRECTORY */
++
+ #define MAX_FILESYSTEM_ID 1000000
+ 
+ #if defined(__hpux) && !defined(HAVE_DIRFD)

@@ -111,7 +111,7 @@ See `runs/report.html` after a run. The table below is filled from the reports i
 | fmt | 12.2.0 | built | built | 20/21 pass | -lregex |
 | googletest | v1.17.0 | built | built | - | none |
 | json-c | json-c-0.19-20260627 | built | built | 27/28 pass | none |
-| libarchive | v3.8.11 | built | built | 816/1137 pass | link launcher |
+| libarchive | v3.8.11 | built | built | 860/1137 pass | link launcher; AI test fix ×1 |
 | libcbor | v0.14.0 | built | built | 28/28 pass | none |
 | libcoap | v4.3.5 | built | built | - | -lsocket |
 | libzmq | v4.3.5 | built | built | 110/121 pass | CMake policy 3.5 |

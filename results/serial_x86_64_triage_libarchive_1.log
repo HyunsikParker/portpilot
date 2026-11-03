@@ -1,0 +1,4253 @@
+
+non UEFI or UEFI+CSM boot
+ACPI table not found (0x4746434d)
+System behaves poorly without PCID support.
+overriding mask for controller 2, vector_base 0
+---> Starting slogger2
+---> Starting PCI Services
+---> Starting fsevmgr
+# ---> Starting devb
+---> Mounting file systems
+Path=0 - Intel 82371SB
+---> Mounting file systems
+ target=0 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+ target=1 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+Path=1 - Intel 82371SB
+ target=0 lun=0            CD-ROM(5) - QEMU     QEMU DVD-ROM     Rev: 2.5+
+---> Starting Networking
+if_up: tries exhausted
+ifconfig: interface vtnet0 does not exist
+no valid interfaces found
+---> Starting sshd
+/usr/libexec/sshd-auth does not exist or is not executable
+
+---> Starting misc
+PPTEST-BEGIN QNX portpilot 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+PPINFO tmp: /dev/hd0t179                513M       17M      497M       4%  /data/          
+PPTEST-LIB libarchive 1137
+PPTEST libarchive libarchive_test_archive_crc32 PASS rc=0
+PPTEST libarchive libarchive_test_7zip_filename_encoding_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_acl_from_text_overread PASS rc=0
+PPTEST libarchive libarchive_test_acl_nfs4 PASS rc=0
+PPTEST libarchive libarchive_test_acl_nfs4_null_id_overflow PASS rc=0
+PPTEST libarchive libarchive_test_acl_nfs4_null_id_overflow_w PASS rc=0
+PPTEST libarchive libarchive_test_acl_nfs4_text_roundtrip PASS rc=0
+PPTEST libarchive libarchive_test_acl_nfs4_text_types PASS rc=0
+PPTEST libarchive libarchive_test_acl_nfs4_text_numeric_id PASS rc=0
+PPTEST libarchive libarchive_test_acl_nfs4_text_invalid PASS rc=0
+PPTEST libarchive libarchive_test_acl_pax_posix1e PASS rc=0
+PPTEST libarchive libarchive_test_acl_pax_nfs4 PASS rc=0
+PPTEST libarchive libarchive_test_acl_platform_nfs4 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_acl_platform_posix1e_restore SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_acl_platform_posix1e_read SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_acl_posix1e PASS rc=0
+PPTEST libarchive libarchive_test_acl_posix1e_text_roundtrip PASS rc=0
+PPTEST libarchive libarchive_test_acl_posix1e_text_solaris PASS rc=0
+PPTEST libarchive libarchive_test_acl_posix1e_text_ismode PASS rc=0
+PPTEST libarchive libarchive_test_acl_posix1e_text_numeric_id PASS rc=0
+PPTEST libarchive libarchive_test_acl_posix1e_text_invalid PASS rc=0
+PPTEST libarchive libarchive_test_acl_from_text PASS rc=0
+PPTEST libarchive libarchive_test_acl_to_text PASS rc=0
+PPTEST libarchive libarchive_test_ar_mode PASS rc=0
+PPTEST libarchive libarchive_test_archive_api_feature PASS rc=0
+PPTEST libarchive libarchive_test_archive_clear_error PASS rc=0
+PPTEST libarchive libarchive_test_archive_cmdline PASS rc=0
+PPTEST libarchive libarchive_test_archive_md5 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_rmd160 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_sha1 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_sha256 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_sha384 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_sha512 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_match_owner PASS rc=0
+PPTEST libarchive libarchive_test_archive_match_path PASS rc=0
+PPTEST libarchive libarchive_test_archive_match_time PASS rc=0
+PPTEST libarchive libarchive_test_archive_ntfs_to_unix PASS rc=0
+PPTEST libarchive libarchive_test_archive_parse_date PASS rc=0
+PPTEST libarchive libarchive_test_archive_pathmatch PASS rc=0
+PPTEST libarchive libarchive_test_archive_pathmatch_oob_bracket PASS rc=0
+PPTEST libarchive libarchive_test_archive_pathmatch_oob_strchr PASS rc=0
+PPTEST libarchive libarchive_test_archive_pathmatch_oob_bracket_w PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_ahead_eof PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_ahead_zero PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_state_open PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_consume_beyond_eof PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_seek_fails PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase_incorrect_sequance PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase_single PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase_multiple PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase_set_callback1 PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase_set_callback2 PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase_set_callback3 PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase_multiple_with_callback PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_add_passphrase_multiple_with_callback2 PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_append_filter PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_close_twice PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_close_twice_open_fd PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_close_twice_open_filename PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_multiple_data_objects PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_next_header_empty PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_next_header_raw PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_open_filenames_null PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_open_filenames_split_uaf PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_open2 PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_set_filter_option PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_set_format_option PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_set_option PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_set_options PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_support PASS rc=0
+PPTEST libarchive libarchive_test_archive_read_support_twice PASS rc=0
+PPTEST libarchive libarchive_test_archive_seek_data_unsupported PASS rc=0
+PPTEST libarchive libarchive_test_archive_set_error PASS rc=0
+PPTEST libarchive libarchive_test_archive_string PASS rc=0
+PPTEST libarchive libarchive_test_archive_string_sort PASS rc=0
+PPTEST libarchive libarchive_test_archive_string_conversion SKIP rc=2
+PPLOG   Assertions checked:  156817
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           2
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:  156817
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           2
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_string_conversion_fail_c FAIL rc=1
+PPLOG   Assertions checked:      18
+PPLOG   Assertions failed:        3
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   77: test_archive_string_conversion_fail_c (3 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/libarchive_test.2026-11-03T12.08.03-000
+PPLOG 
+PPTEST libarchive libarchive_test_archive_string_conversion_fail_latin1 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_string_conversion_utf16_utf8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_string_conversion_utf8_utf16 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_string_update_utf8_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_string_update_utf8_utf8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_string_update_utf8_koi8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_string_conversion_overread PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_none PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_gzip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_compress PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_grzip SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_lrzip SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_lz4 SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_lzip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_lzma PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_lzop SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_b64encode SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_uuencode PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_xz PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_zstd SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_b64encode PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_compress PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_grzip SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_gzip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_lrzip SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_lz4 SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_lzip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_lzma PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_lzop SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_uuencode PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_xz PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_add_filter_by_name_zstd SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_close_callback PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_7zip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_ar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_arbsd PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_argnu PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_arsvr4 PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_bsdtar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_cd9660 PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_cpio PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_gnutar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_iso PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_iso9660 PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_mtree PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_mtree_classic PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_newc PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_odc PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_oldtar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_pax PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_paxr PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_posix PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_rpax PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_shar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_shardump PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_ustar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_v7tar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_v7 PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_warc PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_xar SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_set_format_by_name_zip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_7zip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_zip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_jar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_a PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_ar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_cpio PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_iso PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_tar PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_tar_gz PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_tar_bz2 PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_tar_xz PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_tar_zst SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_no_ext_def_zip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_filter_by_ext_tar_bz2_def_zip PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_filter_option PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_format_option PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_option PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_options PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_passphrase PASS rc=0
+PPTEST libarchive libarchive_test_archive_write_set_passphrase_callback PASS rc=0
+PPTEST libarchive libarchive_test_bad_fd PASS rc=0
+PPTEST libarchive libarchive_test_compat_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_compat_cpio PASS rc=0
+PPTEST libarchive libarchive_test_compat_gtar PASS rc=0
+PPTEST libarchive libarchive_test_compat_gtar_large PASS rc=0
+PPTEST libarchive libarchive_test_compat_gzip PASS rc=0
+PPTEST libarchive libarchive_test_compat_lz4 SKIP rc=2
+PPLOG   Assertions checked:      35
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:          13
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      35
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:          13
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_compat_lzip PASS rc=0
+PPTEST libarchive libarchive_test_compat_lzma PASS rc=0
+PPTEST libarchive libarchive_test_compat_lzop SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_compat_mac PASS rc=0
+PPTEST libarchive libarchive_test_compat_perl_archive_tar PASS rc=0
+PPTEST libarchive libarchive_test_compat_plexus_archiver_tar PASS rc=0
+PPTEST libarchive libarchive_test_compat_solaris_pax_sparse PASS rc=0
+PPTEST libarchive libarchive_test_compat_solaris_tar_acl PASS rc=0
+PPTEST libarchive libarchive_test_compat_star_acl_posix1e PASS rc=0
+PPTEST libarchive libarchive_test_compat_star_acl_nfs4 PASS rc=0
+PPTEST libarchive libarchive_test_compat_tar_directory PASS rc=0
+PPTEST libarchive libarchive_test_compat_tar_hardlink PASS rc=0
+PPTEST libarchive libarchive_test_compat_uudecode PASS rc=0
+PPTEST libarchive libarchive_test_compat_uudecode_large PASS rc=0
+PPTEST libarchive libarchive_test_compat_xz PASS rc=0
+PPTEST libarchive libarchive_test_compat_zip_1 PASS rc=0
+PPTEST libarchive libarchive_test_compat_zip_2 PASS rc=0
+PPTEST libarchive libarchive_test_compat_zip_3 PASS rc=0
+PPTEST libarchive libarchive_test_compat_zip_4 PASS rc=0
+PPTEST libarchive libarchive_test_compat_zip_5 PASS rc=0
+PPTEST libarchive libarchive_test_compat_zip_6 PASS rc=0
+PPTEST libarchive libarchive_test_compat_zip_7 PASS rc=0
+PPTEST libarchive libarchive_test_compat_zip_8 PASS rc=0
+PPTEST libarchive libarchive_test_compat_zstd SKIP rc=2
+PPLOG   Assertions checked:      18
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           3
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      18
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           3
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_create_child_environment PASS rc=0
+PPTEST libarchive libarchive_test_empty_write PASS rc=0
+PPTEST libarchive libarchive_test_entry FAIL rc=1
+PPLOG   Assertions checked:     399
+PPLOG   Assertions failed:        1
+PPLOG   Skips reported:           1
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   194: test_entry (1 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/libarchive_test.2026-11-03T12.10.23-000
+PPLOG 
+PPTEST libarchive libarchive_test_entry_mac_metadata_self_copy PASS rc=0
+PPTEST libarchive libarchive_test_entry_strmode PASS rc=0
+PPTEST libarchive libarchive_test_extattr_freebsd SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_filter_count PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_ar PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_cab PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_cpio PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_iso9660 PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_lzh PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_mtree PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_rar PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_tar PASS rc=0
+PPTEST libarchive libarchive_test_fuzz_zip PASS rc=0
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_UTF8_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_KOI8R_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_KOI8R_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_CP1251_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_ru_RU_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_Russian_Russia SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_EUCJP_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_EUCJP_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_CP932_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_long_gname_utf16 SKIP rc=2
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_fail_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_gnutar_filename_encoding_UTF32_substitute SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_link_resolver PASS rc=0
+PPTEST libarchive libarchive_test_link_resolver_unicode_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_open_failure PASS rc=0
+PPTEST libarchive libarchive_test_open_fd PASS rc=0
+PPTEST libarchive libarchive_test_open_file PASS rc=0
+PPTEST libarchive libarchive_test_open_filename PASS rc=0
+PPTEST libarchive libarchive_test_open_filename_wcs_oob PASS rc=0
+PPTEST libarchive libarchive_test_open_filename_stdin_zip PASS rc=0
+PPTEST libarchive libarchive_test_open_filename_proc_einval SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_filename_encoding_KOI8R SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_filename_encoding_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_filename_encoding_EUCJP SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_filename_encoding_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_filename_encoding_KOI8R_BINARY SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_filename_encoding_KOI8R_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_filename_encoding_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_filename_encoding SKIP rc=2
+PPLOG   Assertions checked:    6844
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:    6844
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_pax_xattr_header PASS rc=0
+PPTEST libarchive libarchive_test_read_data_block_offset_at_eof PASS rc=0
+PPTEST libarchive libarchive_test_read_data_into_fd_no_offset_reported PASS rc=0
+PPTEST libarchive libarchive_test_read_data_into_fd_size_exceeds_declared_stored PASS rc=0
+PPTEST libarchive libarchive_test_read_data_into_fd_size_exceeds_declared_deflate PASS rc=0
+PPTEST libarchive libarchive_test_read_data_large PASS rc=0
+PPTEST libarchive libarchive_test_read_data_into_fd_sparse PASS rc=0
+PPTEST libarchive libarchive_test_read_data_into_fd_append PASS rc=0
+PPTEST libarchive libarchive_test_read_disk PASS rc=0
+PPTEST libarchive libarchive_test_read_disk_directory_traversals SKIP rc=2
+PPLOG   Assertions checked:     777
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           2
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     777
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           2
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_disk_entry_from_file PASS rc=0
+PPTEST libarchive libarchive_test_read_extract FAIL rc=1
+PPLOG   Expected: 0775
+PPLOG   Found: 0755
+PPLOG 
+PPLOG Totals:
+PPLOG   Assertions checked:      72
+PPLOG   Assertions failed:        1
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   249: test_read_extract (1 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/libarchive_test.2026-11-03T12.23.14-000
+PPLOG 
+PPTEST libarchive libarchive_test_read_file_nonexistent PASS rc=0
+PPTEST libarchive libarchive_test_read_files_compressed PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_compress_truncated PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_compress_empty2 PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_compress_invalid PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_compress_multi_volume PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_grzip SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_filter_gzip_recursive PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_lrzip SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_filter_lz4_raw_skip PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_lzop SKIP rc=2
+PPLOG   Assertions checked:     458
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     458
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_filter_lzop_multiple_parts SKIP rc=2
+PPLOG   Assertions checked:    5139
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:    5139
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_filter_program PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_program_signature PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_uudecode PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_uudecode_base64 PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_uudecode_newlines PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_uudecode_raw PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_uudecode_base64_raw PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_uudecode_mode_digits PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_uudecode_invalid_mode PASS rc=0
+PPTEST libarchive libarchive_test_read_filter_zstd_raw_loop PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_archive_properties PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_from_fd PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_copy PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_deflate PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_zstd SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_7zip_zstd_solid SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_7zip_zstd_bcj SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_7zip_zstd_nobcj SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_7zip_empty PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma1 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_zstd_arm SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_7zip_lzma2_arm PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma1_arm PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_deflate_armthumb PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma1_armthumb PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_deflate_ia64 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma1_ia64 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_deflate_delta PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_ppmd PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_ppmd_small_block PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_ppmd_bcj PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_ppmd_arm64 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma2_arm64 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_7zip_lzma1_arm64 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_deflate_arm64 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_deflate_arm64_unaligned_chunk PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_deflate_arm_arm64 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_win_attrib PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_sfx_pe PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_sfx_modified_pe PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_sfx_elf PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_sfx_boundary_pe PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_sfx_boundary_elf PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_sfx_elf64trunc PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_extract_second PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma2_riscv SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_7zip_lzma1_riscv PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_deflate_riscv PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma2_sparc PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma1_sparc PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_zstd_sparc SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_7zip_deflate_powerpc PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma2_powerpc PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_null_client_next PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_lzma1_powerpc PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_chained_lzma2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_encryption_data PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_encryption_header PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_encryption_partially PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_entries_oom PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_folders_oom PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_issue2765 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_malformed PASS rc=0
+PPTEST libarchive libarchive_test_read_format_7zip_packinfo_digests PASS rc=0
+PPTEST libarchive libarchive_test_read_format_ar PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab_filename SKIP rc=2
+PPLOG   Assertions checked:     208
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           2
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     208
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           2
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cab_lzx_16bit PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab_lzx_e8 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab_lzx_invalid_history PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab_lzx_oob PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab_mszip_oob PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab_multi PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab_skip_across_folders PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cab_skip_malformed PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_afio PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_afio_broken PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_afio_header PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin_Z PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin_be PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin_bz2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin_gz PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin_le PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin_lzip PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin_lzma PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_bin_xz PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_filename_eucJP_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_newc_large_pathname PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_filename_UTF8_eucJP SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_UTF8_UTF8_jp SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_CP866_KOI8R SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_CP866_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_KOI8R_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_KOI8R_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_UTF8_KOI8R SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_UTF8_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_UTF8_UTF8_ru SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_eucJP_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_UTF8_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_CP866_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_CP866_CP1251_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_KOI8R_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_filename_UTF8_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_cpio_newc_resync PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_odc PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_svr4_bzip2_rpm PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_svr4_gzip PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_svr4_gzip_rpm PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_svr4c_Z PASS rc=0
+PPTEST libarchive libarchive_test_read_format_cpio_symlink_trailer PASS rc=0
+PPTEST libarchive libarchive_test_read_format_empty PASS rc=0
+PPTEST libarchive libarchive_test_read_format_gtar_filename_eucJP_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_filename_CP866_KOI8R SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_filename_CP866_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_filename_KOI8R_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_filename_KOI8R_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_filename_eucJP_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_filename_CP866_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_filename_CP866_CP1251_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_filename_KOI8R_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_gtar_gz PASS rc=0
+PPTEST libarchive libarchive_test_read_format_gtar_lzma PASS rc=0
+PPTEST libarchive libarchive_test_read_format_gtar_redundant_L PASS rc=0
+PPTEST libarchive libarchive_test_read_format_gtar_sparse PASS rc=0
+PPTEST libarchive libarchive_test_read_format_gtar_sparse_exceeds_length PASS rc=0
+PPTEST libarchive libarchive_test_read_format_gtar_sparse_length PASS rc=0
+PPTEST libarchive libarchive_test_read_format_gtar_sparse_skip_entry PASS rc=0
+PPTEST libarchive libarchive_test_read_format_huge_rpm PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_Z PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_joliet_utf16be_cycle PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_joliet_utf16be_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_multi_extent PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_xorriso PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isojoliet_compress PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isojoliet_long PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isojoliet_rr PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isojoliet_versioned PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isorr_compress PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isorr_ce PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isorr_ce_loop PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isorr_new_compress PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isorr_rr_moved PASS rc=0
+PPTEST libarchive libarchive_test_read_format_isozisofs_compress PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_rockridge_ce_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_rockridge_cl_re_cycle PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_rockridge_cl_re_control PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_rockridge_sl_leak PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_rockridge_zf_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_iso_zisofs_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_lha PASS rc=0
+PPTEST libarchive libarchive_test_read_format_lha_amiga_script PASS rc=0
+PPTEST libarchive libarchive_test_read_format_lha_bugfix_0 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_lha_filename SKIP rc=2
+PPLOG   Assertions checked:     230
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           2
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     230
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           2
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_lha_filename_UTF16 SKIP rc=2
+PPLOG   Assertions checked:     953
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     953
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_lha_oversize_header PASS rc=0
+PPTEST libarchive libarchive_test_read_format_lha_symlink_missing_target PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_filenames_only PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_nochange PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_nomagic_v1_form PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_nomagic_v2_form PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_nomagic_v2_netbsd_form PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_nonexistent_contents_file PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_noprint PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_tab PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_nano PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_global_set_no_value PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_no_final_newline PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_read_error PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_crash747 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_mtree_size PASS rc=0
+PPTEST libarchive libarchive_test_read_format_pax_bz2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_set_format PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_basic PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_subblock PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_noeof PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_unicode_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_rar_unicode_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_rar_compress_normal PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_multi_lzss_blocks PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar3_lowdist_reset PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_compress_best PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_ppmd_lzss_conversion PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_binary PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_windows PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_multivolume PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_multivolume_w SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_rar_multivolume_skip PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_sfx PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_multivolume_stored_file PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_multivolume_stored_file_skip PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_multivolume_seek_data PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_multivolume_seek_multiple_files PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_multivolume_uncompressed_files PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_endarc_huge PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_ppmd_use_after_free PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_ppmd_use_after_free2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_seek_data_cursor0 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_newsub_huge SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_rar_newsub_rr_over_1m PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_newsub_huge64 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_symlink_huge SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_rar_symlink_huge64 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_unbound_staticdata PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar4_encrypted PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar4_encrypted_filenames PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar4_solid_encrypted SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_rar4_solid_encrypted_filenames PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_encrypted PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_encrypted_filenames PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_solid_encrypted PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_solid_encrypted_filenames PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_encryption_data PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_encryption_header PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_encryption_partially PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_invalid1 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_filter_incomplete_block PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_set_format PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_stored PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_zip_in_rar PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_compressed PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiple_files PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiple_files_solid PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_first_volume_only PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_skip_all PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_skip_all_but_first PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_skip_all_but_second PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_blake2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_arm_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_stored_skip_all PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_stored_skip_in_part PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_stored_skip_all_but_first PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_stored_skip_all_in_part PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_solid_extr_all PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_solid_skip_all PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_solid_skip_all_but_first PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_solid_skip_all_but_scnd PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_solid_skip_all_but_third PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_multiarchive_solid_skip_all_but_last PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_solid_skip_all PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_solid_skip_all_but_first PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_solid_skip_all_but_second PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_solid_skip_all_but_last PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_extract_win32 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_unicode SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_rar5_block_by_block PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_owner PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_owner_name_toolong PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_group_name_toolong PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_extra_data_size_toolong PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_symlink PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_hardlink PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_extra_field_version PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_readtables_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_leftshift1 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_leftshift2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_truncated_huff PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_invalid_dict_reference PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_distance_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_nonempty_dir_stream PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_nonempty_dir_data PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_fileattr PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_different_window_size PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_window_buf_and_size_desync PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_arm_filter_on_window_boundary PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_different_solid_window_size PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_different_winsize_on_merge PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_block_size_is_too_small PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_sfx PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_decode_number_out_of_bounds_read PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_bad_window_size_in_multiarchive_file PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_read_data_block_uninitialized_offset PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_data_ready_pointer_leak PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_only_crypt_exfld PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_only_unsupported_exfld PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_invalidhash_and_validhtime_exfld PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_main_block_extra_bytes PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_skip_block_extra_bytes PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_bytes_remaining_underflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_unpacked_size_exceeds_declared PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_seek_data_unsupported PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_redir_varint_2byte PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_bad_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_bad_tables PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_block_hdr_fail_loop PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_extra_field_underflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_header_size_wraparound PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_loop_bug PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_redir_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_truncated_htime PASS rc=0
+PPTEST libarchive libarchive_test_read_format_rar5_varint_near_eof PASS rc=0
+PPTEST libarchive libarchive_test_read_format_raw PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_acl_oob_read PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_V_negative_size PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_concatenated PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_empty_filename PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_empty_with_gnulabel PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_empty_pax PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_filename SKIP rc=2
+PPLOG   Assertions checked:     621
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           3
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     621
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           3
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_tar_gnu_sparse_map PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_invalid_pax_size PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_mac_metadata PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_pax_g_large PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_pax_global_header PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_pax_global_header_ignorable PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_pax_large_attr PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_pax_negative_time PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_pax_sun_holesdata PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_pax_timestamps PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tar_timestamp_overflow PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tbz PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tgz PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tlz PASS rc=0
+PPTEST libarchive libarchive_test_read_format_txz PASS rc=0
+PPTEST libarchive libarchive_test_read_format_tz PASS rc=0
+PPTEST libarchive libarchive_test_read_format_ustar_filename SKIP rc=2
+PPLOG   Assertions checked:     904
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           9
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     904
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           9
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_warc PASS rc=0
+PPTEST libarchive libarchive_test_read_format_warc_incomplete PASS rc=0
+PPTEST libarchive libarchive_test_read_format_warc_skip_after_extract PASS rc=0
+PPTEST libarchive libarchive_test_read_format_warc_truncated_body PASS rc=0
+PPTEST libarchive libarchive_test_read_format_warc_uri_nul PASS rc=0
+PPTEST libarchive libarchive_test_read_format_warc_future_date PASS rc=0
+PPTEST libarchive libarchive_test_read_format_xar SKIP rc=2
+PPLOG   Assertions checked:      47
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:          13
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      47
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:          13
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_xattr_fstype_cleanup SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_duplicate_filename_node SKIP rc=2
+PPLOG   Assertions checked:     660
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     660
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_large_mode SKIP rc=2
+PPLOG   Assertions checked:     483
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     483
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_base64_oob SKIP rc=2
+PPLOG   Assertions checked:     224
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     224
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_atou64_overread SKIP rc=2
+PPLOG   Assertions checked:     231
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     231
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_empty_xattr SKIP rc=2
+PPLOG   Assertions checked:     319
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     319
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_toc_premature_stream_end SKIP rc=2
+PPLOG   Assertions checked:     385
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     385
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_parse_time_overread SKIP rc=2
+PPLOG   Assertions checked:     259
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     259
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_invalid_seek_offset SKIP rc=2
+PPLOG   Assertions checked:     651
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     651
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_xar_doublelink SKIP rc=2
+PPLOG   Assertions checked:     531
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     531
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ppmd_one_file PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ppmd_one_file_blockread PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ppmd_multi PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ppmd_multi_blockread PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_lzma_one_file PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_lzma_one_file_blockread PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_lzma_multi PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_lzma_multi_blockread PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_bzip2_one_file PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_bzip2_one_file_blockread PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_bzip2_multi PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_bzip2_multi_blockread PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_zstd_one_file SKIP rc=2
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zstd_one_file_blockread SKIP rc=2
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zstd_multi SKIP rc=2
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zstd_multi_blockread SKIP rc=2
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_xz_multi PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_xz_multi_blockread PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ppmd8_crash_1 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_bz2_hang_on_invalid PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ppmd8_crash_2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_lzma_alone_leak PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_lzma_stream_end PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_lzma_stream_end_blockread PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_7z_lzma PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_7z_deflate PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_utf8_paths SKIP rc=2
+PPLOG   Assertions checked:    1030
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:    1030
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_ambiguous_timestamp_pkware_unix PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ambiguous_timestamp_ut PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ambiguous_timestamp_ux PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_comment_stored PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_dos_mtime_precedence_ntfs PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_dos_mtime_precedence_pkware_unix PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_dos_mtime_precedence_ut PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_dos_mtime_precedence_ux PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_empty PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_encryption_data PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_encryption_header PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_encryption_partially PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_extra_padding PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_filename_CP932_eucJP SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_CP932_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_UTF8_eucJP SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_UTF8_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_CP866_KOI8R SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_CP866_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_KOI8R_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_KOI8R_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_UTF8_KOI8R SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_UTF8_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_UTF8_UTF8_ru SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_CP932_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_UTF8_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_CP866_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_CP866_CP1251_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_KOI8R_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_UTF8_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_filename_KOI8R_UTF8_2 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_high_compression PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_high_compression2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_jar PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_lzma_alone_large_size PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_mac_metadata PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_malformed PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_msdos PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_negative_timestamp_pkware_unix PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_negative_timestamp_ut PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_negative_timestamp_ux PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_nested PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_nofiletype PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ntfs_precedence_pkware_unix PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ntfs_precedence_ut PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ntfs_precedence_ux PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_ntfs_timestamp PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_padded1 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_padded2 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_padded3 PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_sfx PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_size_exceeds_declared_stored PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_size_exceeds_declared_deflate PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_streamable_skip PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_symlink_unsupported_compression PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_traditional_encryption_data PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_uncompressed_size_off_by_4gib PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_unset_times PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_unset_times_central_directory_only PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes128 SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes256 SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes256_stored SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes256_large SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes256_large_bzip2 SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes256_large_lzma SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes256_large_ppmd SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes256_large_xz SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_winzip_aes256_large_zstd SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zip64a PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_zip64b PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_deflate_encrypted SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_bzip2_encrypted SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_lzma_encrypted SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_xz_encrypted SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_zstd_encrypted SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_deflate_encrypted_streaming SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_bzip2_encrypted_streaming SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_lzma_encrypted_streaming SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_xz_encrypted_streaming SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_zstd_encrypted_streaming SKIP rc=2
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      13
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_ppmd8_aes256_streaming SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_format_zip_zipx_lzma_oom PASS rc=0
+PPTEST libarchive libarchive_test_read_format_zip_with_invalid_traditional_eocd PASS rc=0
+PPTEST libarchive libarchive_test_read_large PASS rc=0
+PPTEST libarchive libarchive_test_read_pax_empty_val_no_nl PASS rc=0
+PPTEST libarchive libarchive_test_read_pax_xattr_rht_security_selinux PASS rc=0
+PPTEST libarchive libarchive_test_read_pax_xattr_schily PASS rc=0
+PPTEST libarchive libarchive_test_read_pax_truncated PASS rc=0
+PPTEST libarchive libarchive_test_read_position PASS rc=0
+PPTEST libarchive libarchive_test_read_set_format PASS rc=0
+PPTEST libarchive libarchive_test_read_set_wrong_format PASS rc=0
+PPTEST libarchive libarchive_test_read_append_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_wrong_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_lzop_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_grzip_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_compress_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_bzip2_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_lrzip_filter SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_append_lz4_filter SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_append_lzip_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_lzma_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_zstd_filter SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_append_rpm_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_uu_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_none_filter PASS rc=0
+PPTEST libarchive libarchive_test_read_append_filter_program PASS rc=0
+PPTEST libarchive libarchive_test_read_append_filter_wrong_program SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_too_many_filters PASS rc=0
+PPTEST libarchive libarchive_test_read_truncated PASS rc=0
+PPTEST libarchive libarchive_test_read_truncated_filter_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_read_truncated_filter_compress PASS rc=0
+PPTEST libarchive libarchive_test_read_truncated_filter_gzip PASS rc=0
+PPTEST libarchive libarchive_test_read_truncated_filter_lzip PASS rc=0
+PPTEST libarchive libarchive_test_read_truncated_filter_lzma PASS rc=0
+PPTEST libarchive libarchive_test_read_truncated_filter_lzop SKIP rc=2
+PPLOG   Assertions checked:      15
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      15
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_read_truncated_filter_xz PASS rc=0
+PPTEST libarchive libarchive_test_read_truncated_filter_gzip_trailer PASS rc=0
+PPTEST libarchive libarchive_test_short_writes PASS rc=0
+PPTEST libarchive libarchive_test_sparse_basic SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_fully_sparse_files SKIP rc=2
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      10
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_sparse_iterator PASS rc=0
+PPTEST libarchive libarchive_test_tar_filenames PASS rc=0
+PPTEST libarchive libarchive_test_tar_large PASS rc=0
+PPTEST libarchive libarchive_test_ustar_filename_encoding_UTF8_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_KOI8R_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_KOI8R_CP866 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_CP1251_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_ru_RU_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_Russian_Russia SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_EUCJP_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_EUCJP_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_CP932_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filename_encoding_fail_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_ustar_filenames PASS rc=0
+PPTEST libarchive libarchive_test_v7tar_filename_encoding_fail_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_warn_missing_hardlink_target PASS rc=0
+PPTEST libarchive libarchive_test_write_disk FAIL rc=1
+PPLOG   Assertions checked:     188
+PPLOG   Assertions failed:        1
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   767: test_write_disk (1 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/libarchive_test.2026-11-03T12.34.33-000
+PPLOG 
+PPTEST libarchive libarchive_test_write_disk_appledouble SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_disk_appledouble_zip SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_disk_failures PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_fixup PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_hardlink PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_hfs_compression SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_disk_lookup PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_mac_metadata SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_disk_no_hfs_compression SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_disk_perms FAIL rc=1
+PPLOG   Assertions checked:     100
+PPLOG   Assertions failed:        1
+PPLOG   Skips reported:           1
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   777: test_write_disk_perms (1 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/libarchive_test.2026-11-03T12.34.45-000
+PPLOG 
+PPTEST libarchive libarchive_test_write_disk_secure PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_secure_symlinks_only PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_secure_noabsolutepaths PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_secure_physicaldrive SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_disk_secure744 SKIP rc=2
+PPLOG   Assertions checked:      52
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      52
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_disk_secure745 PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_secure746a PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_secure746b PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_sparse PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_symlink PASS rc=0
+PPTEST libarchive libarchive_test_write_disk_times SKIP rc=2
+PPLOG   Assertions checked:      32
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      32
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_b64encode PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_b64encode_write_error PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_compress PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_compress_failed_write PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_gzip PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_gzip_timestamp PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_lrzip SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lz4 SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lz4_disable_stream_checksum SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lz4_enable_block_checksum SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lz4_block_size_4 SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lz4_block_size_5 SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lz4_block_size_6 SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lz4_block_dependence SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lz4_empty_archive SKIP rc=2
+PPLOG   Assertions checked:      14
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      14
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_lzip PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_lzma PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_lzop SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_filter_program PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_uuencode PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_uuencode_write_error PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_xz PASS rc=0
+PPTEST libarchive libarchive_test_write_filter_zstd SKIP rc=2
+PPLOG   Assertions checked:      14
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      14
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_7zip PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_basic_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_basic_copy PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_basic_deflate PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_basic_lzma1 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_basic_lzma2 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_basic_ppmd PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_basic_zstd SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_7zip_unregister PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_empty_archive PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_empty_files PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_large_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_large_copy PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_large_deflate PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_large_lzma1 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_large_lzma2 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_large_ppmd PASS rc=0
+PPTEST libarchive libarchive_test_write_format_7zip_large_zstd SKIP rc=2
+PPLOG   Assertions checked:      15
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      15
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_ar PASS rc=0
+PPTEST libarchive libarchive_test_write_format_cpio PASS rc=0
+PPTEST libarchive libarchive_test_write_format_cpio_empty PASS rc=0
+PPTEST libarchive libarchive_test_write_format_cpio_newc PASS rc=0
+PPTEST libarchive libarchive_test_write_format_cpio_newc_large_inode PASS rc=0
+PPTEST libarchive libarchive_test_write_format_cpio_odc PASS rc=0
+PPTEST libarchive libarchive_test_write_format_gnutar PASS rc=0
+PPTEST libarchive libarchive_test_write_format_gnutar_switch PASS rc=0
+PPTEST libarchive libarchive_test_write_format_gnutar_filenames PASS rc=0
+PPTEST libarchive libarchive_test_write_format_gnutar_linknames PASS rc=0
+PPTEST libarchive libarchive_test_write_format_gnutar_huge PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_boot PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_boot_load_size PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_empty PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_filename PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_joliet_id PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_rockridge PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_rockridge_overflow PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_rr_moved_notdir PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_rr_moved_dir PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_zisofs PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_zisofs_overflow PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_null_deref PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_underflow PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_joliet_overflow PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_duplicate_identifier_truncation PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_boot_image_size_overflow PASS rc=0
+PPTEST libarchive libarchive_test_write_format_iso9660_symlink PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_no_leading_dotslash PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_nlink PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_absolute PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_absolute_path PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_classic PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_classic_indent PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_dotdot PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_fflags SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_no_separator PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_digests_no_digests_set_no_data PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_digests_no_digests_set_empty_data PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_digests_no_digests_set_non_empty_data PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_digests_md5_digest_set_no_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_md5_digest_set_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_md5_digest_set_non_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_rmd160_digest_set_no_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_rmd160_digest_set_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_rmd160_digest_set_non_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha1_digest_set_no_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha1_digest_set_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha1_digest_set_non_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha256_digest_set_no_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha256_digest_set_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha256_digest_set_non_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha384_digest_set_no_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha384_digest_set_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha384_digest_set_non_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha512_digest_set_no_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha512_digest_set_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_digests_sha512_digest_set_non_empty_data SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_mtree_quoted_filename PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_null_deref PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_no_set_symlink PASS rc=0
+PPTEST libarchive libarchive_test_write_format_mtree_reg_dot_root PASS rc=0
+PPTEST libarchive libarchive_test_write_format_option_missing_value SKIP rc=2
+PPLOG   Assertions checked:      24
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      24
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_pax PASS rc=0
+PPTEST libarchive libarchive_test_write_format_pax_align PASS rc=0
+PPTEST libarchive libarchive_test_write_format_pax_mac_meta PASS rc=0
+PPTEST libarchive libarchive_test_write_format_raw PASS rc=0
+PPTEST libarchive libarchive_test_write_format_raw_b64 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_shar_empty PASS rc=0
+PPTEST libarchive libarchive_test_write_format_shar_invalid_pathname PASS rc=0
+PPTEST libarchive libarchive_test_write_format_tar PASS rc=0
+PPTEST libarchive libarchive_test_write_format_tar_empty_dirname PASS rc=0
+PPTEST libarchive libarchive_test_write_format_tar_empty PASS rc=0
+PPTEST libarchive libarchive_test_write_format_tar_sparse PASS rc=0
+PPTEST libarchive libarchive_test_write_format_tar_ustar PASS rc=0
+PPTEST libarchive libarchive_test_write_format_tar_v7tar PASS rc=0
+PPTEST libarchive libarchive_test_write_format_warc PASS rc=0
+PPTEST libarchive libarchive_test_write_format_warc_size PASS rc=0
+PPTEST libarchive libarchive_test_write_format_warc_incomplete PASS rc=0
+PPTEST libarchive libarchive_test_write_format_warc_warcinfo_output_error PASS rc=0
+PPTEST libarchive libarchive_test_write_format_warc_resource_output_error PASS rc=0
+PPTEST libarchive libarchive_test_write_format_warc_empty PASS rc=0
+PPTEST libarchive libarchive_test_write_format_xar SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_xar_entry_trunc SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_xar_unregister SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_xar_empty SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_xar_fflags SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_xar_strcpy_overlap PASS rc=0
+PPTEST libarchive libarchive_test_write_format_xar_underflow PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip64 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_traditional_pkware_encryption PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_winzip_aes128_encryption SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_zip_winzip_aes256_encryption SKIP rc=2
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      12
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_zip64_stream PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_compression_store PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_compression_bzip2 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_compression_lzma_xz PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_compression_zstd SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_write_format_zip_empty PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_empty_pathname PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_empty_zip64 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_size_unset PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_file PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_file_zip64 PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_large PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_long_pathname PASS rc=0
+PPTEST libarchive libarchive_test_write_format_zip_stream PASS rc=0
+Memory fault (core dumped) 
+PPTEST libarchive libarchive_test_write_format_zip_windows_path FAIL rc=139
+PPLOG ...
+PPLOG 
+PPLOG If tests fail or crash, details will be in:
+PPLOG    /tmp/libarchive_test.2026-11-03T12.41.26-000
+PPLOG 
+PPLOG Reference files will be read from: /tests/libarchive/src/libarchive/test
+PPLOG Exercising: PPLOG signal 11; core file: libarchive_test.core
+PPLOG slog2: Nov 03 12:06:07.132                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
+PPLOG slog2: Nov 03 12:06:07.132                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
+PPLOG slog2: Nov 03 12:06:26.502                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
+PPLOG slog2: Nov 03 12:06:26.681                  dhcpcd.221199                 slog*     0  <30>Nov 03 12:06:26 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
+PPLOG slog2: Nov 03 12:06:26.829                  dhcpcd.221199                 slog      0  <27>Nov 03 12:06:26 dhcpcd[225297-1]: no valid interfaces found
+PPTEST libarchive libarchive_test_write_format_zip_zip64_oversize PASS rc=0
+PPTEST libarchive libarchive_test_write_open_memory PASS rc=0
+PPTEST libarchive libarchive_test_write_read_format_zip PASS rc=0
+PPTEST libarchive libarchive_test_write_read_format_zip_improved_streaming PASS rc=0
+PPTEST libarchive libarchive_test_write_read_format_zip64 PASS rc=0
+PPTEST libarchive libarchive_test_write_read_format_zip64_improved_streaming PASS rc=0
+PPTEST libarchive libarchive_test_xattr_platform SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_zip_filename_encoding_UTF8 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_zip_filename_encoding_KOI8R SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_zip_filename_encoding_ru_RU_CP1251 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_zip_filename_encoding_Russian_Russia SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_zip_filename_encoding_EUCJP SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_zip_filename_encoding_CP932 SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_zip_filename_encoding_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive libarchive_test_zip_filename_encoding_fail_UTF16_win SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_0 PASS rc=0
+PPTEST libarchive bsdcat_test_empty_gz PASS rc=0
+PPTEST libarchive bsdcat_test_empty_lz4 SKIP rc=2
+PPLOG   Assertions checked:      30
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      30
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_empty_xz PASS rc=0
+PPTEST libarchive bsdcat_test_empty_zstd SKIP rc=2
+PPLOG   Assertions checked:      28
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      28
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_error PASS rc=0
+PPTEST libarchive bsdcat_test_error_mixed PASS rc=0
+PPTEST libarchive bsdcat_test_expand_Z PASS rc=0
+PPTEST libarchive bsdcat_test_expand_bz2 PASS rc=0
+PPTEST libarchive bsdcat_test_expand_gz PASS rc=0
+PPTEST libarchive bsdcat_test_expand_lz4 SKIP rc=2
+PPLOG   Assertions checked:      74
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      74
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_expand_mixed PASS rc=0
+PPTEST libarchive bsdcat_test_expand_plain PASS rc=0
+PPTEST libarchive bsdcat_test_expand_xz PASS rc=0
+PPTEST libarchive bsdcat_test_expand_zstd SKIP rc=2
+PPLOG   Assertions checked:      66
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      66
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcat_test_help PASS rc=0
+PPTEST libarchive bsdcat_test_stdin PASS rc=0
+PPTEST libarchive bsdcat_test_version PASS rc=0
+PPTEST libarchive bsdtar_test_0 PASS rc=0
+PPTEST libarchive bsdtar_test_basic PASS rc=0
+PPTEST libarchive bsdtar_test_copy PASS rc=0
+PPTEST libarchive bsdtar_test_copy_data_warning PASS rc=0
+PPTEST libarchive bsdtar_test_crlf_mtree PASS rc=0
+PPTEST libarchive bsdtar_test_empty_mtree PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_Z PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_bz2 PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_grz SKIP rc=2
+PPLOG   Assertions checked:     222
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     222
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_extract_tar_gz PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_lrz SKIP rc=2
+PPLOG   Assertions checked:     329
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     329
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_extract_tar_lz PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_lz4 SKIP rc=2
+PPLOG   Assertions checked:     264
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     264
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_extract_tar_lzma PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_lzo SKIP rc=2
+PPLOG   Assertions checked:     349
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     349
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_extract_tar_xz PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_zstd SKIP rc=2
+PPLOG   Assertions checked:     189
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     189
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_edit_pathname_hardlink PASS rc=0
+PPTEST libarchive bsdtar_test_format_newc PASS rc=0
+PPTEST libarchive bsdtar_test_help PASS rc=0
+PPTEST libarchive bsdtar_test_leading_slash PASS rc=0
+PPTEST libarchive bsdtar_test_list_item PASS rc=0
+PPTEST libarchive bsdtar_test_missing_file PASS rc=0
+PPTEST libarchive bsdtar_test_option_C_upper PASS rc=0
+PPTEST libarchive bsdtar_test_option_C_mtree PASS rc=0
+PPTEST libarchive bsdtar_test_option_H_upper PASS rc=0
+PPTEST libarchive bsdtar_test_option_L_upper PASS rc=0
+PPTEST libarchive bsdtar_test_option_O_upper PASS rc=0
+PPTEST libarchive bsdtar_test_extract_tar_absolute_paths PASS rc=0
+PPTEST libarchive bsdtar_test_option_T_upper PASS rc=0
+PPTEST libarchive bsdtar_test_option_U_upper PASS rc=0
+PPTEST libarchive bsdtar_test_option_X_upper PASS rc=0
+PPTEST libarchive bsdtar_test_option_a PASS rc=0
+PPTEST libarchive bsdtar_test_option_acls SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_option_b PASS rc=0
+PPTEST libarchive bsdtar_test_option_b64encode PASS rc=0
+PPTEST libarchive bsdtar_test_option_exclude PASS rc=0
+PPTEST libarchive bsdtar_test_option_exclude_vcs PASS rc=0
+PPTEST libarchive bsdtar_test_option_fflags SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_option_gid_gname PASS rc=0
+PPTEST libarchive bsdtar_test_option_group PASS rc=0
+PPTEST libarchive bsdtar_test_option_grzip SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_t PASS rc=0
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_x PASS rc=0
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_c PASS rc=0
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_r PASS rc=0
+PPTEST libarchive bsdtar_test_option_ignore_zeros_mode_u PASS rc=0
+PPTEST libarchive bsdtar_test_option_j PASS rc=0
+PPTEST libarchive bsdtar_test_option_k PASS rc=0
+PPTEST libarchive bsdtar_test_option_keep_newer_files PASS rc=0
+PPTEST libarchive bsdtar_test_option_lrzip SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_option_lz4 SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_option_lzma PASS rc=0
+PPTEST libarchive bsdtar_test_option_lzop SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_option_mode PASS rc=0
+PPTEST libarchive bsdtar_test_option_mtime PASS rc=0
+PPTEST libarchive bsdtar_test_option_n PASS rc=0
+PPTEST libarchive bsdtar_test_option_newer_than PASS rc=0
+PPTEST libarchive bsdtar_test_option_nodump SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_option_older_than PASS rc=0
+PPTEST libarchive bsdtar_test_option_owner PASS rc=0
+PPTEST libarchive bsdtar_test_option_passphrase PASS rc=0
+PPTEST libarchive bsdtar_test_option_q PASS rc=0
+PPTEST libarchive bsdtar_test_option_r PASS rc=0
+PPTEST libarchive bsdtar_test_option_s PASS rc=0
+PPTEST libarchive bsdtar_test_option_safe_writes PASS rc=0
+PPTEST libarchive bsdtar_test_option_stdout_size_exceeds_declared PASS rc=0
+PPTEST libarchive bsdtar_test_option_uid_uname PASS rc=0
+PPTEST libarchive bsdtar_test_option_uuencode PASS rc=0
+PPTEST libarchive bsdtar_test_option_xattrs SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_option_xz PASS rc=0
+PPTEST libarchive bsdtar_test_option_z PASS rc=0
+PPTEST libarchive bsdtar_test_option_zstd SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdtar_test_patterns PASS rc=0
+PPTEST libarchive bsdtar_test_print_longpath PASS rc=0
+PPTEST libarchive bsdtar_test_stdio PASS rc=0
+PPTEST libarchive bsdtar_test_strip_components PASS rc=0
+PPTEST libarchive bsdtar_test_symlink_dir PASS rc=0
+PPTEST libarchive bsdtar_test_version PASS rc=0
+PPTEST libarchive bsdtar_test_windows SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_0 PASS rc=0
+PPTEST libarchive bsdcpio_test_basic FAIL rc=1
+PPLOG   Expected: 0775
+PPLOG   Found: 0755
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG   Expected: 0775
+PPLOG   Found: 0755
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG   Expected: 0775
+PPLOG   Found: 0755
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG   Expected: 0775
+PPLOG   Found: 0755
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG   Expected: 0775
+PPLOG   Found: 0755
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG   Expected: 0775
+PPLOG   Found: 0755
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG   Expected: 0775
+PPLOG   Found: 0755
+PPLOG 
+PPLOG Totals:
+PPLOG   Assertions checked:     138
+PPLOG   Assertions failed:        7
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   1: test_basic (7 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdcpio_test.2026-11-03T12.45.41-000
+PPLOG 
+PPTEST libarchive bsdcpio_test_cmdline PASS rc=0
+PPTEST libarchive bsdcpio_test_extract_cpio_Z PASS rc=0
+PPTEST libarchive bsdcpio_test_extract_cpio_absolute_paths PASS rc=0
+PPTEST libarchive bsdcpio_test_extract_cpio_bz2 PASS rc=0
+PPTEST libarchive bsdcpio_test_extract_cpio_grz SKIP rc=2
+PPLOG   Assertions checked:     210
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     210
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_extract_cpio_gz PASS rc=0
+PPTEST libarchive bsdcpio_test_extract_cpio_lrz SKIP rc=2
+PPLOG   Assertions checked:     270
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     270
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_extract_cpio_lz PASS rc=0
+PPTEST libarchive bsdcpio_test_extract_cpio_lz4 SKIP rc=2
+PPLOG   Assertions checked:     229
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     229
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_extract_cpio_lzma PASS rc=0
+PPTEST libarchive bsdcpio_test_extract_cpio_lzo SKIP rc=2
+PPLOG   Assertions checked:     324
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     324
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_extract_cpio_xz PASS rc=0
+PPTEST libarchive bsdcpio_test_extract_cpio_zstd SKIP rc=2
+PPLOG   Assertions checked:     172
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:     172
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_format_newc PASS rc=0
+PPTEST libarchive bsdcpio_test_gcpio_compat PASS rc=0
+PPTEST libarchive bsdcpio_test_missing_file PASS rc=0
+PPTEST libarchive bsdcpio_test_option_0 PASS rc=0
+PPTEST libarchive bsdcpio_test_option_B_upper PASS rc=0
+PPTEST libarchive bsdcpio_test_option_C_upper PASS rc=0
+PPTEST libarchive bsdcpio_test_option_J_upper PASS rc=0
+PPTEST libarchive bsdcpio_test_option_L_upper PASS rc=0
+PPTEST libarchive bsdcpio_test_option_Z_upper PASS rc=0
+PPTEST libarchive bsdcpio_test_option_a PASS rc=0
+PPTEST libarchive bsdcpio_test_option_b64encode PASS rc=0
+PPTEST libarchive bsdcpio_test_option_c PASS rc=0
+PPTEST libarchive bsdcpio_test_option_d PASS rc=0
+PPTEST libarchive bsdcpio_test_option_f PASS rc=0
+PPTEST libarchive bsdcpio_test_option_grzip SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_option_help PASS rc=0
+PPTEST libarchive bsdcpio_test_option_l PASS rc=0
+PPTEST libarchive bsdcpio_test_option_lrzip SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_option_lz4 SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_option_lzma PASS rc=0
+PPTEST libarchive bsdcpio_test_option_lzop SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_option_m PASS rc=0
+PPTEST libarchive bsdcpio_test_option_o_rejected_entry PASS rc=0
+PPTEST libarchive bsdcpio_test_option_passphrase PASS rc=0
+PPTEST libarchive bsdcpio_test_option_t PASS rc=0
+PPTEST libarchive bsdcpio_test_option_u PASS rc=0
+PPTEST libarchive bsdcpio_test_option_uuencode PASS rc=0
+PPTEST libarchive bsdcpio_test_option_version PASS rc=0
+PPTEST libarchive bsdcpio_test_option_xz PASS rc=0
+PPTEST libarchive bsdcpio_test_option_y PASS rc=0
+PPTEST libarchive bsdcpio_test_option_z PASS rc=0
+PPTEST libarchive bsdcpio_test_option_zstd SKIP rc=2
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:      11
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdcpio_test_owner_parse PASS rc=0
+PPTEST libarchive bsdcpio_test_passthrough_dotdot PASS rc=0
+PPTEST libarchive bsdcpio_test_passthrough_reverse FAIL rc=1
+PPLOG   Expected: 0743
+PPLOG   Found: 0775
+PPLOG 
+PPLOG Totals:
+PPLOG   Assertions checked:      21
+PPLOG   Assertions failed:        1
+PPLOG   Skips reported:           0
+PPLOG 
+PPLOG Failing tests:
+PPLOG ...
+PPLOG 
+PPLOG Failing tests:
+PPLOG   49: test_passthrough_reverse (1 failures)
+PPLOG 
+PPLOG Details for failing tests: /tmp/bsdcpio_test.2026-11-03T12.46.51-000
+PPLOG 
+PPTEST libarchive bsdunzip_test_0 PASS rc=0
+PPTEST libarchive bsdunzip_test_basic PASS rc=0
+PPTEST libarchive bsdunzip_test_doubledash PASS rc=0
+PPTEST libarchive bsdunzip_test_glob PASS rc=0
+PPTEST libarchive bsdunzip_test_not_exist PASS rc=0
+PPTEST libarchive bsdunzip_test_singlefile PASS rc=0
+PPTEST libarchive bsdunzip_test_stdin PASS rc=0
+PPTEST libarchive bsdunzip_test_symlink PASS rc=0
+PPTEST libarchive bsdunzip_test_symlink_dotdot PASS rc=0
+PPTEST libarchive bsdunzip_test_C PASS rc=0
+PPTEST libarchive bsdunzip_test_p PASS rc=0
+PPTEST libarchive bsdunzip_test_prompt_long_answer PASS rc=0
+PPTEST libarchive bsdunzip_test_d_before_zipfile PASS rc=0
+PPTEST libarchive bsdunzip_test_d_after_zipfile PASS rc=0
+PPTEST libarchive bsdunzip_test_f PASS rc=0
+PPTEST libarchive bsdunzip_test_j PASS rc=0
+PPTEST libarchive bsdunzip_test_L PASS rc=0
+PPTEST libarchive bsdunzip_test_n PASS rc=0
+PPTEST libarchive bsdunzip_test_o PASS rc=0
+PPTEST libarchive bsdunzip_test_q PASS rc=0
+PPTEST libarchive bsdunzip_test_t PASS rc=0
+PPTEST libarchive bsdunzip_test_t_bad PASS rc=0
+PPTEST libarchive bsdunzip_test_u PASS rc=0
+PPTEST libarchive bsdunzip_test_version PASS rc=0
+PPTEST libarchive bsdunzip_test_windows_paths SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST libarchive bsdunzip_test_x_single PASS rc=0
+PPTEST libarchive bsdunzip_test_x_multiple PASS rc=0
+PPTEST libarchive bsdunzip_test_x_multiple_with_d PASS rc=0
+PPTEST libarchive bsdunzip_test_Z1 PASS rc=0
+PPTEST libarchive bsdunzip_test_Z_1 PASS rc=0
+PPTEST libarchive bsdunzip_test_P_encryption PASS rc=0
+PPTEST libarchive bsdunzip_test_I SKIP rc=2
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPLOG ...
+PPLOG   Tests run:                1
+PPLOG   Tests failed:             0
+PPLOG   Assertions checked:       9
+PPLOG   Assertions failed:        0
+PPLOG   Skips reported:           1
+PPLOG 1 tests passed, no failures
+PPTEST-END
+
+# 

@@ -46,14 +46,14 @@ meter { width: 64px; height: 8px; vertical-align: middle; margin-right: 6px; }
 <div><b>22</b><span>libraries</span></div>
 <div><b>22</b><span>built for x86_64</span></div>
 <div><b>22</b><span>built for aarch64le</span></div>
-<div><b>1164/1503</b><span>CTest entries passed on the target</span></div>
+<div><b>1208/1503</b><span>CTest entries passed on the target</span></div>
 <div><b>5/5</b><span>AI build patches kept</span></div>
-<div><b>+137</b><span>tests fixed by triage on QNX</span></div>
+<div><b>+181</b><span>tests fixed by triage on QNX</span></div>
 </div>
 <h2>Libraries</h2>
 <div class="wrap"><table>
 <thead><tr><th>Library</th><th>x86_64</th><th>aarch64le</th><th>Tests on QNX target</th><th>Fixes applied</th></tr></thead>
-<tbody><tr><td><b>backward-cpp</b> <span class="muted mono">v1.6</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="5" value="5"></meter> 5/5 pass</td><td><span class="tag">CMake policy 3.5</span> <span class="tag ai">AI build ×2</span></td></tr><tr><td><b>civetweb</b> <span class="muted mono">v1.16</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 3 rounds</span></td><td class="muted">not run</td><td><span class="tag">CMake policy 3.5</span> <span class="tag">-lsocket</span> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>cmocka</b> <span class="muted mono">cmocka-2.0.2</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>cyclonedds</b> <span class="muted mono">11.0.1</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>fmt</b> <span class="muted mono">12.2.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="21" value="20"></meter> 20/21 pass · 1 fail</td><td><span class="tag">-lregex</span></td></tr><tr><td><b>googletest</b> <span class="muted mono">v1.17.0</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>json-c</b> <span class="muted mono">json-c-0.19-20260627</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="num warn"><meter min="0" max="28" value="27"></meter> 27/28 pass · 1 fail</td><td><span class=muted>none</span></td></tr><tr><td><b>libarchive</b> <span class="muted mono">v3.8.11</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="1137" value="816"></meter> 816/1137 pass · 51 fail, 270 skip</td><td><span class="tag">link launcher</span></td></tr><tr><td><b>libcbor</b> <span class="muted mono">v0.14.0</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="num ok"><meter min="0" max="28" value="28"></meter> 28/28 pass</td><td><span class=muted>none</span></td></tr><tr><td><b>libcoap</b> <span class="muted mono">v4.3.5</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="muted">not run</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>libzmq</b> <span class="muted mono">v4.3.5</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="121" value="110"></meter> 110/121 pass · 3 fail, 4 timeout, 4 skip</td><td><span class="tag">CMake policy 3.5</span></td></tr><tr><td><b>mbedtls</b> <span class="muted mono">v4.2.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="148" value="145"></meter> 145/148 pass · 2 fail, 1 timeout</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×2</span></td></tr><tr><td><b>msgpack-c</b> <span class="muted mono">c-7.0.2</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="5" value="5"></meter> 5/5 pass</td><td><span class="tag">-lregex</span></td></tr><tr><td><b>nng</b> <span class="muted mono">v2.1.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 timeout</td><td><span class="tag">header swap</span></td></tr><tr><td><b>open62541</b> <span class="muted mono">v1.5.10</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="muted">not run</td><td><span class="tag">queue header</span> <span class="tag">&lt;netinet/in.h&gt;</span> <span class="tag">libc stubs</span> <span class="tag">-lsocket</span></td></tr><tr><td><b>osqp</b> <span class="muted mono">v1.0.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="num ok"><meter min="0" max="3" value="3"></meter> 3/3 pass</td><td> <span class="tag ai">AI build ×1</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>paho-mqtt-c</b> <span class="muted mono">v1.3.16</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="muted">not run</td><td><span class="tag">endian header</span> <span class="tag">libc stubs</span></td></tr><tr><td><b>ruckig</b> <span class="muted mono">v0.19.4</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span> <span class="tag">doctest std headers</span></td></tr><tr><td><b>spdlog</b> <span class="muted mono">v1.17.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>uriparser</b> <span class="muted mono">uriparser-1.0.3</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span> <span class="tag">-lregex</span></td></tr><tr><td><b>wolfssl</b> <span class="muted mono">v5.9.4-stable</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="2" value="2"></meter> 2/2 pass</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>yaml-cpp</b> <span class="muted mono">yaml-cpp-0.9.0</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 fail</td><td><span class=muted>none</span></td></tr></tbody></table></div>
+<tbody><tr><td><b>backward-cpp</b> <span class="muted mono">v1.6</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="5" value="5"></meter> 5/5 pass</td><td><span class="tag">CMake policy 3.5</span> <span class="tag ai">AI build ×2</span></td></tr><tr><td><b>civetweb</b> <span class="muted mono">v1.16</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 3 rounds</span></td><td class="muted">not run</td><td><span class="tag">CMake policy 3.5</span> <span class="tag">-lsocket</span> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>cmocka</b> <span class="muted mono">cmocka-2.0.2</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>cyclonedds</b> <span class="muted mono">11.0.1</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>fmt</b> <span class="muted mono">12.2.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="21" value="20"></meter> 20/21 pass · 1 fail</td><td><span class="tag">-lregex</span></td></tr><tr><td><b>googletest</b> <span class="muted mono">v1.17.0</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>json-c</b> <span class="muted mono">json-c-0.19-20260627</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="num warn"><meter min="0" max="28" value="27"></meter> 27/28 pass · 1 fail</td><td><span class=muted>none</span></td></tr><tr><td><b>libarchive</b> <span class="muted mono">v3.8.11</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="1137" value="860"></meter> 860/1137 pass · 8 fail, 269 skip</td><td><span class="tag">link launcher</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>libcbor</b> <span class="muted mono">v0.14.0</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="num ok"><meter min="0" max="28" value="28"></meter> 28/28 pass</td><td><span class=muted>none</span></td></tr><tr><td><b>libcoap</b> <span class="muted mono">v4.3.5</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="muted">not run</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>libzmq</b> <span class="muted mono">v4.3.5</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="121" value="110"></meter> 110/121 pass · 3 fail, 4 timeout, 4 skip</td><td><span class="tag">CMake policy 3.5</span></td></tr><tr><td><b>mbedtls</b> <span class="muted mono">v4.2.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="148" value="145"></meter> 145/148 pass · 2 fail, 1 timeout</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×2</span></td></tr><tr><td><b>msgpack-c</b> <span class="muted mono">c-7.0.2</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="5" value="5"></meter> 5/5 pass</td><td><span class="tag">-lregex</span></td></tr><tr><td><b>nng</b> <span class="muted mono">v2.1.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 timeout</td><td><span class="tag">header swap</span></td></tr><tr><td><b>open62541</b> <span class="muted mono">v1.5.10</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="muted">not run</td><td><span class="tag">queue header</span> <span class="tag">&lt;netinet/in.h&gt;</span> <span class="tag">libc stubs</span> <span class="tag">-lsocket</span></td></tr><tr><td><b>osqp</b> <span class="muted mono">v1.0.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="num ok"><meter min="0" max="3" value="3"></meter> 3/3 pass</td><td> <span class="tag ai">AI build ×1</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>paho-mqtt-c</b> <span class="muted mono">v1.3.16</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="muted">not run</td><td><span class="tag">endian header</span> <span class="tag">libc stubs</span></td></tr><tr><td><b>ruckig</b> <span class="muted mono">v0.19.4</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span> <span class="tag">doctest std headers</span></td></tr><tr><td><b>spdlog</b> <span class="muted mono">v1.17.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>uriparser</b> <span class="muted mono">uriparser-1.0.3</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span> <span class="tag">-lregex</span></td></tr><tr><td><b>wolfssl</b> <span class="muted mono">v5.9.4-stable</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="2" value="2"></meter> 2/2 pass</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>yaml-cpp</b> <span class="muted mono">yaml-cpp-0.9.0</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 fail</td><td><span class=muted>none</span></td></tr></tbody></table></div>
 <h2>Details</h2>
 <details><summary>backward-cpp</summary><p class="muted">aarch64le · <a href="https://github.com/bombela/backward-cpp.git">https://github.com/bombela/backward-cpp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">configure failed</span></p>
 <p>Change: replayed backward-cpp.patch</p>
@@ -261,12 +261,152 @@ ERROR: &quot;test_json_patch /tests/json-c/src/tests&quot; exited with incorrect
 ERROR: &quot;test_json_patch /tests/json-c/src/tests&quot; (test_json_patch) failed (set VERBOSE=1 to see full output):
 + diff /tests/json-c/src/tests/test_json_patch.expected testSubDir/test_json_patch.test/test_json_patch.out
 cp &quot;testSubDir/test_json_patch.test/test_json_patch.out&quot; &quot;/tests/json-c/src/tests/test_json_patch.expected&quot;</pre></details><details><summary>libarchive</summary><p class="muted">aarch64le · <a href="https://github.com/libarchive/libarchive.git">https://github.com/libarchive/libarchive.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">0 errors</span></p>
+<p>Change: replayed libarchive.patch</p>
 <p>Change: linker launcher: object list to ld in its own response file (Windows command-line limit)</p>
 </div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
 </div><p class="muted">x86_64 · <a href="https://github.com/libarchive/libarchive.git">https://github.com/libarchive/libarchive.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">0 errors</span></p>
 <p>Change: linker launcher: object list to ld in its own response file (Windows command-line limit)</p>
 </div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
-</div><p><b>Tests that did not pass on the target</b></p><p class="mono">libarchive_test_7zip_filename_encoding_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
+</div><div class="round"><p><b>Test triage 1</b> (claude-opus-5-5): <code>libarchive/archive_read_disk_posix.c</code> · tests passing on QNX 816 → 860 · <b class="ok">kept</b></p><details class="patch"><summary>Show patch</summary><pre>diff --git a/libarchive/archive_read_disk_posix.c b/libarchive/archive_read_disk_posix.c
+--- a/libarchive/archive_read_disk_posix.c
++++ b/libarchive/archive_read_disk_posix.c
+<span class="hunk">@@ -100,10 +100,98 @@</span>
+ #ifndef O_BINARY
+ #define O_BINARY	0
+ #endif
+ #ifndef O_CLOEXEC
+ #define O_CLOEXEC	0
+ #endif
+ 
+<span class="add">+#if defined(__QNXNTO__) &amp;&amp; defined(O_DIRECTORY)</span>
+<span class="add">+/*</span>
+<span class="add">+ * On QNX the *at() functions fail with ENOTDIR when the directory</span>
+<span class="add">+ * descriptor was opened without O_DIRECTORY.  Conversely, fstatvfs()</span>
+<span class="add">+ * and fpathconf() do not work on an O_DIRECTORY descriptor.  Open</span>
+<span class="add">+ * directories with O_DIRECTORY, and query filesystem properties</span>
+<span class="add">+ * through a plain O_RDONLY descriptor of the same directory.</span>
+<span class="add">+ */</span>
+<span class="add">+#ifdef HAVE_SYS_STATVFS_H</span>
+<span class="add">+#include &lt;sys/statvfs.h&gt;</span>
+<span class="add">+#endif</span>
+<span class="add">+</span>
+<span class="add">+static int</span>
+<span class="add">+qnx_open_dir_aware(const char *path, int flags)</span>
+<span class="add">+{</span>
+<span class="add">+	int fd;</span>
+<span class="add">+</span>
+<span class="add">+	if ((flags &amp; O_ACCMODE) == O_RDONLY &amp;&amp; (flags &amp; O_DIRECTORY) == 0) {</span>
+<span class="add">+		fd = (open)(path, flags | O_DIRECTORY);</span>
+<span class="add">+		if (fd &gt;= 0 || errno != ENOTDIR)</span>
+<span class="add">+			return (fd);</span>
+<span class="add">+	}</span>
+<span class="add">+	return ((open)(path, flags));</span>
+<span class="add">+}</span>
+<span class="add">+</span>
+<span class="add">+#ifdef HAVE_OPENAT</span>
+<span class="add">+static int</span>
+<span class="add">+qnx_openat_dir_aware(int dirfd, const char *path, int flags)</span>
+<span class="add">+{</span>
+<span class="add">+	int fd;</span>
+<span class="add">+</span>
+<span class="add">+	if ((flags &amp; O_ACCMODE) == O_RDONLY &amp;&amp; (flags &amp; O_DIRECTORY) == 0) {</span>
+<span class="add">+		fd = (openat)(dirfd, path, flags | O_DIRECTORY);</span>
+<span class="add">+		if (fd &gt;= 0 || errno != ENOTDIR)</span>
+<span class="add">+			return (fd);</span>
+<span class="add">+	}</span>
+<span class="add">+	return ((openat)(dirfd, path, flags));</span>
+<span class="add">+}</span>
+<span class="add">+#define openat(d, p, f)	qnx_openat_dir_aware(d, p, f)</span>
+<span class="add">+#endif</span>
+<span class="add">+#define open(p, f)	qnx_open_dir_aware(p, f)</span>
+<span class="add">+</span>
+<span class="add">+#if defined(HAVE_FSTATVFS) &amp;&amp; defined(HAVE_OPENAT)</span>
+<span class="add">+static int</span>
+<span class="add">+qnx_fstatvfs(int fd, struct statvfs *buf)</span>
+<span class="add">+{</span>
+<span class="add">+	int r, fd2, saved;</span>
+<span class="add">+</span>
+<span class="add">+	r = (fstatvfs)(fd, buf);</span>
+<span class="add">+	if (r == 0 || errno != ENOSYS)</span>
+<span class="add">+		return (r);</span>
+<span class="add">+	fd2 = (openat)(fd, &quot;.&quot;, O_RDONLY | O_CLOEXEC);</span>
+<span class="add">+	if (fd2 &lt; 0) {</span>
+<span class="add">+		errno = ENOSYS;</span>
+<span class="add">+		return (-1);</span>
+<span class="add">+	}</span>
+<span class="add">+	r = (fstatvfs)(fd2, buf);</span>
+<span class="add">+	saved = errno;</span>
+<span class="add">+	close(fd2);</span>
+<span class="add">+	errno = saved;</span>
+<span class="add">+	return (r);</span>
+<span class="add">+}</span>
+<span class="add">+#define fstatvfs(fd, buf)	qnx_fstatvfs(fd, buf)</span>
+<span class="add">+#endif</span>
+<span class="add">+</span>
+<span class="add">+#if defined(HAVE_FPATHCONF) &amp;&amp; defined(HAVE_OPENAT)</span>
+<span class="add">+static long</span>
+<span class="add">+qnx_fpathconf(int fd, int name)</span>
+<span class="add">+{</span>
+<span class="add">+	long r;</span>
+<span class="add">+	int fd2, saved;</span>
+<span class="add">+</span>
+<span class="add">+	errno = 0;</span>
+<span class="add">+	r = (fpathconf)(fd, name);</span>
+<span class="add">+	if (r != -1 || errno != EINVAL)</span>
+<span class="add">+		return (r);</span>
+<span class="add">+	fd2 = (openat)(fd, &quot;.&quot;, O_RDONLY | O_CLOEXEC);</span>
+<span class="add">+	if (fd2 &lt; 0) {</span>
+<span class="add">+		errno = EINVAL;</span>
+<span class="add">+		return (-1);</span>
+<span class="add">+	}</span>
+<span class="add">+	errno = 0;</span>
+<span class="add">+	r = (fpathconf)(fd2, name);</span>
+<span class="add">+	saved = errno;</span>
+<span class="add">+	close(fd2);</span>
+<span class="add">+	errno = saved;</span>
+<span class="add">+	return (r);</span>
+<span class="add">+}</span>
+<span class="add">+#define fpathconf(fd, name)	qnx_fpathconf(fd, name)</span>
+<span class="add">+#endif</span>
+<span class="add">+#endif /* __QNXNTO__ &amp;&amp; O_DIRECTORY */</span>
+<span class="add">+</span>
+ #define MAX_FILESYSTEM_ID 1000000
+ 
+ #if defined(__hpux) &amp;&amp; !defined(HAVE_DIRFD)</pre></details></div><div class="round"><p><b>Test triage 2</b> (claude-opus-5-5): <code>no patch</code> · tests passing on QNX ? → ? · <b class="bad">UNFIXABLE</b></p><details class="patch"><summary>Show patch</summary><pre>diff --git a/libarchive/archive_read_disk_posix.c b/libarchive/archive_read_disk_posix.c
+--- a/libarchive/archive_read_disk_posix.c
++++ b/libarchive/archive_read_disk_posix.c
+<span class="hunk">@@ -2146,9 +2146,17 @@</span>
+ 	/* First item is set up a lot like a symlink traversal. */
+ 	tree_push(t, path, 0, 0, 0, NULL);
+ 	t-&gt;stack-&gt;flags = needsFirstVisit;
+ 	t-&gt;maxOpenCount = t-&gt;openCount = 1;
+<span class="add">+#if defined(O_DIRECTORY)</span>
+<span class="add">+	/*</span>
+<span class="add">+	 * The initial directory descriptor is used as the dirfd argument</span>
+<span class="add">+	 * of the *at() functions; some platforms (e.g. QNX) require such</span>
+<span class="add">+	 * descriptors to have been opened with O_DIRECTORY.</span>
+<span class="add">+	 */</span>
+<span class="add">+	t-&gt;initial_dir_fd = open(&quot;.&quot;, O_RDONLY | O_CLOEXEC | O_DIRECTORY);</span>
+<span class="add">+#else</span>
+ 	t-&gt;initial_dir_fd = open(&quot;.&quot;, O_RDONLY | O_CLOEXEC);
+<span class="add">+#endif</span>
+ #if defined(O_PATH) || defined(O_SEARCH) || \
+  (defined(__FreeBSD__) &amp;&amp; defined(O_EXEC))
+ 	/*
+ 	 * Most likely reason to fail opening &quot;.&quot; is that it&#x27;s not readable,
+ 	 * so try again for execute. The consequences of not opening this are
+ 	 * unhelpful and unnecessary errors later.
+ 	 */
+ 	if (t-&gt;initial_dir_fd &lt; 0)
+<span class="add">+#if defined(O_DIRECTORY)</span>
+<span class="add">+		t-&gt;initial_dir_fd = open(&quot;.&quot;, o_flag | O_CLOEXEC | O_DIRECTORY);</span>
+<span class="add">+#else</span>
+ 		t-&gt;initial_dir_fd = open(&quot;.&quot;, o_flag | O_CLOEXEC);
+<span class="add">+#endif</span>
+ #endif
+ 	__archive_ensure_cloexec_flag(t-&gt;initial_dir_fd);
+ 	t-&gt;working_dir_fd = tree_dup(t-&gt;initial_dir_fd);
+ 	return (t);</pre></details></div><p><b>Tests that did not pass on the target</b></p><p class="mono">libarchive_test_7zip_filename_encoding_UTF16_win · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -386,7 +526,7 @@ Failing tests:
 Failing tests:
   77: test_archive_string_conversion_fail_c (3 failures)
 
-Details for failing tests: /tmp/libarchive_test.2026-11-03T06.40.20-000
+Details for failing tests: /tmp/libarchive_test.2026-11-03T12.08.03-000
 </pre><p class="mono">libarchive_test_archive_string_conversion_fail_latin1 · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
@@ -617,7 +757,7 @@ Failing tests:
 Failing tests:
   194: test_entry (1 failures)
 
-Details for failing tests: /tmp/libarchive_test.2026-11-03T06.42.41-000
+Details for failing tests: /tmp/libarchive_test.2026-11-03T12.10.23-000
 </pre><p class="mono">libarchive_test_extattr_freebsd · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
@@ -858,18 +998,17 @@ Details for failing tests: /tmp/libarchive_test.2026-11-03T06.42.41-000
   Assertions checked:    6844
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">libarchive_test_read_disk_directory_traversals · FAIL (exit 139)</p><pre>...
-
-If tests fail or crash, details will be in:
-   /tmp/libarchive_test.2026-11-03T06.55.32-000
-
-Reference files will be read from: /tests/libarchive/src/libarchive/test
-Exercising: PPLOG signal 11; core file: libarchive_test.core
-slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
-slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
-slog2: Nov 03 05:48:14.865                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
-slog2: Nov 03 05:48:15.047                  dhcpcd.221199                 slog*     0  &lt;30&gt;Nov 03 05:48:15 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
-slog2: Nov 03 05:48:15.173                  dhcpcd.221199                 slog      0  &lt;27&gt;Nov 03 05:48:15 dhcpcd[225297-1]: no valid interfaces found</pre><p class="mono">libarchive_test_read_extract · FAIL (exit 1)</p><pre>  Assertions checked:      72
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_disk_directory_traversals · SKIP (exit 2)</p><pre>  Assertions checked:     777
+  Assertions failed:        0
+  Skips reported:           2
+1 tests passed, no failures
+...
+  Tests run:                1
+  Tests failed:             0
+  Assertions checked:     777
+  Assertions failed:        0
+  Skips reported:           2
+1 tests passed, no failures</pre><p class="mono">libarchive_test_read_extract · FAIL (exit 1)</p><pre>  Assertions checked:      72
   Assertions failed:        1
   Skips reported:           0
 
@@ -879,7 +1018,7 @@ Failing tests:
 Failing tests:
   249: test_read_extract (1 failures)
 
-Details for failing tests: /tmp/libarchive_test.2026-11-03T06.55.42-000
+Details for failing tests: /tmp/libarchive_test.2026-11-03T12.23.14-000
 </pre><p class="mono">libarchive_test_read_filter_grzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
@@ -2110,7 +2249,7 @@ Failing tests:
 Failing tests:
   767: test_write_disk (1 failures)
 
-Details for failing tests: /tmp/libarchive_test.2026-11-03T07.07.08-000
+Details for failing tests: /tmp/libarchive_test.2026-11-03T12.34.33-000
 </pre><p class="mono">libarchive_test_write_disk_appledouble · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
@@ -2171,7 +2310,7 @@ Failing tests:
 Failing tests:
   777: test_write_disk_perms (1 failures)
 
-Details for failing tests: /tmp/libarchive_test.2026-11-03T07.07.20-000
+Details for failing tests: /tmp/libarchive_test.2026-11-03T12.34.45-000
 </pre><p class="mono">libarchive_test_write_disk_secure_physicaldrive · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
@@ -2615,15 +2754,15 @@ Details for failing tests: /tmp/libarchive_test.2026-11-03T07.07.20-000
 1 tests passed, no failures</pre><p class="mono">libarchive_test_write_format_zip_windows_path · FAIL (exit 139)</p><pre>...
 
 If tests fail or crash, details will be in:
-   /tmp/libarchive_test.2026-11-03T07.14.13-000
+   /tmp/libarchive_test.2026-11-03T12.41.26-000
 
 Reference files will be read from: /tests/libarchive/src/libarchive/test
 Exercising: PPLOG signal 11; core file: libarchive_test.core
-slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
-slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
-slog2: Nov 03 05:48:14.865                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
-slog2: Nov 03 05:48:15.047                  dhcpcd.221199                 slog*     0  &lt;30&gt;Nov 03 05:48:15 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
-slog2: Nov 03 05:48:15.173                  dhcpcd.221199                 slog      0  &lt;27&gt;Nov 03 05:48:15 dhcpcd[225297-1]: no valid interfaces found</pre><p class="mono">libarchive_test_xattr_platform · SKIP (exit 2)</p><pre>  Assertions checked:       9
+slog2: Nov 03 12:06:07.132                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
+slog2: Nov 03 12:06:07.132                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
+slog2: Nov 03 12:06:26.502                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
+slog2: Nov 03 12:06:26.681                  dhcpcd.221199                 slog*     0  &lt;30&gt;Nov 03 12:06:26 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
+slog2: Nov 03 12:06:26.829                  dhcpcd.221199                 slog      0  &lt;27&gt;Nov 03 12:06:26 dhcpcd[225297-1]: no valid interfaces found</pre><p class="mono">libarchive_test_xattr_platform · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -2753,29 +2892,7 @@ slog2: Nov 03 05:48:15.173                  dhcpcd.221199                 slog  
   Assertions checked:      66
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_basic · FAIL (exit 1)</p><pre>  Assertions checked:      61
-  Assertions failed:       30
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  1: test_basic (30 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.43.40-000
-</pre><p class="mono">bsdtar_test_copy · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_copy.c:287: r != 0
-   Description: Error invoking &quot;&quot;/tests/libarchive/build/bin/bsdtar&quot; cf archive  --format pax&quot;
-      r=256 (0x100, 0400)
-      0=0 (0x0, 00)
-C:/build-host/work/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
-...
-
-Failing tests:
-  2: test_copy (4459 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.43.42-000
-</pre><p class="mono">bsdtar_test_extract_tar_grz · SKIP (exit 2)</p><pre>  Assertions checked:     222
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_extract_tar_grz · SKIP (exit 2)</p><pre>  Assertions checked:     222
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -2825,117 +2942,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.43.42-000
   Assertions checked:     189
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_format_newc · FAIL (exit 1)</p><pre>  Assertions checked:      35
-  Assertions failed:        7
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  18: test_format_newc (7 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.16-000
-</pre><p class="mono">bsdtar_test_missing_file · FAIL (exit 1)</p><pre>  Assertions checked:      17
-  Assertions failed:        2
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  22: test_missing_file (2 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.21-000
-</pre><p class="mono">bsdtar_test_option_C_upper · FAIL (exit 1)</p><pre>  Assertions checked:      90
-  Assertions failed:       10
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  23: test_option_C_upper (10 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.23-000
-</pre><p class="mono">bsdtar_test_option_H_upper · FAIL (exit 1)</p><pre>  Assertions checked:      59
-  Assertions failed:       31
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  25: test_option_H_upper (31 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.28-000
-</pre><p class="mono">bsdtar_test_option_L_upper · FAIL (exit 1)</p><pre>  Assertions checked:      59
-  Assertions failed:       27
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  26: test_option_L_upper (27 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.30-000
-</pre><p class="mono">bsdtar_test_option_O_upper · FAIL (exit 1)</p><pre>  Assertions checked:      54
-  Assertions failed:        9
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  27: test_option_O_upper (9 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.32-000
-</pre><p class="mono">bsdtar_test_option_T_upper · FAIL (exit 1)</p><pre>  Assertions checked:      86
-  Assertions failed:       23
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  29: test_option_T_upper (23 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.37-000
-</pre><p class="mono">bsdtar_test_option_U_upper · FAIL (exit 1)</p><pre>  Assertions checked:     120
-  Assertions failed:       19
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  30: test_option_U_upper (19 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.40-000
-</pre><p class="mono">bsdtar_test_option_X_upper · FAIL (exit 1)</p><pre>  Assertions checked:     119
-  Assertions failed:       23
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  31: test_option_X_upper (23 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.42-000
-</pre><p class="mono">bsdtar_test_option_a · FAIL (exit 1)</p><pre>      systemf(&quot;%s --auto-compress -cf test7.tar.Z f 2&gt;test7.err&quot;, testprog)=256 (0x100, 0400)
-0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
-0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
-0050 20 65 72 72 6f 72 73 0a                          errors.
-
-...
-
-Failing tests:
-  32: test_option_a (15 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.44-000
-</pre><p class="mono">bsdtar_test_option_acls · SKIP (exit 2)</p><pre>  Assertions checked:       9
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_acls · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -2945,51 +2952,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.44-000
   Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_b · FAIL (exit 1)</p><pre>  Tests run:                1
-  Assertions checked:      29
-  Assertions failed:        9
-  Skips reported:           0
-
-...
-
-Failing tests:
-  34: test_option_b (9 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.48-000
-</pre><p class="mono">bsdtar_test_option_b64encode · FAIL (exit 1)</p><pre>  Assertions checked:      16
-  Assertions failed:        2
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  35: test_option_b64encode (2 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.52-000
-</pre><p class="mono">bsdtar_test_option_exclude · FAIL (exit 1)</p><pre>  Assertions checked:      98
-  Assertions failed:       16
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  36: test_option_exclude (16 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.53-000
-</pre><p class="mono">bsdtar_test_option_exclude_vcs · FAIL (exit 1)</p><pre>  Assertions checked:     232
-  Assertions failed:       41
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  37: test_option_exclude_vcs (41 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.57-000
-</pre><p class="mono">bsdtar_test_option_fflags · SKIP (exit 2)</p><pre>  Assertions checked:       9
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_fflags · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -2999,29 +2962,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.57-000
   Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_gid_gname · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:62: data + 116 != &quot;000021  &quot;
-      size 8 = 8
-      Dump of data + 116
-  Assertions checked:      34
-  Assertions failed:       14
-...
-
-Failing tests:
-  39: test_option_gid_gname (14 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.00-000
-</pre><p class="mono">bsdtar_test_option_group · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_option_group.c:61: data + 116 != &quot;000021  &quot;
-      size 8 = 8
-      Dump of data + 116
-  Assertions checked:      29
-  Assertions failed:       12
-...
-
-Failing tests:
-  40: test_option_group (12 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.03-000
-</pre><p class="mono">bsdtar_test_option_grzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_grzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -3031,83 +2972,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.03-000
   Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_t · FAIL (exit 1)</p><pre>  Assertions checked:      33
-  Assertions failed:        4
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  42: test_option_ignore_zeros_mode_t (4 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.06-000
-</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_x · FAIL (exit 1)</p><pre>  Assertions checked:      30
-  Assertions failed:        2
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  43: test_option_ignore_zeros_mode_x (2 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.09-000
-</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_c · FAIL (exit 1)</p><pre>  Assertions checked:      34
-  Assertions failed:        4
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  44: test_option_ignore_zeros_mode_c (4 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.10-000
-</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_r · FAIL (exit 1)</p><pre>  Assertions checked:      34
-  Assertions failed:        4
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  45: test_option_ignore_zeros_mode_r (4 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.11-000
-</pre><p class="mono">bsdtar_test_option_ignore_zeros_mode_u · FAIL (exit 1)</p><pre>  Assertions checked:      34
-  Assertions failed:        4
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  46: test_option_ignore_zeros_mode_u (4 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.13-000
-</pre><p class="mono">bsdtar_test_option_j · SKIP (exit 2)</p><pre>  Assertions checked:      11
-  Assertions failed:        0
-  Skips reported:           1
-1 tests passed, no failures
-...
-  Tests run:                1
-  Tests failed:             0
-  Assertions checked:      11
-  Assertions failed:        0
-  Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_k · FAIL (exit 1)</p><pre>  Assertions checked:      67
-  Assertions failed:       11
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  48: test_option_k (11 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.16-000
-</pre><p class="mono">bsdtar_test_option_lrzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_lrzip · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -3127,18 +2992,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.16-000
   Assertions checked:      11
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_lzma · FAIL (exit 1)</p><pre>  Assertions checked:      11
-  Assertions failed:        1
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  52: test_option_lzma (1 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.22-000
-</pre><p class="mono">bsdtar_test_option_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      11
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_lzop · SKIP (exit 2)</p><pre>  Assertions checked:      11
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -3148,51 +3002,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.22-000
   Assertions checked:      11
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_mode · FAIL (exit 1)</p><pre>  Assertions checked:      30
-  Assertions failed:        6
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  54: test_option_mode (6 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.25-000
-</pre><p class="mono">bsdtar_test_option_mtime · FAIL (exit 1)</p><pre>  Assertions checked:      47
-  Assertions failed:       11
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  55: test_option_mtime (11 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.27-000
-</pre><p class="mono">bsdtar_test_option_n · FAIL (exit 1)</p><pre>  Assertions checked:      62
-  Assertions failed:       17
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  56: test_option_n (17 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.30-000
-</pre><p class="mono">bsdtar_test_option_newer_than · FAIL (exit 1)</p><pre>  Assertions checked:      46
-  Assertions failed:        6
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  57: test_option_newer_than (6 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.33-000
-</pre><p class="mono">bsdtar_test_option_nodump · SKIP (exit 2)</p><pre>  Assertions checked:       9
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_nodump · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -3202,94 +3012,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.33-000
   Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_older_than · FAIL (exit 1)</p><pre>  Assertions checked:      50
-  Assertions failed:        6
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  59: test_option_older_than (6 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.38-000
-</pre><p class="mono">bsdtar_test_option_owner · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_option_owner.c:61: data + 108 != &quot;177143  &quot;
-      size 8 = 8
-      Dump of data + 108
-  Assertions checked:      29
-  Assertions failed:       12
-...
-
-Failing tests:
-  60: test_option_owner (12 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.41-000
-</pre><p class="mono">bsdtar_test_option_q · FAIL (exit 1)</p><pre>  Assertions checked:      27
-  Assertions failed:        6
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  62: test_option_q (6 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.44-000
-</pre><p class="mono">bsdtar_test_option_r · FAIL (exit 1)</p><pre>  Assertions checked:      15
-  Assertions failed:        3
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  63: test_option_r (3 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.46-000
-</pre><p class="mono">bsdtar_test_option_s · SKIP (exit 2)</p><pre>  Assertions checked:      27
-  Assertions failed:        0
-  Skips reported:           1
-1 tests passed, no failures
-...
-  Tests run:                1
-  Tests failed:             0
-  Assertions checked:      27
-  Assertions failed:        0
-  Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_safe_writes · FAIL (exit 1)</p><pre>  Assertions checked:      54
-  Assertions failed:        7
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  65: test_option_safe_writes (7 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.49-000
-</pre><p class="mono">bsdtar_test_option_uid_uname · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:63: data + 265 != &quot;foofoofoo &quot;
-      size 10 = 10
-      Dump of data + 265
-  Assertions checked:      34
-  Assertions failed:       14
-...
-
-Failing tests:
-  67: test_option_uid_uname (14 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.51-000
-</pre><p class="mono">bsdtar_test_option_uuencode · FAIL (exit 1)</p><pre>  Assertions checked:      16
-  Assertions failed:        2
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  68: test_option_uuencode (2 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.54-000
-</pre><p class="mono">bsdtar_test_option_xattrs · SKIP (exit 2)</p><pre>  Assertions checked:       9
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_xattrs · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -3299,29 +3022,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.54-000
   Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_xz · FAIL (exit 1)</p><pre>  Assertions checked:      11
-  Assertions failed:        1
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  70: test_option_xz (1 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.56-000
-</pre><p class="mono">bsdtar_test_option_z · FAIL (exit 1)</p><pre>  Assertions checked:      11
-  Assertions failed:        1
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  71: test_option_z (1 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.58-000
-</pre><p class="mono">bsdtar_test_option_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      11
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_zstd · SKIP (exit 2)</p><pre>  Assertions checked:      11
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -3331,51 +3032,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.58-000
   Assertions checked:      11
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_patterns · FAIL (exit 1)</p><pre>  Assertions checked:   65635
-  Assertions failed:        1
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  73: test_patterns (1 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.46.00-000
-</pre><p class="mono">bsdtar_test_stdio · FAIL (exit 1)</p><pre>  Assertions checked:      46
-  Assertions failed:       11
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  75: test_stdio (11 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.46.05-000
-</pre><p class="mono">bsdtar_test_strip_components · FAIL (exit 1)</p><pre>  Assertions checked:      51
-  Assertions failed:        8
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  76: test_strip_components (8 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.46.08-000
-</pre><p class="mono">bsdtar_test_symlink_dir · FAIL (exit 1)</p><pre>  Assertions checked:      89
-  Assertions failed:       16
-  Skips reported:           0
-
-Failing tests:
-...
-
-Failing tests:
-  77: test_symlink_dir (16 failures)
-
-Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.46.09-000
-</pre><p class="mono">bsdtar_test_windows · SKIP (exit 2)</p><pre>  Assertions checked:       9
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_windows · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
 1 tests passed, no failures
@@ -3395,7 +3052,7 @@ Failing tests:
 Failing tests:
   1: test_basic (7 failures)
 
-Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.46.15-000
+Details for failing tests: /tmp/bsdcpio_test.2026-11-03T12.45.41-000
 </pre><p class="mono">bsdcpio_test_extract_cpio_grz · SKIP (exit 2)</p><pre>  Assertions checked:     210
   Assertions failed:        0
   Skips reported:           1
@@ -3506,7 +3163,7 @@ Failing tests:
 Failing tests:
   49: test_passthrough_reverse (1 failures)
 
-Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.47.24-000
+Details for failing tests: /tmp/bsdcpio_test.2026-11-03T12.46.51-000
 </pre><p class="mono">bsdunzip_test_windows_paths · SKIP (exit 2)</p><pre>  Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
@@ -3791,5 +3448,5 @@ Expected equality of these values:
  1 FAILED TEST
   YOU HAVE 8 DISABLED TESTS
 </pre></details>
-<footer>Generated 2026-11-03 09:02 UTC from runs/*/report_*.json and runs/target_*.json.</footer>
+<footer>Generated 2026-11-03 12:56 UTC from runs/*/report_*.json and runs/target_*.json.</footer>
 </main></body></html>

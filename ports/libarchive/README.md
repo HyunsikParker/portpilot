@@ -6,7 +6,7 @@ Upstream: https://github.com/libarchive/libarchive.git
 
 - aarch64le: built in 2 build round(s)
 - x86_64: built in 2 build round(s)
-- tests on a QNX 8.0 x86_64 QEMU target: 816 of 1137 CTest entries pass
+- tests on a QNX 8.0 x86_64 QEMU target: 860 of 1137 CTest entries pass
 
 Entries that did not pass:
 
@@ -40,11 +40,13 @@ Entries that did not pass:
 - `libarchive_test_archive_write_add_filter_by_name_lzop`: skip (exit 2)
 - `libarchive_test_archive_write_add_filter_by_name_zstd`: skip (exit 2)
 - `libarchive_test_archive_write_set_format_by_name_xar`: skip (exit 2)
-- ... 291 more
+- ... 247 more
 
 ## Changes
 
 - linker launcher: object list to ld in its own response file (Windows command-line limit)
+- test triage round 1 (claude-opus-5-5): libarchive/archive_read_disk_posix.c - passing tests 816 -> 860, kept
+- test triage round 2 (claude-opus-5-5):  - passing tests ? -> ?, reverted
 
 ## Reproduce
 

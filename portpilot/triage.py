@@ -39,10 +39,32 @@ cannot address, reply with the single word UNFIXABLE."""
 MESSAGE = re.compile(r"[A-Za-z][A-Za-z ,'_-]{14,}")
 
 
+HEXDUMP = re.compile(r"^[0-9a-f]{4}((?: [0-9a-f]{2}){1,16})\s")
+
+
+def readable_log(lines):
+    """Test log lines with hex dumps (how some harnesses print an unexpected stderr file) decoded back into text."""
+    out, buf = [], b""
+    for line in lines:
+        m = HEXDUMP.match(line)
+        if m:
+            buf += bytes.fromhex(m.group(1).replace(" ", ""))
+            continue
+        if buf:
+            out += ["  [dump] " + t for t in buf.decode("utf-8", "replace").splitlines()]
+            buf = b""
+        out.append(line)
+    if buf:
+        out += ["  [dump] " + t for t in buf.decode("utf-8", "replace").splitlines()]
+    return out
+
+
 def failures_text(results, limit=6):
     out = []
     for r in results[:limit]:
-        out.append(f"--- {r['test']} ({r['verdict']}, exit {r['rc']})\n" + "\n".join(r["log"][-15:]))
+        log = readable_log(r["log"])
+        shown = log if len(log) <= 18 else log[:14] + ["..."] + log[-3:]
+        out.append(f"--- {r['test']} ({r['verdict']}, exit {r['rc']})\n" + "\n".join(shown))
     if len(results) > limit:
         out.append(f"... and {len(results) - limit} more failing tests with similar output")
     return "\n\n".join(out)
@@ -52,7 +74,7 @@ def message_context(name, results, limit=3):
     """Lines in the project's sources that contain the longest phrases from the failure output."""
     phrases = []
     for r in results:
-        for line in r["log"]:
+        for line in readable_log(r["log"]):
             for m in MESSAGE.findall(line):
                 p = m.strip()
                 if p not in phrases and not p.startswith(("Expected", "Which is", "FAILED")):
@@ -116,7 +138,8 @@ def triage(name, run_tag, rounds=2, cpu="x86_64"):
     tmp = remote.LOCAL / name
     history, notes = [], []
     for k in range(1, rounds + 1):
-        failing = [r for r in before if r["verdict"] != "PASS"]
+        # SKIP means the test reported a feature that was not built in; only failures and hangs go to the model
+        failing = [r for r in before if r["verdict"] in ("FAIL", "TIMEOUT")]
         if not failing:
             break
         prompt = PROMPT.format(name=name, ref=report["ref"], facts=agent.QNX_FACTS, failures=failures_text(failing),
@@ -171,11 +194,16 @@ def triage(name, run_tag, rounds=2, cpu="x86_64"):
         remote.apply_patch(name, patch, f"triage_{name}_{k}", reverse=True)
         remote.attempt(name, report["url"], report["ref"], report.get("subdir", "."), cpu, good["cflags"],
                        good["ldflags"], good["cmake_args"], tmp)
-        still = [r for r in after if r["verdict"] != "PASS"][:3]
+        # the start of the output after the patch: a fix that is right but incomplete shows the next error here
+        still = [r for r in after if r["verdict"] in ("FAIL", "TIMEOUT")][:3]
         notes.append(f"Round {k} changed {', '.join(step['files'])}: "
                      + ("the build failed." if not built else
-                        f"{len(p1)} tests passed afterwards (before: {len(p0)}). Still failing, e.g.:\n"
-                        + "\n".join(f"  {r['test']}: " + " | ".join(r['log'][-3:]) for r in still)))
+                        f"{len(p1)} tests passed afterwards (before: {len(p0)})"
+                        + (f"; newly failing: {', '.join(step['regressions'][:5])}" if step["regressions"] else "")
+                        + ". Still failing, e.g.:\n"
+                        + "\n".join(f"  {r['test']}:\n    " + "\n    ".join(readable_log(r["log"])[:8]) for r in still))
+                     + "\nIts diff (reverted; a new diff applies to the original files):\n"
+                     + "\n".join(patch.read_text().splitlines()[:60]))
     report["triage"] = history
     remote.save_patch(name, tmp)
     (tmp / f"report_{cpu}.json").write_text(json.dumps(report, indent=1))

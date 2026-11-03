@@ -210,7 +210,10 @@ pp_run() {
 pp_excerpt() {
     n=0; c=0
     while IFS= read -r line; do
-        case "$line" in *Failure*|*FAILED*|*Expected*|*rror*|*Assert*|*assert*) n=4;; esac
+        case "$line" in
+            *"should be empty"*) n=12;;   # libarchive's harness follows this with a hex dump of the stderr file
+            *Failure*|*FAILED*|*Expected*|*rror*|*Assert*|*assert*) [ $n -lt 4 ] && n=4;;
+        esac
         if [ $n -gt 0 ]; then
             echo "PPLOG $line"; n=$((n-1)); c=$((c+1))
             [ $c -ge 40 ] && break
@@ -294,8 +297,14 @@ BOOT_PS1 = r"""param([string]$Image, [string]$Tests, [string]$Log, [int]$Deadlin
 $out = Join-Path $Image "output"
 if (Test-Path $Log) { Remove-Item $Log }
 $qemu = Join-Path $Qemu "qemu-system-x86_64.exe"
+# boot a fresh copy of the system disk that `vm build` saved, so every run starts from the same state
+$drive = "file=$out\disk-qemu.vmdk"
+if (Test-Path "$out\disk-qemu.pristine") {
+    Copy-Item "$out\disk-qemu.pristine" "$out\disk-run" -Force
+    $drive = "file=$out\disk-run,format=raw"
+}
 $a = @("-accel", "tcg", "-smp", "2", "-cpu", "max", "-m", "2G",
-       "-drive", "file=$out\disk-qemu.vmdk,if=ide,index=0,id=drv0",
+       "-drive", "$drive,if=ide,index=0,id=drv0",
        "-drive", "file=$Tests,if=ide,index=1,format=raw,id=drv1",
        "-kernel", "$out\ifs.bin", "-display", "none", "-monitor", "none", "-serial", "file:$Log",
        "-object", "rng-builtin,id=rng0", "-device", "virtio-rng-pci,rng=rng0", "-no-reboot")

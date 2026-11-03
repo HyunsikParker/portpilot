@@ -1,0 +1,197 @@
+You are porting the open-source project libarchive (v3.8.11) to QNX 8.0. It now builds, but some of its own tests
+fail when run on a QNX 8.0 x86_64 target. The project was configured and built on a Windows host with the QNX
+toolchain (qcc, GCC 12.2, libc++), so build-time scripts and code generators ran on Windows; the tests run on QNX.
+
+Target: QNX Neutrino 8.0 (POSIX, BSD-derived socket API in libsocket, GCC 12.2 via qcc, C++ library libc++).
+Things QNX 8.0 does not have: epoll, inotify, eventfd, signalfd, timerfd, <sys/sysctl.h>, <sys/prctl.h>, <execinfo.h>,
+<sys/random.h>/getrandom (use arc4random_buf or /dev/random), sched_getaffinity, Linux /proc layout.
+Things QNX keeps in libc: pthread, rt, dl, util functions. The compiler defines __QNX__ and __QNXNTO__.
+Directory descriptors: the *at() functions (openat, fstatat, unlinkat, mkdirat, ...) fail with ENOTDIR on QNX 8.0 when
+the directory descriptor was opened without O_DIRECTORY, e.g. open(".", O_RDONLY); open directories that are used as
+dirfd arguments with O_DIRECTORY. On such an O_DIRECTORY descriptor, fstatvfs() fails with ENOSYS and fpathconf() with
+EINVAL; both work on a descriptor opened with O_RDONLY, e.g. openat(dirfd, ".", O_RDONLY).
+Networking: QNX 8.0 replaced the io-pkt stack of QNX 7 with io-sock, which is based on FreeBSD. io-pkt interfaces such
+as <sys/dcmd_io-net.h>, <net/ifdrvcom.h>, devctl(SIOCGDRVCOM) and nic_stats_t are gone; per-interface counters come
+from getifaddrs(): AF_LINK entries carry a struct if_data in ifa_data (ifi_ipackets, ifi_opackets, ifi_ibytes,
+ifi_obytes). Code written for QNX 7 must be rewritten against these, not just have its includes guarded.
+
+Failing tests and the end of their output:
+
+--- libarchive_test_archive_string_conversion_fail_c (FAIL, exit 1)
+  Assertions checked:      18
+  Assertions failed:        3
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  77: test_archive_string_conversion_fail_c (3 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.17.42-000
+
+
+--- libarchive_test_entry (FAIL, exit 1)
+  Assertions checked:     399
+  Assertions failed:        1
+  Skips reported:           1
+
+Failing tests:
+...
+
+Failing tests:
+  194: test_entry (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.20.02-000
+
+
+--- libarchive_test_read_disk_directory_traversals (FAIL, exit 139)
+...
+
+If tests fail or crash, details will be in:
+   /tmp/libarchive_test.2026-11-03T09.33.07-000
+
+Reference files will be read from: /tests/libarchive/src/libarchive/test
+Exercising: PPLOG signal 11; core file: libarchive_test.core
+slog2: Nov 03 09:15:46.435                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
+slog2: Nov 03 09:15:46.435                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
+slog2: Nov 03 09:16:05.844                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
+slog2: Nov 03 09:16:06.078                  dhcpcd.221199                 slog*     0  <30>Nov 03 09:16:06 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
+slog2: Nov 03 09:16:06.202                  dhcpcd.221199                 slog      0  <27>Nov 03 09:16:06 dhcpcd[225297-1]: no valid interfaces found
+
+--- libarchive_test_read_extract (FAIL, exit 1)
+  Expected: 0775
+  Found: 0755
+
+Totals:
+  Assertions checked:      72
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  249: test_read_extract (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.33.17-000
+
+
+--- libarchive_test_write_disk (FAIL, exit 1)
+  Assertions checked:     188
+  Assertions failed:        1
+  Skips reported:           0
+
+Failing tests:
+...
+
+Failing tests:
+  767: test_write_disk (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.44.39-000
+
+
+--- libarchive_test_write_disk_perms (FAIL, exit 1)
+  Assertions checked:     100
+  Assertions failed:        1
+  Skips reported:           1
+
+Failing tests:
+...
+
+Failing tests:
+  777: test_write_disk_perms (1 failures)
+
+Details for failing tests: /tmp/libarchive_test.2026-11-03T09.44.51-000
+
+
+... and 45 more failing tests with similar output
+
+Project code that prints or handles these messages:
+
+FILE test_utils\test_main.c:4404
+	/*
+	 * Banner with basic information.
+	 */
+	printf("\n");
+> 	printf("If tests fail or crash, details will be in:\n");
+	printf("   %s\n", tmpdir);
+	printf("\n");
+	if (verbosity > VERBOSITY_SUMMARY_ONLY) {
+		printf("Reference files will be read from: %s\n", refdir);
+
+String literals in files generated into the build tree that hold build-host paths (absolute Windows paths, or
+relative paths with backslashes); on the target these paths do not exist:
+
+(none found)
+
+Reply with one unified diff in git format (a/ and b/ prefixes, paths relative to the project root) and nothing else.
+Fix the cause in the project's code, build files or test infrastructure. Do not weaken, skip or delete test assertions,
+and do not change expected values. If the failure is a genuine difference in the platform's behaviour that the code
+cannot address, reply with the single word UNFIXABLE.
+
+Your previous diff did not apply: error: patch failed: libarchive/archive_read_disk_posix.c:125
+Here is the current text of the lines it tried to change. Reply with a corrected diff.
+
+--- libarchive/archive_read_disk_posix.c
+   73  #include <errno.h>
+   74  #endif
+   75  #ifdef HAVE_FCNTL_H
+   76  #include <fcntl.h>
+   77  #endif
+   78  #ifdef HAVE_LIMITS_H
+   79  #include <limits.h>
+   80  #endif
+   81  #ifdef HAVE_STDLIB_H
+   82  #include <stdlib.h>
+   83  #endif
+   84  #ifdef HAVE_STRING_H
+   85  #include <string.h>
+   86  #endif
+   87  #ifdef HAVE_UNISTD_H
+   88  #include <unistd.h>
+   89  #endif
+   90  #ifdef HAVE_SYS_IOCTL_H
+   91  #include <sys/ioctl.h>
+   92  #endif
+   93  
+   94  #include "archive.h"
+   95  #include "archive_string.h"
+   96  #include "archive_entry.h"
+   97  #include "archive_private.h"
+   98  #include "archive_read_disk_private.h"
+   99  
+  100  #ifndef O_BINARY
+  101  #define O_BINARY	0
+  102  #endif
+  103> #ifndef O_CLOEXEC
+  104  #define O_CLOEXEC	0
+  105  #endif
+  106  
+  107  #define MAX_FILESYSTEM_ID 1000000
+  108  
+  109  #if defined(__hpux) && !defined(HAVE_DIRFD)
+  110  #define dirfd(x) ((x)->__dd_fd)
+  111  #define HAVE_DIRFD
+  112  #endif
+  113  
+  114  #ifndef HAVE_FCHDIR
+  115  /*
+  116   * Stub function for platforms that do not support fchdir.  This is OK on
+  117   * platforms with newer *at functions as fchdir isn't used there (e.g. WASI).
+  118   */
+  119  static int fchdir(int fd)
+  120  {
+  121  	errno = ENOSYS;
+  122  	return -1;
+  123  }
+  124  #endif
+  125  
+  126  /*-
+  127   * This is a new directory-walking system that addresses a number
+  128   * of problems I've had with fts(3).  In particular, it has no
+  129   * pathname-length limits (other than the size of 'int'), handles
+  130   * deep logical traversals, uses considerably less memory, and has
+  131   * an opaque interface (easier to modify in the future).
+  132   *
+  133   * Internally, it keeps a single list of "tree_entry" items that

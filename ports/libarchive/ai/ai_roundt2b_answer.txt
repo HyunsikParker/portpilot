@@ -1,0 +1,37 @@
+```diff
+diff --git a/libarchive/archive_read_disk_posix.c b/libarchive/archive_read_disk_posix.c
+--- a/libarchive/archive_read_disk_posix.c
++++ b/libarchive/archive_read_disk_posix.c
+@@ -2146,9 +2146,17 @@
+ 	/* First item is set up a lot like a symlink traversal. */
+ 	tree_push(t, path, 0, 0, 0, NULL);
+ 	t->stack->flags = needsFirstVisit;
+ 	t->maxOpenCount = t->openCount = 1;
++#if defined(O_DIRECTORY)
++	/*
++	 * The initial directory descriptor is used as the dirfd argument
++	 * of the *at() functions; some platforms (e.g. QNX) require such
++	 * descriptors to have been opened with O_DIRECTORY.
++	 */
++	t->initial_dir_fd = open(".", O_RDONLY | O_CLOEXEC | O_DIRECTORY);
++#else
+ 	t->initial_dir_fd = open(".", O_RDONLY | O_CLOEXEC);
++#endif
+ #if defined(O_PATH) || defined(O_SEARCH) || \
+  (defined(__FreeBSD__) && defined(O_EXEC))
+ 	/*
+ 	 * Most likely reason to fail opening "." is that it's not readable,
+ 	 * so try again for execute. The consequences of not opening this are
+ 	 * unhelpful and unnecessary errors later.
+ 	 */
+ 	if (t->initial_dir_fd < 0)
++#if defined(O_DIRECTORY)
++		t->initial_dir_fd = open(".", o_flag | O_CLOEXEC | O_DIRECTORY);
++#else
+ 		t->initial_dir_fd = open(".", o_flag | O_CLOEXEC);
++#endif
+ #endif
+ 	__archive_ensure_cloexec_flag(t->initial_dir_fd);
+ 	t->working_dir_fd = tree_dup(t->initial_dir_fd);
+ 	return (t);
+```

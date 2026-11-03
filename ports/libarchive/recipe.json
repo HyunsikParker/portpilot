@@ -22,6 +22,7 @@
     "-DCMAKE_CXX_LINKER_LAUNCHER=C:/Users/<user>/AppData/Local/Programs/Python/Python313/python.exe;C:/build-host/work/portpilot_compat/portpilot_link_launcher.py"
    ],
    "fixes": [
+    "replayed libarchive.patch",
     "linker launcher: object list to ld in its own response file (Windows command-line limit)"
    ]
   },
@@ -44,5 +45,28 @@
   }
  },
  "ai_patches": [],
- "triage": []
+ "triage": [
+  {
+   "round": 1,
+   "model": "claude-opus-5-5",
+   "files": [
+    "libarchive/archive_read_disk_posix.c"
+   ],
+   "unfixable": false,
+   "applied": true,
+   "apply_output": "apply_exit=0",
+   "built": true,
+   "passed_before": 816,
+   "passed_after": 860,
+   "regressions": [],
+   "accepted": true
+  },
+  {
+   "round": 2,
+   "model": "claude-opus-5-5",
+   "files": [],
+   "unfixable": true,
+   "applied": false
+  }
+ ]
 }
