@@ -31,6 +31,8 @@ RULES = [
          ldflags=("-lm",), why="math functions are in libm"),
     Rule("pic", r"relocation R_\w+ against .* can not be used when making a shared object; recompile with -fPIC",
          cflags=("-fPIC",), why="shared objects need position-independent code"),
+    Rule("signed-char", r"narrowing conversion of '-\d+' from 'int' to 'char'", cflags=("-fsigned-char",),
+         why="char is unsigned on AArch64; code written for x86 assumes signed char"),
     Rule("werror", r"error: .* \[-Werror(=[\w-]+)?\]", cflags=("-Wno-error",),
          why="warnings promoted to errors by upstream flags; QNX headers trigger a few that are harmless"),
 ]

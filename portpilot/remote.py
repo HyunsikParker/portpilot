@@ -26,6 +26,9 @@ def _worker(*args, timeout=1800):
 def _bat(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args):
     src = f"{REMOTE_ROOT}\\{name}"
     bld = f"{REMOTE_ROOT}\\build_{name}_{cpu}"
+    # QNX names: binutils prefix nto<cpu> (x86_64, aarch64); qcc variant and target dir use aarch64le for little-endian ARM
+    tool_cpu = "aarch64" if cpu.startswith("aarch64") else cpu
+    var_cpu = "aarch64le" if cpu.startswith("aarch64") else cpu
     args = " ".join(cmake_args)
     return "\r\n".join([
         "@echo off",
@@ -34,11 +37,11 @@ def _bat(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args):
         f"if not exist {src} git clone -q --depth 1 --recurse-submodules --shallow-submodules --branch {ref} {url} {src}",
         f"if exist {bld} rmdir /s /q {bld}",
         f'cmake -G Ninja -S {src}\\{subdir} -B {bld} -DCMAKE_TOOLCHAIN_FILE={REMOTE_ROOT}\\qnx.nto.toolchain.cmake '
-        f'-DCPU={cpu} -DCMAKE_SYSTEM_PROCESSOR={cpu} -DCPUVARDIR={cpu} -DCMAKE_BUILD_TYPE=Release '
+        f'-DCPU={tool_cpu} -DCMAKE_SYSTEM_PROCESSOR={var_cpu} -DCPUVARDIR={var_cpu} -DCMAKE_BUILD_TYPE=Release '
         f'"-DPORTPILOT_C_FLAGS={" ".join(cflags)}" "-DPORTPILOT_LD_FLAGS={" ".join(ldflags)}" {args} '
-        f"> {REMOTE_ROOT}\\{name}_configure.log 2>&1",
+        f"> {REMOTE_ROOT}\\{name}_{cpu}_configure.log 2>&1",
         "echo configure_exit=%ERRORLEVEL%",
-        f"cmake --build {bld} -j 8 -- -k 0 > {REMOTE_ROOT}\\{name}_build.log 2>&1",
+        f"cmake --build {bld} -j 8 -- -k 0 > {REMOTE_ROOT}\\{name}_{cpu}_build.log 2>&1",
         "echo build_exit=%ERRORLEVEL%",
         "",
     ])
@@ -54,8 +57,8 @@ def attempt(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args, tmp):
     codes = dict(line.strip().split("=", 1) for line in out.splitlines() if line.strip().startswith(("configure_exit=", "build_exit=")))
     logs = {}
     for kind in ("configure", "build"):
-        dest = tmp / f"{name}_{kind}.log"
-        _worker("pull", f"pp/{name}_{kind}.log", str(dest))
+        dest = tmp / f"{name}_{cpu}_{kind}.log"
+        _worker("pull", f"pp/{name}_{cpu}_{kind}.log", str(dest))
         logs[kind] = dest.read_text(errors="ignore") if dest.exists() else ""
     return {"configure_exit": codes.get("configure_exit"), "build_exit": codes.get("build_exit"), "seconds": round(secs, 1),
             "cflags": list(cflags), "ldflags": list(ldflags)}, logs
@@ -166,7 +169,7 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
     _worker("pull", f"pp/{name}.patch", str(tmp / f"{name}.patch"))
     report = {"name": name, "url": url, "ref": ref, "cpu": cpu, "rounds": rounds,
               "result": "built" if rounds[-1]["build_exit"] == "0" else "needs-patch"}
-    (tmp / "report.json").write_text(json.dumps(report, indent=1))
+    (tmp / f"report_{cpu}.json").write_text(json.dumps(report, indent=1))
     return report
 
 
