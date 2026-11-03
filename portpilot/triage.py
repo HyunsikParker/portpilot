@@ -85,8 +85,20 @@ def host_path_literals(name, cpu, limit=10):
                              f"{{ Get-Content -LiteralPath $t | Select-Object -First 80 }}").replace("\r", "").strip()
         if tpl:
             out += f"\n\n{g} is generated from {g.replace(chr(92), '/')}.in in the source tree:\n{tpl}"
+    # compile definitions that carry host paths (osqp: -DCODEGEN_DIR="<build dir>/tests/testcodes/"), and the CMake
+    # lines in the source tree that set them
+    defs = remote.HOST.ps(f"Select-String -LiteralPath '{build}\\build.ninja' -Pattern '-D(\\w+)=\\\\?\"[A-Za-z]:[/\\\\]' "
+                          f"-AllMatches | ForEach-Object {{ $_.Matches }} | ForEach-Object {{ $_.Groups[1].Value }} | "
+                          f"Sort-Object -Unique | Select-Object -First 5").replace("\r", "").split()
+    for d in defs:
+        where = remote.HOST.ps(f"$r = '{remote.HOST.work}\\{name}'; Get-ChildItem -LiteralPath $r -Recurse -File -Include "
+                               f"CMakeLists.txt,*.cmake | Select-String -SimpleMatch -Pattern '{d}' -Context 2,2 | "
+                               f"Select-Object -First 3 | ForEach-Object {{ $_.Path.Substring($r.Length + 1) + ':' + "
+                               f"$_.LineNumber; $_.Context.PreContext; '> ' + $_.Line; $_.Context.PostContext }}")
+        out += (f"\n\nCompile definition {d} is set to an absolute build-host path (build.ninja). "
+                f"CMake lines that mention it:\n" + where.replace("\r", "").strip())
     # keep the shape of an absolute Windows path (that is the finding) but not the host's user name
-    return out.replace(work_fwd, "C:/build-host/work").replace(remote.HOST.work, "C:\\build-host\\work")[:6000]
+    return out.replace(work_fwd, "C:/build-host/work").replace(remote.HOST.work, "C:\\build-host\\work")[:7000]
 
 
 def counts(results):
