@@ -5,7 +5,8 @@ diagnostics that point into the SDP are dropped before the prompt is built. Its 
 applied to the upstream copy on the build host and kept only if the rebuild gets further (it passes, or the error count
 falls); otherwise it is reverted. Accepted patches still have to pass the project's own tests on the QNX target.
 
-Backends (PORTPILOT_LLM): claude-cli (default; the local Claude Code CLI in print mode with no tools) or openai
+Backends (PORTPILOT_LLM): claude-cli (default; the local Claude Code CLI in print mode with no tools, model
+PORTPILOT_LLM_MODEL, optional PORTPILOT_LLM_EFFORT) or openai
 (any OpenAI-compatible chat endpoint, including a local Ollama: PORTPILOT_LLM_BASE_URL, PORTPILOT_LLM_MODEL).
 """
 import json
@@ -116,8 +117,11 @@ def ask(prompt):
             return json.load(r)["choices"][0]["message"]["content"], os.environ["PORTPILOT_LLM_MODEL"]
     model = os.environ.get("PORTPILOT_LLM_MODEL", "claude-opus-5-5")
     env = {k: os.environ[k] for k in ("HOME", "USER", "PATH", "TMPDIR") if k in os.environ}
-    r = subprocess.run(["claude", "--safe-mode", "-p", "--tools", "", "--model", model, "--output-format", "text",
-                        "--no-session-persistence"], input=prompt, capture_output=True, text=True, env=env, timeout=1800)
+    cmd = ["claude", "--safe-mode", "-p", "--tools", "", "--model", model, "--output-format", "text",
+           "--no-session-persistence"]
+    if os.environ.get("PORTPILOT_LLM_EFFORT"):   # e.g. medium: faster answers for routine porting errors
+        cmd += ["--effort", os.environ["PORTPILOT_LLM_EFFORT"]]
+    r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, env=env, timeout=1800)
     if r.returncode != 0:
         raise RuntimeError(f"claude CLI failed: {r.stderr[-400:]}")
     return r.stdout, model
