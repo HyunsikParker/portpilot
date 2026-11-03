@@ -1,4 +1,3 @@
-Submodule framework contains modified content
 diff --git a/framework/scripts/generate_test_code.py b/framework/scripts/generate_test_code.py
 index 4b7f939..ad49892 100755
 --- a/framework/scripts/generate_test_code.py
@@ -15,8 +14,6 @@ index 4b7f939..ad49892 100755
  
  
  def write_test_source_file(template_file, c_file, snippets):
-Submodule tf-psa-crypto contains modified content
-Submodule framework contains modified content
 diff --git a/tf-psa-crypto/framework/scripts/generate_test_code.py b/tf-psa-crypto/framework/scripts/generate_test_code.py
 index 4b7f939..ad49892 100755
 --- a/tf-psa-crypto/framework/scripts/generate_test_code.py

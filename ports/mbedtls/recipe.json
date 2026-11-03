@@ -27,7 +27,7 @@
    ],
    "fixes": [
     "sockets",
-    "replayed mbedtls.patch (failed: warning: recount: unexpected line: Submodule tf-psa-crypto contains modified content)"
+    "replayed mbedtls.patch"
    ]
   },
   "x86_64": {
