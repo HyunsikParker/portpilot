@@ -1,0 +1,221 @@
+
+non UEFI or UEFI+CSM boot
+ACPI table not found (0x4746434d)
+System behaves poorly without PCID support.
+overriding mask for controller 2, vector_base 0
+---> Starting slogger2
+---> Starting PCI Services
+---> Starting fsevmgr
+# ---> Starting devb
+---> Mounting file systems
+Path=0 - Intel 82371SB
+ target=0 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+ target=1 lun=0     Direct-Access(0) -          QEMU HARDDISK    Rev: 2.5+
+Path=1 - Intel 82371SB
+ target=0 lun=0            CD-ROM(5) - QEMU     QEMU DVD-ROM     Rev: 2.5+
+---> Mounting file systems
+---> Starting Networking
+if_up: tries exhausted
+ifconfig: interface vtnet0 does not exist
+no valid interfaces found
+---> Starting sshd
+/usr/libexec/sshd-auth does not exist or is not executable
+
+---> Starting misc
+PPTEST-BEGIN QNX portpilot 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+PPINFO tmp: /dev/hd0t179                513M       17M      497M       4%  /data/          
+PPTEST-LIB nng 64
+PPTEST nng nng.core.aio_test PASS rc=0
+PPTEST nng nng.core.args_test PASS rc=0
+PPTEST nng nng.core.buf_size_test PASS rc=0
+PPTEST nng nng.core.errors_test PASS rc=0
+PPTEST nng nng.core.id_test PASS rc=0
+PPTEST nng nng.core.idhash_test PASS rc=0
+PPTEST nng nng.core.init_test PASS rc=0
+PPTEST nng nng.core.list_test PASS rc=0
+PPTEST nng nng.core.log_test PASS rc=0
+PPTEST nng nng.core.message_test PASS rc=0
+PPTEST nng nng.core.reconnect_test PASS rc=0
+PPTEST nng nng.core.sock_test PASS rc=0
+PPTEST nng nng.core.sockaddr_test PASS rc=0
+PPTEST nng nng.core.synch_test PASS rc=0
+PPTEST nng nng.core.stats_test PASS rc=0
+PPTEST nng nng.core.url_test PASS rc=0
+PPTEST nng nng.platform.files_test PASS rc=0
+PPTEST nng nng.platform.ipc_stream_test PASS rc=0
+PPTEST nng nng.platform.platform_test PASS rc=0
+PPTEST nng nng.platform.resolver_test FAIL rc=1
+PPLOG FAILED: 3 of 11 unit tests have failed.
+PPLOG 
+PPLOG ...
+PPLOG Summary:
+PPLOG   Count of run unit tests:          11
+PPLOG   Count of successful unit tests:    8
+PPLOG   Count of failed unit tests:        3
+PPLOG FAILED: 3 of 11 unit tests have failed.
+PPLOG 
+PPTEST nng nng.platform.tcp_stream_test PASS rc=0
+PPTEST nng nng.platform.udp_test FAIL rc=1
+PPLOG Test udp receive errors:
+PPLOG   udp_test.c:105: nng_udp_open(&udp, &addr): expected success, got Hunky dory (0)... ok
+PPLOG   udp_test.c:106: nng_udp_sockname(udp, &addr): expected success, got Hunky dory (0)... ok
+PPLOG   udp_test.c:107: nng_aio_alloc(&recv, NULL, NULL): expected success, got Hunky dory (0)... ok
+PPLOG FAILED: 1 of 11 unit tests has failed.
+PPLOG 
+PPLOG ...
+PPLOG Summary:
+PPLOG   Count of run unit tests:          11
+PPLOG   Count of successful unit tests:   10
+PPLOG   Count of failed unit tests:        1
+PPLOG FAILED: 1 of 11 unit tests has failed.
+PPLOG 
+PPTEST nng nng.platform.posix_ipcwinsec_test PASS rc=0
+PPTEST nng nng.sp.pipe_test PASS rc=0
+PPTEST nng nng.sp.device_test PASS rc=0
+PPTEST nng nng.sp.multistress_test PASS rc=0
+PPTEST nng nng.sp.nonblock_test PASS rc=0
+PPTEST nng nng.sp.scalability_test PASS rc=0
+Killed 
+PPLOG pidin:      pid tid name                         prio STATE          Blocked                     
+PPLOG pidin:  2838547   1 src/sp/reconnect_stress_test  10r REPLY          1                           
+PPTEST nng nng.sp.reconnect_stress_test TIMEOUT rc=137
+PPLOG ...
+PPLOG   reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+PPLOG   reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+PPLOG   reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+PPLOG   reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+PPLOG   reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+PPLOG   reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS)PPTEST nng nng.sp.protocol.bus0.bus_test PASS rc=0
+PPTEST nng nng.sp.protocol.pair0.pair0_test PASS rc=0
+PPTEST nng nng.sp.protocol.pair1.pair1_test PASS rc=0
+PPTEST nng nng.sp.protocol.pair1.pair1_poly_test PASS rc=0
+PPTEST nng nng.sp.protocol.pipeline0.pull_test PASS rc=0
+PPTEST nng nng.sp.protocol.pipeline0.push_test PASS rc=0
+PPTEST nng nng.sp.protocol.pubsub0.pub_test PASS rc=0
+PPTEST nng nng.sp.protocol.pubsub0.sub_test PASS rc=0
+PPTEST nng nng.sp.protocol.pubsub0.xsub_test PASS rc=0
+PPTEST nng nng.sp.protocol.reqrep0.req_test PASS rc=0
+PPTEST nng nng.sp.protocol.reqrep0.rep_test PASS rc=0
+PPTEST nng nng.sp.protocol.reqrep0.xrep_test PASS rc=0
+PPTEST nng nng.sp.protocol.reqrep0.xreq_test PASS rc=0
+PPTEST nng nng.sp.protocol.reqrep0.reqstress_test PASS rc=0
+PPTEST nng nng.sp.protocol.survey0.respond_test PASS rc=0
+PPTEST nng nng.sp.protocol.survey0.survey_test PASS rc=0
+PPTEST nng nng.sp.protocol.survey0.xrespond_test PASS rc=0
+PPTEST nng nng.sp.protocol.survey0.xsurvey_test PASS rc=0
+PPTEST nng nng.sp.transport.socket.sockfd_test PASS rc=0
+Killed 
+PPLOG pidin:      pid tid name                         prio STATE          Blocked                     
+PPLOG pidin:  6295571   1 transport/inproc/inproc_test  10r REPLY          1                           
+PPTEST nng nng.sp.transport.inproc.inproc_test TIMEOUT rc=137
+PPLOG ...
+PPLOG   util.c:444: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+PPLOG   util.c:445: nng_socket_close(s2): expected success, got Hunky dory (0)... ok
+PPLOG   SUCCESS: All conditions have passed.
+PPLOG   Duration: 0.021715 secs
+PPLOG 
+PPLOG Test inproc huge msg:
+PPTEST nng nng.sp.transport.ipc.ipc_test FAIL rc=1
+PPLOG FAILED: 2 of 26 unit tests have failed.
+PPLOG 
+PPLOG ...
+PPLOG Summary:
+PPLOG   Count of run unit tests:          26
+PPLOG   Count of successful unit tests:   18
+PPLOG   Count of failed unit tests:        2
+PPLOG FAILED: 2 of 26 unit tests have failed.
+PPLOG 
+Killed 
+PPLOG pidin:      pid tid name                         prio STATE          Blocked                     
+PPLOG pidin:  7561235   1 rc/sp/transport/tcp/tcp_test  10r REPLY          1                           
+PPTEST nng nng.sp.transport.tcp.tcp_test TIMEOUT rc=137
+PPLOG ...
+PPLOG   util.c:444: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+PPLOG   util.c:445: nng_socket_close(s2): expected success, got Hunky dory (0)... ok
+PPLOG   SUCCESS: All conditions have passed.
+PPLOG   Duration: 0.096489 secs
+PPLOG 
+PPLOG Test tcp huge msg:
+PPTEST nng nng.sp.transport.udp.udp_tran_test FAIL rc=1
+PPLOG   FAILED: 2 conditions have failed.
+PPLOG 
+PPLOG Test udp recv max:
+PPLOG   udp_tran_test.c:132: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok
+PPLOG FAILED: 1 of 16 unit tests has failed.
+PPLOG 
+PPLOG ...
+PPLOG Summary:
+PPLOG   Count of run unit tests:          16
+PPLOG   Count of successful unit tests:   15
+PPLOG   Count of failed unit tests:        1
+PPLOG FAILED: 1 of 16 unit tests has failed.
+PPLOG 
+PPTEST nng nng.sp.transport.udp.udp_wire_test PASS rc=0
+Killed 
+PPLOG pidin:      pid tid name                         prio STATE          Blocked                     
+PPLOG pidin:  9183251   1 /src/sp/transport/ws/ws_test  10r REPLY          1                           
+PPTEST nng nng.sp.transport.ws.ws_test TIMEOUT rc=137
+PPLOG   ws_test.c:170: nng_dial(rejected_socket, address, NULL, 0) fails with Protocol error... ok
+PPLOG   ws_test.c:171: nng_socket_close(rejected_socket): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:172: nng_dialer_create(&dialer, client_socket, address): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:173: nng_dialer_get_bool(dialer, NNG_OPT_WS_FOLLOW_REDIRECTS, &follow): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:199: nng_dialer_start(fragment_dialer, 0) fails with Protocol error... ok
+PPLOG   ws_test.c:200: nng_socket_close(fragment_socket): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:70: nng_pair1_open(&(socket)): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:71: nng_dialer_create(&dialer, socket, address): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:74: nng_dialer_start(dialer, 0) fails with Protocol error... ok
+PPLOG   ws_test.c:75: nng_socket_close(socket): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:70: nng_pair1_open(&(socket)): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:71: nng_dialer_create(&dialer, socket, address): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:74: nng_dialer_start(dialer, 0) fails with Protocol error... ok
+PPLOG   ws_test.c:75: nng_socket_close(socket): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:70: nng_pair1_open(&(socket)): expected success, got Hunky dory (0)... ok
+PPLOG   ws_test.c:71: nng_dialer_create(&dialer, socket, address): expected success, got Hunky dory (0)... ok
+PPLOG ...
+PPLOG   util.c:444: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+PPLOG   util.c:445: nng_socket_close(s2): expected success, got Hunky dory (0)... ok
+PPLOG   SUCCESS: All conditions have passed.
+PPLOG   Duration: 0.186176 secs
+PPLOG 
+PPLOG Test ws huge msg:
+PPTEST nng nng.supplemental.http_client_test PASS rc=0
+PPTEST nng nng.supplemental.http_server_test PASS rc=0
+PPTEST nng nng.supplemental.sha1_test PASS rc=0
+PPTEST nng nng.supplemental.base64_test PASS rc=0
+PPTEST nng nng.supplemental.wssfile_test PASS rc=0
+Killed 
+PPLOG pidin:      pid tid name                         prio STATE          Blocked                     
+PPLOG pidin: 10760211   1 tal/websocket/websocket_test  10r REPLY          1                           
+PPTEST nng nng.supplemental.websocket_test TIMEOUT rc=137
+PPLOG ...
+PPLOG   websocket_test.c:215: nng_stream_get_string( c1, NNG_OPT_WS_HEADER "Sec-WebSocket-Version", &str): expected success, got Hunky dory (0)... ok
+PPLOG   websocket_test.c:217: 13 == 13... ok
+PPLOG   SUCCESS: All conditions have passed.
+PPLOG   Duration: 0.230659 secs
+PPLOG 
+PPLOG Test websocket fragmentation:
+Killed 
+PPLOG pidin:      pid tid name                         prio STATE          Blocked                     
+PPLOG pidin: 11804691   1 ld/src/tools/perf/inproc_lat  10r MUTEX          (0x54159737e0)              
+PPLOG pidin: 11804691   2 ld/src/tools/perf/inproc_lat  10r SIGWAITINFO                                
+PPLOG pidin: 11804691   3 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afb50)              
+PPLOG pidin: 11804691   4 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afb50)              
+PPLOG pidin: 11804691   5 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afb50)              
+PPLOG pidin: 11804691   6 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afb50)              
+PPLOG pidin: 11804691   7 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e5f0)              
+PPLOG pidin: 11804691   8 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e5f0)              
+PPLOG pidin: 11804691   9 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e5f0)              
+PPLOG pidin: 11804691  10 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e5f0)              
+PPLOG pidin: 11804691  11 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afa30)              
+PPLOG pidin: 11804691  12 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e7c8)              
+PPLOG pidin: 11804691  13 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e868)              
+PPLOG pidin: 11804691  14 ld/src/tools/perf/inproc_lat  10r READY          (0x5415ccd9a0)              
+PPTEST nng nng.inproc_lat TIMEOUT rc=137
+PPLOG ...
+PPTEST nng nng.inproc_thr PASS rc=0
+PPTEST nng nng.pubdrop PASS rc=0
+PPTEST nng nng.cplusplus_pair PASS rc=0
+PPTEST-END
+umount(/tests) failed: Resource busy 
+
+# 

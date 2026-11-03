@@ -122,7 +122,7 @@ See `runs/report.html` after a run. The table below is filled from the reports i
 | libzmq | v4.3.5 | built | built | 110/121 pass | CMake policy 3.5 |
 | mbedtls | v4.2.0 | built | built | 145/148 pass | -lsocket; AI test fix ×2 |
 | msgpack-c | c-7.0.2 | built | built | 5/5 pass | -lregex |
-| nng | v2.1.0 | built | built | 0/1 pass | header swap |
+| nng | v2.1.0 | built | built | 53/63 pass | header swap |
 | open62541 | v1.5.10 | built | built | 127/146 pass | recorded patch; queue header; libc stubs; -lsocket; AI build patch ×1 |
 | osqp | v1.0.0 | built | built | 3/3 pass | AI build patch ×1; AI test fix ×1 |
 | paho-mqtt-c | v1.3.16 | built | built | - | endian header; libc stubs |
@@ -143,7 +143,8 @@ See `runs/report.html` after a run. The table below is filled from the reports i
   or a broker fail or time out, and slow suites can hit the per-test time limit.
 - Projects that build their own host code generator need that tool built for the host first. Cyclone DDS's `idlc` did
   not build with MinGW-w64 GCC 16, so only the Cyclone DDS core library is ported and its tests are not run.
-- nng's tests block at start-up on the target; the cause is not yet known.
+- nng is configured with its select poller (`-DNNG_POLLQ_POLLER=select`). Built with the poll poller that its
+  configure picks by default, its tests did not finish on the target.
 
 ## How it was made
 

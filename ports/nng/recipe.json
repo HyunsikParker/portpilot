@@ -5,22 +5,24 @@
  "subdir": ".",
  "cmake_args": [
   "-DNNG_TESTS=ON",
-  "-DNNG_TOOLS=ON"
+  "-DNNG_TOOLS=ON",
+  "-DNNG_POLLQ_POLLER=select"
  ],
  "cpus": {
   "aarch64le": {
    "result": "built",
-   "rounds": 2,
+   "rounds": 1,
    "cflags": [
     "-D_QNX_SOURCE"
    ],
    "ldflags": [],
    "cmake_args": [
     "-DNNG_TESTS=ON",
-    "-DNNG_TOOLS=ON"
+    "-DNNG_TOOLS=ON",
+    "-DNNG_POLLQ_POLLER=select"
    ],
    "fixes": [
-    "posix_udp.c: <sys/errno.h> -> <errno.h>"
+    "replayed nng.patch"
    ]
   },
   "x86_64": {

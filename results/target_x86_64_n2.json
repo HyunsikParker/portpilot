@@ -1,0 +1,601 @@
+{
+ "cpu": "x86_64",
+ "tag": "n2",
+ "libraries": [
+  "nng"
+ ],
+ "finished": true,
+ "boot": "PPBOOT exited_by_itself=True",
+ "staged": [
+  {
+   "name": "nng",
+   "tests": 64,
+   "disabled": []
+  }
+ ],
+ "counts": {
+  "nng": {
+   "PASS": 53,
+   "FAIL": 4,
+   "TIMEOUT": 6
+  }
+ },
+ "results": [
+  {
+   "library": "nng",
+   "test": "nng.core.aio_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.args_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.buf_size_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.errors_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.id_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.idhash_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.init_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.list_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.log_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.message_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.reconnect_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.sock_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.sockaddr_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.synch_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.stats_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.core.url_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.platform.files_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.platform.ipc_stream_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.platform.platform_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.platform.resolver_test",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "FAILED: 3 of 11 unit tests have failed.",
+    "",
+    "...",
+    "Summary:",
+    "  Count of run unit tests:          11",
+    "  Count of successful unit tests:    8",
+    "  Count of failed unit tests:        3",
+    "FAILED: 3 of 11 unit tests have failed.",
+    ""
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.platform.tcp_stream_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.platform.udp_test",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "Test udp receive errors:",
+    "  udp_test.c:105: nng_udp_open(&udp, &addr): expected success, got Hunky dory (0)... ok",
+    "  udp_test.c:106: nng_udp_sockname(udp, &addr): expected success, got Hunky dory (0)... ok",
+    "  udp_test.c:107: nng_aio_alloc(&recv, NULL, NULL): expected success, got Hunky dory (0)... ok",
+    "FAILED: 1 of 11 unit tests has failed.",
+    "",
+    "...",
+    "Summary:",
+    "  Count of run unit tests:          11",
+    "  Count of successful unit tests:   10",
+    "  Count of failed unit tests:        1",
+    "FAILED: 1 of 11 unit tests has failed.",
+    ""
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.platform.posix_ipcwinsec_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.pipe_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.device_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.multistress_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.nonblock_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.scalability_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": [
+    "pidin:      pid tid name                         prio STATE          Blocked                     ",
+    "pidin:  2838547   1 src/sp/reconnect_stress_test  10r REPLY          1                           "
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.reconnect_stress_test",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "...",
+    "  reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok",
+    "  reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok",
+    "  reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok",
+    "  reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok",
+    "  reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok",
+    "  reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS)PPTEST nng nng.sp.protocol.bus0.bus_test PASS rc=0"
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.pair0.pair0_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.pair1.pair1_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.pair1.pair1_poly_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.pipeline0.pull_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.pipeline0.push_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.pubsub0.pub_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.pubsub0.sub_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.pubsub0.xsub_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.reqrep0.req_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.reqrep0.rep_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.reqrep0.xrep_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.reqrep0.xreq_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.reqrep0.reqstress_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.survey0.respond_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.survey0.survey_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.survey0.xrespond_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.protocol.survey0.xsurvey_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.transport.socket.sockfd_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": [
+    "pidin:      pid tid name                         prio STATE          Blocked                     ",
+    "pidin:  6295571   1 transport/inproc/inproc_test  10r REPLY          1                           "
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.transport.inproc.inproc_test",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "...",
+    "  util.c:444: nng_socket_close(s1): expected success, got Hunky dory (0)... ok",
+    "  util.c:445: nng_socket_close(s2): expected success, got Hunky dory (0)... ok",
+    "  SUCCESS: All conditions have passed.",
+    "  Duration: 0.021715 secs",
+    "",
+    "Test inproc huge msg:"
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.transport.ipc.ipc_test",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "FAILED: 2 of 26 unit tests have failed.",
+    "",
+    "...",
+    "Summary:",
+    "  Count of run unit tests:          26",
+    "  Count of successful unit tests:   18",
+    "  Count of failed unit tests:        2",
+    "FAILED: 2 of 26 unit tests have failed.",
+    "",
+    "pidin:      pid tid name                         prio STATE          Blocked                     ",
+    "pidin:  7561235   1 rc/sp/transport/tcp/tcp_test  10r REPLY          1                           "
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.transport.tcp.tcp_test",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "...",
+    "  util.c:444: nng_socket_close(s1): expected success, got Hunky dory (0)... ok",
+    "  util.c:445: nng_socket_close(s2): expected success, got Hunky dory (0)... ok",
+    "  SUCCESS: All conditions have passed.",
+    "  Duration: 0.096489 secs",
+    "",
+    "Test tcp huge msg:"
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.transport.udp.udp_tran_test",
+   "verdict": "FAIL",
+   "rc": 1,
+   "log": [
+    "  FAILED: 2 conditions have failed.",
+    "",
+    "Test udp recv max:",
+    "  udp_tran_test.c:132: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok",
+    "FAILED: 1 of 16 unit tests has failed.",
+    "",
+    "...",
+    "Summary:",
+    "  Count of run unit tests:          16",
+    "  Count of successful unit tests:   15",
+    "  Count of failed unit tests:        1",
+    "FAILED: 1 of 16 unit tests has failed.",
+    ""
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.transport.udp.udp_wire_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": [
+    "pidin:      pid tid name                         prio STATE          Blocked                     ",
+    "pidin:  9183251   1 /src/sp/transport/ws/ws_test  10r REPLY          1                           "
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.sp.transport.ws.ws_test",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "  ws_test.c:170: nng_dial(rejected_socket, address, NULL, 0) fails with Protocol error... ok",
+    "  ws_test.c:171: nng_socket_close(rejected_socket): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:172: nng_dialer_create(&dialer, client_socket, address): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:173: nng_dialer_get_bool(dialer, NNG_OPT_WS_FOLLOW_REDIRECTS, &follow): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:199: nng_dialer_start(fragment_dialer, 0) fails with Protocol error... ok",
+    "  ws_test.c:200: nng_socket_close(fragment_socket): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:70: nng_pair1_open(&(socket)): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:71: nng_dialer_create(&dialer, socket, address): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:74: nng_dialer_start(dialer, 0) fails with Protocol error... ok",
+    "  ws_test.c:75: nng_socket_close(socket): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:70: nng_pair1_open(&(socket)): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:71: nng_dialer_create(&dialer, socket, address): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:74: nng_dialer_start(dialer, 0) fails with Protocol error... ok",
+    "  ws_test.c:75: nng_socket_close(socket): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:70: nng_pair1_open(&(socket)): expected success, got Hunky dory (0)... ok",
+    "  ws_test.c:71: nng_dialer_create(&dialer, socket, address): expected success, got Hunky dory (0)... ok",
+    "...",
+    "  util.c:444: nng_socket_close(s1): expected success, got Hunky dory (0)... ok",
+    "  util.c:445: nng_socket_close(s2): expected success, got Hunky dory (0)... ok",
+    "  SUCCESS: All conditions have passed.",
+    "  Duration: 0.186176 secs",
+    "",
+    "Test ws huge msg:"
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.supplemental.http_client_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.supplemental.http_server_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.supplemental.sha1_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.supplemental.base64_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.supplemental.wssfile_test",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": [
+    "pidin:      pid tid name                         prio STATE          Blocked                     ",
+    "pidin: 10760211   1 tal/websocket/websocket_test  10r REPLY          1                           "
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.supplemental.websocket_test",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "...",
+    "  websocket_test.c:215: nng_stream_get_string( c1, NNG_OPT_WS_HEADER \"Sec-WebSocket-Version\", &str): expected success, got Hunky dory (0)... ok",
+    "  websocket_test.c:217: 13 == 13... ok",
+    "  SUCCESS: All conditions have passed.",
+    "  Duration: 0.230659 secs",
+    "",
+    "Test websocket fragmentation:",
+    "pidin:      pid tid name                         prio STATE          Blocked                     ",
+    "pidin: 11804691   1 ld/src/tools/perf/inproc_lat  10r MUTEX          (0x54159737e0)              ",
+    "pidin: 11804691   2 ld/src/tools/perf/inproc_lat  10r SIGWAITINFO                                ",
+    "pidin: 11804691   3 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afb50)              ",
+    "pidin: 11804691   4 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afb50)              ",
+    "pidin: 11804691   5 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afb50)              ",
+    "pidin: 11804691   6 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afb50)              ",
+    "pidin: 11804691   7 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e5f0)              ",
+    "pidin: 11804691   8 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e5f0)              ",
+    "pidin: 11804691   9 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e5f0)              ",
+    "pidin: 11804691  10 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e5f0)              ",
+    "pidin: 11804691  11 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a296afa30)              ",
+    "pidin: 11804691  12 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e7c8)              ",
+    "pidin: 11804691  13 ld/src/tools/perf/inproc_lat  10r CONDVAR        (0x2a2976e868)              ",
+    "pidin: 11804691  14 ld/src/tools/perf/inproc_lat  10r READY          (0x5415ccd9a0)              "
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.inproc_lat",
+   "verdict": "TIMEOUT",
+   "rc": 137,
+   "log": [
+    "..."
+   ]
+  },
+  {
+   "library": "nng",
+   "test": "nng.inproc_thr",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.pubdrop",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  },
+  {
+   "library": "nng",
+   "test": "nng.cplusplus_pair",
+   "verdict": "PASS",
+   "rc": 0,
+   "log": []
+  }
+ ]
+}
