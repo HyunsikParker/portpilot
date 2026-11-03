@@ -74,7 +74,7 @@ class Bundle:
         return "\n".join(lines) + "\n", total
 
 
-def plan_library(name, cpu, bundle, work, cap=DEFAULT_TIMEOUT):
+def plan_library(name, cpu, bundle, work, cap=DEFAULT_TIMEOUT, only=None):
     """Add one library's tests to the bundle; returns the run.sh lines and a summary."""
     src = os.path.join(work, name)
     build = os.path.join(work, f"build_{name}_{cpu}")
@@ -97,6 +97,8 @@ def plan_library(name, cpu, bundle, work, cap=DEFAULT_TIMEOUT):
     lines = [f"export LD_LIBRARY_PATH=/tests/{name}/lib:$PP_BASE_LD"]
     summary = {"name": name, "tests": 0, "disabled": []}
     for t in _ctest_list(build):
+        if only and not re.search(only, t["name"]):
+            continue
         props = {p["name"]: p["value"] for p in t.get("properties", [])}
         cmd = t.get("command") or []
         if props.get("DISABLED") or not cmd:
@@ -176,11 +178,11 @@ echo "PPTEST-BEGIN $(uname -a)"
 """
 
 
-def stage(names, cpu, out, work, cap=DEFAULT_TIMEOUT):
+def stage(names, cpu, out, work, cap=DEFAULT_TIMEOUT, only=None):
     os.makedirs(out, exist_ok=True)
     bundle, body, summaries = Bundle(), [], []
     for n in names:
-        lines, s = plan_library(n, cpu, bundle, work, cap)
+        lines, s = plan_library(n, cpu, bundle, work, cap, only)
         body += [f"echo 'PPTEST-LIB {n} {s['tests']}'"] + lines
         summaries.append(s)
     run_sh = os.path.join(out, "run.sh")
@@ -232,7 +234,7 @@ def parse_serial(text):
     return results
 
 
-def run(names, cpu, deadline, tag="all", cap=DEFAULT_TIMEOUT):
+def run(names, cpu, deadline, tag="all", cap=DEFAULT_TIMEOUT, only=None):
     from . import host
     if cpu != "x86_64":
         sys.exit("only the x86_64 VM is set up so far")
@@ -245,8 +247,9 @@ def run(names, cpu, deadline, tag="all", cap=DEFAULT_TIMEOUT):
     h.put(ps1, rf"{h.vm}\boot_tests.ps1")
     out = rf"{h.work}\target_{cpu}"
     text = h.run_bat("\r\n".join(["@echo off", f"call {h.sdp_env} >nul 2>&1", f"cd /d {h.work}",
-                                   f"{h.python} {h.work}\\pp_target.py stage --cpu {cpu} --out {out} --work {h.work} --timeout {cap} "
-                                   f"{' '.join(names)}", ""]), rf"{h.work}\pp_stage.bat")
+                                   f"{h.python} {h.work}\\pp_target.py stage --cpu {cpu} --out {out} --work {h.work} "
+                                   f"--timeout {cap} " + (f'--only "{only}" ' if only else "") + " ".join(names), ""]),
+                     rf"{h.work}\pp_stage.bat")
     staged = next((json.loads(l[8:]) for l in text.splitlines() if l.startswith("PPSTAGE ")), None)
     print(json.dumps(staged)[:1500] if staged else text[-1500:], flush=True)
     if not staged or staged["mkqnx6fsimg_exit"] != 0:
@@ -280,17 +283,19 @@ def main():
     s.add_argument("--out", required=True)
     s.add_argument("--work", required=True, help="the build host's work directory (upstream copies and build trees)")
     s.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="upper limit per test, seconds")
+    s.add_argument("--only", help="regular expression: run only the tests whose names match")
     r = sub.add_parser("run")
     r.add_argument("names", nargs="+")
     r.add_argument("--cpu", default="x86_64")
     r.add_argument("--deadline", type=int, default=3600)
     r.add_argument("--tag", default="all", help="name for this run's report and serial log")
     r.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="upper limit per test, seconds")
+    r.add_argument("--only", help="regular expression: run only the tests whose names match")
     a = ap.parse_args()
     if a.cmd == "stage":
-        stage(a.names, a.cpu, a.out, a.work, a.timeout)
+        stage(a.names, a.cpu, a.out, a.work, a.timeout, a.only)
     else:
-        run(a.names, a.cpu, a.deadline, a.tag, a.timeout)
+        run(a.names, a.cpu, a.deadline, a.tag, a.timeout, a.only)
 
 
 if __name__ == "__main__":
