@@ -220,6 +220,10 @@ pp_excerpt() {
     tail -n 6 /tmp/pp_out | sed 's/^/PPLOG /'
 }
 echo "PPTEST-BEGIN $(uname -a)"
+# /tmp lives on the VM's persistent data partition: clear what earlier runs left there (libarchive's harness keeps
+# the work directories of failed tests) so later suites do not run out of space
+for f in /tmp/* /tmp/.[!.]*; do [ "$f" = /tmp/keep_files ] || rm -rf "$f" 2>/dev/null; done
+df -h /tmp 2>/dev/null | tail -n 1 | sed 's/^/PPINFO tmp: /'
 """
 
 
