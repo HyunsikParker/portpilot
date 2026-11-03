@@ -102,14 +102,14 @@ def add_include(files, header):
         HOST.ps(ps)
 
 
-def source_snippets(name, errors):
+def source_snippets(name, errors, context=None):
     """Numbered upstream source lines around each error, the error line marked with '>'."""
     root = f"{HOST.work}\\{name}"
     # an ArrayList keeps each (file, line) pair intact; @(@('a',1)) would flatten a single pair
     adds = "; ".join(f"[void]$items.Add(@('{rel.replace(chr(39), chr(39) * 2)}',{line}))" for rel, line, _ in errors)
     ps = (f"$items = New-Object System.Collections.ArrayList; {adds}; foreach ($it in $items) {{ $f = $it[0]; if (-not [IO.Path]::IsPathRooted($f)) {{ $f = Join-Path '{root}' $f }}; "
           f"'@@SNIP'; if (Test-Path -LiteralPath $f) {{ $l = @(Get-Content -LiteralPath $f); $n = $it[1]; "
-          f"$s = [Math]::Max(1, $n - {agent.CONTEXT}); $e = [Math]::Min($l.Count, $n + {agent.CONTEXT}); "
+          f"$s = [Math]::Max(1, $n - {context or agent.CONTEXT}); $e = [Math]::Min($l.Count, $n + {context or agent.CONTEXT}); "
           f"if ($l.Count -le {agent.WHOLE_FILE}) {{ $s = 1; $e = $l.Count }}; "
           f"for ($i = $s; $i -le $e; $i++) {{ $m = ' '; if ($i -eq $n) {{ $m = '>' }}; '{{0,5}}{{1}} {{2}}' -f $i, $m, $l[$i - 1] }} }} }}")
     out = HOST.ps(ps)
@@ -162,14 +162,36 @@ def count_failed_steps(build_log):
 
 
 def file_context(name, diff):
-    """Numbered current lines around each hunk of a diff that did not apply, so the model can redo it."""
-    pairs, current = [], None
+    """Numbered current lines around each hunk of a diff that did not apply, so the model can redo it. Each hunk is
+    located by the first line it removes (or its first context line) rather than by its line numbers, which models
+    often guess."""
+    hunks, current, hunk = [], None, None
     for line in diff.splitlines():
         if line.startswith("+++ b/"):
             current = line[6:].strip()
         elif line.startswith("@@ -") and current:
-            pairs.append((current, int(re.match(r"@@ -(\d+)", line).group(1)) + 3, ""))
-    return pairs[:6], source_snippets(name, pairs[:6])
+            hunk = [current, int(re.match(r"@@ -(\d+)", line).group(1)) + 3, None, True]
+            hunks.append(hunk)
+        elif hunk and line.startswith("-") and len(line[1:].strip()) > 8 and (hunk[2] is None or hunk[3]):
+            hunk[2:4] = [line[1:].strip(), False]   # a removed line is the best anchor
+        elif hunk and hunk[2] is None and line.startswith(" ") and len(line[1:].strip()) > 8:
+            hunk[2:4] = [line[1:].strip(), True]
+    hunks = hunks[:6]
+    root = f"{HOST.work}\\{name}"
+    for h in hunks:
+        if not h[2]:
+            continue
+        # the exact line, then its longer identifiers: models get the gist of a line right more often than its text
+        for needle in [h[2]] + sorted(set(re.findall(r"[A-Za-z_]\w{7,}", h[2])), key=len, reverse=True)[:3]:
+            out = HOST.ps(f"$f = Join-Path '{root}' '{h[0]}'; if (Test-Path -LiteralPath $f) {{ "
+                          f"Select-String -LiteralPath $f -SimpleMatch -Pattern '{needle.replace(chr(39), chr(39) * 2)}' "
+                          f"| Select-Object -First 1 -ExpandProperty LineNumber }}")
+            m = re.search(r"\d+", out)
+            if m:
+                h[1] = int(m.group())
+                break
+    pairs = [(h[0], h[1], "") for h in hunks]
+    return pairs, source_snippets(name, pairs, context=30)
 
 
 def catalogue_step(name, cpu, log, rec, cflags, ldflags, cmake_args):
