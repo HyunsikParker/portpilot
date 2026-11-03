@@ -90,8 +90,9 @@ python -m portpilot export osqp                               # ports/osqp/: rec
 ## Results
 
 Every port below builds for both CPUs. The test column counts the project's own CTest entries on the QNX 8.0 x86_64
-QEMU target; `-` means the project's tests were not enabled (they need a broker, a host code generator or a test
-framework that is not vendored). The serial console logs and run reports behind these numbers are in `results/`, and
+QEMU target; `-` means the tests were not run: Paho MQTT's need an MQTT broker, Cyclone DDS's need its host IDL
+compiler, and the others need a test framework the project does not vendor (cmocka, CUnit, GoogleTest, check) or were
+not enabled in its build. The serial console logs and run reports behind these numbers are in `results/`, and
 each port's recipe, patch and AI transcripts are in `ports/<name>/`.
 
 See `runs/report.html` after a run. The table below is filled from the reports in this repository.
