@@ -262,6 +262,8 @@ def ai_step(name, ref, log, rounds, tmp, k, notes=()):
     if notes:
         prompt += "\n\nEarlier attempts that did not help and were reverted:\n\n" + "\n\n".join(notes)
     info = {"round": k, "applied": False, "accepted": False, "prompt_chars": len(prompt)}
+    print(f"[{name}] no catalogue rule left; asking the model about {len(errors)} build errors and {len(symbols)} "
+          f"undefined symbols", flush=True)
     for attempt_no in (1, 2):
         answer, info["model"] = agent.ask(prompt)
         diff = agent.extract_diff(answer)
@@ -274,6 +276,9 @@ def ai_step(name, ref, log, rounds, tmp, k, notes=()):
         patch.write_text(diff)
         info["applied"], info["apply_output"] = apply_patch(name, patch, f"ai_{name}_{k}")
         if info["applied"]:
+            print(f"[{name}] applied the model's patch to {', '.join(info['files'])}; rebuilding to check it:", flush=True)
+            for line in diff.splitlines()[:40]:
+                print(f"    {line}", flush=True)
             break
         items, snippets = file_context(name, diff)
         prompt += ("\n\nYour previous diff did not apply: " + info["apply_output"][-300:]
