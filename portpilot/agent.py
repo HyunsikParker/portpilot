@@ -46,6 +46,11 @@ Make the smallest change that lets this code build and behave correctly on QNX. 
 unless QNX cannot support them, in which case disable them only on QNX."""
 
 
+SYSTEM = ("You are a porting engineer answering one request. You cannot run commands, open files or browse; everything "
+          "available is in the message. Answer with the requested unified diff only, or with the single word UNFIXABLE "
+          "when the message asks for that option.")
+
+
 def _from_sdp(path):
     return any(m in path for m in SDP_MARKERS)
 
@@ -118,7 +123,7 @@ def ask(prompt):
     model = os.environ.get("PORTPILOT_LLM_MODEL", "claude-opus-5-5")
     env = {k: os.environ[k] for k in ("HOME", "USER", "PATH", "TMPDIR") if k in os.environ}
     cmd = ["claude", "--safe-mode", "-p", "--tools", "", "--model", model, "--output-format", "text",
-           "--no-session-persistence"]
+           "--no-session-persistence", "--system-prompt", SYSTEM]
     if os.environ.get("PORTPILOT_LLM_EFFORT"):   # e.g. medium: faster answers for routine porting errors
         cmd += ["--effort", os.environ["PORTPILOT_LLM_EFFORT"]]
     r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, env=env, timeout=1800)
