@@ -75,13 +75,13 @@ def load(runs: Path):
     tests = {}
     for f in sorted(runs.glob("target_*.json"), key=lambda p: p.stat().st_mtime):
         t = json.loads(f.read_text())
-        if t.get("rejected"):
+        if t.get("rejected") or t.get("tag", "").startswith(("dbg", "first")):
             continue
-        by_lib = {}
-        for res in t.get("results", []):
-            by_lib.setdefault(res["library"], []).append(res)
-        for lib, results in by_lib.items():   # a later run replaces an earlier one for the same library
-            tests[lib] = {"cpu": t["cpu"], "results": results, "finished": t.get("finished")}
+        for res in t.get("results", []):   # a later run replaces earlier results test by test
+            entry = tests.setdefault(res["library"], {"cpu": t["cpu"], "by_test": {}})
+            entry["by_test"][res["test"]] = res
+    for entry in tests.values():
+        entry["results"] = list(entry.pop("by_test").values())
     return ports, tests
 
 
