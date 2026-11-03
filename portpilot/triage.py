@@ -78,7 +78,8 @@ def host_path_literals(name, cpu, limit=10):
           f"Select-String -Pattern '\"[A-Za-z]:[/\\\\]', '\"\\.{{1,2}}\\\\\\\\' | Where-Object {{ $_.Line -notmatch '^\\s*#line' }} | Select-Object -First {limit} | "
           f"ForEach-Object {{ $_.Path.Substring($b.Length + 1) + ':' + $_.LineNumber + ': ' + $_.Line.Trim() }}")
     out = remote.HOST.ps(ps).replace("\r", "").strip()
-    return out.replace(work_fwd, "<work>").replace(remote.HOST.work, "<work>")[:3000]
+    # keep the shape of an absolute Windows path (that is the finding) but not the host's user name
+    return out.replace(work_fwd, "C:/build-host/work").replace(remote.HOST.work, "C:\\build-host\\work")[:3000]
 
 
 def counts(results):
@@ -94,7 +95,7 @@ def triage(name, run_tag, rounds=2, cpu="x86_64"):
     before = [r for r in json.loads((remote.LOCAL / f"target_{cpu}_{run_tag}.json").read_text())["results"]
               if r["library"] == name]
     tmp = remote.LOCAL / name
-    history = []
+    history, notes = [], []
     for k in range(1, rounds + 1):
         failing = [r for r in before if r["verdict"] != "PASS"]
         if not failing:
@@ -102,6 +103,8 @@ def triage(name, run_tag, rounds=2, cpu="x86_64"):
         prompt = PROMPT.format(name=name, ref=report["ref"], facts=agent.QNX_FACTS, failures=failures_text(failing),
                                context=message_context(name, failing) or "(no matching source lines found)",
                                host_paths=host_path_literals(name, cpu) or "(none found)")
+        if notes:
+            prompt += "\n\nEarlier patches that did not help and were reverted:\n\n" + "\n\n".join(notes)
         answer, model = agent.ask(prompt)
         diff = agent.extract_diff(answer)
         agent.save_round(tmp, f"t{k}", prompt, answer, diff)
@@ -138,7 +141,11 @@ def triage(name, run_tag, rounds=2, cpu="x86_64"):
         remote.apply_patch(name, patch, f"triage_{name}_{k}", reverse=True)
         remote.attempt(name, report["url"], report["ref"], report.get("subdir", "."), cpu, good["cflags"],
                        good["ldflags"], good["cmake_args"], tmp)
-        break
+        still = [r for r in after if r["verdict"] != "PASS"][:3]
+        notes.append(f"Round {k} changed {', '.join(step['files'])}: "
+                     + ("the build failed." if not built else
+                        f"{len(p1)} tests passed afterwards (before: {len(p0)}). Still failing, e.g.:\n"
+                        + "\n".join(f"  {r['test']}: " + " | ".join(r['log'][-3:]) for r in still)))
     report["triage"] = history
     remote.HOST.ps(f"git -C '{remote.HOST.work}\\{name}' diff --output='{remote.HOST.work}\\{name}.patch'")
     remote.HOST.get(f"{remote.HOST.work}\\{name}.patch", tmp / f"{name}.patch")
