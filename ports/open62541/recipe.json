@@ -14,10 +14,10 @@
    "cflags": [
     "-D_QNX_SOURCE",
     "-include",
-    "C:/Users/<user>/Documents/portpilot-work/pp/open62541/deps/open62541_queue.h"
+    "C:/build-host/work/open62541/deps/open62541_queue.h"
    ],
    "ldflags": [
-    "-LC:/Users/<user>/Documents/portpilot-work/pp/qnx_stubs/aarch64le",
+    "-LC:/build-host/work/qnx_stubs/aarch64le",
     "-lsocket"
    ],
    "cmake_args": [
@@ -37,10 +37,10 @@
    "cflags": [
     "-D_QNX_SOURCE",
     "-include",
-    "C:/Users/<user>/Documents/portpilot-work/pp/open62541/deps/open62541_queue.h"
+    "C:/build-host/work/open62541/deps/open62541_queue.h"
    ],
    "ldflags": [
-    "-LC:/Users/<user>/Documents/portpilot-work/pp/qnx_stubs/x86_64",
+    "-LC:/build-host/work/qnx_stubs/x86_64",
     "-lsocket"
    ],
    "cmake_args": [

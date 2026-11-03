@@ -17,7 +17,7 @@ Failing tests and the end of their output:
 ERROR in osqp_setup: KKT matrix factorization.
 The problem seems to be non-convex.
 ERROR in osqp_codegen: KKT matrix factorization.
-C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
+C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
   REQUIRE( exitflag == expected_error )
 with expansion:
   8 == 0
@@ -34,7 +34,7 @@ assertions: 488 | 470 passed | 18 failed
 ERROR in osqp_setup: KKT matrix factorization.
 The problem seems to be non-convex.
 ERROR in osqp_codegen: KKT matrix factorization.
-C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
+C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
   REQUIRE( exitflag == expected_error )
 with expansion:
   8 == 0

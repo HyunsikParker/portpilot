@@ -19,7 +19,7 @@ Failing tests and the end of their output:
 [ RUN      ] LoadNodeTest.BlockCRNLEncoded
 [       OK ] LoadNodeTest.BlockCRNLEncoded (3 ms)
 [ RUN      ] LoadNodeTest.BlockCREncoded
-C:/Users/<user>/Documents/portpilot-work/pp/yaml-cpp/test/node/node_test.cpp:672: Failure
+C:/build-host/work/yaml-cpp/test/node/node_test.cpp:672: Failure
 Expected equality of these values:
   x
 ...

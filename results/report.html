@@ -33,6 +33,7 @@ footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
 .patch summary { font-weight: 400; color: var(--muted); font-size: 13px; }
 .patch pre { max-height: 420px; }
 pre .add { color: var(--ok); } pre .del { color: var(--bad); } pre .hunk { color: var(--muted); }
+.nowrap { white-space: nowrap; }
 .tag { display: inline-block; padding: 1px 7px; margin: 1px 2px 1px 0; border: 1px solid var(--line); border-radius: 10px;
        font-size: 12px; white-space: nowrap; }
 .tag.ai { border-color: var(--ok); color: var(--ok); }
@@ -52,7 +53,7 @@ meter { width: 64px; height: 8px; vertical-align: middle; margin-right: 6px; }
 <h2>Libraries</h2>
 <div class="wrap"><table>
 <thead><tr><th>Library</th><th>x86_64</th><th>aarch64le</th><th>Tests on QNX target</th><th>Fixes applied</th></tr></thead>
-<tbody><tr><td><b>backward-cpp</b> <span class="muted mono">v1.6</span></td><td class="ok">built <span class="muted">(4 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num ok"><meter min="0" max="5" value="5"></meter> 5/5 pass</td><td><span class="tag">CMake policy 3.5</span> <span class="tag ai">AI build ×2</span></td></tr><tr><td><b>civetweb</b> <span class="muted mono">v1.16</span></td><td class="ok">built <span class="muted">(4 rounds)</span></td><td class="ok">built <span class="muted">(3 rounds)</span></td><td class="muted">not run</td><td><span class="tag">CMake policy 3.5</span> <span class="tag">-lsocket</span> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>cyclonedds</b> <span class="muted mono">11.0.1</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="muted">not run</td><td> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>fmt</b> <span class="muted mono">12.2.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num warn"><meter min="0" max="21" value="20"></meter> 20/21 pass · 1 fail</td><td><span class="tag">-lregex</span></td></tr><tr><td><b>json-c</b> <span class="muted mono">json-c-0.19-20260627</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="num warn"><meter min="0" max="28" value="27"></meter> 27/28 pass · 1 fail</td><td><span class=muted>none</span></td></tr><tr><td><b>libarchive</b> <span class="muted mono">v3.8.11</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num warn"><meter min="0" max="1137" value="816"></meter> 816/1137 pass · 51 fail, 270 skip</td><td><span class="tag">link launcher</span></td></tr><tr><td><b>libcbor</b> <span class="muted mono">v0.14.0</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>libcoap</b> <span class="muted mono">v4.3.5</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="muted">not run</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>libzmq</b> <span class="muted mono">v4.3.5</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num warn"><meter min="0" max="121" value="110"></meter> 110/121 pass · 3 fail, 4 timeout, 4 skip</td><td><span class="tag">CMake policy 3.5</span></td></tr><tr><td><b>mbedtls</b> <span class="muted mono">v4.2.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num warn"><meter min="0" max="148" value="145"></meter> 145/148 pass · 2 fail, 1 timeout</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×2</span></td></tr><tr><td><b>msgpack-c</b> <span class="muted mono">c-7.0.2</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>nng</b> <span class="muted mono">v2.1.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 timeout</td><td><span class="tag">header swap</span></td></tr><tr><td><b>open62541</b> <span class="muted mono">v1.5.10</span></td><td class="ok">built <span class="muted">(4 rounds)</span></td><td class="ok">built <span class="muted">(4 rounds)</span></td><td class="muted">not run</td><td><span class="tag">queue header</span> <span class="tag">&lt;netinet/in.h&gt;</span> <span class="tag">libc stubs</span> <span class="tag">-lsocket</span></td></tr><tr><td><b>osqp</b> <span class="muted mono">v1.0.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="num ok"><meter min="0" max="3" value="3"></meter> 3/3 pass</td><td> <span class="tag ai">AI build ×1</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>paho-mqtt-c</b> <span class="muted mono">v1.3.16</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="muted">not run</td><td><span class="tag">endian header</span> <span class="tag">libc stubs</span></td></tr><tr><td><b>ruckig</b> <span class="muted mono">v0.19.4</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span> <span class="tag">doctest std headers</span></td></tr><tr><td><b>spdlog</b> <span class="muted mono">v1.17.0</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>uriparser</b> <span class="muted mono">uriparser-1.0.3</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="muted">not run</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>wolfssl</b> <span class="muted mono">v5.9.4-stable</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num ok"><meter min="0" max="2" value="2"></meter> 2/2 pass</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>yaml-cpp</b> <span class="muted mono">yaml-cpp-0.9.0</span></td><td class="ok">built <span class="muted">(1 rounds)</span></td><td class="ok">built <span class="muted">(2 rounds)</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 fail</td><td><span class=muted>none</span></td></tr></tbody></table></div>
+<tbody><tr><td><b>backward-cpp</b> <span class="muted mono">v1.6</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="5" value="5"></meter> 5/5 pass</td><td><span class="tag">CMake policy 3.5</span> <span class="tag ai">AI build ×2</span></td></tr><tr><td><b>civetweb</b> <span class="muted mono">v1.16</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 3 rounds</span></td><td class="muted">not run</td><td><span class="tag">CMake policy 3.5</span> <span class="tag">-lsocket</span> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>cyclonedds</b> <span class="muted mono">11.0.1</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td> <span class="tag ai">AI build ×1</span></td></tr><tr><td><b>fmt</b> <span class="muted mono">12.2.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="21" value="20"></meter> 20/21 pass · 1 fail</td><td><span class="tag">-lregex</span></td></tr><tr><td><b>json-c</b> <span class="muted mono">json-c-0.19-20260627</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="num warn"><meter min="0" max="28" value="27"></meter> 27/28 pass · 1 fail</td><td><span class=muted>none</span></td></tr><tr><td><b>libarchive</b> <span class="muted mono">v3.8.11</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="1137" value="816"></meter> 816/1137 pass · 51 fail, 270 skip</td><td><span class="tag">link launcher</span></td></tr><tr><td><b>libcbor</b> <span class="muted mono">v0.14.0</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>libcoap</b> <span class="muted mono">v4.3.5</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="muted">not run</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>libzmq</b> <span class="muted mono">v4.3.5</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="121" value="110"></meter> 110/121 pass · 3 fail, 4 timeout, 4 skip</td><td><span class="tag">CMake policy 3.5</span></td></tr><tr><td><b>mbedtls</b> <span class="muted mono">v4.2.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num warn"><meter min="0" max="148" value="145"></meter> 145/148 pass · 2 fail, 1 timeout</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×2</span></td></tr><tr><td><b>msgpack-c</b> <span class="muted mono">c-7.0.2</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="muted">not run</td><td><span class=muted>none</span></td></tr><tr><td><b>nng</b> <span class="muted mono">v2.1.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 timeout</td><td><span class="tag">header swap</span></td></tr><tr><td><b>open62541</b> <span class="muted mono">v1.5.10</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="ok nowrap">built <span class="muted">· 4 rounds</span></td><td class="muted">not run</td><td><span class="tag">queue header</span> <span class="tag">&lt;netinet/in.h&gt;</span> <span class="tag">libc stubs</span> <span class="tag">-lsocket</span></td></tr><tr><td><b>osqp</b> <span class="muted mono">v1.0.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="num ok"><meter min="0" max="3" value="3"></meter> 3/3 pass</td><td> <span class="tag ai">AI build ×1</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>paho-mqtt-c</b> <span class="muted mono">v1.3.16</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="muted">not run</td><td><span class="tag">endian header</span> <span class="tag">libc stubs</span></td></tr><tr><td><b>ruckig</b> <span class="muted mono">v0.19.4</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span> <span class="tag">doctest std headers</span></td></tr><tr><td><b>spdlog</b> <span class="muted mono">v1.17.0</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="1" value="1"></meter> 1/1 pass</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>uriparser</b> <span class="muted mono">uriparser-1.0.3</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="muted">not run</td><td><span class="tag">-lsocket</span></td></tr><tr><td><b>wolfssl</b> <span class="muted mono">v5.9.4-stable</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num ok"><meter min="0" max="2" value="2"></meter> 2/2 pass</td><td><span class="tag">-lsocket</span> <span class="tag ai">AI triage ×1</span></td></tr><tr><td><b>yaml-cpp</b> <span class="muted mono">yaml-cpp-0.9.0</span></td><td class="ok nowrap">built <span class="muted">· 1 round</span></td><td class="ok nowrap">built <span class="muted">· 2 rounds</span></td><td class="num bad"><meter min="0" max="1" value="0"></meter> 0/1 pass · 1 fail</td><td><span class=muted>none</span></td></tr></tbody></table></div>
 <h2>Details</h2>
 <details><summary>backward-cpp</summary><p class="muted">aarch64le · <a href="https://github.com/bombela/backward-cpp.git">https://github.com/bombela/backward-cpp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">configure failed</span></p>
 <p>Change: replayed backward-cpp.patch</p>
@@ -2759,11 +2760,11 @@ Failing tests:
   1: test_basic (30 failures)
 
 Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.43.40-000
-</pre><p class="mono">bsdtar_test_copy · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:287: r != 0
+</pre><p class="mono">bsdtar_test_copy · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_copy.c:287: r != 0
    Description: Error invoking &quot;&quot;/tests/libarchive/build/bin/bsdtar&quot; cf archive  --format pax&quot;
       r=256 (0x100, 0400)
       0=0 (0x0, 00)
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
+C:/build-host/work/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
 ...
 
 Failing tests:
@@ -2994,7 +2995,7 @@ Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.57-000
   Assertions checked:       9
   Assertions failed:        0
   Skips reported:           1
-1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_gid_gname · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:62: data + 116 != &quot;000021  &quot;
+1 tests passed, no failures</pre><p class="mono">bsdtar_test_option_gid_gname · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:62: data + 116 != &quot;000021  &quot;
       size 8 = 8
       Dump of data + 116
   Assertions checked:      34
@@ -3005,7 +3006,7 @@ Failing tests:
   39: test_option_gid_gname (14 failures)
 
 Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.00-000
-</pre><p class="mono">bsdtar_test_option_group · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:61: data + 116 != &quot;000021  &quot;
+</pre><p class="mono">bsdtar_test_option_group · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_option_group.c:61: data + 116 != &quot;000021  &quot;
       size 8 = 8
       Dump of data + 116
   Assertions checked:      29
@@ -3208,7 +3209,7 @@ Failing tests:
   59: test_option_older_than (6 failures)
 
 Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.38-000
-</pre><p class="mono">bsdtar_test_option_owner · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:61: data + 108 != &quot;177143  &quot;
+</pre><p class="mono">bsdtar_test_option_owner · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_option_owner.c:61: data + 108 != &quot;177143  &quot;
       size 8 = 8
       Dump of data + 108
   Assertions checked:      29
@@ -3262,7 +3263,7 @@ Failing tests:
   65: test_option_safe_writes (7 failures)
 
 Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.45.49-000
-</pre><p class="mono">bsdtar_test_option_uid_uname · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:63: data + 265 != &quot;foofoofoo &quot;
+</pre><p class="mono">bsdtar_test_option_uid_uname · FAIL (exit 1)</p><pre>C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:63: data + 265 != &quot;foofoofoo &quot;
       size 10 = 10
       Dump of data + 265
   Assertions checked:      34
@@ -3540,31 +3541,31 @@ Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.47.24-000
 FAIL
 ...
 W: Only able to create 995 sockets on this box
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_system.cpp:69:test_max_sockets:FAIL: I: Tune your system to increase maximum allowed file handles\nI: Run &#x27;ulimit -n 1200&#x27; in bash\n
+C:/build-host/work/libzmq/tests/test_system.cpp:69:test_max_sockets:FAIL: I: Tune your system to increase maximum allowed file handles\nI: Run &#x27;ulimit -n 1200&#x27; in bash\n
 
 -----------------------
 2 Tests 1 Failures 0 Ignored 
-FAIL</pre><p class="mono">test_hwm_pubsub · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
+FAIL</pre><p class="mono">test_hwm_pubsub · FAIL (exit 1)</p><pre>C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
 
 -----------------------
 10 Tests 1 Failures 0 Ignored 
 FAIL
 ...
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:132:test_blocking_ipc:FAIL: Expected 0 to be greater than 0. sent = 6000, received = 0
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
+C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:132:test_blocking_ipc:FAIL: Expected 0 to be greater than 0. sent = 6000, received = 0
+C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
 
 -----------------------
 10 Tests 1 Failures 0 Ignored 
 FAIL</pre><p class="mono">test_router_mandatory · TIMEOUT (exit 137)</p><pre>...</pre><p class="mono">test_shutdown_stress · TIMEOUT (exit 137)</p><pre>...</pre><p class="mono">test_monitor · TIMEOUT (exit 137)</p><pre>WARNING: Forced closure of 4 sockets, this is an implementation error unless the test case failed
 ...
-WARNING: Forced closure of 4 sockets, this is an implementation error unless the test case failed</pre><p class="mono">test_reconnect_ivl · FAIL (exit 1)</p><pre>C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:19:test_reconnect_ivl_ipc:FAIL: zmq_unbind (sb_, my_endpoint_) failed, errno = 2 (No such file or directory)
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
+WARNING: Forced closure of 4 sockets, this is an implementation error unless the test case failed</pre><p class="mono">test_reconnect_ivl · FAIL (exit 1)</p><pre>C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:19:test_reconnect_ivl_ipc:FAIL: zmq_unbind (sb_, my_endpoint_) failed, errno = 2 (No such file or directory)
+C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
+C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
 3 Tests 1 Failures 0 Ignored 
 FAIL
 ...
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
+C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
+C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
 
 -----------------------
 3 Tests 1 Failures 0 Ignored 
@@ -3576,7 +3577,7 @@ pull_client: connected to: tcp://127.0.0.1:59798
 push_server: sending 2 messages
 socks_server: delay basic auth socks server start</pre><p class="mono">test_connect_null_fuzzer · SKIP (exit 77)</p><pre>...</pre><p class="mono">test_bind_null_fuzzer · SKIP (exit 77)</p><pre>...</pre><p class="mono">test_connect_fuzzer · SKIP (exit 77)</p><pre>...</pre><p class="mono">test_bind_fuzzer · SKIP (exit 77)</p><pre>...</pre></details><details><summary>mbedtls</summary><p class="muted">aarch64le · <a href="https://github.com/Mbed-TLS/mbedtls.git">https://github.com/Mbed-TLS/mbedtls.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">394 errors</span></p>
 <p>Catalogue rules: <code>sockets</code></p>
-<p>Change: replayed mbedtls.patch (failed: warning: recount: unexpected line: Submodule tf-psa-crypto contains modified content)</p>
+<p>Change: replayed mbedtls.patch</p>
 </div><div class="round"><p><b>Round 2</b> · <span class="ok">built</span></p>
 </div><p class="muted">x86_64 · <a href="https://github.com/Mbed-TLS/mbedtls.git">https://github.com/Mbed-TLS/mbedtls.git</a></p><div class="round"><p><b>Round 1</b> · <span class="bad">394 errors</span></p>
 <p>Catalogue rules: <code>sockets</code></p>
@@ -3614,10 +3615,10 @@ PSA key derivation: PBKDF2-HMAC(SHA-1), RFC6070 #4 ................ PASS
 PSA key derivation: PBKDF2-HMAC(SHA-256), RFC7914 #2 .............. PASS
 PSA key derivation: PBKDF2-AES-CMAC-PRF-128, inputs from RFC6070 #  PPTEST mbedtls psa_crypto.persistent-suite PASS rc=0</pre><p class="mono">psa_crypto.persistent-suite · FAIL (exit 1)</p><pre>...
 Failed to open test file: .\test_suite_psa_crypto.persistent.datax</pre><p class="mono">x509write-suite · FAIL (exit 1)</p><pre>  memcmp(buf, check_buf, pem_len - 1) == 0
-  at line 221, C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+  at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 Certificate Request check Server1, set_extension .................. FAILED
   memcmp(buf, check_buf, pem_len - 1) == 0
-  at line 221, C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+  at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 ...
 OID from numeric string - OID with maximum subidentifier .......... PASS
 OID from numeric string - OID with overflowing subidentifier ...... PASS
@@ -3772,7 +3773,7 @@ FAILED (62 / 96 tests (0 skipped))</pre></details><details><summary>msgpack-c</s
 </div><p class="muted">x86_64 · <a href="https://github.com/jbeder/yaml-cpp.git">https://github.com/jbeder/yaml-cpp.git</a></p><div class="round"><p><b>Round 1</b> · <span class="ok">built</span></p>
 </div><div class="round"><p><b>Test triage 1</b> (claude-opus-5-5): <code>no patch</code> · tests passing on QNX ? → ? · <b class="bad">UNFIXABLE</b></p></div><p><b>Tests that did not pass on the target</b></p><p class="mono">yaml-cpp::test · FAIL (exit 1)</p><pre>[       OK ] LoadNodeTest.BlockCRNLEncoded (3 ms)
 [ RUN      ] LoadNodeTest.BlockCREncoded
-C:/Users/&lt;user&gt;/Documents/portpilot-work/pp/yaml-cpp/test/node/node_test.cpp:672: Failure
+C:/build-host/work/yaml-cpp/test/node/node_test.cpp:672: Failure
 Expected equality of these values:
   x
 ...
@@ -3782,5 +3783,5 @@ Expected equality of these values:
  1 FAILED TEST
   YOU HAVE 8 DISABLED TESTS
 </pre></details>
-<footer>Generated 2026-11-03 08:08 UTC from runs/*/report_*.json and runs/target_*.json.</footer>
+<footer>Generated 2026-11-03 08:26 UTC from runs/*/report_*.json and runs/target_*.json.</footer>
 </main></body></html>

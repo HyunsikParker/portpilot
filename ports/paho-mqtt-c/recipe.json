@@ -14,10 +14,10 @@
    "cflags": [
     "-D_QNX_SOURCE",
     "-include",
-    "C:/Users/<user>/Documents/portpilot-work/pp/portpilot_compat/portpilot_endian.h"
+    "C:/build-host/work/portpilot_compat/portpilot_endian.h"
    ],
    "ldflags": [
-    "-LC:/Users/<user>/Documents/portpilot-work/pp/qnx_stubs/aarch64le"
+    "-LC:/build-host/work/qnx_stubs/aarch64le"
    ],
    "cmake_args": [
     "-DPAHO_BUILD_SAMPLES=ON",
@@ -34,10 +34,10 @@
    "cflags": [
     "-D_QNX_SOURCE",
     "-include",
-    "C:/Users/<user>/Documents/portpilot-work/pp/portpilot_compat/portpilot_endian.h"
+    "C:/build-host/work/portpilot_compat/portpilot_endian.h"
    ],
    "ldflags": [
-    "-LC:/Users/<user>/Documents/portpilot-work/pp/qnx_stubs/x86_64"
+    "-LC:/build-host/work/qnx_stubs/x86_64"
    ],
    "cmake_args": [
     "-DPAHO_BUILD_SAMPLES=ON",

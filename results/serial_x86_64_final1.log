@@ -35,12 +35,12 @@ PPTEST fmt format-impl-test PASS rc=0
 PPTEST fmt ostream-test PASS rc=0
 PPTEST fmt compile-test PASS rc=0
 PPTEST fmt printf-test FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/fmt/test/printf-test.cc:288: Failure
+PPLOG C:/build-host/work/fmt/test/printf-test.cc:288: Failure
 PPLOG Expected equality of these values:
 PPLOG   buffer
 PPLOG     Which is: "0x9.a52p+7"
 PPLOG   test_sprintf("%.3a", 1234.5678)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/fmt/test/printf-test.cc:288: Failure
+PPLOG C:/build-host/work/fmt/test/printf-test.cc:288: Failure
 PPLOG Expected equality of these values:
 PPLOG   buffer
 PPLOG     Which is: "0x9.a52p+7"
@@ -49,12 +49,12 @@ PPLOG [  FAILED  ] printf_test.float_precision (16 ms)
 PPLOG [ RUN      ] printf_test.string_precision
 PPLOG [       OK ] printf_test.string_precision (2 ms)
 PPLOG [ RUN      ] printf_test.ignore_precision_for_non_numeric_arg
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/fmt/test/printf-test.cc:480: Failure
+PPLOG C:/build-host/work/fmt/test/printf-test.cc:480: Failure
 PPLOG Expected equality of these values:
 PPLOG   buffer
 PPLOG     Which is: "-0xc.453333333333p+5"
 PPLOG   format("{:a}", -392.65)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/fmt/test/printf-test.cc:482: Failure
+PPLOG C:/build-host/work/fmt/test/printf-test.cc:482: Failure
 PPLOG Expected equality of these values:
 PPLOG   buffer
 PPLOG     Which is: "-0XC.453333333333P+5"
@@ -131,7 +131,7 @@ PPLOG [       OK ] LoadNodeTest.DereferenceIteratorError (6 ms)
 PPLOG [ RUN      ] LoadNodeTest.BlockCRNLEncoded
 PPLOG [       OK ] LoadNodeTest.BlockCRNLEncoded (3 ms)
 PPLOG [ RUN      ] LoadNodeTest.BlockCREncoded
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/yaml-cpp/test/node/node_test.cpp:672: Failure
+PPLOG C:/build-host/work/yaml-cpp/test/node/node_test.cpp:672: Failure
 PPLOG Expected equality of these values:
 PPLOG   x
 PPLOG ...
@@ -144,23 +144,23 @@ PPLOG
 PPTEST-LIB osqp 3
 PPTEST osqp lin_alg_tester PASS rc=0
 PPTEST osqp osqp_tester FAIL rc=18
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:43: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:43: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:100: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:100: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:100: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:100: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:149: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:149: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:149: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:149: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
@@ -168,7 +168,7 @@ PPLOG ERROR in LDL_factor: Error in KKT matrix LDL factorization when computing 
 PPLOG ERROR in osqp_setup: KKT matrix factorization.
 PPLOG The problem seems to be non-convex.
 PPLOG ERROR in osqp_codegen: KKT matrix factorization.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
 PPLOG   REQUIRE( exitflag == expected_error )
 PPLOG with expansion:
 PPLOG   8 == 0
@@ -179,7 +179,7 @@ PPLOG ERROR in LDL_factor: Error in KKT matrix LDL factorization when computing 
 PPLOG ERROR in osqp_setup: KKT matrix factorization.
 PPLOG The problem seems to be non-convex.
 PPLOG ERROR in osqp_codegen: KKT matrix factorization.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
 PPLOG   REQUIRE( exitflag == expected_error )
 PPLOG with expansion:
 PPLOG   8 == 0
@@ -192,23 +192,23 @@ PPLOG test cases:  38 |  31 passed |  7 failed
 PPLOG assertions: 488 | 470 passed | 18 failed
 PPLOG 
 PPTEST osqp osqp_tester_custom_memory FAIL rc=18
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:43: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:43: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:100: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:100: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:100: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:100: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:149: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:149: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:149: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:149: FAILED:
 PPLOG   REQUIRE( exitflag == OSQP_NO_ERROR )
 PPLOG with expansion:
 PPLOG   8 == 0
@@ -216,7 +216,7 @@ PPLOG ERROR in LDL_factor: Error in KKT matrix LDL factorization when computing 
 PPLOG ERROR in osqp_setup: KKT matrix factorization.
 PPLOG The problem seems to be non-convex.
 PPLOG ERROR in osqp_codegen: KKT matrix factorization.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
 PPLOG   REQUIRE( exitflag == expected_error )
 PPLOG with expansion:
 PPLOG   8 == 0
@@ -227,7 +227,7 @@ PPLOG ERROR in LDL_factor: Error in KKT matrix LDL factorization when computing 
 PPLOG ERROR in osqp_setup: KKT matrix factorization.
 PPLOG The problem seems to be non-convex.
 PPLOG ERROR in osqp_codegen: KKT matrix factorization.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
+PPLOG C:/build-host/work/osqp/tests/codegen/test_codegen.cpp:210: FAILED:
 PPLOG   REQUIRE( exitflag == expected_error )
 PPLOG with expansion:
 PPLOG   8 == 0
@@ -485,44 +485,44 @@ PPTEST mbedtls x509parse-suite PASS rc=0
 PPTEST mbedtls x509write-suite FAIL rc=1
 PPLOG Certificate Request check Server1 SHA1 ............................ FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 SHA224 .......................... FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 SHA256 .......................... FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 SHA384 .......................... FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 SHA512 .......................... FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 MD5 ............................. FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 key_usage ....................... FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check opaque Server1 key_usage ................ PASS
 PPLOG Certificate Request check Server1 key_usage empty ................. FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 ns_cert_type .................... FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 ns_cert_type empty .............. FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1 key_usage + ns_cert_type ........ FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server5 ECDSA, key_usage ................ FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG Certificate Request check Server1, set_extension .................. FAILED
 PPLOG   memcmp(buf, check_buf, pem_len - 1) == 0
-PPLOG   at line 221, C:/Users/<user>/Documents/portpilot-work/pp/mbedtls/tests/suites/test_suite_x509write.function
+PPLOG   at line 221, C:/build-host/work/mbedtls/tests/suites/test_suite_x509write.function
 PPLOG ...
 PPLOG OID from numeric string - OID with maximum subidentifier .......... PASS
 PPLOG OID from numeric string - OID with overflowing subidentifier ...... PASS
@@ -4192,7 +4192,7 @@ PPTEST libarchive bsdcat_test_0 FAIL rc=1
 PPLOG ...
 PPLOG 
 PPLOG   0: test_0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cat/test/test_0.c:24: 0 != stat(testprogfile, &st)
+PPLOG C:/build-host/work/libarchive/cat/test/test_0.c:24: 0 != stat(testprogfile, &st)
 PPLOG    Description: File "/tests/libarchive/build/bin/bsdcat" does not exist?!
 PPLOG       0=0 (0x0, 00)
 PPLOG       stat(testprogfile, &st)=-1 (0xffffffffffffffff, 01777777777777777777777)
@@ -4248,7 +4248,7 @@ PPLOG 1 tests passed, no failures
 PPTEST libarchive bsdcat_test_error PASS rc=0
 PPTEST libarchive bsdcat_test_error_mixed FAIL rc=1
 PPLOG   6: test_error_mixed
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cat/test/test_error_mixed.c:21: Contents don't match
+PPLOG C:/build-host/work/libarchive/cat/test/test_error_mixed.c:21: Contents don't match
 PPLOG   file="test.out"
 PPLOG   File empty, contents should be:
 PPLOG 0000 63 6f 6e 74 65 6e 74 73 20 6f 66 20 74 65 73 74 contents of test
@@ -4369,11 +4369,11 @@ PPLOG   Assertions failed:        0
 PPLOG   Skips reported:           1
 PPLOG 1 tests passed, no failures
 PPTEST libarchive bsdcat_test_help FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cat/test/test_help.c:41: Assertion failed: plen >= 6
+PPLOG C:/build-host/work/libarchive/cat/test/test_help.c:41: Assertion failed: plen >= 6
 PPLOG    Description: Help output should be long enough.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cat/test/test_help.c:43: Assertion failed: in_first_line(p, "bsdcat")
+PPLOG C:/build-host/work/libarchive/cat/test/test_help.c:43: Assertion failed: in_first_line(p, "bsdcat")
 PPLOG    Description: First line of help output should contain 'bsdcat': 
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cat/test/test_help.c:52: r != 0
+PPLOG C:/build-host/work/libarchive/cat/test/test_help.c:52: r != 0
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG   Assertions checked:      15
 PPLOG   Assertions failed:        6
@@ -4401,7 +4401,7 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdcat_test.2026-11-03T07.14.59-000
 PPLOG 
 PPTEST libarchive bsdcat_test_version FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:2508: Assertion failed: r == 0
+PPLOG C:/build-host/work/libarchive/test_utils/test_main.c:2508: Assertion failed: r == 0
 PPLOG    Description: Unable to run either "/tests/libarchive/build/bin/bsdcat" --version or "/tests/libarchive/build/bin/bsdcat" -W version
 PPLOG 
 PPLOG Totals:
@@ -4421,7 +4421,7 @@ PPTEST libarchive bsdtar_test_0 FAIL rc=1
 PPLOG ...
 PPLOG 
 PPLOG   0: test_0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_0.c:24: 0 != stat(testprogfile, &st)
+PPLOG C:/build-host/work/libarchive/tar/test/test_0.c:24: 0 != stat(testprogfile, &st)
 PPLOG    Description: File "/tests/libarchive/build/bin/bsdtar" does not exist?!
 PPLOG       0=0 (0x0, 00)
 PPLOG       stat(testprogfile, &st)=-1 (0xffffffffffffffff, 01777777777777777777777)
@@ -4429,19 +4429,19 @@ PPTEST libarchive bsdtar_test_basic FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf -
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" xf archive 
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:98: File should be empty: unpack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_basic.c:98: File should be empty: unpack.err
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf ---format=ustar
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" xf archive 
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:98: File should be empty: unpack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_basic.c:98: File should be empty: unpack.err
 PPLOG   Assertions checked:      61
 PPLOG   Assertions failed:       34
 PPLOG   Skips reported:           0
@@ -4458,41 +4458,41 @@ PPTEST libarchive bsdtar_test_copy FAIL rc=1
 PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive --uid=0 --gid=0"
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" xf archive
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:301: File should be empty: unpack.err
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:301: File should be empty: unpack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'd' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'f' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'l' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'm' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 's' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:329: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:329: r != 0
 PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive --format=ustar"
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:341: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:341: r != 0
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" xf archive
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:344: File should be empty: unpack.err
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:344: File should be empty: unpack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'd' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'f' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'l' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'm' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 's' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:287: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:287: r != 0
 PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive  --format pax"
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG ...
@@ -4507,8 +4507,8 @@ PPTEST libarchive bsdtar_test_crlf_mtree FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" -cf output.tar -C bar "@/tmp/bsdtar_test.2026-11-03T07.15.20-000/test_crlf_mtree/METALOG.mtree"
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_crlf_mtree.c:56: File should be empty: step1.err
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_crlf_mtree.c:61: Assertion failed: p0 != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_crlf_mtree.c:56: File should be empty: step1.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_crlf_mtree.c:61: Assertion failed: p0 != NULL
 PPLOG 
 PPLOG Totals:
 PPLOG   Tests run:                1
@@ -4528,7 +4528,7 @@ PPTEST libarchive bsdtar_test_empty_mtree FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_empty_mtree.c:25: File should be empty: test1.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_empty_mtree.c:25: File should be empty: test1.err
 PPLOG   Assertions checked:      13
 PPLOG   Assertions failed:        2
 PPLOG   Skips reported:           0
@@ -4676,8 +4676,8 @@ PPLOG   Assertions failed:        0
 PPLOG   Skips reported:           1
 PPLOG 1 tests passed, no failures
 PPTEST libarchive bsdtar_test_edit_pathname_hardlink FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_edit_pathname_hardlink.c:36: Assertion failed: strstr(p, "a.txt") != NULL
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_edit_pathname_hardlink.c:43: Assertion failed: strstr(p, expected_errmsg) != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_edit_pathname_hardlink.c:36: Assertion failed: strstr(p, "a.txt") != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_edit_pathname_hardlink.c:43: Assertion failed: strstr(p, expected_errmsg) != NULL
 PPLOG 
 PPLOG Totals:
 PPLOG   Tests run:                1
@@ -4707,11 +4707,11 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.15.38-000
 PPLOG 
 PPTEST libarchive bsdtar_test_help FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_help.c:41: Assertion failed: plen >= 6
+PPLOG C:/build-host/work/libarchive/tar/test/test_help.c:41: Assertion failed: plen >= 6
 PPLOG    Description: Help output should be long enough.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_help.c:43: Assertion failed: in_first_line(p, "bsdtar")
+PPLOG C:/build-host/work/libarchive/tar/test/test_help.c:43: Assertion failed: in_first_line(p, "bsdtar")
 PPLOG    Description: First line of help output should contain 'bsdtar': 
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_help.c:52: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_help.c:52: r != 0
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG   Assertions checked:      18
 PPLOG   Assertions failed:        8
@@ -4726,7 +4726,7 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.15.39-000
 PPLOG 
 PPTEST libarchive bsdtar_test_leading_slash FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_leading_slash.c:27: Assertion failed: strstr(errfile, expected_errmsg) != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_leading_slash.c:27: Assertion failed: strstr(errfile, expected_errmsg) != NULL
 PPLOG 
 PPLOG Totals:
 PPLOG   Tests run:                1
@@ -4756,8 +4756,8 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.15.42-000
 PPLOG 
 PPTEST libarchive bsdtar_test_missing_file FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_missing_file.c:14: Assertion failed: 0 == systemf("%s -cf archive.tar file1 file2 2>stderr1", testprog)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_missing_file.c:15: File should be empty: stderr1
+PPLOG C:/build-host/work/libarchive/tar/test/test_missing_file.c:14: Assertion failed: 0 == systemf("%s -cf archive.tar file1 file2 2>stderr1", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_missing_file.c:15: File should be empty: stderr1
 PPLOG     File size: 83
 PPLOG     Contents:
 PPLOG   Assertions checked:      17
@@ -4789,8 +4789,8 @@ PPTEST libarchive bsdtar_test_option_C_mtree FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" -cf output.tar -C bar "@/tmp/bsdtar_test.2026-11-03T07.15.46-000/test_option_C_mtree/METALOG.mtree"
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_C_mtree.c:52: File should be empty: step1.err
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_C_mtree.c:57: Assertion failed: p0 != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_C_mtree.c:52: File should be empty: step1.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_C_mtree.c:57: Assertion failed: p0 != NULL
 PPLOG 
 PPLOG Totals:
 PPLOG   Tests run:                1
@@ -4835,7 +4835,7 @@ PPLOG
 PPTEST libarchive bsdtar_test_option_O_upper FAIL rc=1
 PPLOG   Expected but not present: file1
 PPLOG   Expected but not present: file2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_O_upper.c:57: File should be empty: test.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_O_upper.c:57: File should be empty: test.err
 PPLOG     File size: 83
 PPLOG     Contents:
 PPLOG   Expected but not present: file1
@@ -4869,8 +4869,8 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.15.51-000
 PPLOG 
 PPTEST libarchive bsdtar_test_option_T_upper FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:67: Assertion failed: r == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:69: File should be empty: test1.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:67: Assertion failed: r == 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:69: File should be empty: test1.err
 PPLOG     File size: 83
 PPLOG     Contents:
 PPLOG   Assertions checked:      86
@@ -4950,12 +4950,12 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.15.59-000
 PPLOG 
 PPTEST libarchive bsdtar_test_option_b64encode FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b64encode.c:24: Assertion failed: s > 2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b64encode.c:25: p != "begin-base64 644"
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b64encode.c:24: Assertion failed: s > 2
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b64encode.c:25: p != "begin-base64 644"
 PPLOG       size 16 = 16
 PPLOG       Dump of p
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b64encode.c:34: Assertion failed: s > 2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b64encode.c:35: p != "begin-base64 644"
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b64encode.c:34: Assertion failed: s > 2
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b64encode.c:35: p != "begin-base64 644"
 PPLOG       size 16 = 16
 PPLOG       Dump of p
 PPLOG   Assertions checked:      16
@@ -5013,14 +5013,14 @@ PPTEST libarchive bsdtar_test_option_gid_gname FAIL rc=139
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive1 --uid=0 --gid=0 --format=ustar file " ">stdout1.txt 2>stderr1.txt", testprog)=32256 (0x7e00, 077000)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:23: File should be empty: stderr1.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:23: File should be empty: stderr1.txt
 PPLOG ...
 PPLOG 0010 63 68 69 76 65 2f 62 75 69 6c 64 2f 62 69 6e 2f chive/build/bin/
 PPLOG 0020 62 73 64 74 61 72 3a 20 63 61 6e 6e 6f 74 20 65 bsdtar: cannot e
 PPLOG 0030 78 65 63 75 74 65 20 2d 20 4e 6f 20 73 75 63 68 xecute - No such
 PPLOG 0040 20 66 69 6c 65 20 6f 72 20 64 69 72 65 63 74 6f  file or directo
 PPLOG 0050 72 79 0a                                        ry.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.cPPLOG signal 11; core file: bsdtar_test.core
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.cPPLOG signal 11; core file: bsdtar_test.core
 PPLOG slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
 PPLOG slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
 PPLOG slog2: Nov 03 05:48:14.865                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
@@ -5031,14 +5031,14 @@ PPTEST libarchive bsdtar_test_option_group FAIL rc=139
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive1 --uid=0 --gid=0 --format=ustar file " ">stdout1.txt 2>stderr1.txt", testprog)=32256 (0x7e00, 077000)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:24: File should be empty: stderr1.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:24: File should be empty: stderr1.txt
 PPLOG ...
 PPLOG 0010 63 68 69 76 65 2f 62 75 69 6c 64 2f 62 69 6e 2f chive/build/bin/
 PPLOG 0020 62 73 64 74 61 72 3a 20 63 61 6e 6e 6f 74 20 65 bsdtar: cannot e
 PPLOG 0030 78 65 63 75 74 65 20 2d 20 4e 6f 20 73 75 63 68 xecute - No such
 PPLOG 0040 20 66 69 6c 65 20 6f 72 20 64 69 72 65 63 74 6f  file or directo
 PPLOG 0050 72 79 0a                                        ry.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.cPPLOG signal 11; core file: bsdtar_test.core
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.cPPLOG signal 11; core file: bsdtar_test.core
 PPLOG slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
 PPLOG slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
 PPLOG slog2: Nov 03 05:48:14.865                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
@@ -5293,14 +5293,14 @@ PPTEST libarchive bsdtar_test_option_owner FAIL rc=139
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive1 --uid=0 --gid=0 --format=ustar file " ">stdout1.txt 2>stderr1.txt", testprog)=32256 (0x7e00, 077000)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:24: File should be empty: stderr1.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:24: File should be empty: stderr1.txt
 PPLOG ...
 PPLOG 0010 63 68 69 76 65 2f 62 75 69 6c 64 2f 62 69 6e 2f chive/build/bin/
 PPLOG 0020 62 73 64 74 61 72 3a 20 63 61 6e 6e 6f 74 20 65 bsdtar: cannot e
 PPLOG 0030 78 65 63 75 74 65 20 2d 20 4e 6f 20 73 75 63 68 xecute - No such
 PPLOG 0040 20 66 69 6c 65 20 6f 72 20 64 69 72 65 63 74 6f  file or directo
 PPLOG 0050 72 79 0a                                        ry.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.cPPLOG signal 11; core file: bsdtar_test.core
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.cPPLOG signal 11; core file: bsdtar_test.core
 PPLOG slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
 PPLOG slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
 PPLOG slog2: Nov 03 05:48:14.865                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
@@ -5340,8 +5340,8 @@ PPTEST libarchive bsdtar_test_option_r FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf archive.tar f1
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_r.c:31: File should be empty: step1.err
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_r.c:35: Assertion failed: p0 != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_r.c:31: File should be empty: step1.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_r.c:35: Assertion failed: p0 != NULL
 PPLOG 
 PPLOG Totals:
 PPLOG   Tests run:                1
@@ -5400,26 +5400,26 @@ PPTEST libarchive bsdtar_test_option_uid_uname FAIL rc=139
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive1 --uid=0 --gid=0 --format=ustar file " ">stdout1.txt 2>stderr1.txt", testprog)=32256 (0x7e00, 077000)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:23: File should be empty: stderr1.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:23: File should be empty: stderr1.txt
 PPLOG ...
 PPLOG 0010 63 68 69 76 65 2f 62 75 69 6c 64 2f 62 69 6e 2f chive/build/bin/
 PPLOG 0020 62 73 64 74 61 72 3a 20 63 61 6e 6e 6f 74 20 65 bsdtar: cannot e
 PPLOG 0030 78 65 63 75 74 65 20 2d 20 4e 6f 20 73 75 63 68 xecute - No such
 PPLOG 0040 20 66 69 6c 65 20 6f 72 20 64 69 72 65 63 74 6f  file or directo
 PPLOG 0050 72 79 0a                                        ry.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.cPPLOG signal 11; core file: bsdtar_test.core
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.cPPLOG signal 11; core file: bsdtar_test.core
 PPLOG slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  device_attach: iousb0 attach returned 2
 PPLOG slog2: Nov 03 05:47:55.488                 io_sock.163853          main_buffer     24  devs-vtnet_pci.so: loaded
 PPLOG slog2: Nov 03 05:48:14.865                 io_sock.163853          main_buffer     25  io-sock dropped uid:gid(s) to: 33:33
 PPLOG slog2: Nov 03 05:48:15.047                  dhcpcd.221199                 slog*     0  <30>Nov 03 05:48:15 dhcpcd[221199-1]: dhcpcd-10.0.1 starting
 PPLOG slog2: Nov 03 05:48:15.173                  dhcpcd.221199                 slog      0  <27>Nov 03 05:48:15 dhcpcd[225297-1]: no valid interfaces found
 PPTEST libarchive bsdtar_test_option_uuencode FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uuencode.c:24: Assertion failed: s > 2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uuencode.c:25: p != "begin 644"
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uuencode.c:24: Assertion failed: s > 2
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uuencode.c:25: p != "begin 644"
 PPLOG       size 9 = 9
 PPLOG       Dump of p
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uuencode.c:34: Assertion failed: s > 2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uuencode.c:35: p != "begin 644"
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uuencode.c:34: Assertion failed: s > 2
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uuencode.c:35: p != "begin 644"
 PPLOG       size 9 = 9
 PPLOG       Dump of p
 PPLOG   Assertions checked:      16
@@ -5488,7 +5488,7 @@ PPLOG
 PPTEST libarchive bsdtar_test_patterns FAIL rc=1
 PPLOG   Expected but not present: /tmp/foo/bar/
 PPLOG   Expected but not present: /tmp/foo/bar/baz
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_patterns.c:52: File should be empty: tar2a.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_patterns.c:52: File should be empty: tar2a.err
 PPLOG     File size: 83
 PPLOG     Contents:
 PPLOG   Assertions checked:   65635
@@ -5519,7 +5519,7 @@ PPLOG
 PPTEST libarchive bsdtar_test_stdio FAIL rc=1
 PPLOG :100: Assertion failed: strstr(p, tvf_contains) != NULL
 PPLOG    Description: 'tv' mode should write results to stdout
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_stdio.c:105: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_stdio.c:105: r != 0
 PPLOG       r=256 (0x100, 0400)
 PPLOG   Assertions checked:      46
 PPLOG   Assertions failed:       25
@@ -5560,7 +5560,7 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.17.34-000
 PPLOG 
 PPTEST libarchive bsdtar_test_version FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:2508: Assertion failed: r == 0
+PPLOG C:/build-host/work/libarchive/test_utils/test_main.c:2508: Assertion failed: r == 0
 PPLOG    Description: Unable to run either "/tests/libarchive/build/bin/bsdtar" --version or "/tests/libarchive/build/bin/bsdtar" -W version
 PPLOG 
 PPLOG Totals:
@@ -5592,7 +5592,7 @@ PPTEST libarchive bsdcpio_test_0 FAIL rc=1
 PPLOG ...
 PPLOG 
 PPLOG   0: test_0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_0.c:24: 0 != stat(testprogfile, &st)
+PPLOG C:/build-host/work/libarchive/cpio/test/test_0.c:24: 0 != stat(testprogfile, &st)
 PPLOG    Description: File /tests/libarchive/build/bin/bsdcpio does not exist?!
 PPLOG       0=0 (0x0, 00)
 PPLOG       stat(testprogfile, &st)=-1 (0xffffffffffffffff, 01777777777777777777777)
@@ -5600,7 +5600,7 @@ PPTEST libarchive bsdcpio_test_basic FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -o 
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:65: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:65: Contents don't match
 PPLOG    Description: Expected: 2 blocks
 PPLOG , options=
 PPLOG   file="pack.err"
@@ -5608,7 +5608,7 @@ PPLOG 0000_73_68_3a_20_2f_74_65_73_74_73_2f_6c_69_62_61_72_sh: /tests/libar
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i 
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:77: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:77: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i  in dir copy
 PPLOG   file="unpack.err"
 PPLOG 0000_73_68_3a_20_2f_74_65_73_74_73_2f_6c_69_62_61_72_sh: /tests/libar
@@ -5616,7 +5616,7 @@ PPLOG 0010_63_68_69_76_65_2f_62_75_69_6c_64_2f_62_69_6e_2f_chive/build/bin/
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -o --format=odc
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:65: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:65: Contents don't match
 PPLOG    Description: Expected: 2 blocks
 PPLOG , options=--format=odc
 PPLOG   file="pack.err"
@@ -5624,7 +5624,7 @@ PPLOG 0000_73_68_3a_20_2f_74_65_73_74_73_2f_6c_69_62_61_72_sh: /tests/libar
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i 
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:77: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:77: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i  in dir copy_odc
 PPLOG   file="unpack.err"
 PPLOG 0000_73_68_3a_20_2f_74_65_73_74_73_2f_6c_69_62_61_72_sh: /tests/libar
@@ -5632,7 +5632,7 @@ PPLOG 0010_63_68_69_76_65_2f_62_75_69_6c_64_2f_62_69_6e_2f_chive/build/bin/
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -o -H newc
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:65: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:65: Contents don't match
 PPLOG    Description: Expected: 2 blocks
 PPLOG , options=-H newc
 PPLOG   file="pack.err"
@@ -5645,9 +5645,9 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.17.39-000
 PPLOG 
 PPTEST libarchive bsdcpio_test_cmdline FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_cmdline.c:55: Assertion failed: 0 == systemf("%s -i <empty >9.out 2>9.err", testprog)
+PPLOG C:/build-host/work/libarchive/cpio/test/test_cmdline.c:55: Assertion failed: 0 == systemf("%s -i <empty >9.out 2>9.err", testprog)
 PPLOG    Description: -i with empty input should succeed
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_cmdline.c:59: Assertion failed: 0 == systemf("%s -o <empty >10.out 2>10.err", testprog)
+PPLOG C:/build-host/work/libarchive/cpio/test/test_cmdline.c:59: Assertion failed: 0 == systemf("%s -o <empty >10.out 2>10.err", testprog)
 PPLOG    Description: -o with empty input should succeed
 PPLOG 
 PPLOG Totals:
@@ -5677,8 +5677,8 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.17.41-000
 PPLOG 
 PPTEST libarchive bsdcpio_test_extract_cpio_absolute_paths FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_extract_cpio_absolute_paths.c:51: Assertion failed: r == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_extract_cpio_absolute_paths.c:52: File should exist: /tmp/bsdcpio_test.2026-11-03T07.17.43-000/test_extract_cpio_absolute_paths/cpio-noabs
+PPLOG C:/build-host/work/libarchive/cpio/test/test_extract_cpio_absolute_paths.c:51: Assertion failed: r == 0
+PPLOG C:/build-host/work/libarchive/cpio/test/test_extract_cpio_absolute_paths.c:52: File should exist: /tmp/bsdcpio_test.2026-11-03T07.17.43-000/test_extract_cpio_absolute_paths/cpio-noabs
 PPLOG 
 PPLOG Totals:
 PPLOG   Assertions checked:      18
@@ -5831,7 +5831,7 @@ PPTEST libarchive bsdcpio_test_gcpio_compat FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i --no-preserve-owner < test_gcpio_compat_ref.bin
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_gcpio_compat.c:32: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_gcpio_compat.c:32: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i --no-preserve-owner < test_gcpio_compat_ref.bin
 PPLOG   file="unpack.err"
 PPLOG 0000_73_68_3a_20_2f_74_65_73_74_73_2f_6c_69_62_61_72_sh: /tests/libar
@@ -5839,7 +5839,7 @@ PPLOG 0010_63_68_69_76_65_2f_62_75_69_6c_64_2f_62_69_6e_2f_chive/build/bin/
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i --no-preserve-owner < test_gcpio_compat_ref.crc
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_gcpio_compat.c:32: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_gcpio_compat.c:32: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i --no-preserve-owner < test_gcpio_compat_ref.crc
 PPLOG   file="unpack.err"
 PPLOG 0000_73_68_3a_20_2f_74_65_73_74_73_2f_6c_69_62_61_72_sh: /tests/libar
@@ -5847,7 +5847,7 @@ PPLOG 0010_63_68_69_76_65_2f_62_75_69_6c_64_2f_62_69_6e_2f_chive/build/bin/
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i --no-preserve-owner < test_gcpio_compat_ref.newc
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_gcpio_compat.c:32: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_gcpio_compat.c:32: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i --no-preserve-owner < test_gcpio_compat_ref.newc
 PPLOG   file="unpack.err"
 PPLOG 0000_73_68_3a_20_2f_74_65_73_74_73_2f_6c_69_62_61_72_sh: /tests/libar
@@ -5855,7 +5855,7 @@ PPLOG 0010_63_68_69_76_65_2f_62_75_69_6c_64_2f_62_69_6e_2f_chive/build/bin/
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i --no-preserve-owner < test_gcpio_compat_ref.ustar
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_gcpio_compat.c:32: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_gcpio_compat.c:32: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i --no-preserve-owner < test_gcpio_compat_ref.ustar
 PPLOG   file="unpack.err"
 PPLOG 0000_73_68_3a_20_2f_74_65_73_74_73_2f_6c_69_62_61_72_sh: /tests/libar
@@ -5941,19 +5941,19 @@ PPTEST libarchive bsdcpio_test_option_L_upper FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -o 
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_L_upper.c:59: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_L_upper.c:59: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_L_upper.c:67: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_L_upper.c:67: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -oL
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_L_upper.c:75: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_L_upper.c:75: Contents don't match
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -i < archive-L.out
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_L_upper.c:83: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_L_upper.c:83: Contents don't match
 PPLOG   Assertions checked:      39
 PPLOG   Assertions failed:       18
 PPLOG   Skips reported:           0
@@ -5980,13 +5980,13 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.18.07-000
 PPLOG 
 PPTEST libarchive bsdcpio_test_option_a FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_a.c:107: Assertion failed: st.st_atime != files[1].atime_sec
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_a.c:107: Assertion failed: st.st_atime != files[1].atime_sec
 PPLOG    Description: Copying file without -a should have changed atime.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_a.c:111: r != 0
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_a.c:111: r != 0
 PPLOG       r=32256 (0x7e00, 077000)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_a.c:115: Assertion failed: st.st_atime != files[2].atime_sec
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_a.c:115: Assertion failed: st.st_atime != files[2].atime_sec
 PPLOG    Description: Archiving file without -a should have changed atime.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_a.c:126: r != 0
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_a.c:126: r != 0
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG   Assertions checked:      52
 PPLOG   Assertions failed:       10
@@ -6001,12 +6001,12 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.18.09-000
 PPLOG 
 PPTEST libarchive bsdcpio_test_option_b64encode FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_b64encode.c:24: Assertion failed: s > 2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_b64encode.c:25: p != "begin-base64 644"
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_b64encode.c:24: Assertion failed: s > 2
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_b64encode.c:25: p != "begin-base64 644"
 PPLOG       size 16 = 16
 PPLOG       Dump of p
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_b64encode.c:34: Assertion failed: s > 2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_b64encode.c:35: p != "begin-base64 644"
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_b64encode.c:34: Assertion failed: s > 2
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_b64encode.c:35: p != "begin-base64 644"
 PPLOG       size 16 = 16
 PPLOG       Dump of p
 PPLOG   Assertions checked:      16
@@ -6073,11 +6073,11 @@ PPLOG   Assertions failed:        0
 PPLOG   Skips reported:           1
 PPLOG 1 tests passed, no failures
 PPTEST libarchive bsdcpio_test_option_help FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_help.c:41: Assertion failed: plen >= 7
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_help.c:41: Assertion failed: plen >= 7
 PPLOG    Description: Help output should be long enough.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_help.c:43: Assertion failed: in_first_line(p, "bsdcpio")
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_help.c:43: Assertion failed: in_first_line(p, "bsdcpio")
 PPLOG    Description: First line of help output should contain string 'bsdcpio'
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_help.c:52: r != 0
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_help.c:52: r != 0
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG   Assertions checked:      18
 PPLOG   Assertions failed:        8
@@ -6220,12 +6220,12 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.18.30-000
 PPLOG 
 PPTEST libarchive bsdcpio_test_option_uuencode FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_uuencode.c:24: Assertion failed: s > 2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_uuencode.c:25: p != "begin 644"
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_uuencode.c:24: Assertion failed: s > 2
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_uuencode.c:25: p != "begin 644"
 PPLOG       size 9 = 9
 PPLOG       Dump of p
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_uuencode.c:34: Assertion failed: s > 2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_option_uuencode.c:35: p != "begin 644"
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_uuencode.c:34: Assertion failed: s > 2
+PPLOG C:/build-host/work/libarchive/cpio/test/test_option_uuencode.c:35: p != "begin 644"
 PPLOG       size 9 = 9
 PPLOG       Dump of p
 PPLOG   Assertions checked:      16
@@ -6241,7 +6241,7 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdcpio_test.2026-11-03T07.18.31-000
 PPLOG 
 PPTEST libarchive bsdcpio_test_option_version FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:2508: Assertion failed: r == 0
+PPLOG C:/build-host/work/libarchive/test_utils/test_main.c:2508: Assertion failed: r == 0
 PPLOG    Description: Unable to run either "/tests/libarchive/build/bin/bsdcpio" --version or "/tests/libarchive/build/bin/bsdcpio" -W version
 PPLOG 
 PPLOG Totals:
@@ -6313,7 +6313,7 @@ PPTEST libarchive bsdcpio_test_passthrough_dotdot FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -pd ..
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_passthrough_dotdot.c:50: Contents don't match
+PPLOG C:/build-host/work/libarchive/cpio/test/test_passthrough_dotdot.c:50: Contents don't match
 PPLOG   Assertions checked:      21
 PPLOG   Assertions failed:        5
 PPLOG   Skips reported:           0
@@ -6330,7 +6330,7 @@ PPTEST libarchive bsdcpio_test_passthrough_reverse FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdcpio" -pd out
 PPLOG       r=32256 (0x7e00, 077000)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_passthrough_reverse.c:51: chdir("out")
+PPLOG C:/build-host/work/libarchive/cpio/test/test_passthrough_reverse.c:51: chdir("out")
 PPLOG   Assertions checked:      21
 PPLOG   Assertions failed:        4
 PPLOG   Skips reported:           0
@@ -6347,7 +6347,7 @@ PPTEST libarchive bsdunzip_test_0 FAIL rc=1
 PPLOG ...
 PPLOG 
 PPLOG   0: test_0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/unzip/test/test_0.c:24: 0 != stat(testprogfile, &st)
+PPLOG C:/build-host/work/libarchive/unzip/test/test_0.c:24: 0 != stat(testprogfile, &st)
 PPLOG    Description: File "/tests/libarchive/build/bin/bsdunzip" does not exist?!
 PPLOG       0=0 (0x0, 00)
 PPLOG       stat(testprogfile, &st)=-1 (0xffffffffffffffff, 01777777777777777777777)
@@ -6626,7 +6626,7 @@ PPLOG
 PPLOG Details for failing tests: /tmp/bsdunzip_test.2026-11-03T07.19.11-000
 PPLOG 
 PPTEST libarchive bsdunzip_test_version FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/test_utils/test_main.c:2508: Assertion failed: r == 0
+PPLOG C:/build-host/work/libarchive/test_utils/test_main.c:2508: Assertion failed: r == 0
 PPLOG    Description: Unable to run either "/tests/libarchive/build/bin/bsdunzip" --version or "/tests/libarchive/build/bin/bsdunzip" -W version
 PPLOG 
 PPLOG Totals:
@@ -6751,7 +6751,7 @@ PPLOG 2 Tests 1 Failures 0 Ignored
 PPLOG FAIL
 PPLOG ...
 PPLOG W: Only able to create 995 sockets on this box
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_system.cpp:69:test_max_sockets:FAIL: I: Tune your system to increase maximum allowed file handles\nI: Run 'ulimit -n 1200' in bash\n
+PPLOG C:/build-host/work/libzmq/tests/test_system.cpp:69:test_max_sockets:FAIL: I: Tune your system to increase maximum allowed file handles\nI: Run 'ulimit -n 1200' in bash\n
 PPLOG 
 PPLOG -----------------------
 PPLOG 2 Tests 1 Failures 0 Ignored 
@@ -6763,18 +6763,18 @@ PPTEST libzmq test_reqrep_tcp PASS rc=0
 PPTEST libzmq test_hwm PASS rc=0
 PPTEST libzmq test_hwm_pubsub FAIL rc=1
 PPLOG WARNING: Forced closure of 2 sockets, this is an implementation error unless the test case failed
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:272:test_defaults_large_tcp:PASS
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:272:test_defaults_small_tcp:PASS
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:272:test_blocking_tcp:PASS
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:132:test_blocking_ipc:FAIL: Expected 0 to be greater than 0. sent = 6000, received = 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:272:test_defaults_large_tcp:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:272:test_defaults_small_tcp:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:272:test_blocking_tcp:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:132:test_blocking_ipc:FAIL: Expected 0 to be greater than 0. sent = 6000, received = 0
+PPLOG C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
 PPLOG 
 PPLOG -----------------------
 PPLOG 10 Tests 1 Failures 0 Ignored 
 PPLOG FAIL
 PPLOG ...
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:132:test_blocking_ipc:FAIL: Expected 0 to be greater than 0. sent = 6000, received = 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:132:test_blocking_ipc:FAIL: Expected 0 to be greater than 0. sent = 6000, received = 0
+PPLOG C:/build-host/work/libzmq/tests/test_hwm_pubsub.cpp:278:test_reset_hwm:PASS
 PPLOG 
 PPLOG -----------------------
 PPLOG 10 Tests 1 Failures 0 Ignored 
@@ -6848,14 +6848,14 @@ PPLOG WARNING: Forced closure of 4 sockets, this is an implementation error unle
 PPTEST libzmq test_socket_null PASS rc=0
 PPTEST libzmq test_reconnect_ivl FAIL rc=1
 PPLOG WARNING: Forced closure of 2 sockets, this is an implementation error unless the test case failed
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:19:test_reconnect_ivl_ipc:FAIL: zmq_unbind (sb_, my_endpoint_) failed, errno = 2 (No such file or directory)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:19:test_reconnect_ivl_ipc:FAIL: zmq_unbind (sb_, my_endpoint_) failed, errno = 2 (No such file or directory)
+PPLOG C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
 PPLOG 3 Tests 1 Failures 0 Ignored 
 PPLOG FAIL
 PPLOG ...
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:80:test_reconnect_ivl_tcp_ipv4:PASS
+PPLOG C:/build-host/work/libzmq/tests/test_reconnect_ivl.cpp:81:test_reconnect_ivl_tcp_ipv6:PASS
 PPLOG 
 PPLOG -----------------------
 PPLOG 3 Tests 1 Failures 0 Ignored 

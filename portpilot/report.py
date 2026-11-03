@@ -59,9 +59,26 @@ meter { width: 64px; height: 8px; vertical-align: middle; margin-right: 6px; }
 USER_DIR = re.compile(r"([A-Za-z]:[/\\])Users[/\\][^/\\\s\"']+", re.I)
 
 
+def _work_dir_pattern():
+    try:
+        from .host import from_env
+        work = from_env().work
+    except Exception:
+        return None
+    parts = [re.escape(x) for x in re.split(r"[/\\]", work) if x]
+    return re.compile(r"[/\\]".join(parts), re.I) if parts else None
+
+
+WORK_DIR = _work_dir_pattern()
+
+
 def scrub(s):
-    """Hide the build host's user name in paths copied from logs (C:/Users/<name>/... -> C:/Users/<user>/...)."""
-    return USER_DIR.sub(lambda m: m.group(1) + "Users/<user>", str(s))
+    """Hide build-host details in paths copied from logs: the work directory becomes C:/build-host/work and any other
+    C:/Users/<name>/ becomes C:/Users/<user>/."""
+    s = str(s)
+    if WORK_DIR:
+        s = WORK_DIR.sub("C:/build-host/work", s)
+    return USER_DIR.sub(lambda m: m.group(1) + "Users/<user>", s)
 
 
 def esc(s):

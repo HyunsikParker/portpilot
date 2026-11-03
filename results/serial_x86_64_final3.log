@@ -92,22 +92,22 @@ PPTEST libarchive bsdtar_test_basic FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf -
 PPLOG       r=256 (0x100, 0400)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
 PPLOG 00b0 79 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 y.bsdtar: Error 
 PPLOG 00c0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
 PPLOG 00d0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
 PPLOG 00e0 73 0a                                           s.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:43: File should exist: file
+PPLOG C:/build-host/work/libarchive/tar/test/test_basic.c:43: File should exist: file
 PPLOG    Description: copy
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf ---format=ustar
 PPLOG       r=256 (0x100, 0400)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_basic.c:87: File should be empty: pack.err
 PPLOG 00b0 79 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 y.bsdtar: Error 
 PPLOG 00c0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
 PPLOG 00d0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
 PPLOG 00e0 73 0a                                           s.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_basic.c:43: File should exist: file
+PPLOG C:/build-host/work/libarchive/tar/test/test_basic.c:43: File should exist: file
 PPLOG    Description: copy_ustar
 PPLOG   Assertions checked:      61
 PPLOG   Assertions failed:       30
@@ -125,43 +125,43 @@ PPTEST libarchive bsdtar_test_copy FAIL rc=1
 PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive --uid=0 --gid=0"
 PPLOG       r=256 (0x100, 0400)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
 PPLOG 00d0 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 00e0 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 00f0 20 65 72 72 6f 72 73 0a                          errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:189: File should exist: f/1
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:189: File should exist: f/1
 PPLOG    Description: Verifying default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:190: File should exist: f/1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:190: File should exist: f/1
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'd' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'f' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'l' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'm' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 's' for testing default
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:329: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:329: r != 0
 PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive --format=ustar"
 PPLOG       r=256 (0x100, 0400)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:189: File should exist: f/1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:189: File should exist: f/1
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'd' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'f' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'l' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 'm' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:237: Assertion failed: d != NULL
 PPLOG    Description: Unable to open dir 's' for testing ustar
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:287: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:287: r != 0
 PPLOG    Description: Error invoking ""/tests/libarchive/build/bin/bsdtar" cf archive  --format pax"
 PPLOG       r=256 (0x100, 0400)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_copy.c:290: File should be empty: pack.err
 PPLOG ...
 PPLOG 
 PPLOG Failing tests:
@@ -246,7 +246,7 @@ PPLOG bsdtar: file2: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  18: test_format_newc
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_format_newc.c:17: 0 != systemf("%s -cf test1.cpio --format newc file1 file2 file3", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_format_newc.c:17: 0 != systemf("%s -cf test1.cpio --format newc file1 file2 file3", testprog)
 PPLOG   Assertions checked:      35
 PPLOG   Assertions failed:        7
 PPLOG   Skips reported:           0
@@ -263,8 +263,8 @@ PPTEST libarchive bsdtar_test_help PASS rc=0
 PPTEST libarchive bsdtar_test_leading_slash PASS rc=0
 PPTEST libarchive bsdtar_test_list_item PASS rc=0
 PPTEST libarchive bsdtar_test_missing_file FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_missing_file.c:14: Assertion failed: 0 == systemf("%s -cf archive.tar file1 file2 2>stderr1", testprog)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_missing_file.c:15: File should be empty: stderr1
+PPLOG C:/build-host/work/libarchive/tar/test/test_missing_file.c:14: Assertion failed: 0 == systemf("%s -cf archive.tar file1 file2 2>stderr1", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_missing_file.c:15: File should be empty: stderr1
 PPLOG     File size: 136
 PPLOG     Contents:
 PPLOG 0060 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
@@ -292,12 +292,12 @@ PPLOG bsdtar: file2: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  23: test_option_C_upper
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_C_upper.c:25: 0 != systemf("%s -cf archive.tar -C ../d1 file1 -C ../d2 file2", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_C_upper.c:25: 0 != systemf("%s -cf archive.tar -C ../d1 file1 -C ../d2 file2", testprog)
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG bsdtar: file1: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG : file2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_C_upper.c:70: 0 != systemf("%s -cf archive.tar -C %s/d1 file1", testprog, testworkdir)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_C_upper.c:70: 0 != systemf("%s -cf archive.tar -C %s/d1 file1", testprog, testworkdir)
 PPLOG       0=0 (0x0, 00)
 PPLOG   Assertions checked:      90
 PPLOG   Assertions failed:       10
@@ -342,10 +342,10 @@ PPTEST libarchive bsdtar_test_option_O_upper FAIL rc=1
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  27: test_option_O_upper
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_O_upper.c:16: 0 != systemf("%s -cf archive.tar file1 file2", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_O_upper.c:16: 0 != systemf("%s -cf archive.tar file1 file2", testprog)
 PPLOG   Expected but not present: file1
 PPLOG   Expected but not present: file2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_O_upper.c:66: File doesn't match: test.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_O_upper.c:66: File doesn't match: test.err
 PPLOG   Expected but not present: file1
 PPLOG   Expected but not present: file2
 PPLOG 
@@ -365,34 +365,34 @@ PPLOG Details for failing tests: /tmp/bsdtar_test.2026-11-03T07.44.32-000
 PPLOG 
 PPTEST libarchive bsdtar_test_extract_tar_absolute_paths PASS rc=0
 PPTEST libarchive bsdtar_test_option_T_upper FAIL rc=1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:67: Assertion failed: r == 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:69: File should be empty: test1.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:67: Assertion failed: r == 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:69: File should be empty: test1.err
 PPLOG     File size: 226
 PPLOG     Contents:
 PPLOG 00b0 79 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 y.bsdtar: Error 
 PPLOG 00c0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
 PPLOG 00d0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
 PPLOG 00e0 73 0a                                           s.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:73: 0 != systemf("%s -x -f test1.tar -T filelist -C test1" " > test1b.out 2> test1b.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:73: 0 != systemf("%s -x -f test1.tar -T filelist -C test1" " > test1b.out 2> test1b.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG 0090 65 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 e.bsdtar: Error 
 PPLOG 00a0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
 PPLOG 00b0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
 PPLOG 00c0 73 0a                                           s.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:79: File should exist: test1/f
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:80: File should exist: test1/d1/f1
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:79: File should exist: test1/f
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:80: File should exist: test1/d1/f1
 PPLOG 0090 74 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 tar: Error exit 
 PPLOG 00a0 64 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 delayed from pre
 PPLOG 00b0 76 69 6f 75 73 20 65 72 72 6f 72 73 0a          vious errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:103: File should exist: test3/f
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:104: File should exist: test3/d1/f1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:106: File should exist: test3/d1/d2/f3
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:103: File should exist: test3/f
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:104: File should exist: test3/d1/f1
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:106: File should exist: test3/d1/d2/f3
 PPLOG 0090 65 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 e.bsdtar: Error 
 PPLOG 00a0 65 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f exit delayed fro
 PPLOG 00b0 6d 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 m previous error
 PPLOG 00c0 73 0a                                           s.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:121: File should exist: test2/f
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_T_upper.c:122: File should exist: test2/d1/f1
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:121: File should exist: test2/f
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_T_upper.c:122: File should exist: test2/d1/f1
 PPLOG   Assertions checked:      86
 PPLOG   Assertions failed:       23
 PPLOG   Skips reported:           0
@@ -409,23 +409,23 @@ PPTEST libarchive bsdtar_test_option_U_upper FAIL rc=1
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  30: test_option_U_upper
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_U_upper.c:16: 0 != systemf("%s -cf archive.tar file1 d1/file1", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_U_upper.c:16: 0 != systemf("%s -cf archive.tar file1 d1/file1", testprog)
 PPLOG 0030 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 65 rror exit delaye
 PPLOG 0040 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 20 d from previous 
 PPLOG 0050 65 72 72 6f 72 73 0a                            errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_U_upper.c:103: 0 != systemf("%s -xPUf ../archive.tar d1/file1 >test.out 2>test.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_U_upper.c:103: 0 != systemf("%s -xPUf ../archive.tar d1/file1 >test.out 2>test.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s -xPUf ../archive.tar d1/file1 >test.out 2>test.err", testprog)=256 (0x100, 0400)
 PPLOG 0030 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 65 rror exit delaye
 PPLOG 0040 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 20 d from previous 
 PPLOG 0050 65 72 72 6f 72 73 0a                            errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_U_upper.c:117: 0 != systemf("%s -xf ../archive.tar d1/file1 >test.out 2>test.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_U_upper.c:117: 0 != systemf("%s -xf ../archive.tar d1/file1 >test.out 2>test.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s -xf ../archive.tar d1/file1 >test.out 2>test.err", testprog)=256 (0x100, 0400)
 PPLOG 0030 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 65 rror exit delaye
 PPLOG 0040 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 20 d from previous 
 PPLOG 0050 65 72 72 6f 72 73 0a                            errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_U_upper.c:132: 0 != systemf("%s -xPUf ../archive.tar d1/file1 >test.out 2>test.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_U_upper.c:132: 0 != systemf("%s -xPUf ../archive.tar d1/file1 >test.out 2>test.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s -xPUf ../archive.tar d1/file1 >test.out 2>test.err", testprog)=256 (0x100, 0400)
 PPLOG 0030 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 65 rror exit delaye
@@ -450,13 +450,13 @@ PPTEST libarchive bsdtar_test_option_X_upper FAIL rc=1
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  31: test_option_X_upper
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_X_upper.c:20: 0 != systemf("%s -cf archive.tar file1 file2 file3a file4a", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_X_upper.c:20: 0 != systemf("%s -cf archive.tar file1 file2 file3a file4a", testprog)
 PPLOG 0050 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61  Error exit dela
 PPLOG 0060 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 yed from previou
 PPLOG 0070 73 20 65 72 72 6f 72 73 0a                      s errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_X_upper.c:120: File should exist: file2
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_X_upper.c:133: File should exist: file1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_X_upper.c:134: File should exist: file2
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_X_upper.c:120: File should exist: file2
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_X_upper.c:133: File should exist: file1
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_X_upper.c:134: File should exist: file2
 PPLOG   Assertions checked:     119
 PPLOG   Assertions failed:       23
 PPLOG   Skips reported:           0
@@ -473,37 +473,37 @@ PPTEST libarchive bsdtar_test_option_a FAIL rc=1
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_a.c:30: 0 != systemf("%s -acf test2.taZ f 2>test2.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_a.c:30: 0 != systemf("%s -acf test2.taZ f 2>test2.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s -acf test2.taZ f 2>test2.err", testprog)=256 (0x100, 0400)
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_a.c:41: 0 != systemf("%s -acf test3.tar.Z.uu f 2>test3.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_a.c:41: 0 != systemf("%s -acf test3.tar.Z.uu f 2>test3.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s -acf test3.tar.Z.uu f 2>test3.err", testprog)=256 (0x100, 0400)
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_a.c:52: 0 != systemf("%s -acf test4.zip f 2>test4.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_a.c:52: 0 != systemf("%s -acf test4.zip f 2>test4.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s -acf test4.zip f 2>test4.err", testprog)=256 (0x100, 0400)
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_a.c:59: p != "\x50\x4b\x03\x04"
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_a.c:59: p != "\x50\x4b\x03\x04"
 PPLOG    Description: The archive should be zipped
 PPLOG       size 4 = 4
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_a.c:76: 0 != systemf("%s -acf test6.xxx --uuencode f 2>test6.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_a.c:76: 0 != systemf("%s -acf test6.xxx --uuencode f 2>test6.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s -acf test6.xxx --uuencode f 2>test6.err", testprog)=256 (0x100, 0400)
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_a.c:88: 0 != systemf("%s --auto-compress -cf test7.tar.Z f 2>test7.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_a.c:88: 0 != systemf("%s --auto-compress -cf test7.tar.Z f 2>test7.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s --auto-compress -cf test7.tar.Z f 2>test7.err", testprog)=256 (0x100, 0400)
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
@@ -533,31 +533,31 @@ PPTEST libarchive bsdtar_test_option_b FAIL rc=1
 PPLOG 0030 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 ar: Error exit d
 PPLOG 0040 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 elayed from prev
 PPLOG 0050 69 6f 75 73 20 65 72 72 6f 72 73 0a             ious errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b.c:42: File should be empty: test2.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b.c:42: File should be empty: test2.err
 PPLOG     File size: 92
 PPLOG     Contents:
 PPLOG 0030 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 ar: Error exit d
 PPLOG 0040 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 elayed from prev
 PPLOG 0050 69 6f 75 73 20 65 72 72 6f 72 73 0a             ious errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b.c:46: File should be empty: test3.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b.c:46: File should be empty: test3.err
 PPLOG     File size: 92
 PPLOG     Contents:
 PPLOG 0030 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 ar: Error exit d
 PPLOG 0040 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 elayed from prev
 PPLOG 0050 69 6f 75 73 20 65 72 72 6f 72 73 0a             ious errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b.c:50: File should be empty: test4.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b.c:50: File should be empty: test4.err
 PPLOG     File size: 92
 PPLOG     Contents:
 PPLOG 0030 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 ar: Error exit d
 PPLOG 0040 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 elayed from prev
 PPLOG 0050 69 6f 75 73 20 65 72 72 6f 72 73 0a             ious errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b.c:53: File archive5.tar has size 1024, expected 2048
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b.c:54: File should be empty: test5.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b.c:53: File archive5.tar has size 1024, expected 2048
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b.c:54: File should be empty: test5.err
 PPLOG     File size: 92
 PPLOG 0030 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 ar: Error exit d
 PPLOG 0040 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 elayed from prev
 PPLOG 0050 69 6f 75 73 20 65 72 72 6f 72 73 0a             ious errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_b.c:58: File should be empty: test6.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_b.c:58: File should be empty: test6.err
 PPLOG     File size: 92
 PPLOG     Contents:
 PPLOG 0030 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 ar: Error exit d
@@ -594,11 +594,11 @@ PPTEST libarchive bsdtar_test_option_exclude FAIL rc=1
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  36: test_option_exclude
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_exclude.c:15: 0 != systemf("%s -cf archive.tar file1 file2", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_exclude.c:15: 0 != systemf("%s -cf archive.tar file1 file2", testprog)
 PPLOG 0050 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0060 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0070 20 65 72 72 6f 72 73 0a                          errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_exclude.c:80: 0 != systemf("%s -xf ../archive.tar --exclude file1 file1 >test.out 2>test.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_exclude.c:80: 0 != systemf("%s -xf ../archive.tar --exclude file1 file1 >test.out 2>test.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s -xf ../archive.tar --exclude file1 file1 >test.out 2>test.err", testprog)=256 (0x100, 0400)
 PPLOG   Assertions checked:      98
@@ -619,7 +619,7 @@ PPLOG bsdtar: .: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  37: test_option_exclude_vcs
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_exclude_vcs.c:49: 0 != systemf("%s -c -C in -f included.tar .", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_exclude_vcs.c:49: 0 != systemf("%s -c -C in -f included.tar .", testprog)
 PPLOG   Assertions checked:     232
 PPLOG   Assertions failed:       41
 PPLOG   Skips reported:           0
@@ -648,39 +648,39 @@ PPTEST libarchive bsdtar_test_option_gid_gname FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive1 --uid=0 --gid=0 --format=ustar file " ">stdout1.txt 2>stderr1.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:23: File should be empty: stderr1.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:23: File should be empty: stderr1.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:28: 0 != systemf("%s cf archive2 --uid=17 --gid=17 " "--gname=foofoofoo --format=ustar file >stdout2.txt " "2>stderr2.txt", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:28: 0 != systemf("%s cf archive2 --uid=17 --gid=17 " "--gname=foofoofoo --format=ustar file >stdout2.txt " "2>stderr2.txt", testprog)
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive2 --uid=17 --gid=17 " "--gname=foofoofoo --format=ustar file >stdout2.txt " "2>stderr2.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:33: File should be empty: stderr2.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:33: File should be empty: stderr2.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:36: data + 116 != "000021  "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:36: data + 116 != "000021  "
 PPLOG       size 8 = 8
 PPLOG       Dump of data + 116
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive4 --uid=0 --gid=0 --gname=foofoofoo " "--format=ustar file >stdout4.txt 2>stderr4.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:46: File should be empty: stderr4.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:46: File should be empty: stderr4.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:50: data + 297 != "foofoofoo "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:50: data + 297 != "foofoofoo "
 PPLOG       size 10 = 10
 PPLOG       Dump of data + 297
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive3 --uid=17 --gid=17 --gname= " "--format=ustar file >stdout3.txt 2>stderr3.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:60: File should be empty: stderr3.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:60: File should be empty: stderr3.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_gid_gname.c:62: data + 116 != "000021  "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_gid_gname.c:62: data + 116 != "000021  "
 PPLOG       size 8 = 8
 PPLOG       Dump of data + 116
 PPLOG   Assertions checked:      34
@@ -696,39 +696,39 @@ PPTEST libarchive bsdtar_test_option_group FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive1 --uid=0 --gid=0 --format=ustar file " ">stdout1.txt 2>stderr1.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:24: File should be empty: stderr1.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:24: File should be empty: stderr1.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:29: 0 != systemf("%s cf archive2 --uid=0 --gid=0 --group=17 --format=ustar " "file >stdout2.txt 2>stderr2.txt", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:29: 0 != systemf("%s cf archive2 --uid=0 --gid=0 --group=17 --format=ustar " "file >stdout2.txt 2>stderr2.txt", testprog)
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive2 --uid=0 --gid=0 --group=17 --format=ustar " "file >stdout2.txt 2>stderr2.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:33: File should be empty: stderr2.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:33: File should be empty: stderr2.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:35: data + 116 != "000021  "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:35: data + 116 != "000021  "
 PPLOG       size 8 = 8
 PPLOG       Dump of data + 116
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive3 --uid=0 --gid=0 --group=foofoofoo " "--format=ustar file >stdout3.txt 2>stderr3.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:46: File should be empty: stderr3.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:46: File should be empty: stderr3.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:50: data + 297 != "foofoofoo "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:50: data + 297 != "foofoofoo "
 PPLOG       size 10 = 10
 PPLOG       Dump of data + 297
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive4 --uid=0 --gid=0 --group=foofoofoo:17 " "--format=ustar file >stdout4.txt 2>stderr4.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:59: File should be empty: stderr4.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:59: File should be empty: stderr4.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_group.c:61: data + 116 != "000021  "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_group.c:61: data + 116 != "000021  "
 PPLOG       size 8 = 8
 PPLOG       Dump of data + 116
 PPLOG   Assertions checked:      29
@@ -758,7 +758,7 @@ PPLOG bsdtar: b: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  42: test_option_ignore_zeros_mode_t
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
 PPLOG 0050 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 65 78 bsdtar: Error ex
 PPLOG 0060 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f 6d 20 it delayed from 
 PPLOG 0070 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 73 0a previous errors.
@@ -783,7 +783,7 @@ PPLOG bsdtar: b: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  43: test_option_ignore_zeros_mode_x
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
 PPLOG   Assertions checked:      30
 PPLOG   Assertions failed:        2
 PPLOG   Skips reported:           0
@@ -802,7 +802,7 @@ PPLOG bsdtar: b: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  44: test_option_ignore_zeros_mode_c
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
@@ -827,7 +827,7 @@ PPLOG bsdtar: b: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  45: test_option_ignore_zeros_mode_r
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
@@ -852,7 +852,7 @@ PPLOG bsdtar: b: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  46: test_option_ignore_zeros_mode_u
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_ignore_zeros.c:21: 0 != systemf("%s cf a.tar -C in a", testprog)
 PPLOG 0030 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61 79 Error exit delay
 PPLOG 0040 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 73 ed from previous
 PPLOG 0050 20 65 72 72 6f 72 73 0a                          errors.
@@ -895,7 +895,7 @@ PPLOG bsdtar: bar: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  48: test_option_k
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_k.c:18: 0 != systemf("%s -cf archive.tar foo", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_k.c:18: 0 != systemf("%s -cf archive.tar foo", testprog)
 PPLOG   Assertions checked:      67
 PPLOG   Assertions failed:       11
 PPLOG   Skips reported:           0
@@ -965,7 +965,7 @@ PPLOG bsdtar: in/minimal: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  54: test_option_mode
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_mode.c:71: 0 != systemf("%s --mode 644 --uid=0 --gid=0 --format=ustar " "-cf archive1.tar in/all in/minimal", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_mode.c:71: 0 != systemf("%s --mode 644 --uid=0 --gid=0 --format=ustar " "-cf archive1.tar in/all in/minimal", testprog)
 PPLOG   Assertions checked:      30
 PPLOG   Assertions failed:        6
 PPLOG   Skips reported:           0
@@ -984,7 +984,7 @@ PPLOG bsdtar: .: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  55: test_option_mtime
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_mtime.c:23: 0 != systemf("%s --format pax -cf ../noclamp.tar " "--mtime \"1970/1/2 0:0:0 UTC\" .", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_mtime.c:23: 0 != systemf("%s --format pax -cf ../noclamp.tar " "--mtime \"1970/1/2 0:0:0 UTC\" .", testprog)
 PPLOG   Assertions checked:      47
 PPLOG   Assertions failed:       11
 PPLOG   Skips reported:           0
@@ -1001,32 +1001,32 @@ PPTEST libarchive bsdtar_test_option_n FAIL rc=1
 PPLOG 0030 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61  Error exit dela
 PPLOG 0040 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 yed from previou
 PPLOG 0050 73 20 65 72 72 6f 72 73 0a                      s errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_n.c:31: File should exist: d1/file1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_n.c:37: 0 != systemf("%s -cnf archive.tar -C .. d1 >c.out 2>c.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_n.c:31: File should exist: d1/file1
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_n.c:37: 0 != systemf("%s -cnf archive.tar -C .. d1 >c.out 2>c.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG 0030 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61  Error exit dela
 PPLOG 0040 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 yed from previou
 PPLOG 0050 73 20 65 72 72 6f 72 73 0a                      s errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_n.c:45: Dir should exist: d1
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_n.c:66: 0 != systemf("%s -cnf partial-archive.tar d1 d1/file1 d1/file2 file3 " "d2/file4 >c.out 2>c.err", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_n.c:45: Dir should exist: d1
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_n.c:66: 0 != systemf("%s -cnf partial-archive.tar d1 d1/file1 d1/file2 file3 " "d2/file4 >c.out 2>c.err", testprog)
 PPLOG       0=0 (0x0, 00)
 PPLOG 0070 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 ar: Error exit d
 PPLOG 0080 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 elayed from prev
 PPLOG 0090 69 6f 75 73 20 65 72 72 6f 72 73 0a             ious errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_n.c:87: Contents don't match
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_n.c:87: Contents don't match
 PPLOG   file="test4.out"
 PPLOG   File empty, contents should be:
 PPLOG 0070 61 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 ar: Error exit d
 PPLOG 0080 65 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 elayed from prev
 PPLOG 0090 69 6f 75 73 20 65 72 72 6f 72 73 0a             ious errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_n.c:99: Contents don't match
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_n.c:99: Contents don't match
 PPLOG   file="test5.out"
 PPLOG   File empty, contents should be:
 PPLOG 0020 0a 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 65 .bsdtar: Error e
 PPLOG 0030 78 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f 6d xit delayed from
 PPLOG 0040 20 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 73  previous errors
 PPLOG 0050 0a                                              .
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_n.c:109: Contents don't match
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_n.c:109: Contents don't match
 PPLOG   file="test6.out"
 PPLOG   Assertions checked:      62
 PPLOG   Assertions failed:       17
@@ -1048,7 +1048,7 @@ PPLOG bsdtar: old.txt: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  57: test_option_newer_than
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_newer_than.c:32: 0 != systemf("%s --format pax -cf ../test1.tar " "--newer-than middle.txt *.txt a", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_newer_than.c:32: 0 != systemf("%s --format pax -cf ../test1.tar " "--newer-than middle.txt *.txt a", testprog)
 PPLOG   Assertions checked:      46
 PPLOG   Assertions failed:        6
 PPLOG   Skips reported:           0
@@ -1081,7 +1081,7 @@ PPLOG bsdtar: old.txt: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  59: test_option_older_than
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_older_than.c:34: 0 != systemf("%s --format pax -cf ../test1.tar " "--older-than middle.txt *.txt a", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_older_than.c:34: 0 != systemf("%s --format pax -cf ../test1.tar " "--older-than middle.txt *.txt a", testprog)
 PPLOG   Assertions checked:      50
 PPLOG   Assertions failed:        6
 PPLOG   Skips reported:           0
@@ -1098,39 +1098,39 @@ PPTEST libarchive bsdtar_test_option_owner FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive1 --uid=0 --gid=0 --format=ustar file " ">stdout1.txt 2>stderr1.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:24: File should be empty: stderr1.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:24: File should be empty: stderr1.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:29: 0 != systemf("%s cf archive2 --owner=65123 --gid=65123 --format=ustar " "file >stdout2.txt 2>stderr2.txt", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:29: 0 != systemf("%s cf archive2 --owner=65123 --gid=65123 --format=ustar " "file >stdout2.txt 2>stderr2.txt", testprog)
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive2 --owner=65123 --gid=65123 --format=ustar " "file >stdout2.txt 2>stderr2.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:33: File should be empty: stderr2.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:33: File should be empty: stderr2.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:35: data + 108 != "177143  "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:35: data + 108 != "177143  "
 PPLOG       size 8 = 8
 PPLOG       Dump of data + 108
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive3 --uid=0 --owner=foofoofoo --gid=0 " "--format=ustar file >stdout3.txt 2>stderr3.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:46: File should be empty: stderr3.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:46: File should be empty: stderr3.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:50: data + 265 != "foofoofoo "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:50: data + 265 != "foofoofoo "
 PPLOG       size 10 = 10
 PPLOG       Dump of data + 265
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive4 --owner=foofoofoo:65123 --gid=0 " "--format=ustar file >stdout4.txt 2>stderr4.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:59: File should be empty: stderr4.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:59: File should be empty: stderr4.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_owner.c:61: data + 108 != "177143  "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_owner.c:61: data + 108 != "177143  "
 PPLOG       size 8 = 8
 PPLOG       Dump of data + 108
 PPLOG   Assertions checked:      29
@@ -1155,7 +1155,7 @@ PPLOG bsdtar: bar: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  62: test_option_q
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_q.c:25: 0 != systemf("%s -cf archive.tar foo", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_q.c:25: 0 != systemf("%s -cf archive.tar foo", testprog)
 PPLOG    Description: Fatal error trying to use -q option
 PPLOG       0=0 (0x0, 00)
 PPLOG       r=256 (0x100, 0400)
@@ -1176,11 +1176,11 @@ PPTEST libarchive bsdtar_test_option_r FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" cf archive.tar f1
 PPLOG       r=256 (0x100, 0400)
 PPLOG       0=0 (0x0, 00)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_r.c:31: File should be empty: step1.err
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_r.c:31: File should be empty: step1.err
 PPLOG 0030 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 6c 61  Error exit dela
 PPLOG 0040 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 6f 75 yed from previou
 PPLOG 0050 73 20 65 72 72 6f 72 73 0a                      s errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_r.c:37: Assertion failed: s >= 2048
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_r.c:37: Assertion failed: s >= 2048
 PPLOG 
 PPLOG Totals:
 PPLOG   Tests run:                1
@@ -1226,39 +1226,39 @@ PPTEST libarchive bsdtar_test_option_uid_uname FAIL rc=1
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive1 --uid=0 --gid=0 --format=ustar file " ">stdout1.txt 2>stderr1.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:23: File should be empty: stderr1.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:23: File should be empty: stderr1.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:28: 0 != systemf("%s cf archive2 --uid=65123 --uname=foofoofoo " "--gid=65123 --format=ustar file >stdout2.txt 2>stderr2.txt", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:28: 0 != systemf("%s cf archive2 --uid=65123 --uname=foofoofoo " "--gid=65123 --format=ustar file >stdout2.txt 2>stderr2.txt", testprog)
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive2 --uid=65123 --uname=foofoofoo " "--gid=65123 --format=ustar file >stdout2.txt 2>stderr2.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:33: File should be empty: stderr2.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:33: File should be empty: stderr2.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:36: data + 108 != "177143  "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:36: data + 108 != "177143  "
 PPLOG       size 8 = 8
 PPLOG       Dump of data + 108
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive3 --uid=65123 --gid=65123 --format=ustar " "file >stdout3.txt 2>stderr3.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:46: File should be empty: stderr3.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:46: File should be empty: stderr3.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:48: data + 108 != "177143  "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:48: data + 108 != "177143  "
 PPLOG       size 8 = 8
 PPLOG       Dump of data + 108
 PPLOG    Description: Error invoking "/tests/libarchive/build/bin/bsdtar" c
 PPLOG       0=0 (0x0, 00)
 PPLOG       systemf("%s cf archive4 --uid=0 --uname=foofoofoo --gid=0 " "--format=ustar file >stdout4.txt 2>stderr4.txt", testprog)=256 (0x100, 0400)
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:59: File should be empty: stderr4.txt
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:59: File should be empty: stderr4.txt
 PPLOG 0030 72 3a 20 45 72 72 6f 72 20 65 78 69 74 20 64 65 r: Error exit de
 PPLOG 0040 6c 61 79 65 64 20 66 72 6f 6d 20 70 72 65 76 69 layed from previ
 PPLOG 0050 6f 75 73 20 65 72 72 6f 72 73 0a                ous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_option_uid_uname.c:63: data + 265 != "foofoofoo "
+PPLOG C:/build-host/work/libarchive/tar/test/test_option_uid_uname.c:63: data + 265 != "foofoofoo "
 PPLOG       size 10 = 10
 PPLOG       Dump of data + 265
 PPLOG   Assertions checked:      34
@@ -1351,7 +1351,7 @@ PPTEST libarchive bsdtar_test_stdio FAIL rc=1
 PPLOG 0050 62 73 64 74 61 72 3a 20 45 72 72 6f 72 20 65 78 bsdtar: Error ex
 PPLOG 0060 69 74 20 64 65 6c 61 79 65 64 20 66 72 6f 6d 20 it delayed from 
 PPLOG 0070 70 72 65 76 69 6f 75 73 20 65 72 72 6f 72 73 0a previous errors.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_stdio.c:68: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_stdio.c:68: r != 0
 PPLOG       r=256 (0x100, 0400)
 PPLOG       0=0 (0x0, 00)
 PPLOG 0050_62_73_64_74_61_72_3a_20_45_72_72_6f_72_20_65_78_bsdtar: Error ex
@@ -1359,10 +1359,10 @@ PPLOG 0060_69_74_20_64_65_6c_61_79_65_64_20_66_72_6f_6d_20_it delayed from
 PPLOG 0070_70_72_65_76_69_6f_75_73_20_65_72_72_6f_72_73_0a_previous errors.
 PPLOG   expected
 PPLOG 0000_61_20_66_0a_61_20_6c_0a_                        a f.a l.
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_stdio.c:76: r != 0
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_stdio.c:100: Assertion failed: strstr(p, tvf_contains) != NULL
+PPLOG C:/build-host/work/libarchive/tar/test/test_stdio.c:76: r != 0
+PPLOG C:/build-host/work/libarchive/tar/test/test_stdio.c:100: Assertion failed: strstr(p, tvf_contains) != NULL
 PPLOG    Description: 'tv' mode should write results to stdout
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_stdio.c:120: Contents don't match
+PPLOG C:/build-host/work/libarchive/tar/test/test_stdio.c:120: Contents don't match
 PPLOG   file="xvf.err"
 PPLOG   Assertions checked:      46
 PPLOG   Assertions failed:       11
@@ -1384,7 +1384,7 @@ PPLOG bsdtar: d0/d1: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  76: test_strip_components
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_strip_components.c:29: 0 != systemf("%s -cf test.tar d0/l1 d0/s1 d0/d1", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_strip_components.c:29: 0 != systemf("%s -cf test.tar d0/l1 d0/s1 d0/d1", testprog)
 PPLOG   Assertions checked:      51
 PPLOG   Assertions failed:        8
 PPLOG   Skips reported:           0
@@ -1403,7 +1403,7 @@ PPLOG bsdtar: dir4: Cannot stat: Not a directory
 PPLOG bsdtar: Error exit delayed from previous errors
 PPLOG 
 PPLOG  77: test_symlink_dir
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/tar/test/test_symlink_dir.c:35: 0 != systemf("%s -cf test.tar -C source dir dir2 dir3 file file2", testprog)
+PPLOG C:/build-host/work/libarchive/tar/test/test_symlink_dir.c:35: 0 != systemf("%s -cf test.tar -C source dir dir2 dir3 file file2", testprog)
 PPLOG   Assertions checked:      89
 PPLOG   Assertions failed:       16
 PPLOG   Skips reported:           0
@@ -1433,22 +1433,22 @@ PPTEST libarchive bsdcpio_test_0 PASS rc=0
 PPTEST libarchive bsdcpio_test_basic FAIL rc=1
 PPLOG   Expected: 0775
 PPLOG   Found: 0755
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
 PPLOG   Expected: 0775
 PPLOG   Found: 0755
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
 PPLOG   Expected: 0775
 PPLOG   Found: 0755
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
 PPLOG   Expected: 0775
 PPLOG   Found: 0755
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
 PPLOG   Expected: 0775
 PPLOG   Found: 0755
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
 PPLOG   Expected: 0775
 PPLOG   Found: 0755
-PPLOG C:/Users/<user>/Documents/portpilot-work/pp/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
+PPLOG C:/build-host/work/libarchive/cpio/test/test_basic.c:41: Dir dir has wrong mode
 PPLOG   Expected: 0775
 PPLOG   Found: 0755
 PPLOG 

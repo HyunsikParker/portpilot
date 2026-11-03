@@ -1,12 +1,12 @@
 from portpilot import agent
 
-ROOT = r"C:\Users\dev\Documents\portpilot-work\pp\demo"
+ROOT = r"C:\Users\dev\portpilot\work\demo"
 
 LOG = "\n".join([
-    "C:/Users/dev/Documents/portpilot-work/pp/demo/src/os.c:41:10: fatal error: sys/epoll.h: No such file or directory",
-    "C:/Users/dev/Documents/portpilot-work/pp/demo/src/os.c:41:10: fatal error: sys/epoll.h: No such file or directory",
-    "C:/Users/dev/qnx800/target/qnx/usr/include/stdio.h:120:5: error: conflicting types for 'foo'",
-    "C:/Users/dev/Documents/portpilot-work/pp/demo/src/net.c:7:3: error: 'MSG_NOSIGNAL' undeclared",
+    "C:/Users/dev/portpilot/work/demo/src/os.c:41:10: fatal error: sys/epoll.h: No such file or directory",
+    "C:/Users/dev/portpilot/work/demo/src/os.c:41:10: fatal error: sys/epoll.h: No such file or directory",
+    "C:/qnx800/target/qnx/usr/include/stdio.h:120:5: error: conflicting types for 'foo'",
+    "C:/Users/dev/portpilot/work/demo/src/net.c:7:3: error: 'MSG_NOSIGNAL' undeclared",
     "net.c:(.text+0x10): undefined reference to `backtrace'",
 ])
 
