@@ -19,13 +19,11 @@ import sys
 import time
 from pathlib import Path
 
-REMOTE_ROOT = r"C:\Users\dev\Documents\portpilot-work\pp"
-VM_ROOT = r"C:\Users\dev\Documents\portpilot-work\qnxvm"
-SDP_ENV = r"C:\Users\dev\qnx800\qnxsdp-env.bat"
 DEFAULT_TIMEOUT = 300  # seconds per test; the VM runs under TCG, so CTest's 1500 s default is far too generous
 SKIP_DIRS = {".git", "CMakeFiles", "__pycache__"}
-SKIP_EXT = {".o", ".obj", ".a", ".lib", ".ninja", ".d", ".pdb", ".c", ".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp",
-            ".inl", ".asm", ".s", ".S", ".cmake", ".log"}
+# build intermediates only: tests often find their data by looking for a source or header file (wolfSSL looks for its
+# own headers to locate the source root), so working-directory trees keep their sources
+SKIP_EXT = {".o", ".obj", ".a", ".lib", ".ninja", ".d", ".pdb", ".log"}
 SHARED_LIB = re.compile(r"\.so(\.\d+)*$")
 
 
@@ -76,15 +74,17 @@ class Bundle:
         return "\n".join(lines) + "\n", total
 
 
-def plan_library(name, cpu, bundle):
+def plan_library(name, cpu, bundle, work, cap=DEFAULT_TIMEOUT):
     """Add one library's tests to the bundle; returns the run.sh lines and a summary."""
-    src = os.path.join(REMOTE_ROOT, name)
-    build = os.path.join(REMOTE_ROOT, f"build_{name}_{cpu}")
+    src = os.path.join(work, name)
+    build = os.path.join(work, f"build_{name}_{cpu}")
     roots = [(_fwd(build), f"/tests/{name}/build"), (_fwd(src), f"/tests/{name}/src")]
 
     def remap(s):
         for host, tgt in roots:
             s = s.replace(host, tgt).replace(host.replace("/", "\\"), tgt)
+        if re.match(r"^\.{1,2}\\", s):   # CMake on a Windows host writes relative paths as .\file
+            s = s.replace("\\", "/")
         return s
 
     def rel_target(path):
@@ -115,7 +115,7 @@ def plan_library(name, cpu, bundle):
             bundle.add_tree(rel_target(wd), wd)
         env = [remap(e) for e in props.get("ENVIRONMENT", [])]
         argv = ([f"env"] + env if env else []) + [remap(_fwd(c)) for c in cmd]
-        limit = int(float(props.get("TIMEOUT", DEFAULT_TIMEOUT)))
+        limit = min(int(float(props.get("TIMEOUT", cap))), cap)
         will_fail = 1 if props.get("WILL_FAIL") else 0
         skip_rc = props.get("SKIP_RETURN_CODE", "-")
         pass_re = props.get("PASS_REGULAR_EXPRESSION")
@@ -164,11 +164,11 @@ echo "PPTEST-BEGIN $(uname -a)"
 """
 
 
-def stage(names, cpu, out):
+def stage(names, cpu, out, work, cap=DEFAULT_TIMEOUT):
     os.makedirs(out, exist_ok=True)
     bundle, body, summaries = Bundle(), [], []
     for n in names:
-        lines, s = plan_library(n, cpu, bundle)
+        lines, s = plan_library(n, cpu, bundle, work, cap)
         body += [f"echo 'PPTEST-LIB {n} {s['tests']}'"] + lines
         summaries.append(s)
     run_sh = os.path.join(out, "run.sh")
@@ -187,13 +187,12 @@ def stage(names, cpu, out):
 
 # ---------------------------------------------------------------- run (driver)
 
-WORKER = Path.home() / ".local/bin/victus-worker"
 HERE = Path(__file__).resolve()
 LOCAL = HERE.parent.parent / "runs"
-BOOT_PS1 = r"""param([string]$Image, [string]$Tests, [string]$Log, [int]$Deadline)
+BOOT_PS1 = r"""param([string]$Image, [string]$Tests, [string]$Log, [int]$Deadline, [string]$Qemu)
 $out = Join-Path $Image "output"
 if (Test-Path $Log) { Remove-Item $Log }
-$qemu = "C:\Program Files\qemu\qemu-system-x86_64.exe"
+$qemu = Join-Path $Qemu "qemu-system-x86_64.exe"
 $a = @("-accel", "tcg", "-smp", "2", "-cpu", "max", "-m", "2G",
        "-drive", "file=$out\disk-qemu.vmdk,if=ide,index=0,id=drv0",
        "-drive", "file=$Tests,if=ide,index=1,format=raw,id=drv1",
@@ -206,11 +205,6 @@ $alive = -not $p.HasExited
 if ($alive) { Stop-Process -Id $p.Id -Force }
 "PPBOOT exited_by_itself=$(-not $alive)"
 """
-
-
-def _worker(*args, timeout=7200):
-    r = subprocess.run([str(WORKER), *args], capture_output=True, text=True, timeout=timeout)
-    return r.returncode, r.stdout + r.stderr
 
 
 def parse_serial(text):
@@ -226,32 +220,31 @@ def parse_serial(text):
     return results
 
 
-def run(names, cpu, deadline, tag="all"):
+def run(names, cpu, deadline, tag="all", cap=DEFAULT_TIMEOUT):
+    from . import host
     if cpu != "x86_64":
         sys.exit("only the x86_64 VM is set up so far")
+    h = host.from_env()
     tmp = LOCAL / "target"
     tmp.mkdir(parents=True, exist_ok=True)
-    _worker("push", str(HERE), "pp/pp_target.py")
+    h.put(HERE, rf"{h.work}\pp_target.py")
     ps1 = tmp / "boot_tests.ps1"
     ps1.write_text(BOOT_PS1)
-    _worker("push", str(ps1), "qnxvm/boot_tests.ps1")
-    out = rf"{REMOTE_ROOT}\target_{cpu}"
-    bat = tmp / "stage.bat"
-    bat.write_text("\r\n".join(["@echo off", f"call {SDP_ENV} >nul 2>&1", f"cd /d {REMOTE_ROOT}",
-                                f"python {REMOTE_ROOT}\\pp_target.py stage --cpu {cpu} --out {out} {' '.join(names)}",
-                                ""]))
-    _worker("push", str(bat), "pp/pp_stage.bat")
-    _, text = _worker("windows", rf"cmd /c {REMOTE_ROOT}\pp_stage.bat")
+    h.put(ps1, rf"{h.vm}\boot_tests.ps1")
+    out = rf"{h.work}\target_{cpu}"
+    text = h.run_bat("\r\n".join(["@echo off", f"call {h.sdp_env} >nul 2>&1", f"cd /d {h.work}",
+                                   f"{h.python} {h.work}\\pp_target.py stage --cpu {cpu} --out {out} --work {h.work} --timeout {cap} "
+                                   f"{' '.join(names)}", ""]), rf"{h.work}\pp_stage.bat")
     staged = next((json.loads(l[8:]) for l in text.splitlines() if l.startswith("PPSTAGE ")), None)
     print(json.dumps(staged)[:1500] if staged else text[-1500:], flush=True)
     if not staged or staged["mkqnx6fsimg_exit"] != 0:
         sys.exit("staging failed")
     log = rf"{out}\serial.log"
-    _, boot = _worker("windows", rf"powershell -ExecutionPolicy Bypass -File {VM_ROOT}\boot_tests.ps1 "
-                                 rf"-Image {VM_ROOT}\{cpu} -Tests {out}\tests.img -Log {log} -Deadline {deadline}",
-                      timeout=deadline + 600)
+    boot = h.ps(rf"powershell -ExecutionPolicy Bypass -File '{h.vm}\boot_tests.ps1' -Image '{h.vm}\{cpu}' "
+                rf"-Tests '{out}\tests.img' -Log '{log}' -Deadline {deadline} -Qemu '{h.qemu}'", timeout=deadline + 600)
     serial = tmp / f"serial_{cpu}_{tag}.log"
-    _worker("pull", rf"pp/target_{cpu}/serial.log", str(serial))
+    serial.unlink(missing_ok=True)
+    h.get(log, serial)
     text = serial.read_text(errors="ignore") if serial.exists() else ""
     results = parse_serial(text)
     finished = "PPTEST-END" in text
@@ -273,16 +266,19 @@ def main():
     s.add_argument("names", nargs="+")
     s.add_argument("--cpu", default="x86_64")
     s.add_argument("--out", required=True)
+    s.add_argument("--work", required=True, help="the build host's work directory (upstream copies and build trees)")
+    s.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="upper limit per test, seconds")
     r = sub.add_parser("run")
     r.add_argument("names", nargs="+")
     r.add_argument("--cpu", default="x86_64")
     r.add_argument("--deadline", type=int, default=3600)
     r.add_argument("--tag", default="all", help="name for this run's report and serial log")
+    r.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="upper limit per test, seconds")
     a = ap.parse_args()
     if a.cmd == "stage":
-        stage(a.names, a.cpu, a.out)
+        stage(a.names, a.cpu, a.out, a.work, a.timeout)
     else:
-        run(a.names, a.cpu, a.deadline, a.tag)
+        run(a.names, a.cpu, a.deadline, a.tag, a.timeout)
 
 
 if __name__ == "__main__":

@@ -4,3 +4,4 @@ __pycache__/
 runs/
 runs_*.log
 batch_*.sh
+.portpilot.env

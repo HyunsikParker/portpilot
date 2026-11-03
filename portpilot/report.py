@@ -59,6 +59,8 @@ def load(runs: Path):
     tests = {}
     for f in sorted(runs.glob("target_*.json"), key=lambda p: p.stat().st_mtime):
         t = json.loads(f.read_text())
+        if t.get("rejected"):
+            continue
         by_lib = {}
         for res in t.get("results", []):
             by_lib.setdefault(res["library"], []).append(res)
@@ -128,6 +130,12 @@ def page(ports, tests, generated):
         for cpu, rep in reps.items():
             body.append(f'<p class="muted">{esc(cpu)} · <a href="{esc(rep["url"])}">{esc(rep["url"])}</a></p>')
             body += [round_html(i + 1, r) for i, r in enumerate(rep["rounds"])]
+        for rep in reps.values():
+            for t in rep.get("triage", []):
+                verdict = "kept" if t.get("accepted") else ("UNFIXABLE" if t.get("unfixable") else "reverted")
+                body.append(f'<div class="round"><p><b>Test triage {t["round"]}</b> ({esc(t["model"])}): '
+                            f'{esc(", ".join(t.get("files", [])) or "no patch")} · passed '
+                            f'{t.get("passed_before", "?")} → {t.get("passed_after", "?")} · <b>{verdict}</b></p></div>')
         failing = [r for r in tests.get(n, {}).get("results", []) if r["verdict"] != "PASS"]
         if failing:
             body.append("<p><b>Tests that did not pass on the target</b></p>")
