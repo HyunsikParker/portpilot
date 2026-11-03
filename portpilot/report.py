@@ -8,6 +8,7 @@ and QNX performance results are not published.
 import argparse
 import html
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -44,11 +45,23 @@ summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 pre { margin: 6px 0 0; padding: 8px 10px; background: var(--panel); border-radius: 6px; overflow-x: auto; font-size: 12px; }
 ul { margin: 4px 0; padding-left: 20px; }
 footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
+.patch summary { font-weight: 400; color: var(--muted); font-size: 13px; }
+.patch pre { max-height: 420px; }
+pre .add { color: var(--ok); } pre .del { color: var(--bad); } pre .hunk { color: var(--muted); }
+meter { width: 64px; height: 8px; vertical-align: middle; margin-right: 6px; }
 """
 
 
+USER_DIR = re.compile(r"([A-Za-z]:[/\\])Users[/\\][^/\\\s\"']+", re.I)
+
+
+def scrub(s):
+    """Hide the build host's user name in paths copied from logs (C:/Users/<name>/... -> C:/Users/<user>/...)."""
+    return USER_DIR.sub(lambda m: m.group(1) + "Users/<user>", str(s))
+
+
 def esc(s):
-    return html.escape(str(s), quote=True)
+    return html.escape(scrub(s), quote=True)
 
 
 def load(runs: Path):
@@ -93,26 +106,43 @@ def test_cell(entry):
     total = sum(counts.values())
     cls = "ok" if counts["PASS"] == total else ("warn" if counts["PASS"] else "bad")
     extra = ", ".join(f"{counts[v]} {v.lower()}" for v in ("FAIL", "TIMEOUT", "SKIP") if counts[v])
-    return f'<td class="num {cls}">{counts["PASS"]}/{total} pass{(" · " + esc(extra)) if extra else ""}</td>'
+    return (f'<td class="num {cls}"><meter min="0" max="{total}" value="{counts["PASS"]}"></meter> '
+            f'{counts["PASS"]}/{total} pass{(" · " + esc(extra)) if extra else ""}</td>')
 
 
-def round_html(i, rnd):
+def diff_html(path):
+    """A saved patch as a collapsible, line-classed block; empty if the file is missing."""
+    if not path.exists():
+        return ""
+    rows = []
+    for line in path.read_text(errors="ignore").splitlines():
+        cls = ("add" if line.startswith("+") and not line.startswith("+++") else
+               "del" if line.startswith("-") and not line.startswith("---") else
+               "hunk" if line.startswith("@@") else "")
+        rows.append(f'<span class="{cls}">{esc(line)}</span>' if cls else esc(line))
+    return f'<details class="patch"><summary>Show patch</summary><pre>{chr(10).join(rows)}</pre></details>'
+
+
+def round_html(i, rnd, libdir):
     status = "built" if rnd["build_exit"] == "0" and rnd["configure_exit"] == "0" else (
         "configure failed" if rnd["configure_exit"] != "0" else f'{rnd["errors"]} errors')
-    lines = [f'<div class="round"><p><b>Round {i}</b> · {esc(status)}</p>']
+    cls = "ok" if status == "built" else "bad"
+    lines = [f'<div class="round"><p><b>Round {i}</b> · <span class="{cls}">{esc(status)}</span></p>']
     if rnd.get("matched_rules"):
-        lines.append(f'<p>Rules matched: <code>{esc(", ".join(rnd["matched_rules"]))}</code></p>')
+        lines.append(f'<p>Catalogue rules: <code>{esc(", ".join(rnd["matched_rules"]))}</code></p>')
     for p in rnd.get("patches", []):
         lines.append(f"<p>Change: {esc(p)}</p>")
     for ai in rnd.get("ai", []):
         verdict = "kept" if ai.get("accepted") else ("reverted" if ai.get("applied") else "not applied")
         files = ", ".join(ai.get("files", [])) or "no files"
-        lines.append(f'<p>AI patch (round {ai["round"]}, {esc(ai["model"])}): {esc(files)} · <b>{verdict}</b></p>')
+        lines.append(f'<p>AI patch {ai["round"]} ({esc(ai["model"])}): <code>{esc(files)}</code> · '
+                     f'<b class="{"ok" if verdict == "kept" else "bad"}">{verdict}</b></p>')
+        lines.append(diff_html(libdir / f'ai_round{ai["round"]}.patch'))
     lines.append("</div>")
     return "\n".join(lines)
 
 
-def page(ports, tests, generated):
+def page(ports, tests, generated, runs):
     names = sorted(set(ports) | set(tests), key=str.lower)
     built = {cpu: sum(1 for n in names if ports.get(n, {}).get(cpu, {}).get("result") == "built") for cpu in CPUS}
     all_results = [r for n in names for r in tests.get(n, {}).get("results", [])]
@@ -129,13 +159,15 @@ def page(ports, tests, generated):
         body = []
         for cpu, rep in reps.items():
             body.append(f'<p class="muted">{esc(cpu)} · <a href="{esc(rep["url"])}">{esc(rep["url"])}</a></p>')
-            body += [round_html(i + 1, r) for i, r in enumerate(rep["rounds"])]
+            body += [round_html(i + 1, r, runs / n) for i, r in enumerate(rep["rounds"])]
         for rep in reps.values():
             for t in rep.get("triage", []):
                 verdict = "kept" if t.get("accepted") else ("UNFIXABLE" if t.get("unfixable") else "reverted")
                 body.append(f'<div class="round"><p><b>Test triage {t["round"]}</b> ({esc(t["model"])}): '
-                            f'{esc(", ".join(t.get("files", [])) or "no patch")} · passed '
-                            f'{t.get("passed_before", "?")} → {t.get("passed_after", "?")} · <b>{verdict}</b></p></div>')
+                            f'<code>{esc(", ".join(t.get("files", [])) or "no patch")}</code> · tests passing on QNX '
+                            f'{t.get("passed_before", "?")} → {t.get("passed_after", "?")} · '
+                            f'<b class="{"ok" if verdict == "kept" else "bad"}">{verdict}</b></p>'
+                            + diff_html(runs / n / f'ai_roundt{t["round"]}.patch') + '</div>')
         failing = [r for r in tests.get(n, {}).get("results", []) if r["verdict"] != "PASS"]
         if failing:
             body.append("<p><b>Tests that did not pass on the target</b></p>")
@@ -213,7 +245,7 @@ def main():
     runs = Path(a.runs)
     ports, tests = load(runs)
     out = Path(a.out) if a.out else runs / "report.html"
-    out.write_text(page(ports, tests, datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")))
+    out.write_text(page(ports, tests, datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"), runs))
     if a.readme:
         update_readme(Path(a.readme), markdown(ports, tests))
     print(out)

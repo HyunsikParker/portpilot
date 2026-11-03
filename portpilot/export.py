@@ -11,7 +11,7 @@ import json
 import shutil
 from pathlib import Path
 
-from .report import fixes_applied, load
+from .report import fixes_applied, load, scrub
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -73,11 +73,11 @@ def export(names, runs=ROOT / "runs", dest=ROOT / "ports"):
         rec = recipe(n, ports[n])
         out = dest / n
         out.mkdir(parents=True, exist_ok=True)
-        (out / "recipe.json").write_text(json.dumps(rec, indent=1) + "\n")
+        (out / "recipe.json").write_text(scrub(json.dumps(rec, indent=1)) + "\n")
         patch = runs / n / f"{n}.patch"
         if patch.exists() and patch.stat().st_size:
             shutil.copyfile(patch, out / f"{n}.patch")
-        (out / "README.md").write_text(readme(rec, tests.get(n)))
+        (out / "README.md").write_text(scrub(readme(rec, tests.get(n))))
         print(out)
 
 
