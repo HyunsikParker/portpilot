@@ -50,3 +50,23 @@ def test_detect_build_system():
     with tempfile.TemporaryDirectory() as d:
         Path(d, "CMakeLists.txt").write_text("option(ENABLE_TESTS \"tests\" ON)\n")
         assert detect.build_system(d) == "cmake" and detect.cmake_test_switch(d) == "ENABLE_TESTS"
+
+
+def test_source_level_rules():
+    log = ("C:/w/nng/src/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory\n"
+           "x.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'\n"
+           "C:/w/ex/rt.c:73:25: error: 'IPPROTO_UDP' undeclared (first use in this function)\n"
+           "ld: cannot find -lpthread: No such file or directory\nld: cannot find -lrt: No such file\n"
+           "ld: libpaho.so: undefined reference to `htobe32'\n"
+           "CMake Error at CMakeLists.txt:7 (cmake_minimum_required):\n  Compatibility with CMake < 3.5 has been removed from CMake.\n")
+    assert fixes.header_patches(log) == [("C:/w/nng/src/posix_udp.c", "sys/errno.h", "errno.h")]
+    assert fixes.needs_queue_compat(log) and fixes.netinet_files(log) == ["C:/w/ex/rt.c"]
+    assert fixes.stub_libraries(log) == ["pthread", "rt"]
+    assert fixes.needs_endian_compat(log) and fixes.needs_policy_minimum(log)
+
+
+def test_endian_header_is_self_contained():
+    text = (Path(__file__).resolve().parents[1] / "compat" / "portpilot_endian.h").read_text()
+    for fn in ("htobe16", "be32toh", "htole64", "le64toh"):
+        assert fn in text
+    assert "#include <stdint.h>" in text and "__builtin_bswap32" in text

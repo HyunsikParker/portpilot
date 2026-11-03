@@ -31,7 +31,7 @@ def _bat(name, url, ref, subdir, cpu, cflags, ldflags, cmake_args):
         "@echo off",
         f"call {SDP_ENV} >nul 2>&1",
         f"cd /d {REMOTE_ROOT}",
-        f"if not exist {src} git clone -q --depth 1 --branch {ref} {url} {src}",
+        f"if not exist {src} git clone -q --depth 1 --recurse-submodules --shallow-submodules --branch {ref} {url} {src}",
         f"if exist {bld} rmdir /s /q {bld}",
         f'cmake -G Ninja -S {src}\\{subdir} -B {bld} -DCMAKE_TOOLCHAIN_FILE={REMOTE_ROOT}\\qnx.nto.toolchain.cmake '
         f'-DCPU={cpu} -DCMAKE_SYSTEM_PROCESSOR={cpu} -DCPUVARDIR={cpu} -DCMAKE_BUILD_TYPE=Release '
@@ -67,6 +67,16 @@ def apply_header_patches(patches):
         ps = (f"$f='{f}'; (Get-Content -LiteralPath $f -Raw) -replace '#include\\s*<{old.replace('.', '[.]')}>', "
               f"'#include <{new}>' | Set-Content -LiteralPath $f -NoNewline")
         _worker("windows", ps)
+
+
+COMPAT = Path(__file__).resolve().parent.parent / "compat"
+
+
+def push_compat_header(name):
+    """Copy a PortPilot compat header to pp/portpilot_compat on the host; returns its remote path with forward slashes."""
+    _worker("windows", f"New-Item -ItemType Directory -Force '{REMOTE_ROOT}\\portpilot_compat' | Out-Null")
+    _worker("push", str(COMPAT / name), f"pp/portpilot_compat/{name}")
+    return f"{REMOTE_ROOT}\\portpilot_compat\\{name}".replace("\\", "/")
 
 
 def make_stub_libs(cpu, libs):
@@ -112,6 +122,7 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
         rules = fixes.match(log)
         new_c, new_l = fixes.apply(rules, cflags, ldflags)
         rec["matched_rules"] = [r.name for r in rules]
+        rec["cmake_args"] = list(cmake_args)
         rec["errors"] = sum(1 for line in logs["build"].splitlines()
                             if " error: " in line or "undefined reference" in line or "cannot find -l" in line)
         rounds.append(rec)
@@ -128,6 +139,15 @@ def port(name, url, ref, subdir=".", cpu="x86_64", cmake_args=(), max_rounds=4):
             if hdr and f"-include {hdr}" not in " ".join(new_c):
                 new_c = new_c + ["-include", hdr]
                 rec.setdefault("patches", []).append(f"force-include project queue header {Path(hdr).name}")
+        if fixes.needs_endian_compat(log):
+            hdr = push_compat_header("portpilot_endian.h")
+            if hdr not in new_c:
+                new_c = new_c + ["-include", hdr]
+                rec.setdefault("patches", []).append("force-include PortPilot endian helpers (htobe32, be32toh, ...)")
+        if fixes.needs_policy_minimum(log) and "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" not in cmake_args:
+            cmake_args = list(cmake_args) + ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"]
+            rec.setdefault("patches", []).append("configure with CMAKE_POLICY_VERSION_MINIMUM=3.5 (old cmake_minimum_required)")
+            patches = patches or ["policy"]
         stubs = fixes.stub_libraries(log)
         if stubs:
             stub_dir = make_stub_libs(cpu, stubs)

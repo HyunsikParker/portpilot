@@ -101,3 +101,17 @@ NO_SUCH_LIB = re.compile(r"cannot find -l(pthread|rt|dl|util|anl|resolv)\b")
 
 def stub_libraries(log):
     return sorted(set(NO_SUCH_LIB.findall(log)))
+
+
+# Byte-order helpers from <endian.h> that QNX does not provide under these names.
+ENDIAN_FUNCS = re.compile(r"(undefined reference to `|implicit declaration of function ')(htobe|htole|be|le)(16|32|64)(toh)?")
+# CMake 4 refuses projects that still declare cmake_minimum_required below 3.5.
+OLD_CMAKE_POLICY = re.compile(r"Compatibility with CMake < 3\.5 has been removed from CMake")
+
+
+def needs_endian_compat(log):
+    return bool(ENDIAN_FUNCS.search(log))
+
+
+def needs_policy_minimum(log):
+    return bool(OLD_CMAKE_POLICY.search(log))
