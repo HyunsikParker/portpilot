@@ -55,6 +55,7 @@ class Bundle:
         self.files = {}   # target path (relative to /tests) -> host path
         self.dirs = set()
         self.trees = set()   # host directories already walked
+        self.links = {}      # target path -> link value, for files git tracks as symbolic links
 
     def add_file(self, target, host):
         self.files.setdefault(target, host)
@@ -78,7 +79,8 @@ class Bundle:
         lines = [f"[num_sectors={sectors}]", f"[num_inodes={2 * len(self.files) + 2000}]",
                  "[uid=0 gid=0 dperms=777 perms=755]"]
         lines += [f"[type=dir] {d}" for d in sorted(self.dirs)]
-        lines += [f'{t} = "{_fwd(h)}"' for t, h in sorted(self.files.items())]
+        lines += [f'{t} = "{_fwd(h)}"' for t, h in sorted(self.files.items()) if t not in self.links]
+        lines += [f"[type=link] {t}={v}" for t, v in sorted(self.links.items())]
         return "\n".join(lines) + "\n", total
 
 
@@ -141,6 +143,15 @@ def plan_library(name, cpu, bundle, work, cap=DEFAULT_TIMEOUT, only=None):
         lines.append(f"pp_run {name} {_quote(tname)} {limit} {will_fail} {skip_rc} {pass_re} "
                      f"{_quote(remap(_fwd(wd)))} " + " ".join(_quote(a) for a in argv))
         summary["tests"] += 1
+    # a Windows checkout writes git symbolic links (json-c's tests/test4.test -> test_basic.test) as small text files
+    # holding the link target; put them back as links on the test disk
+    out = subprocess.run(["git", "-C", src, "ls-files", "-s"], capture_output=True, text=True).stdout
+    for line in out.splitlines():
+        meta, _, path = line.partition("\t")
+        target = f"{name}/src/{path}"
+        if meta.startswith("120000") and target in bundle.files:
+            with open(bundle.files[target], errors="ignore") as f:
+                bundle.links[target] = f.read().strip()
     return lines, summary
 
 
